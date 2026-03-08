@@ -1093,7 +1093,17 @@ body {
     .search-wrapper { max-width: 100%; }
     .book-selector-wrapper { min-width: 100%; }
     .sidebar { width: 100%; }
-    .toolbar-row { justify-content: center; }
+    /* Fix #5/#6: Toolbar scrollable horizontal, not wrapping */
+    .toolbar-row {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        mask-image: linear-gradient(to right, black 90%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+        padding-bottom: 4px;
+    }
+    .toolbar-btn { flex-shrink: 0; }
     .chapter-title { font-size: 1.3em; }
     .verse-container { font-size: 1em; }
     .verse-of-day-text { font-size: 0.9em; }

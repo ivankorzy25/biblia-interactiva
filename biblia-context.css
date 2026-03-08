@@ -555,6 +555,76 @@
     line-height: 1.6;
 }
 
+/* ============ ACTIVE/TOUCH FEEDBACK ============ */
+.ctx-action-btn:active {
+    transform: scale(0.95);
+    background: var(--accent-light, rgba(102, 126, 234, 0.15));
+    border-color: var(--accent-primary);
+    transition: transform 0.1s;
+}
+.ctx-event-chip:active {
+    transform: scale(0.97);
+    background: var(--accent-light, rgba(102, 126, 234, 0.08));
+    transition: transform 0.1s;
+}
+.ctx-tl-period:active { opacity: 0.8; }
+
+/* ============ COLLAPSIBLE CONTEXT (mobile) ============ */
+.ctx-collapse-toggle {
+    display: none;
+}
+
+/* ============ BACK TO TOP BUTTON ============ */
+.btt-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent-primary, #667eea);
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 14px var(--shadow-md, rgba(0,0,0,0.15));
+    z-index: 89;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btt-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+.btt-btn:active {
+    transform: scale(0.9);
+}
+
+/* ============ VOTD DISMISS ============ */
+.votd-close {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.votd-close:hover { background: rgba(255,255,255,0.35); }
+
 /* ============ MOBILE ============ */
 @media (max-width: 768px) {
     .ctx-panel { margin-top: 20px; padding: 14px; }
@@ -566,16 +636,95 @@
     .ctx-tl-range { height: 42px; }
     .ctx-tl-christ-line { height: 46px; }
     .ctx-tl-events { height: 42px; }
-    .ctx-tl-dot { top: 15px; width: 8px; height: 8px; }
+
+    /* Fix #3: Dots — visible 10px, touch area 44px via padding */
+    .ctx-tl-dot {
+        top: 11px;
+        width: 10px;
+        height: 10px;
+        padding: 17px;
+        margin: -17px;
+        background-clip: content-box;
+        border: none;
+        box-shadow: none;
+        position: absolute;
+    }
+    .ctx-tl-dot::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        transform: translate(-50%, -50%);
+        background: #fbbf24;
+        border: 2px solid rgba(0,0,0,0.4);
+        border-radius: 50%;
+        box-shadow: 0 0 4px rgba(251, 191, 36, 0.5);
+    }
+
+    /* Fix #4: Year labels legible */
     .ctx-tl-labels { top: 46px; }
-    .ctx-actions { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .ctx-tl-label { font-size: 0.72em; }
+    .ctx-tl-range-label { font-size: 0.6em; }
+
+    /* Fix #2: Context buttons scroll with fade hint */
+    .ctx-actions {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        padding-bottom: 4px;
+    }
     .ctx-action-btn { flex-shrink: 0; }
+
+    /* Fix #9: Collapsible context panel */
+    .ctx-collapse-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 0;
+        border: none;
+        background: none;
+        color: var(--text-heading);
+        font-size: 0.95em;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+    }
+    .ctx-collapse-toggle .ctx-collapse-arrow {
+        transition: transform 0.3s;
+        font-size: 0.8em;
+        color: var(--text-tertiary);
+    }
+    .ctx-collapse-toggle[aria-expanded="true"] .ctx-collapse-arrow {
+        transform: rotate(180deg);
+    }
+    .ctx-collapse-body {
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s;
+    }
+    .ctx-collapse-body.collapsed {
+        max-height: 0 !important;
+        opacity: 0;
+        overflow: hidden;
+    }
+
     .ctx-events-list { flex-direction: column; }
     .ctx-event-chip { width: 100%; }
-    .ctx-tl-range-label { font-size: 0.55em; }
+
+    /* Fix #15: Prevent floating buttons overlapping content */
+    .ctx-panel { margin-bottom: 80px; }
+
+    /* Back to top button position for mobile */
+    .btt-btn { bottom: 76px; right: 14px; }
 }
 
 /* ============ PRINT ============ */
 @media print {
     .ctx-panel { display: none !important; }
+    .btt-btn { display: none !important; }
 }

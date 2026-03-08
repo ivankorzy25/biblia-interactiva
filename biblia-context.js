@@ -19,6 +19,7 @@ class BibliaContext {
 
         this.injectPanel();
         this.injectSidebar();
+        this.injectGlobalUI();
         this.bindEvents();
     }
 
@@ -45,36 +46,45 @@ class BibliaContext {
                 <span class="ctx-era-badge bc" id="ctxEraBadge"></span>
             </div>
 
-            <!-- Timeline Bar -->
-            <div class="ctx-timeline-section">
-                <div class="ctx-timeline-bar" id="ctxTimelineBar">
-                    <div class="ctx-tl-bg">
-                        <div class="ctx-tl-bc" id="ctxTlBc"></div>
-                        <div class="ctx-tl-ad" id="ctxTlAd"></div>
-                    </div>
-                    <span class="ctx-tl-era-label bc-label">A.C.</span>
-                    <span class="ctx-tl-era-label ad-label">D.C.</span>
-                    <div class="ctx-tl-periods" id="ctxTlPeriods"></div>
-                    <div class="ctx-tl-range" id="ctxTlRange">
-                        <div class="ctx-tl-range-fill"></div>
-                        <div class="ctx-tl-range-border"></div>
-                    </div>
-                    <span class="ctx-tl-range-label" id="ctxTlRangeLabel"></span>
-                    <div class="ctx-tl-events" id="ctxTlEvents"></div>
-                    <div class="ctx-tl-labels" id="ctxTlLabels"></div>
-                    <div class="ctx-tl-christ" id="ctxTlChrist">
-                        <div class="ctx-tl-christ-line"></div>
-                        <div class="ctx-tl-christ-label">Cristo</div>
+            <!-- Collapsible toggle (visible only on mobile via CSS) -->
+            <button class="ctx-collapse-toggle" id="ctxCollapseToggle" aria-expanded="false">
+                <span>\uD83D\uDCD6 Explorar contexto hist\u00f3rico</span>
+                <span class="ctx-collapse-arrow">\u25BC</span>
+            </button>
+
+            <!-- Collapsible body -->
+            <div class="ctx-collapse-body collapsed" id="ctxCollapseBody">
+                <!-- Timeline Bar -->
+                <div class="ctx-timeline-section">
+                    <div class="ctx-timeline-bar" id="ctxTimelineBar">
+                        <div class="ctx-tl-bg">
+                            <div class="ctx-tl-bc" id="ctxTlBc"></div>
+                            <div class="ctx-tl-ad" id="ctxTlAd"></div>
+                        </div>
+                        <span class="ctx-tl-era-label bc-label">A.C.</span>
+                        <span class="ctx-tl-era-label ad-label">D.C.</span>
+                        <div class="ctx-tl-periods" id="ctxTlPeriods"></div>
+                        <div class="ctx-tl-range" id="ctxTlRange">
+                            <div class="ctx-tl-range-fill"></div>
+                            <div class="ctx-tl-range-border"></div>
+                        </div>
+                        <span class="ctx-tl-range-label" id="ctxTlRangeLabel"></span>
+                        <div class="ctx-tl-events" id="ctxTlEvents"></div>
+                        <div class="ctx-tl-labels" id="ctxTlLabels"></div>
+                        <div class="ctx-tl-christ" id="ctxTlChrist">
+                            <div class="ctx-tl-christ-line"></div>
+                            <div class="ctx-tl-christ-label">Cristo</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Context Action Buttons (AI-powered) -->
-            <div class="ctx-actions" id="ctxActions"></div>
+                <!-- Context Action Buttons (AI-powered) -->
+                <div class="ctx-actions" id="ctxActions"></div>
 
-            <!-- Key Events -->
-            <div class="ctx-events-section" id="ctxEventsSection">
-                <div class="ctx-events-list" id="ctxEventsList"></div>
+                <!-- Key Events -->
+                <div class="ctx-events-section" id="ctxEventsSection">
+                    <div class="ctx-events-list" id="ctxEventsList"></div>
+                </div>
             </div>
         `;
 
@@ -104,9 +114,79 @@ class BibliaContext {
     }
 
     // ==========================================
+    // GLOBAL UI ENHANCEMENTS
+    // ==========================================
+    injectGlobalUI() {
+        // Back to top button
+        this.bttBtn = document.createElement('button');
+        this.bttBtn.className = 'btt-btn';
+        this.bttBtn.innerHTML = '\u2191';
+        this.bttBtn.title = 'Volver arriba';
+        this.bttBtn.setAttribute('aria-label', 'Volver arriba');
+        document.body.appendChild(this.bttBtn);
+        this.bttBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        window.addEventListener('scroll', () => {
+            this.bttBtn.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+
+        // VOTD dismiss button
+        const votd = document.getElementById('verseOfDay');
+        if (votd && !votd.querySelector('.votd-close')) {
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'votd-close';
+            closeBtn.innerHTML = '\u2715';
+            closeBtn.title = 'Cerrar vers\u00edculo del d\u00eda';
+            closeBtn.setAttribute('aria-label', 'Cerrar vers\u00edculo del d\u00eda');
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                votd.style.maxHeight = votd.scrollHeight + 'px';
+                requestAnimationFrame(() => {
+                    votd.style.transition = 'max-height 0.4s ease, opacity 0.3s, padding 0.4s';
+                    votd.style.maxHeight = '0';
+                    votd.style.opacity = '0';
+                    votd.style.padding = '0 20px';
+                    votd.style.overflow = 'hidden';
+                });
+            });
+            votd.prepend(closeBtn);
+        }
+    }
+
+    // ==========================================
     // EVENTS
     // ==========================================
     bindEvents() {
+        // Collapsible context panel toggle (mobile)
+        const collapseToggle = document.getElementById('ctxCollapseToggle');
+        const collapseBody = document.getElementById('ctxCollapseBody');
+        if (collapseToggle && collapseBody) {
+            collapseToggle.addEventListener('click', () => {
+                const expanded = collapseToggle.getAttribute('aria-expanded') === 'true';
+                collapseToggle.setAttribute('aria-expanded', !expanded);
+                if (expanded) {
+                    collapseBody.classList.add('collapsed');
+                } else {
+                    collapseBody.classList.remove('collapsed');
+                    collapseBody.style.maxHeight = collapseBody.scrollHeight + 'px';
+                }
+            });
+            // On desktop, always show (no collapse)
+            const mq = window.matchMedia('(min-width: 769px)');
+            const handleMQ = (e) => {
+                if (e.matches) {
+                    collapseBody.classList.remove('collapsed');
+                    collapseBody.style.maxHeight = 'none';
+                } else {
+                    collapseBody.classList.add('collapsed');
+                    collapseToggle.setAttribute('aria-expanded', 'false');
+                }
+            };
+            mq.addEventListener('change', handleMQ);
+            handleMQ(mq);
+        }
+
         document.getElementById('ctxSidebarClose')?.addEventListener('click', () => this.closeSidebar());
 
         // Close sidebar on overlay click
@@ -253,6 +333,7 @@ class BibliaContext {
             html += `<div class="ctx-tl-period ${isActive ? 'active-period' : ''}"
                 style="left:${left}%;width:${w}%;background:${p.color}"
                 title="${p.label}"
+                role="button" tabindex="0" aria-label="Per\u00edodo: ${p.label}"
                 data-period-id="${p.id}"></div>`;
         });
         container.innerHTML = html;
@@ -274,7 +355,8 @@ class BibliaContext {
         (bookData.keyEvents || []).forEach((ev, i) => {
             const pos = ((ev.year - min) / total) * 100;
             const yearStr = ev.year < 0 ? Math.abs(ev.year) + ' a.C.' : ev.year + ' d.C.';
-            html += `<div class="ctx-tl-dot" style="left:${pos}%" data-event-idx="${i}">
+            html += `<div class="ctx-tl-dot" style="left:${pos}%" data-event-idx="${i}"
+                role="button" tabindex="0" aria-label="${ev.event} (${yearStr})">
                 <div class="ctx-tl-dot-tip">${ev.event}<br><small>${yearStr}</small></div>
             </div>`;
         });
@@ -319,16 +401,16 @@ class BibliaContext {
         const chapter = app.currentChapter;
 
         const buttons = [
-            { icon: '\uD83C\uDFDB', label: 'Contexto Hist\u00f3rico', query: `contexto_historico` },
-            { icon: '\uD83D\uDDFA', label: 'Geograf\u00eda y Lugares', query: `geografia` },
-            { icon: '\uD83D\uDC51', label: 'Personajes', query: `personajes` },
-            { icon: '\u2696', label: 'Cultura y Costumbres', query: `cultura` },
-            { icon: '\uD83D\uDD17', label: 'Conexiones B\u00edblicas', query: `conexiones` },
+            { icon: '\uD83C\uDFDB', label: 'Contexto Hist\u00f3rico', query: `contexto_historico`, hint: 'IA analiza la \u00e9poca' },
+            { icon: '\uD83D\uDDFA', label: 'Geograf\u00eda y Lugares', query: `geografia`, hint: 'IA describe los lugares' },
+            { icon: '\uD83D\uDC51', label: 'Personajes', query: `personajes`, hint: 'IA perfila cada persona' },
+            { icon: '\u2696', label: 'Cultura y Costumbres', query: `cultura`, hint: 'IA explica la cultura' },
+            { icon: '\uD83D\uDD17', label: 'Conexiones B\u00edblicas', query: `conexiones`, hint: 'IA conecta pasajes' },
         ];
 
         let html = '';
         buttons.forEach(btn => {
-            html += `<button class="ctx-action-btn" data-query="${btn.query}">
+            html += `<button class="ctx-action-btn" data-query="${btn.query}" title="${btn.hint}">
                 <span class="ctx-action-icon">${btn.icon}</span>
                 <span class="ctx-action-label">${btn.label}</span>
             </button>`;
@@ -358,7 +440,8 @@ class BibliaContext {
         events.forEach((ev, i) => {
             const yearLabel = ev.year < 0 ? `${Math.abs(ev.year)} a.C.` : `${ev.year} d.C.`;
             const isBC = ev.year < 0;
-            html += `<div class="ctx-event-chip" data-event-idx="${i}">
+            html += `<div class="ctx-event-chip" data-event-idx="${i}"
+                role="button" tabindex="0" aria-label="${ev.event} - ${yearLabel}">
                 <span class="ctx-event-year ${isBC ? 'ctx-year-bc' : 'ctx-year-ad'}">${yearLabel}</span>
                 <span class="ctx-event-text">${ev.event}</span>
                 <span class="ctx-event-arrow">\u2197</span>
@@ -648,6 +731,10 @@ USA ESTE FORMATO para TODAS las respuestas:
     openSidebar(title, subtitle) {
         this.sidebarOpen = true;
         document.getElementById('ctxSidebarTitle').innerHTML = `${title} <small style="opacity:0.6;font-weight:400;font-size:0.8em">${subtitle || ''}</small>`;
+        // Fix #1: Reset scroll position
+        const body = document.getElementById('ctxSidebarBody');
+        if (body) body.scrollTop = 0;
+        this.sidebar.scrollTop = 0;
         this.sidebar.classList.add('active');
         document.getElementById('overlay')?.classList.add('active');
     }

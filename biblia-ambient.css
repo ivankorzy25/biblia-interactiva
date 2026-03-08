@@ -1,0 +1,159 @@
+/* ==========================================
+   AMBIENT MUSIC PLAYER
+   ========================================== */
+.ambient-player {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 10000;
+}
+.ambient-toggle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(30, 27, 75, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.ambient-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(30, 27, 75, 0.6);
+}
+.ambient-toggle.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    animation: ambient-pulse 2s ease-in-out infinite;
+}
+@keyframes ambient-pulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4); }
+    50% { box-shadow: 0 4px 24px rgba(102, 126, 234, 0.7), 0 0 40px rgba(118, 75, 162, 0.2); }
+}
+
+/* Panel */
+.ambient-panel {
+    position: absolute;
+    bottom: 56px;
+    left: 0;
+    width: 280px;
+    background: var(--bot-bg, #1e1e2e);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    padding: 0;
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.ambient-panel.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+.ambient-header {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: white;
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* Mood buttons */
+.ambient-moods {
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.ambient-mood-btn {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    background: transparent;
+    color: var(--bot-text, #c4b5fd);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+.ambient-mood-btn:hover {
+    background: rgba(102, 126, 234, 0.15);
+    border-color: #667eea;
+}
+.ambient-mood-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+}
+
+/* Now playing */
+.ambient-now {
+    padding: 0 16px;
+    font-size: 11px;
+    color: #a78bfa;
+    min-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ambient-now:empty { display: none; }
+
+/* Volume */
+.ambient-vol-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px 14px;
+}
+.ambient-vol-icon {
+    font-size: 14px;
+    opacity: 0.6;
+}
+.ambient-vol {
+    flex: 1;
+    height: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(167, 139, 250, 0.2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+.ambient-vol::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #a78bfa;
+    cursor: pointer;
+    border: 2px solid #1e1b4b;
+}
+.ambient-vol::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #a78bfa;
+    cursor: pointer;
+    border: 2px solid #1e1b4b;
+}
+
+/* Light mode */
+[data-theme="light"] .ambient-panel {
+    background: white;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+[data-theme="light"] .ambient-mood-btn { color: #4b5563; }
+[data-theme="light"] .ambient-now { color: #667eea; }
+
+/* Mobile */
+@media (max-width: 480px) {
+    .ambient-player { bottom: 16px; left: 16px; }
+    .ambient-toggle { width: 42px; height: 42px; font-size: 18px; }
+    .ambient-panel { width: 250px; }
+}

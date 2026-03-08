@@ -14,6 +14,8 @@ class BibliaContext {
         this.sidebarOpen = false;
         this.isLoading = false;
         this.cache = {};
+        this.abortController = null;
+        this.generationId = 0;
 
         this.injectPanel();
         this.injectSidebar();
@@ -469,19 +471,29 @@ class BibliaContext {
     async generateContext(prompt, cacheKey) {
         const body = document.getElementById('ctxSidebarBody');
 
+        // Abort any previous request
+        if (this.abortController) {
+            this.abortController.abort();
+        }
+
+        // Track this generation to detect stale writes
+        this.generationId++;
+        const myGenId = this.generationId;
+
         // Check cache
         if (this.cache[cacheKey]) {
             body.innerHTML = this.cache[cacheKey];
             return;
         }
 
-        // Show loading
+        // Show loading with visible spinner
         body.innerHTML = `<div class="ctx-loading">
             <div class="ctx-loading-spinner"></div>
             <div class="ctx-loading-text">Analizando contexto hist\u00f3rico...</div>
         </div>`;
 
         this.isLoading = true;
+        this.abortController = new AbortController();
 
         try {
             const res = await fetch(this.API_URL, {
@@ -490,6 +502,7 @@ class BibliaContext {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${this.TOKEN}`
                 },
+                signal: this.abortController.signal,
                 body: JSON.stringify({
                     model: 'openclaw',
                     stream: true,
@@ -511,22 +524,34 @@ USA ESTE FORMATO para TODAS las respuestas:
                 })
             });
 
+            // If a newer generation started, stop processing this one
+            if (myGenId !== this.generationId) return;
+
             if (!res.ok) {
                 body.innerHTML = `<div class="ctx-error">\u26A0 Error al conectar con la IA. Intenta de nuevo.</div>`;
                 this.isLoading = false;
                 return;
             }
 
-            // Stream response
+            // Stream response - use a unique class instead of shared ID
+            const responseEl = document.createElement('div');
+            responseEl.className = 'ctx-ai-response';
+            body.innerHTML = '';
+            body.appendChild(responseEl);
+
             const reader = res.body.getReader();
             const decoder = new TextDecoder();
             let fullText = '';
-            body.innerHTML = '<div class="ctx-ai-response" id="ctxAiResponse"></div>';
-            const responseEl = document.getElementById('ctxAiResponse');
 
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
+
+                // If a newer generation started, abort this stream
+                if (myGenId !== this.generationId) {
+                    reader.cancel();
+                    return;
+                }
 
                 const chunk = decoder.decode(value, { stream: true });
                 const lines = chunk.split('\n').filter(l => l.startsWith('data: '));
@@ -541,21 +566,28 @@ USA ESTE FORMATO para TODAS las respuestas:
                         if (delta) {
                             fullText += delta;
                             responseEl.innerHTML = this.formatResponse(fullText);
-                            // Auto-scroll sidebar
                             body.scrollTop = body.scrollHeight;
                         }
                     } catch (e) { /* skip parse errors */ }
                 }
             }
 
-            // Cache the final result
-            this.cache[cacheKey] = body.innerHTML;
+            // Only cache if this is still the active generation
+            if (myGenId === this.generationId) {
+                this.cache[cacheKey] = body.innerHTML;
+            }
 
         } catch (err) {
-            body.innerHTML = `<div class="ctx-error">\u26A0 ${err.message || 'Error de conexi\u00f3n'}</div>`;
+            if (err.name === 'AbortError') return; // Intentional abort
+            if (myGenId === this.generationId) {
+                body.innerHTML = `<div class="ctx-error">\u26A0 ${err.message || 'Error de conexi\u00f3n'}</div>`;
+            }
         }
 
-        this.isLoading = false;
+        if (myGenId === this.generationId) {
+            this.isLoading = false;
+            this.abortController = null;
+        }
     }
 
     formatResponse(text) {

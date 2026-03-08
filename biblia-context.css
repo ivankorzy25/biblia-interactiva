@@ -420,34 +420,105 @@
     color: var(--accent-primary);
 }
 
-/* ============ SIDEBAR AI RESPONSE ============ */
+/* ============ SIDEBAR AI THINKING ============ */
 .ctx-loading {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    padding: 60px 20px;
-    min-height: 200px;
+    gap: 20px;
+    padding: 50px 24px;
+    min-height: 220px;
 }
 
-.ctx-loading-spinner {
-    width: 44px;
-    height: 44px;
-    border: 4px solid var(--border-color, #e2e8f0);
-    border-top-color: var(--accent-primary, #667eea);
+/* Brain icon with pulse ring */
+.ctx-thinking-brain {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctx-thinking-icon {
+    font-size: 2em;
+    z-index: 2;
+    animation: ctxBrainBounce 2s ease-in-out infinite;
+}
+
+.ctx-thinking-pulse {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
     border-radius: 50%;
-    animation: ctxSpin 0.8s linear infinite;
+    background: var(--accent-primary, #667eea);
+    opacity: 0.15;
+    animation: ctxPulseRing 2s ease-in-out infinite;
 }
 
-@keyframes ctxSpin {
-    to { transform: rotate(360deg); }
+@keyframes ctxBrainBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
-.ctx-loading-text {
-    font-size: 0.88em;
-    color: var(--text-secondary);
+@keyframes ctxPulseRing {
+    0% { transform: scale(0.8); opacity: 0.2; }
+    50% { transform: scale(1.3); opacity: 0.05; }
+    100% { transform: scale(0.8); opacity: 0.2; }
+}
+
+/* Status text */
+.ctx-thinking-status {
     text-align: center;
+}
+
+.ctx-thinking-label {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--text-heading, #1a202c);
+    margin-bottom: 6px;
+}
+
+.ctx-thinking-dots::after {
+    content: '';
+    animation: ctxDots 1.5s steps(4, end) infinite;
+}
+
+@keyframes ctxDots {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+}
+
+.ctx-thinking-detail {
+    font-size: 0.82em;
+    color: var(--text-secondary, #718096);
+    margin-top: 4px;
+    transition: opacity 0.3s;
+    min-height: 1.2em;
+}
+
+/* Progress bar */
+.ctx-thinking-bar {
+    width: 180px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--border-color, #e2e8f0);
+    overflow: hidden;
+}
+
+.ctx-thinking-bar-fill {
+    height: 100%;
+    width: 40%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent-primary, #667eea), #764ba2);
+    animation: ctxBarSlide 1.8s ease-in-out infinite;
+}
+
+@keyframes ctxBarSlide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(350%); }
 }
 
 .ctx-error {

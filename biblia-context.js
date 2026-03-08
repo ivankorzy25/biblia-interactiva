@@ -486,11 +486,19 @@ class BibliaContext {
             return;
         }
 
-        // Show loading with visible spinner
+        // Show thinking indicator
         body.innerHTML = `<div class="ctx-loading">
-            <div class="ctx-loading-spinner"></div>
-            <div class="ctx-loading-text">Analizando contexto hist\u00f3rico...</div>
+            <div class="ctx-thinking-brain">
+                <div class="ctx-thinking-pulse"></div>
+                <span class="ctx-thinking-icon">\uD83E\uDDE0</span>
+            </div>
+            <div class="ctx-thinking-status">
+                <div class="ctx-thinking-label">La IA est\u00e1 pensando<span class="ctx-thinking-dots"></span></div>
+                <div class="ctx-thinking-detail" id="ctxThinkingDetail">Analizando contexto hist\u00f3rico...</div>
+            </div>
+            <div class="ctx-thinking-bar"><div class="ctx-thinking-bar-fill"></div></div>
         </div>`;
+        this.startThinkingMessages(cacheKey);
 
         this.isLoading = true;
         this.abortController = new AbortController();
@@ -533,7 +541,8 @@ USA ESTE FORMATO para TODAS las respuestas:
                 return;
             }
 
-            // Stream response - use a unique class instead of shared ID
+            // Stop thinking animation, start streaming
+            this.stopThinkingMessages();
             const responseEl = document.createElement('div');
             responseEl.className = 'ctx-ai-response';
             body.innerHTML = '';
@@ -578,15 +587,43 @@ USA ESTE FORMATO para TODAS las respuestas:
             }
 
         } catch (err) {
-            if (err.name === 'AbortError') return; // Intentional abort
+            this.stopThinkingMessages();
+            if (err.name === 'AbortError') return;
             if (myGenId === this.generationId) {
                 body.innerHTML = `<div class="ctx-error">\u26A0 ${err.message || 'Error de conexi\u00f3n'}</div>`;
             }
         }
 
+        this.stopThinkingMessages();
         if (myGenId === this.generationId) {
             this.isLoading = false;
             this.abortController = null;
+        }
+    }
+
+    startThinkingMessages(cacheKey) {
+        const messages = [
+            'Analizando contexto hist\u00f3rico...',
+            'Consultando fuentes acad\u00e9micas...',
+            'Procesando informaci\u00f3n b\u00edblica...',
+            'Revisando cronolog\u00eda y fechas...',
+            'Generando respuesta detallada...',
+            'Organizando datos hist\u00f3ricos...',
+        ];
+        let idx = 0;
+        this.thinkingInterval = setInterval(() => {
+            const el = document.getElementById('ctxThinkingDetail');
+            if (el) {
+                idx = (idx + 1) % messages.length;
+                el.textContent = messages[idx];
+            }
+        }, 2200);
+    }
+
+    stopThinkingMessages() {
+        if (this.thinkingInterval) {
+            clearInterval(this.thinkingInterval);
+            this.thinkingInterval = null;
         }
     }
 

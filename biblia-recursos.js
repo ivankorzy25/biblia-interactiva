@@ -59,6 +59,7 @@ class BibliaRecursos {
                     { name: 'Atlas de la Biblia - Reader\'s Digest', desc: 'Guía Ilustrada de Tierra Santa con mapas detallados.', url: 'https://archive.org/details/atlas-de-la-biblia-readers-digest', type: 'web' },
                     { name: 'Atlas Didáctico de la Biblia', desc: 'PDF académico con mapas didácticos detallados.', url: 'https://www.academia.edu/37730417/Atlas_Did%C3%A1ctico_de_la_Biblia', type: 'pdf' },
                     { name: 'OpenBible.info', desc: 'Datos bíblicos abiertos: geocodificación, temas y referencias cruzadas.', url: 'https://www.openbible.info/', type: 'web' },
+                    { name: 'Open.Bible Resources', desc: 'Recursos abiertos: traducciones, datos, herramientas de estudio bíblico.', url: 'https://open.bible/resources/', type: 'web' },
                 ]
             },
             {
@@ -110,6 +111,8 @@ class BibliaRecursos {
                     { name: 'Biblia.es - Online', desc: 'Biblia en español online con búsqueda de concordancia.', url: 'https://www.biblia.es/biblia-online.php', type: 'web' },
                     { name: 'YouVersion - Bible.com', desc: '+2,400 versiones de la Biblia, audio, planes de lectura.', url: 'https://www.bible.com/es', type: 'web' },
                     { name: 'Bible Study Tools - RVR', desc: 'Reina-Valera online con herramientas de estudio.', url: 'https://www.biblestudytools.com/rvr/', type: 'web' },
+                    { name: 'Open.Bible', desc: 'Plataforma abierta con traducciones, textos originales y APIs para estudio.', url: 'https://open.bible/', type: 'web' },
+                    { name: 'Step Bible', desc: 'Herramienta académica: interlineal griego/hebreo, concordancia, léxico.', url: 'https://www.stepbible.org/', type: 'web' },
                 ]
             },
             {

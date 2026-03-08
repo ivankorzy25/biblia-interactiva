@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="biblia-calendar.css?v=1">
     <link rel="stylesheet" href="biblia-recursos.css?v=1">
     <link rel="stylesheet" href="biblia-context.css?v=1">
+    <link rel="stylesheet" href="biblia-auth.css?v=1">
     <title>Biblia Interactiva RV1960</title>
 </head>
 <body class="font-xl">
@@ -26,6 +27,7 @@
         <div class="header-content">
             <div class="logo">&#128214; Biblia Interactiva</div>
             <div class="header-right">
+                <div id="authContainer"></div>
                 <span class="version-badge">RV1960</span>
                 <button class="theme-toggle" id="themeToggle" title="Cambiar tema">&#9790;</button>
             </div>
@@ -214,12 +216,17 @@
         Biblia Reina Valera 1960 &bull; Aplicaci&oacute;n interactiva de estudio b&iacute;blico
     </footer>
 
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
     <!-- Scripts -->
     <script src="biblia-data.js"></script>
     <script src="biblia-referencias.js"></script>
     <script src="biblia-titulos.js"></script>
     <script src="biblia-jesus-words.js"></script>
     <script src="biblia-app.js"></script>
+    <script src="biblia-auth.js?v=1"></script>
     <script src="biblia-ambient.js?v=1"></script>
     <script src="biblia-videos.js?v=1"></script>
     <script src="biblia-calendar.js?v=1"></script>
@@ -227,6 +234,6 @@
     <script src="biblia-timeline-data.js?v=1"></script>
     <script src="biblia-images-data.js?v=1"></script>
     <script src="biblia-context.js?v=2"></script>
-    <script src="biblia-bot.js?v=13"></script>
+    <script src="biblia-bot.js?v=14"></script>
 </body>
 </html>

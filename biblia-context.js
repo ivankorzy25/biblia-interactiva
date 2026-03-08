@@ -574,11 +574,12 @@ class BibliaContext {
             if (!insertAfter) insertAfter = verses[verses.length - 1];
 
             // Create the illustration card
+            const imgSrc = img.local || img.url;
             const card = document.createElement('div');
             card.className = 'ctx-inline-illustration';
             card.innerHTML = `
                 <div class="ctx-inline-img-wrap">
-                    <img src="${img.url}" alt="${img.title}" loading="lazy">
+                    <img src="${imgSrc}" alt="${img.title}" loading="lazy"${img.local && img.url ? ` data-fallback="${img.url}"` : ''}>
                     <div class="ctx-inline-gradient"></div>
                 </div>
                 <div class="ctx-inline-caption">
@@ -587,9 +588,19 @@ class BibliaContext {
                 </div>
             `;
 
+            // Fallback to remote URL if local image fails
+            const imgEl = card.querySelector('img');
+            if (imgEl) {
+                imgEl.onerror = function() {
+                    if (this.dataset.fallback && this.src !== this.dataset.fallback) {
+                        this.src = this.dataset.fallback;
+                    }
+                };
+            }
+
             // Click to open lightbox
             card.addEventListener('click', () => {
-                this.openLightbox(img.url, `${img.title} — ${img.artist || ''}`);
+                this.openLightbox(imgSrc, `${img.title} — ${img.artist || ''}`);
             });
 
             // Insert after the target verse
@@ -913,38 +924,68 @@ USA ESTE FORMATO para TODAS las respuestas:
         const container = document.getElementById('ctxMapContent');
         if (!container) return;
 
-        const region = bookData.mapRegion;
-        const maps = typeof BIBLE_TIMELINE !== 'undefined' ? BIBLE_TIMELINE.maps : {};
+        // Collect maps from multiple sources
+        const allBookMaps = [];
 
-        // Find the best map for this book
-        let mapData = maps[region];
-        if (!mapData) {
-            // Try to find any map that includes this book
-            for (const key of Object.keys(maps)) {
-                if (maps[key].books?.includes(bookId)) {
-                    mapData = maps[key];
+        // 1. From BIBLE_MAPS_BY_BOOK (new Biblica maps)
+        if (typeof BIBLE_MAPS_BY_BOOK !== 'undefined' && BIBLE_MAPS_BY_BOOK[bookId]) {
+            BIBLE_MAPS_BY_BOOK[bookId].forEach(m => allBookMaps.push(m));
+        }
+
+        // 2. From BIBLE_TIMELINE.maps (legacy)
+        const region = bookData.mapRegion;
+        const timelineMaps = typeof BIBLE_TIMELINE !== 'undefined' ? BIBLE_TIMELINE.maps : {};
+        let legacyMap = timelineMaps[region];
+        if (!legacyMap) {
+            for (const key of Object.keys(timelineMaps)) {
+                if (timelineMaps[key].books?.includes(bookId)) {
+                    legacyMap = timelineMaps[key];
                     break;
                 }
             }
         }
+        if (legacyMap && !allBookMaps.some(m => m.title === legacyMap.title)) {
+            allBookMaps.push(legacyMap);
+        }
 
-        if (!mapData) {
+        if (allBookMaps.length === 0) {
             container.innerHTML = `<div class="ctx-no-data"><div class="ctx-no-data-icon">\uD83D\uDDFA</div>No hay mapa disponible para este libro</div>`;
             return;
         }
 
-        container.innerHTML = `
+        // Show first map prominently, rest as gallery
+        const mapData = allBookMaps[0];
+        const mapSrc = mapData.local || mapData.url;
+        let html = `
             <div class="ctx-map-container">
-                <img class="ctx-map-img" src="${mapData.url}" alt="${mapData.title}" loading="lazy">
+                <img class="ctx-map-img" src="${mapSrc}" alt="${mapData.title}" loading="lazy"${mapData.local && mapData.url ? ` data-fallback="${mapData.url}"` : ''}>
                 <button class="ctx-map-fullscreen" title="Ampliar">\u26F6</button>
                 <div class="ctx-map-title">${mapData.title}</div>
                 <div class="ctx-map-credit">Fuente: Wikimedia Commons \u2022 Dominio p\u00fablico / CC BY-SA</div>
             </div>
         `;
+        // Additional maps as smaller thumbnails
+        if (allBookMaps.length > 1) {
+            html += '<div class="ctx-map-gallery">';
+            allBookMaps.slice(1).forEach((m, i) => {
+                const src = m.local || m.url;
+                html += `<div class="ctx-map-thumb" data-map-idx="${i+1}">
+                    <img src="${src}" alt="${m.title}" loading="lazy"${m.local && m.url ? ` data-fallback="${m.url}"` : ''}>
+                    <div class="ctx-map-thumb-title">${m.title}</div>
+                </div>`;
+            });
+            html += '</div>';
+        }
+        container.innerHTML = html;
 
         // Map zoom on click
         const img = container.querySelector('.ctx-map-img');
         if (img) {
+            img.onerror = function() {
+                if (this.dataset.fallback && this.src !== this.dataset.fallback) {
+                    this.src = this.dataset.fallback;
+                }
+            };
             img.addEventListener('click', (e) => {
                 if (img.classList.contains('zoomed')) {
                     img.classList.remove('zoomed');
@@ -961,7 +1002,27 @@ USA ESTE FORMATO para TODAS las respuestas:
 
         // Fullscreen button opens lightbox
         container.querySelector('.ctx-map-fullscreen')?.addEventListener('click', () => {
-            this.openLightbox(mapData.url, mapData.title);
+            this.openLightbox(mapSrc, mapData.title);
+        });
+
+        // Map gallery thumbnail clicks
+        container.querySelectorAll('.ctx-map-thumb').forEach(el => {
+            const idx = parseInt(el.dataset.mapIdx);
+            const m = allBookMaps[idx];
+            if (m) {
+                el.addEventListener('click', () => {
+                    this.openLightbox(m.local || m.url, m.title);
+                });
+            }
+            // Fallback for broken images
+            const thumbImg = el.querySelector('img');
+            if (thumbImg) {
+                thumbImg.onerror = function() {
+                    if (this.dataset.fallback && this.src !== this.dataset.fallback) {
+                        this.src = this.dataset.fallback;
+                    }
+                };
+            }
         });
     }
 
@@ -998,8 +1059,9 @@ USA ESTE FORMATO para TODAS las respuestas:
 
         let html = '<div class="ctx-gallery">';
         displayImages.forEach((img, i) => {
+            const src = img.local || img.url;
             html += `<div class="ctx-gallery-item" data-img-idx="${i}">
-                <img src="${img.url}" alt="${img.title}" loading="lazy">
+                <img src="${src}" alt="${img.title}" loading="lazy"${img.local && img.url ? ` data-fallback="${img.url}"` : ''}>
                 <div class="ctx-gallery-caption">${img.title}
                     <div class="ctx-gallery-artist">${img.artist || ''}</div>
                 </div>
@@ -1008,12 +1070,21 @@ USA ESTE FORMATO para TODAS las respuestas:
         html += '</div>';
         container.innerHTML = html;
 
+        // Fallback for broken local images
+        container.querySelectorAll('img[data-fallback]').forEach(imgEl => {
+            imgEl.onerror = function() {
+                if (this.dataset.fallback && this.src !== this.dataset.fallback) {
+                    this.src = this.dataset.fallback;
+                }
+            };
+        });
+
         // Click to open lightbox
         container.querySelectorAll('.ctx-gallery-item').forEach(el => {
             el.addEventListener('click', () => {
                 const idx = parseInt(el.dataset.imgIdx);
                 const img = displayImages[idx];
-                if (img) this.openLightbox(img.url, `${img.title} \u2014 ${img.artist || ''}`);
+                if (img) this.openLightbox(img.local || img.url, `${img.title} \u2014 ${img.artist || ''}`);
             });
         });
     }

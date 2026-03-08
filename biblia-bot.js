@@ -5,8 +5,9 @@
 
 class BibliaBot {
     constructor() {
-        this.API_URL = '/v1/chat/completions';
-        this.TOKEN = 'a981079aa9900cdacdd68a89da4370db0faf6e729584fdd520cac2e643f24701';
+        this.OLLAMA_API_URL = 'https://ollama.com/api/chat';
+        this.OLLAMA_MODEL = 'gpt-oss:120b';
+        this.OLLAMA_FALLBACK_MODEL = 'gpt-oss:20b';
         this.isOpen = false;
         this.isStreaming = false;
         this.messages = [];
@@ -128,7 +129,7 @@ CALENDARIO:
                 <div class="bot-avatar">\u{1F4D6}</div>
                 <div class="bot-header-info">
                     <div class="bot-header-name">Biblia Bot</div>
-                    <div class="bot-header-status">Conectado \u00B7 IA + Ollama</div>
+                    <div class="bot-header-status" id="botHeaderStatus">${localStorage.getItem('biblia_ollama_key') ? 'Ollama Cloud \u00B7 IA Activa' : 'Configurar API Key'}</div>
                 </div>
                 <div class="bot-header-btns">
                     <button class="bot-header-btn" id="botSettingsToggle" title="Configurar voz">&#9881;</button>
@@ -1119,19 +1120,35 @@ CALENDARIO:
     }
 
     // ==========================================
-    // STREAM RESPONSE FROM OPENCLAW
+    // STREAM RESPONSE FROM OLLAMA CLOUD
     // ==========================================
     async streamResponse() {
         this.isStreaming = true;
         this.sendBtn.disabled = true;
         this.showTyping();
 
+        // Check for API key
+        const ollamaKey = localStorage.getItem('biblia_ollama_key');
+        if (!ollamaKey) {
+            this.hideTyping();
+            this.addMessage('system',
+                '🔑 Para usar el Asistente Bíblico necesitás configurar tu API key de Ollama.\n\n' +
+                'Hacé click en tu perfil (arriba a la derecha) para configurarla. Es gratuito y tarda menos de 2 minutos.'
+            );
+            if (window.bibliaAuth) {
+                window.bibliaAuth.showKeySetupWizard();
+            }
+            this.isStreaming = false;
+            this.sendBtn.disabled = false;
+            return;
+        }
+
         const body = {
-            model: 'openclaw:main',
+            model: this.OLLAMA_MODEL,
             stream: true,
             messages: [
                 { role: 'system', content: this.systemPrompt },
-                ...this.messages.slice(-20) // Keep last 20 messages for context
+                ...this.messages.slice(-20)
             ]
         };
 
@@ -1139,18 +1156,30 @@ CALENDARIO:
         let responseDiv = null;
 
         try {
-            const res = await fetch(this.API_URL, {
+            const res = await fetch(this.OLLAMA_API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.TOKEN}`
+                    'Authorization': `Bearer ${ollamaKey}`
                 },
                 body: JSON.stringify(body)
             });
 
             if (!res.ok) {
-                const errText = await res.text();
-                throw new Error(`HTTP ${res.status}: ${errText}`);
+                this.hideTyping();
+                if (res.status === 401 || res.status === 403) {
+                    this.addMessage('system', '❌ Tu API key de Ollama no es válida. Actualizala desde tu perfil (arriba a la derecha).');
+                } else if (res.status === 429) {
+                    this.addMessage('system', '⏱️ Alcanzaste tu límite de uso gratuito de Ollama. Se renueva en breve. Podés ver tu estado en ollama.com/settings');
+                } else if (res.status === 503) {
+                    this.addMessage('system', '🔄 El servicio de Ollama está temporalmente ocupado. Intentá en unos segundos.');
+                } else {
+                    const errText = await res.text().catch(() => '');
+                    this.addMessage('system', `Error ${res.status}: ${errText || 'Error del servidor'}`);
+                }
+                this.isStreaming = false;
+                this.sendBtn.disabled = false;
+                return;
             }
 
             this.hideTyping();
@@ -1166,19 +1195,18 @@ CALENDARIO:
                 const lines = chunk.split('\n');
 
                 for (const line of lines) {
-                    if (!line.startsWith('data: ')) continue;
-                    const data = line.slice(6).trim();
-                    if (data === '[DONE]') continue;
+                    const trimmed = line.trim();
+                    if (!trimmed) continue;
 
                     try {
-                        const parsed = JSON.parse(data);
-                        const delta = parsed.choices?.[0]?.delta?.content;
+                        const parsed = JSON.parse(trimmed);
+                        if (parsed.done) continue;
+                        const delta = parsed.message?.content;
                         if (delta) {
                             fullResponse += delta;
                             if (!responseDiv) {
                                 responseDiv = this.addMessage('assistant', fullResponse);
                             } else {
-                                // Re-render preserving TTS bar
                                 const ttsBar = responseDiv.querySelector('.bot-tts-bar');
                                 responseDiv.innerHTML = this.renderMarkdown(fullResponse);
                                 if (ttsBar) responseDiv.appendChild(ttsBar);
@@ -1205,7 +1233,7 @@ CALENDARIO:
         } catch (err) {
             this.hideTyping();
             console.error('BibliaBot error:', err);
-            this.addMessage('system', `Error de conexion: ${err.message}. Verifica que OpenClaw este corriendo.`);
+            this.addMessage('system', '📡 No se pudo conectar con Ollama. Verificá tu conexión a internet.');
         }
 
         this.isStreaming = false;

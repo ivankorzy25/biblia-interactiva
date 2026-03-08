@@ -146,62 +146,74 @@ const BIBLE_TIMELINE = {
     maps: {
         mesopotamia: {
             title: "Mesopotamia y el Creciente Fértil",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Map_of_fertile_crescent.svg/1200px-Map_of_fertile_crescent.svg.png",
+            local: "img/maps/mesopotamia.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Map_of_fertile_crescent.svg/1280px-Map_of_fertile_crescent.svg.png",
             books: ["genesis", "job"]
         },
         egipto: {
             title: "Éxodo: de Egipto al Sinaí",
-            url: "https://upload.wikimedia.org/wikipedia/commons/f/f8/C%2BB-Exodus-Map.PNG",
+            local: "img/maps/egipto.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/d/d4/C%2BB-Exodus-Map.PNG",
             books: ["exodo", "levitico", "numeros"]
         },
         canaan: {
             title: "Las 12 Tribus de Israel",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/12_Tribes_of_Israel_Map.svg/800px-12_Tribes_of_Israel_Map.svg.png",
+            local: "img/maps/canaan.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/12_Tribes_of_Israel_Map.svg/1280px-12_Tribes_of_Israel_Map.svg.png",
             books: ["deuteronomio", "josue", "jueces", "rut", "1samuel", "oseas", "amos"]
         },
         jerusalen: {
             title: "Reino Unido de Israel",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Kingdom_of_Israel_1020_map.svg/800px-Kingdom_of_Israel_1020_map.svg.png",
+            local: "img/maps/jerusalen.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Kingdom_of_Israel_1020_map.svg/1280px-Kingdom_of_Israel_1020_map.svg.png",
             books: ["2samuel", "1reyes", "1cronicas", "2cronicas", "salmos", "proverbios", "eclesiastes", "cantares"]
         },
         "reino-dividido": {
             title: "Reinos de Israel y Judá (~830 a.C.)",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Kingdoms_of_Israel_and_Judah_map_830.svg/800px-Kingdoms_of_Israel_and_Judah_map_830.svg.png",
+            local: "img/maps/reino-dividido.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Kingdoms_of_Israel_and_Judah_map_830.svg/1280px-Kingdoms_of_Israel_and_Judah_map_830.svg.png",
             books: ["2reyes", "2cronicas", "isaias", "jeremias", "oseas", "amos", "miqueas", "joel", "abdias", "jonas", "nahum", "habacuc", "sofonias"]
         },
         babilonia: {
             title: "Imperio Neo-Babilónico",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Neo-Babylonian_Empire_%28greatest_extent%29.svg/1200px-Neo-Babylonian_Empire_%28greatest_extent%29.svg.png",
+            local: "img/maps/babilonia.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Neo-Babylonian_Empire_%28greatest_extent%29.svg/1280px-Neo-Babylonian_Empire_%28greatest_extent%29.svg.png",
             books: ["ezequiel", "daniel", "lamentaciones"]
         },
         persia: {
             title: "Imperio Persa (Aqueménida)",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Achaemenid_Empire_En.svg/1200px-Achaemenid_Empire_En.svg.png",
+            local: "img/maps/persia.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Achaemenid_Empire_En.svg/1280px-Achaemenid_Empire_En.svg.png",
             books: ["esdras", "nehemias", "ester", "hageo", "zacarias", "malaquias"]
         },
         "palestina-jesus": {
             title: "Palestina en tiempos de Jesús",
-            url: "https://upload.wikimedia.org/wikipedia/commons/7/78/Palestine_in_the_time_of_Jesus.jpg",
+            local: "img/maps/palestina-jesus.jpg",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Palestine_in_the_time_of_Jesus.jpg/1280px-Palestine_in_the_time_of_Jesus.jpg",
             books: ["mateo", "marcos", "lucas", "juan"]
         },
         "viajes-pablo": {
             title: "Viajes Misioneros de Pablo",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Apostle_Paul%27s_journeys.svg/1200px-Apostle_Paul%27s_journeys.svg.png",
+            local: "img/maps/viajes-pablo.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Apostle_Paul%27s_journeys.svg/1280px-Apostle_Paul%27s_journeys.svg.png",
             books: ["hechos", "romanos", "1corintios", "2corintios", "galatas"]
         },
         roma: {
             title: "Imperio Romano siglo I",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/RomanEmpire_117.svg/1200px-RomanEmpire_117.svg.png",
+            local: "img/maps/roma.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/RomanEmpire_117.svg/1280px-RomanEmpire_117.svg.png",
             books: ["hechos", "romanos", "2timoteo", "2pedro"]
         },
         "asia-menor": {
             title: "Siete Iglesias de Asia Menor",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Seven_churches_of_asia.svg/1200px-Seven_churches_of_asia.svg.png",
+            local: "img/maps/asia-menor.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Seven_churches_of_asia.svg/1280px-Seven_churches_of_asia.svg.png",
             books: ["efesios", "colosenses", "1timoteo", "filemon", "1pedro", "1juan", "2juan", "3juan", "apocalipsis"]
         },
         grecia: {
             title: "Grecia y Macedonia",
-            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Paul_the_Apostle%2C_second_missionary_journey.svg/1200px-Paul_the_Apostle%2C_second_missionary_journey.svg.png",
+            local: "img/maps/grecia.png",
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Paul_the_Apostle%2C_second_missionary_journey.svg/1280px-Paul_the_Apostle%2C_second_missionary_journey.svg.png",
             books: ["filipenses", "1tesalonicenses", "2tesalonicenses", "tito", "hebreos"]
         }
     }

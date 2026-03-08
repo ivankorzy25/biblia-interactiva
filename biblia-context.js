@@ -328,6 +328,7 @@ class BibliaContext {
         this.renderTimeline(bookId, bookData);
         this.renderActions(app, bookData);
         this.renderEvents(bookData);
+        this.injectChapterIllustrations(bookId, app.currentChapter);
     }
 
     // ==========================================
@@ -526,6 +527,95 @@ class BibliaContext {
                 if (ev) this.openContextForEvent(ev);
             });
         });
+    }
+
+    // ==========================================
+    // INLINE CHAPTER ILLUSTRATIONS
+    // ==========================================
+    injectChapterIllustrations(bookId, chapter) {
+        const container = document.getElementById('verseContainer');
+        if (!container) return;
+
+        // Remove previous illustrations
+        container.querySelectorAll('.ctx-inline-illustration').forEach(el => el.remove());
+
+        const allImages = typeof BIBLE_IMAGES !== 'undefined' ? BIBLE_IMAGES : {};
+        let images = allImages[bookId] || [];
+
+        // Filter images for this chapter
+        let chapterImages = images.filter(img =>
+            img.chapters && img.chapters.includes(chapter)
+        );
+
+        // If no chapter-specific images, skip inline illustrations
+        if (chapterImages.length === 0) return;
+
+        // Sort by verseHint so they appear in order
+        chapterImages.sort((a, b) => (a.verseHint || 1) - (b.verseHint || 1));
+
+        // Find all verse elements
+        const verses = container.querySelectorAll('.verse');
+        if (verses.length === 0) return;
+
+        // Insert each image near its verseHint position
+        chapterImages.forEach(img => {
+            const targetVerse = img.verseHint || 1;
+
+            // Find the verse element closest to the hint
+            let insertAfter = null;
+            for (const v of verses) {
+                const vNum = parseInt(v.dataset?.verse || v.querySelector('.verse-num')?.textContent || '0');
+                if (vNum >= targetVerse) {
+                    insertAfter = v;
+                    break;
+                }
+            }
+            // If not found, insert after last verse
+            if (!insertAfter) insertAfter = verses[verses.length - 1];
+
+            // Create the illustration card
+            const card = document.createElement('div');
+            card.className = 'ctx-inline-illustration';
+            card.innerHTML = `
+                <div class="ctx-inline-img-wrap">
+                    <img src="${img.url}" alt="${img.title}" loading="lazy">
+                    <div class="ctx-inline-gradient"></div>
+                </div>
+                <div class="ctx-inline-caption">
+                    <span class="ctx-inline-title">${img.title}</span>
+                    <span class="ctx-inline-artist">${img.artist || ''}</span>
+                </div>
+            `;
+
+            // Click to open lightbox
+            card.addEventListener('click', () => {
+                this.openLightbox(img.url, `${img.title} — ${img.artist || ''}`);
+            });
+
+            // Insert after the target verse
+            insertAfter.parentNode.insertBefore(card, insertAfter.nextSibling);
+        });
+
+        // Animate in with IntersectionObserver
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            container.querySelectorAll('.ctx-inline-illustration').forEach(el => {
+                observer.observe(el);
+            });
+        } else {
+            // Fallback: show all immediately
+            container.querySelectorAll('.ctx-inline-illustration').forEach(el => {
+                el.classList.add('visible');
+            });
+        }
     }
 
     // ==========================================

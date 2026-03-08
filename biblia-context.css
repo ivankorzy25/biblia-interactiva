@@ -1,51 +1,118 @@
 /* ============================================
    BIBLIA CONTEXT - Panel Contextual + Timeline
-   WOW visual experience
+   Interactive, clear, WOW experience
    ============================================ */
 
 .ctx-panel {
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 2px solid var(--border-color);
+    margin-top: 32px;
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 24px var(--shadow-sm);
+}
+
+/* ============ CURRENT CONTEXT HEADER ============ */
+.ctx-current-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ctx-book-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ctx-book-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+}
+.ctx-book-icon.bc { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
+.ctx-book-icon.ad { background: linear-gradient(135deg, #059669, #047857); }
+
+.ctx-book-name {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.2;
+}
+
+.ctx-book-detail {
+    font-size: 0.78em;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.ctx-era-badge {
+    font-size: 0.82em;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+}
+.ctx-era-badge.bc {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(91, 33, 182, 0.1));
+    color: #7c3aed;
+    border: 1px solid rgba(124, 58, 237, 0.25);
+}
+[data-theme="dark"] .ctx-era-badge.bc {
+    background: rgba(147, 130, 210, 0.15);
+    color: #c4b5fd;
+    border-color: rgba(147, 130, 210, 0.3);
+}
+.ctx-era-badge.ad {
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.12), rgba(4, 120, 87, 0.08));
+    color: #059669;
+    border: 1px solid rgba(5, 150, 105, 0.25);
+}
+[data-theme="dark"] .ctx-era-badge.ad {
+    background: rgba(52, 211, 153, 0.12);
+    color: #6ee7b7;
+    border-color: rgba(52, 211, 153, 0.25);
 }
 
 /* ============ TIMELINE SECTION ============ */
 .ctx-timeline-section {
-    margin-bottom: 28px;
-}
-
-.ctx-timeline-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 .ctx-timeline-title {
-    font-size: 0.85em;
-    font-weight: 700;
-    color: var(--text-heading);
+    font-size: 0.72em;
+    font-weight: 600;
+    color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
 }
 
-.ctx-timeline-era {
-    font-size: 0.8em;
-    font-weight: 600;
-    color: var(--accent-primary);
-    background: var(--accent-light);
-    padding: 3px 12px;
-    border-radius: 12px;
+/* Timeline Container */
+.ctx-timeline-wrap {
+    position: relative;
+    padding: 0 4px;
 }
 
 /* Timeline Bar */
 .ctx-timeline-bar {
     position: relative;
-    height: 56px;
-    border-radius: 12px;
+    height: 72px;
+    border-radius: 14px;
     overflow: visible;
-    margin-bottom: 8px;
-    cursor: default;
+    cursor: pointer;
+    user-select: none;
 }
 
 /* BC / AD background */
@@ -54,9 +121,10 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 40px;
-    border-radius: 10px;
+    height: 48px;
+    border-radius: 12px;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 .ctx-tl-bc {
@@ -64,24 +132,47 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: linear-gradient(135deg, #1a1a4e 0%, #2d2d6e 30%, #3a3a7e 100%);
-    opacity: 0.85;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #3730a3 100%);
 }
 [data-theme="light"] .ctx-tl-bc {
-    background: linear-gradient(135deg, #c4b5e0 0%, #a99ed4 30%, #9188c8 100%);
-    opacity: 0.7;
+    background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 40%, #a78bfa 100%);
 }
 
 .ctx-tl-ad {
     position: absolute;
     top: 0;
     height: 100%;
-    background: linear-gradient(135deg, #1a4e2e 0%, #2d6e40 30%, #3a8e50 100%);
-    opacity: 0.85;
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 100%);
 }
 [data-theme="light"] .ctx-tl-ad {
-    background: linear-gradient(135deg, #b5e0c4 0%, #9ed4ac 30%, #88c89a 100%);
-    opacity: 0.7;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 40%, #6ee7b7 100%);
+}
+
+/* BC/AD labels inside the bar */
+.ctx-tl-era-label {
+    position: absolute;
+    top: 4px;
+    font-size: 0.6em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1;
+}
+.ctx-tl-era-label.bc-label {
+    left: 8px;
+    color: rgba(255,255,255,0.8);
+}
+[data-theme="light"] .ctx-tl-era-label.bc-label {
+    color: rgba(91, 33, 182, 0.5);
+}
+.ctx-tl-era-label.ad-label {
+    right: 8px;
+    color: rgba(255,255,255,0.8);
+}
+[data-theme="light"] .ctx-tl-era-label.ad-label {
+    color: rgba(4, 120, 87, 0.5);
 }
 
 /* Period blocks */
@@ -90,35 +181,94 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 40px;
+    height: 48px;
     pointer-events: none;
 }
 
 .ctx-tl-period {
     position: absolute;
-    top: 6px;
-    height: 8px;
+    top: 14px;
+    height: 20px;
     border-radius: 4px;
-    opacity: 0.6;
+    opacity: 0.35;
     transition: opacity 0.3s;
+}
+.ctx-tl-period.active-period {
+    opacity: 0.7;
+}
+
+/* Period name tooltip on active */
+.ctx-tl-period-name {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6em;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.ctx-tl-period.active-period .ctx-tl-period-name {
+    opacity: 1;
 }
 
 /* Current book range - THE HIGHLIGHT */
 .ctx-tl-range {
     position: absolute;
     top: 0;
-    height: 40px;
-    background: var(--accent-primary);
-    opacity: 0.45;
-    border-radius: 6px;
+    height: 48px;
+    border-radius: 8px;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
-    animation: ctxPulse 2s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.ctx-tl-range-fill {
+    width: 100%;
+    height: 100%;
+    background: var(--accent-primary);
+    opacity: 0.55;
+    animation: ctxPulse 2.5s ease-in-out infinite;
+}
+
+.ctx-tl-range-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--accent-primary);
+    border-radius: 8px;
+    opacity: 0.8;
+}
+
+/* Book name label ON the range */
+.ctx-tl-range-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.65em;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    z-index: 3;
+    pointer-events: none;
+}
+[data-theme="light"] .ctx-tl-range-label {
+    color: var(--text-heading);
+    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
 }
 
 @keyframes ctxPulse {
-    0%, 100% { box-shadow: 0 0 12px rgba(102, 126, 234, 0.3); }
-    50% { box-shadow: 0 0 28px rgba(102, 126, 234, 0.6); }
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 0.65; }
 }
 
 /* Event dots */
@@ -127,98 +277,184 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 40px;
+    height: 48px;
     pointer-events: none;
+    z-index: 5;
 }
 
 .ctx-tl-dot {
     position: absolute;
-    top: 16px;
-    width: 8px;
-    height: 8px;
-    background: #FFD700;
-    border: 2px solid rgba(0,0,0,0.3);
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    background: #fbbf24;
+    border: 2px solid rgba(0,0,0,0.4);
     border-radius: 50%;
     transform: translateX(-50%);
-    z-index: 3;
     pointer-events: auto;
     cursor: help;
-    transition: transform 0.2s;
+    transition: all 0.2s;
+    box-shadow: 0 0 4px rgba(251, 191, 36, 0.5);
 }
 .ctx-tl-dot:hover {
-    transform: translateX(-50%) scale(1.6);
-    box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    transform: translateX(-50%) scale(1.8);
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.9);
+    z-index: 10;
+}
+
+/* Dot tooltip */
+.ctx-tl-dot-tip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.7em;
+    color: var(--text-primary);
+    white-space: nowrap;
+    box-shadow: 0 4px 12px var(--shadow-md);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 20;
+}
+.ctx-tl-dot:hover .ctx-tl-dot-tip {
+    opacity: 1;
+}
+.ctx-tl-dot-tip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--border-color);
 }
 
 /* Christ marker */
 .ctx-tl-christ {
     position: absolute;
-    top: -4px;
-    z-index: 4;
+    top: -2px;
+    z-index: 6;
     transform: translateX(-50%);
 }
 
 .ctx-tl-christ-line {
-    width: 2px;
-    height: 48px;
-    background: linear-gradient(180deg, #FFD700, #FF6347);
+    width: 3px;
+    height: 52px;
+    background: linear-gradient(180deg, #fbbf24, #f59e0b, #d97706);
     margin: 0 auto;
-    box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+    border-radius: 2px;
 }
 
 .ctx-tl-christ-label {
-    font-size: 0.6em;
-    font-weight: 700;
-    color: #FFD700;
+    font-size: 0.65em;
+    font-weight: 800;
+    color: #fbbf24;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     margin-top: 2px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 [data-theme="light"] .ctx-tl-christ-label {
-    color: #c41e3a;
+    color: #b45309;
     text-shadow: none;
 }
 
 /* Year labels */
 .ctx-tl-labels {
     position: absolute;
-    top: 42px;
+    top: 52px;
     left: 0;
     right: 0;
-    height: 14px;
+    height: 18px;
 }
 
 .ctx-tl-label {
     position: absolute;
-    font-size: 0.55em;
+    font-size: 0.65em;
+    font-weight: 600;
     color: var(--text-tertiary);
     transform: translateX(-50%);
     white-space: nowrap;
 }
 
-/* Timeline info (period name) */
-.ctx-timeline-info {
-    text-align: center;
-    font-size: 0.82em;
-    font-weight: 600;
+/* ============ VERSE CONTEXT INDICATOR ============ */
+.ctx-verse-indicator {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: var(--bg-primary);
+    border: 1px solid var(--accent-primary);
+    border-left: 4px solid var(--accent-primary);
+    border-radius: 10px;
+    animation: ctxSlideIn 0.3s ease;
+}
+.ctx-verse-indicator.active {
+    display: flex;
+}
+
+@keyframes ctxSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ctx-verse-ref {
+    font-size: 0.88em;
+    font-weight: 700;
     color: var(--accent-primary);
-    margin-top: 4px;
-    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.ctx-verse-context {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    flex: 1;
+}
+
+.ctx-verse-period-tag {
+    font-size: 0.68em;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+.ctx-verse-period-tag.bc {
+    background: rgba(124, 58, 237, 0.1);
+    color: #7c3aed;
+}
+[data-theme="dark"] .ctx-verse-period-tag.bc {
+    background: rgba(147, 130, 210, 0.15);
+    color: #c4b5fd;
+}
+.ctx-verse-period-tag.ad {
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
+}
+[data-theme="dark"] .ctx-verse-period-tag.ad {
+    background: rgba(52, 211, 153, 0.12);
+    color: #6ee7b7;
 }
 
 /* ============ KEY EVENTS ============ */
 .ctx-events-section {
-    margin-bottom: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .ctx-section-title {
-    font-size: 0.82em;
-    font-weight: 700;
-    color: var(--text-heading);
+    font-size: 0.72em;
+    font-weight: 600;
+    color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     margin-bottom: 10px;
 }
 
@@ -232,52 +468,55 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 6px 12px;
+    border-radius: 10px;
+    padding: 8px 14px;
     transition: all 0.2s;
+    cursor: default;
 }
 .ctx-event-chip:hover {
-    border-color: var(--accent-border);
-    box-shadow: 0 2px 8px var(--shadow-sm);
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 12px var(--shadow-sm);
+    transform: translateY(-1px);
 }
 
 .ctx-event-year {
-    font-size: 0.68em;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 4px;
+    font-size: 0.72em;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
     white-space: nowrap;
     letter-spacing: 0.3px;
 }
 
 .ctx-year-bc {
-    background: rgba(93, 63, 160, 0.15);
-    color: #7c5cbf;
+    background: rgba(124, 58, 237, 0.12);
+    color: #7c3aed;
 }
 [data-theme="dark"] .ctx-year-bc {
-    background: rgba(147, 130, 210, 0.2);
-    color: #b8a8e8;
+    background: rgba(147, 130, 210, 0.15);
+    color: #c4b5fd;
 }
 
 .ctx-year-ad {
-    background: rgba(39, 174, 96, 0.12);
-    color: #1e8449;
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
 }
 [data-theme="dark"] .ctx-year-ad {
-    background: rgba(76, 175, 80, 0.15);
-    color: #81c784;
+    background: rgba(52, 211, 153, 0.12);
+    color: #6ee7b7;
 }
 
 .ctx-event-text {
-    font-size: 0.78em;
+    font-size: 0.82em;
     color: var(--text-primary);
+    font-weight: 500;
 }
 
 /* ============ MAP SECTION ============ */
 .ctx-map-section {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .ctx-map-container {
@@ -287,11 +526,11 @@
     border: 2px solid var(--border-color);
     cursor: pointer;
     transition: all 0.3s;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
 }
 .ctx-map-container:hover {
     border-color: var(--accent-primary);
-    box-shadow: 0 4px 20px var(--shadow-md);
+    box-shadow: 0 6px 24px var(--shadow-md);
 }
 
 .ctx-map-img {
@@ -304,7 +543,7 @@
 }
 [data-theme="dark"] .ctx-map-img {
     filter: brightness(0.88) contrast(1.1);
-    background: #2a2a3a;
+    background: #1e1e2e;
 }
 .ctx-map-container:hover .ctx-map-img {
     transform: scale(1.02);
@@ -315,11 +554,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
     color: white;
-    padding: 20px 14px 10px;
-    font-size: 0.82em;
-    font-weight: 600;
+    padding: 24px 16px 12px;
+    font-size: 0.88em;
+    font-weight: 700;
 }
 
 .ctx-map-zoom {
@@ -330,9 +569,9 @@
     color: white;
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 1em;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1em;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -370,8 +609,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
 }
 
 .ctx-lightbox-content {
@@ -392,47 +631,68 @@
 .ctx-lightbox-title {
     text-align: center;
     color: white;
-    font-size: 0.95em;
-    font-weight: 600;
-    margin-top: 12px;
+    font-size: 1em;
+    font-weight: 700;
+    margin-top: 14px;
 }
 
 .ctx-lightbox-close {
     position: absolute;
-    top: -12px;
-    right: -12px;
+    top: -14px;
+    right: -14px;
     background: var(--accent-primary);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 1.1em;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 .ctx-lightbox-close:hover {
     transform: scale(1.15) rotate(90deg);
 }
 
+/* ============ COLLAPSE TOGGLE ============ */
+.ctx-toggle-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-size: 0.72em;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.ctx-toggle-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
 /* ============ MOBILE ============ */
 @media (max-width: 768px) {
-    .ctx-panel { margin-top: 28px; padding-top: 16px; }
-    .ctx-timeline-header { flex-direction: column; gap: 6px; align-items: flex-start; }
-    .ctx-timeline-bar { height: 52px; }
-    .ctx-tl-bg { height: 36px; }
-    .ctx-tl-range { height: 36px; }
-    .ctx-tl-christ-line { height: 44px; }
-    .ctx-tl-events { height: 36px; }
-    .ctx-tl-dot { top: 14px; width: 6px; height: 6px; }
-    .ctx-tl-labels { top: 38px; }
+    .ctx-panel { margin-top: 20px; padding: 14px; }
+    .ctx-current-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .ctx-book-icon { width: 36px; height: 36px; font-size: 1em; }
+    .ctx-book-name { font-size: 1em; }
+    .ctx-timeline-bar { height: 66px; }
+    .ctx-tl-bg { height: 42px; }
+    .ctx-tl-range { height: 42px; }
+    .ctx-tl-christ-line { height: 46px; }
+    .ctx-tl-events { height: 42px; }
+    .ctx-tl-dot { top: 16px; width: 8px; height: 8px; }
+    .ctx-tl-labels { top: 46px; }
     .ctx-events-list { flex-direction: column; }
-    .ctx-map-img { max-height: 280px; }
+    .ctx-event-chip { width: 100%; }
+    .ctx-map-img { max-height: 260px; }
     .ctx-lightbox-img { border-radius: 6px; }
+    .ctx-verse-indicator { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .ctx-tl-range-label { font-size: 0.55em; }
 }
 
 /* ============ PRINT ============ */

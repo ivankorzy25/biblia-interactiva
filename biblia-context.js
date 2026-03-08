@@ -1,7 +1,8 @@
 // ============================================
 // BIBLIA CONTEXT - Panel Contextual + Timeline
-// Muestra mapas, infografías y línea de tiempo
-// debajo del texto bíblico según la lectura
+// Interactive, clear historical context
+// Shows book, chapter, period, map, events
+// Reacts to verse selection
 // ============================================
 
 class BibliaContext {
@@ -9,61 +10,89 @@ class BibliaContext {
         this.enabled = localStorage.getItem('biblia_context_enabled') !== 'false';
         this.timelineRange = { min: -4000, max: 100 };
         this.currentBookData = null;
-        this.mapZoomed = false;
+        this.currentBookId = null;
+        this.currentMapData = null;
+        this.collapsed = localStorage.getItem('biblia_context_collapsed') === 'true';
 
         this.injectHTML();
         this.bindEvents();
     }
 
     // ==========================================
-    // INJECT HTML INTO THE READING AREA
+    // INJECT HTML
     // ==========================================
     injectHTML() {
         const chapterContent = document.getElementById('chapterContent');
         if (!chapterContent) return;
 
-        // Create contextual panel div
         this.panel = document.createElement('div');
         this.panel.id = 'contextPanel';
         this.panel.className = 'ctx-panel';
         this.panel.innerHTML = `
-            <!-- Timeline Bar -->
-            <div class="ctx-timeline-section">
-                <div class="ctx-timeline-header">
-                    <span class="ctx-timeline-title">\u23F3 L\u00ednea del Tiempo B\u00edblica</span>
-                    <span class="ctx-timeline-era" id="ctxCurrentEra"></span>
-                </div>
-                <div class="ctx-timeline-bar" id="ctxTimelineBar">
-                    <div class="ctx-tl-bg">
-                        <div class="ctx-tl-bc" id="ctxTlBc"></div>
-                        <div class="ctx-tl-ad" id="ctxTlAd"></div>
-                    </div>
-                    <div class="ctx-tl-periods" id="ctxTlPeriods"></div>
-                    <div class="ctx-tl-marker" id="ctxTlMarker"></div>
-                    <div class="ctx-tl-range" id="ctxTlRange"></div>
-                    <div class="ctx-tl-events" id="ctxTlEvents"></div>
-                    <div class="ctx-tl-labels" id="ctxTlLabels"></div>
-                    <div class="ctx-tl-christ" id="ctxTlChrist">
-                        <div class="ctx-tl-christ-line"></div>
-                        <div class="ctx-tl-christ-label">Cristo</div>
+            <!-- Current Book/Chapter Context Header -->
+            <div class="ctx-current-header">
+                <div class="ctx-book-badge">
+                    <div class="ctx-book-icon bc" id="ctxBookIcon"></div>
+                    <div>
+                        <div class="ctx-book-name" id="ctxBookName"></div>
+                        <div class="ctx-book-detail" id="ctxBookDetail"></div>
                     </div>
                 </div>
-                <div class="ctx-timeline-info" id="ctxTimelineInfo"></div>
+                <div style="display:flex;align-items:center;gap:8px">
+                    <span class="ctx-era-badge bc" id="ctxEraBadge"></span>
+                    <button class="ctx-toggle-btn" id="ctxToggle" title="Mostrar/ocultar contexto">\u25BC</button>
+                </div>
             </div>
 
-            <!-- Key Events -->
-            <div class="ctx-events-section" id="ctxEventsSection">
-                <div class="ctx-section-title">\u26A1 Eventos Clave</div>
-                <div class="ctx-events-list" id="ctxEventsList"></div>
-            </div>
+            <div id="ctxCollapsible">
+                <!-- Timeline -->
+                <div class="ctx-timeline-section">
+                    <div class="ctx-timeline-title">\u23F3 L\u00ednea del Tiempo</div>
+                    <div class="ctx-timeline-wrap">
+                        <div class="ctx-timeline-bar" id="ctxTimelineBar">
+                            <div class="ctx-tl-bg">
+                                <div class="ctx-tl-bc" id="ctxTlBc"></div>
+                                <div class="ctx-tl-ad" id="ctxTlAd"></div>
+                            </div>
+                            <span class="ctx-tl-era-label bc-label">Antes de Cristo</span>
+                            <span class="ctx-tl-era-label ad-label">d.C.</span>
+                            <div class="ctx-tl-periods" id="ctxTlPeriods"></div>
+                            <div class="ctx-tl-range" id="ctxTlRange">
+                                <div class="ctx-tl-range-fill"></div>
+                                <div class="ctx-tl-range-border"></div>
+                            </div>
+                            <span class="ctx-tl-range-label" id="ctxTlRangeLabel"></span>
+                            <div class="ctx-tl-events" id="ctxTlEvents"></div>
+                            <div class="ctx-tl-labels" id="ctxTlLabels"></div>
+                            <div class="ctx-tl-christ" id="ctxTlChrist">
+                                <div class="ctx-tl-christ-line"></div>
+                                <div class="ctx-tl-christ-label">Cristo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Map Section -->
-            <div class="ctx-map-section" id="ctxMapSection">
-                <div class="ctx-section-title">\uD83D\uDDFA Mapa</div>
-                <div class="ctx-map-container" id="ctxMapContainer">
-                    <img id="ctxMapImg" class="ctx-map-img" alt="Mapa b\u00edblico">
-                    <div class="ctx-map-title" id="ctxMapTitle"></div>
-                    <button class="ctx-map-zoom" id="ctxMapZoom" title="Ampliar">\uD83D\uDD0D</button>
+                <!-- Verse Context Indicator (appears on verse select) -->
+                <div class="ctx-verse-indicator" id="ctxVerseIndicator">
+                    <span class="ctx-verse-ref" id="ctxVerseRef"></span>
+                    <span class="ctx-verse-context" id="ctxVerseContext"></span>
+                    <span class="ctx-verse-period-tag bc" id="ctxVersePeriod"></span>
+                </div>
+
+                <!-- Key Events -->
+                <div class="ctx-events-section" id="ctxEventsSection">
+                    <div class="ctx-section-title">\u26A1 Eventos Clave del Per\u00edodo</div>
+                    <div class="ctx-events-list" id="ctxEventsList"></div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="ctx-map-section" id="ctxMapSection">
+                    <div class="ctx-section-title">\uD83D\uDDFA Mapa Hist\u00f3rico</div>
+                    <div class="ctx-map-container" id="ctxMapContainer">
+                        <img id="ctxMapImg" class="ctx-map-img" alt="Mapa b\u00edblico">
+                        <div class="ctx-map-title" id="ctxMapTitle"></div>
+                        <button class="ctx-map-zoom" id="ctxMapZoom" title="Ampliar">\uD83D\uDD0D</button>
+                    </div>
                 </div>
             </div>
 
@@ -79,6 +108,12 @@ class BibliaContext {
         `;
 
         chapterContent.appendChild(this.panel);
+
+        // Apply collapsed state
+        if (this.collapsed) {
+            document.getElementById('ctxCollapsible').style.display = 'none';
+            document.getElementById('ctxToggle').textContent = '\u25B6';
+        }
     }
 
     // ==========================================
@@ -86,23 +121,56 @@ class BibliaContext {
     // ==========================================
     bindEvents() {
         // Map zoom
-        document.getElementById('ctxMapZoom')?.addEventListener('click', () => this.openLightbox());
+        document.getElementById('ctxMapZoom')?.addEventListener('click', (e) => { e.stopPropagation(); this.openLightbox(); });
         document.getElementById('ctxMapContainer')?.addEventListener('click', () => this.openLightbox());
         document.getElementById('ctxLightboxClose')?.addEventListener('click', () => this.closeLightbox());
         document.getElementById('ctxLightboxBg')?.addEventListener('click', () => this.closeLightbox());
 
-        // Hook into chapter loading - override after app init
+        // Collapse toggle
+        document.getElementById('ctxToggle')?.addEventListener('click', () => this.toggleCollapse());
+
+        // Escape key closes lightbox
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.closeLightbox();
+        });
+
+        // Hook into chapter loading and verse selection
         this.hookIntoApp();
+    }
+
+    toggleCollapse() {
+        this.collapsed = !this.collapsed;
+        localStorage.setItem('biblia_context_collapsed', this.collapsed);
+        const el = document.getElementById('ctxCollapsible');
+        const btn = document.getElementById('ctxToggle');
+        if (this.collapsed) {
+            el.style.display = 'none';
+            btn.textContent = '\u25B6';
+        } else {
+            el.style.display = 'block';
+            btn.textContent = '\u25BC';
+        }
     }
 
     hookIntoApp() {
         const checkApp = () => {
             if (window.bibliaApp) {
+                // Hook loadChapter
                 const origLoad = window.bibliaApp.loadChapter.bind(window.bibliaApp);
                 window.bibliaApp.loadChapter = (chapterNum) => {
                     origLoad(chapterNum);
                     setTimeout(() => this.update(), 50);
                 };
+
+                // Hook verse selection
+                const origShowActions = window.bibliaApp.showVerseActions?.bind(window.bibliaApp);
+                if (origShowActions) {
+                    window.bibliaApp.showVerseActions = (verseEl, event) => {
+                        origShowActions(verseEl, event);
+                        setTimeout(() => this.onVerseSelected(), 50);
+                    };
+                }
+
                 // If already reading, update now
                 if (window.bibliaApp.currentBook) {
                     setTimeout(() => this.update(), 100);
@@ -112,6 +180,52 @@ class BibliaContext {
             }
         };
         checkApp();
+    }
+
+    // ==========================================
+    // ON VERSE SELECTED
+    // ==========================================
+    onVerseSelected() {
+        const app = window.bibliaApp;
+        if (!app || !app.selectedVerse || !this.currentBookData) return;
+
+        const { bookName, chapter, verse } = app.selectedVerse;
+        const bookData = this.currentBookData;
+
+        const indicator = document.getElementById('ctxVerseIndicator');
+        const refEl = document.getElementById('ctxVerseRef');
+        const contextEl = document.getElementById('ctxVerseContext');
+        const periodEl = document.getElementById('ctxVersePeriod');
+
+        // Show the verse reference
+        refEl.textContent = `${bookName} ${chapter}:${verse}`;
+
+        // Find the closest event to this chapter's estimated year
+        const totalChapters = app.currentBook?.chapters || 1;
+        const yearRange = bookData.yearEnd - bookData.yearStart;
+        const estimatedYear = bookData.yearStart + (yearRange * ((chapter - 1) / Math.max(totalChapters - 1, 1)));
+        const yearLabel = estimatedYear < 0
+            ? `~${Math.abs(Math.round(estimatedYear))} a.C.`
+            : `~${Math.round(estimatedYear)} d.C.`;
+
+        // Find period
+        const period = this.findPeriod(estimatedYear);
+        const periodName = period ? period.label : bookData.period;
+
+        contextEl.textContent = `${yearLabel} \u2022 ${periodName}`;
+
+        // Period tag
+        periodEl.textContent = bookData.era === 'bc' ? 'Antiguo Testamento' : 'Nuevo Testamento';
+        periodEl.className = `ctx-verse-period-tag ${bookData.era}`;
+
+        indicator.classList.add('active');
+    }
+
+    findPeriod(year) {
+        if (typeof BIBLE_TIMELINE === 'undefined') return null;
+        return BIBLE_TIMELINE.periods.find(p =>
+            year >= p.yearStart && year <= (p.yearEnd || 100)
+        );
     }
 
     // ==========================================
@@ -139,9 +253,48 @@ class BibliaContext {
         }
 
         this.currentBookData = bookData;
+        this.currentBookId = bookId;
+
+        // Hide verse indicator when chapter changes
+        document.getElementById('ctxVerseIndicator')?.classList.remove('active');
+
+        this.renderHeader(app, bookData);
         this.renderTimeline(bookId, bookData);
         this.renderEvents(bookData);
         this.renderMap(bookId, bookData);
+    }
+
+    // ==========================================
+    // HEADER - Book name, chapter, period, era
+    // ==========================================
+    renderHeader(app, bookData) {
+        const bookName = app.currentBook.name;
+        const chapter = app.currentChapter;
+        const isBC = bookData.era === 'bc';
+
+        // Book icon
+        const iconEl = document.getElementById('ctxBookIcon');
+        iconEl.className = `ctx-book-icon ${isBC ? 'bc' : 'ad'}`;
+        // Use first 2 letters of book
+        const abbr = bookName.substring(0, 2).toUpperCase();
+        iconEl.textContent = abbr;
+
+        // Book name
+        document.getElementById('ctxBookName').textContent = `${bookName} ${chapter}`;
+
+        // Detail line: period + year range
+        const startLabel = bookData.yearStart < 0
+            ? Math.abs(bookData.yearStart) + ' a.C.'
+            : bookData.yearStart + ' d.C.';
+        const endLabel = bookData.yearEnd < 0
+            ? Math.abs(bookData.yearEnd) + ' a.C.'
+            : bookData.yearEnd + ' d.C.';
+        document.getElementById('ctxBookDetail').textContent = `${bookData.period} \u2022 ${startLabel} \u2014 ${endLabel}`;
+
+        // Era badge
+        const eraBadge = document.getElementById('ctxEraBadge');
+        eraBadge.className = `ctx-era-badge ${isBC ? 'bc' : 'ad'}`;
+        eraBadge.textContent = isBC ? 'Antes de Cristo' : 'Despu\u00e9s de Cristo';
     }
 
     // ==========================================
@@ -163,51 +316,54 @@ class BibliaContext {
         adEl.style.width = (100 - christPos) + '%';
 
         // Christ marker
-        const christEl = document.getElementById('ctxTlChrist');
-        christEl.style.left = christPos + '%';
+        document.getElementById('ctxTlChrist').style.left = christPos + '%';
 
         // Book range highlight
         const rangeEl = document.getElementById('ctxTlRange');
         const startPos = ((bookData.yearStart - min) / total) * 100;
         const endPos = ((bookData.yearEnd - min) / total) * 100;
-        const width = Math.max(endPos - startPos, 0.8);
+        const width = Math.max(endPos - startPos, 1.2);
         rangeEl.style.left = startPos + '%';
         rangeEl.style.width = width + '%';
 
-        // Current era label
-        const eraEl = document.getElementById('ctxCurrentEra');
-        const startLabel = bookData.yearStart < 0
-            ? Math.abs(bookData.yearStart) + ' a.C.'
-            : bookData.yearStart + ' d.C.';
-        const endLabel = bookData.yearEnd < 0
-            ? Math.abs(bookData.yearEnd) + ' a.C.'
-            : bookData.yearEnd + ' d.C.';
-        eraEl.textContent = `${startLabel} \u2014 ${endLabel}`;
+        // Range label (book name on the bar)
+        const rangeLabel = document.getElementById('ctxTlRangeLabel');
+        const app = window.bibliaApp;
+        const bookName = app?.currentBook?.name || bookId;
+        rangeLabel.textContent = bookName;
+        rangeLabel.style.left = (startPos + width / 2) + '%';
+        rangeLabel.style.top = '14px';
+        // Hide label if range is too narrow
+        rangeLabel.style.display = width > 3 ? 'block' : 'none';
 
-        // Period blocks
-        this.renderPeriods(min, total);
+        // Periods
+        this.renderPeriods(bookData, min, total);
 
-        // Event dots on timeline
+        // Event dots
         this.renderTimelineDots(bookData, min, total);
 
         // Year labels
         this.renderYearLabels(min, max, total);
-
-        // Info text
-        const infoEl = document.getElementById('ctxTimelineInfo');
-        infoEl.textContent = bookData.period;
     }
 
-    renderPeriods(min, total) {
+    renderPeriods(bookData, min, total) {
         const container = document.getElementById('ctxTlPeriods');
         if (!container) return;
-        let html = '';
 
+        // Find which period the book belongs to
+        const activePeriodId = BIBLE_TIMELINE.periods.find(p =>
+            bookData.yearStart >= p.yearStart && bookData.yearStart <= (p.yearEnd || 100)
+        )?.id;
+
+        let html = '';
         BIBLE_TIMELINE.periods.forEach(p => {
             const left = ((p.yearStart - min) / total) * 100;
             const end = (p.yearEnd || 100);
-            const width = ((end - p.yearStart) / total) * 100;
-            html += `<div class="ctx-tl-period" style="left:${left}%;width:${width}%;background:${p.color}" title="${p.label}"></div>`;
+            const w = ((end - p.yearStart) / total) * 100;
+            const isActive = p.id === activePeriodId;
+            html += `<div class="ctx-tl-period ${isActive ? 'active-period' : ''}" style="left:${left}%;width:${w}%;background:${p.color}" title="${p.label}">
+                <span class="ctx-tl-period-name">${p.label}</span>
+            </div>`;
         });
 
         container.innerHTML = html;
@@ -220,7 +376,12 @@ class BibliaContext {
         let html = '';
         (bookData.keyEvents || []).forEach(ev => {
             const pos = ((ev.year - min) / total) * 100;
-            html += `<div class="ctx-tl-dot" style="left:${pos}%" title="${ev.event} (${ev.year < 0 ? Math.abs(ev.year) + ' a.C.' : ev.year + ' d.C.'})"></div>`;
+            const yearStr = ev.year < 0
+                ? Math.abs(ev.year) + ' a.C.'
+                : ev.year + ' d.C.';
+            html += `<div class="ctx-tl-dot" style="left:${pos}%">
+                <div class="ctx-tl-dot-tip">${ev.event} (${yearStr})</div>
+            </div>`;
         });
 
         container.innerHTML = html;
@@ -230,13 +391,19 @@ class BibliaContext {
         const container = document.getElementById('ctxTlLabels');
         if (!container) return;
 
-        const labels = [-4000, -3000, -2000, -1000, 0, 100];
+        const labels = [
+            { year: -4000, text: '4000 a.C.' },
+            { year: -3000, text: '3000' },
+            { year: -2000, text: '2000' },
+            { year: -1000, text: '1000' },
+            { year: 0, text: '0' },
+            { year: 100, text: '100 d.C.' }
+        ];
         let html = '';
 
-        labels.forEach(year => {
-            const pos = ((year - min) / total) * 100;
-            const label = year === 0 ? '0' : year < 0 ? Math.abs(year) : year;
-            html += `<span class="ctx-tl-label" style="left:${pos}%">${label}</span>`;
+        labels.forEach(l => {
+            const pos = ((l.year - min) / total) * 100;
+            html += `<span class="ctx-tl-label" style="left:${pos}%">${l.text}</span>`;
         });
 
         container.innerHTML = html;
@@ -280,11 +447,10 @@ class BibliaContext {
         const img = document.getElementById('ctxMapImg');
         const title = document.getElementById('ctxMapTitle');
 
-        // Find matching map
         const maps = BIBLE_TIMELINE.maps;
         let mapData = null;
 
-        // First try to find map by region
+        // Find map by book list first
         for (const key in maps) {
             if (maps[key].books.includes(bookId)) {
                 mapData = maps[key];
@@ -292,7 +458,7 @@ class BibliaContext {
             }
         }
 
-        // Fallback to region match
+        // Fallback to region
         if (!mapData && bookData.mapRegion && maps[bookData.mapRegion]) {
             mapData = maps[bookData.mapRegion];
         }
@@ -315,16 +481,15 @@ class BibliaContext {
     openLightbox() {
         if (!this.currentMapData) return;
         const lightbox = document.getElementById('ctxLightbox');
-        const img = document.getElementById('ctxLightboxImg');
-        const title = document.getElementById('ctxLightboxTitle');
-
-        img.src = this.currentMapData.url;
-        title.textContent = this.currentMapData.title;
+        document.getElementById('ctxLightboxImg').src = this.currentMapData.url;
+        document.getElementById('ctxLightboxTitle').textContent = this.currentMapData.title;
         lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     }
 
     closeLightbox() {
         document.getElementById('ctxLightbox').style.display = 'none';
+        document.body.style.overflow = '';
     }
 }
 

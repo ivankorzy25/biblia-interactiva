@@ -103,14 +103,60 @@ class BibliaContext {
                 <div class="sidebar-title" id="ctxSidebarTitle">\uD83D\uDCDC Contexto Hist\u00f3rico</div>
                 <button class="sidebar-close" id="ctxSidebarClose">\u2715</button>
             </div>
-            <div class="sidebar-body" id="ctxSidebarBody">
-                <div class="sidebar-empty">
-                    <div class="sidebar-empty-icon">\uD83C\uDFDB</div>
-                    Selecciona un evento o per\u00edodo en la l\u00ednea de tiempo para ver el contexto hist\u00f3rico
+            <div id="ctxSidebarBody" style="padding:0">
+                <!-- AI Context Section -->
+                <div class="ctx-sidebar-section" id="ctxSectionAI">
+                    <button class="ctx-section-toggle" aria-expanded="true" data-section="ai">
+                        <span><span class="ctx-section-icon">\uD83E\uDDE0</span> Contexto IA</span>
+                        <span class="ctx-section-arrow">\u25BC</span>
+                    </button>
+                    <div class="ctx-section-body open" id="ctxAiBody">
+                        <div class="ctx-section-content" id="ctxAiContent">
+                            <div class="ctx-no-data">
+                                <div class="ctx-no-data-icon">\uD83C\uDFDB</div>
+                                Selecciona una opci\u00f3n para generar contexto
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Map Section -->
+                <div class="ctx-sidebar-section" id="ctxSectionMap">
+                    <button class="ctx-section-toggle" aria-expanded="false" data-section="map">
+                        <span><span class="ctx-section-icon">\uD83D\uDDFA</span> Mapa Hist\u00f3rico</span>
+                        <span class="ctx-section-arrow">\u25BC</span>
+                    </button>
+                    <div class="ctx-section-body" id="ctxMapBody">
+                        <div class="ctx-section-content" id="ctxMapContent"></div>
+                    </div>
+                </div>
+                <!-- Images Section -->
+                <div class="ctx-sidebar-section" id="ctxSectionImages">
+                    <button class="ctx-section-toggle" aria-expanded="false" data-section="images">
+                        <span><span class="ctx-section-icon">\uD83D\uDDBC</span> Im\u00e1genes Relacionadas</span>
+                        <span class="ctx-section-arrow">\u25BC</span>
+                    </button>
+                    <div class="ctx-section-body" id="ctxImagesBody">
+                        <div class="ctx-section-content" id="ctxImagesContent"></div>
+                    </div>
                 </div>
             </div>
         `;
         document.body.appendChild(this.sidebar);
+
+        // Lightbox
+        this.lightbox = document.createElement('div');
+        this.lightbox.className = 'ctx-lightbox';
+        this.lightbox.innerHTML = `
+            <button class="ctx-lightbox-close">\u2715</button>
+            <img src="" alt="">
+            <div class="ctx-lightbox-caption"></div>
+        `;
+        document.body.appendChild(this.lightbox);
+        this.lightbox.addEventListener('click', (e) => {
+            if (e.target === this.lightbox || e.target.classList.contains('ctx-lightbox-close')) {
+                this.lightbox.classList.remove('active');
+            }
+        });
     }
 
     // ==========================================
@@ -188,6 +234,30 @@ class BibliaContext {
         }
 
         document.getElementById('ctxSidebarClose')?.addEventListener('click', () => this.closeSidebar());
+
+        // Section toggles (expand/collapse)
+        this.sidebar.querySelectorAll('.ctx-section-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', !expanded);
+                const body = toggle.nextElementSibling;
+                body.classList.toggle('open', !expanded);
+            });
+        });
+
+        // Verse action menu buttons
+        document.getElementById('actionContexto')?.addEventListener('click', () => {
+            this.openVerseContext('contexto_historico');
+            document.getElementById('verseActions')?.classList.remove('active');
+        });
+        document.getElementById('actionMapa')?.addEventListener('click', () => {
+            this.openVerseContext('mapa');
+            document.getElementById('verseActions')?.classList.remove('active');
+        });
+        document.getElementById('actionImagenes')?.addEventListener('click', () => {
+            this.openVerseContext('imagenes');
+            document.getElementById('verseActions')?.classList.remove('active');
+        });
 
         // Close sidebar on overlay click
         const overlay = document.getElementById('overlay');
@@ -544,7 +614,12 @@ class BibliaContext {
         const p = prompts[queryType];
         if (!p) return;
 
+        // Render map and images alongside AI
+        this.renderMap(this.currentBookId, bookData);
+        this.renderImages(this.currentBookId, chapter);
+
         this.openSidebar(p.title, p.sub);
+        this.expandSection('ai');
         this.generateContext(p.prompt, `${queryType}_${this.currentBookId}_${window.bibliaApp?.currentChapter}`);
     }
 
@@ -552,7 +627,8 @@ class BibliaContext {
     // AI GENERATION
     // ==========================================
     async generateContext(prompt, cacheKey) {
-        const body = document.getElementById('ctxSidebarBody');
+        const aiContent = document.getElementById('ctxAiContent');
+        if (!aiContent) return;
 
         // Abort any previous request
         if (this.abortController) {
@@ -563,14 +639,21 @@ class BibliaContext {
         this.generationId++;
         const myGenId = this.generationId;
 
+        // Expand AI section
+        const aiToggle = this.sidebar.querySelector('[data-section="ai"]');
+        if (aiToggle) {
+            aiToggle.setAttribute('aria-expanded', 'true');
+            aiToggle.nextElementSibling?.classList.add('open');
+        }
+
         // Check cache
         if (this.cache[cacheKey]) {
-            body.innerHTML = this.cache[cacheKey];
+            aiContent.innerHTML = this.cache[cacheKey];
             return;
         }
 
         // Show thinking indicator
-        body.innerHTML = `<div class="ctx-loading">
+        aiContent.innerHTML = `<div class="ctx-loading">
             <div class="ctx-thinking-brain">
                 <div class="ctx-thinking-pulse"></div>
                 <span class="ctx-thinking-icon">\uD83E\uDDE0</span>
@@ -619,7 +702,7 @@ USA ESTE FORMATO para TODAS las respuestas:
             if (myGenId !== this.generationId) return;
 
             if (!res.ok) {
-                body.innerHTML = `<div class="ctx-error">\u26A0 Error al conectar con la IA. Intenta de nuevo.</div>`;
+                aiContent.innerHTML = `<div class="ctx-error">\u26A0 Error al conectar con la IA. Intenta de nuevo.</div>`;
                 this.isLoading = false;
                 return;
             }
@@ -628,8 +711,8 @@ USA ESTE FORMATO para TODAS las respuestas:
             this.stopThinkingMessages();
             const responseEl = document.createElement('div');
             responseEl.className = 'ctx-ai-response';
-            body.innerHTML = '';
-            body.appendChild(responseEl);
+            aiContent.innerHTML = '';
+            aiContent.appendChild(responseEl);
 
             const reader = res.body.getReader();
             const decoder = new TextDecoder();
@@ -658,7 +741,7 @@ USA ESTE FORMATO para TODAS las respuestas:
                         if (delta) {
                             fullText += delta;
                             responseEl.innerHTML = this.formatResponse(fullText);
-                            body.scrollTop = body.scrollHeight;
+                            this.sidebar.scrollTop = this.sidebar.scrollHeight;
                         }
                     } catch (e) { /* skip parse errors */ }
                 }
@@ -666,14 +749,14 @@ USA ESTE FORMATO para TODAS las respuestas:
 
             // Only cache if this is still the active generation
             if (myGenId === this.generationId) {
-                this.cache[cacheKey] = body.innerHTML;
+                this.cache[cacheKey] = aiContent.innerHTML;
             }
 
         } catch (err) {
             this.stopThinkingMessages();
             if (err.name === 'AbortError') return;
             if (myGenId === this.generationId) {
-                body.innerHTML = `<div class="ctx-error">\u26A0 ${err.message || 'Error de conexi\u00f3n'}</div>`;
+                aiContent.innerHTML = `<div class="ctx-error">\u26A0 ${err.message || 'Error de conexi\u00f3n'}</div>`;
             }
         }
 
@@ -682,6 +765,174 @@ USA ESTE FORMATO para TODAS las respuestas:
             this.isLoading = false;
             this.abortController = null;
         }
+    }
+
+    // ==========================================
+    // VERSE CONTEXT (from verse action menu)
+    // ==========================================
+    openVerseContext(mode) {
+        const app = window.bibliaApp;
+        if (!app || !app.selectedVerse) return;
+
+        const { bookName, book: bookId, chapter, verse } = app.selectedVerse;
+        const bookData = typeof BIBLE_TIMELINE !== 'undefined' ? BIBLE_TIMELINE.books[bookId] : null;
+        if (!bookData) return;
+
+        this.currentBookData = bookData;
+        this.currentBookId = bookId;
+
+        // Always render map and images
+        this.renderMap(bookId, bookData);
+        this.renderImages(bookId, chapter);
+
+        if (mode === 'mapa') {
+            this.openSidebar(`\uD83D\uDDFA ${bookName} ${chapter}:${verse}`, 'Mapa Hist\u00f3rico');
+            this.expandSection('map');
+        } else if (mode === 'imagenes') {
+            this.openSidebar(`\uD83D\uDDBC ${bookName} ${chapter}:${verse}`, 'Im\u00e1genes');
+            this.expandSection('images');
+        } else {
+            // contexto_historico - generate AI + show all
+            const startLabel = bookData.yearStart < 0 ? Math.abs(bookData.yearStart) + ' a.C.' : bookData.yearStart + ' d.C.';
+            const endLabel = bookData.yearEnd < 0 ? Math.abs(bookData.yearEnd) + ' a.C.' : bookData.yearEnd + ' d.C.';
+            this.openSidebar(`\uD83C\uDFDB ${bookName} ${chapter}:${verse}`, `${startLabel} \u2014 ${endLabel}`);
+            this.expandSection('ai');
+            this.generateContext(
+                `Explica el contexto hist\u00f3rico espec\u00edfico de ${bookName} cap\u00edtulo ${chapter}, vers\u00edculo ${verse}. ` +
+                `Per\u00edodo: ${bookData.period} (${startLabel}-${endLabel}). ` +
+                `Incluye: \u00bfQu\u00e9 estaba pasando en ese momento exacto? \u00bfQui\u00e9n habla? ` +
+                `\u00bfD\u00f3nde est\u00e1n geogr\u00e1ficamente? \u00bfQu\u00e9 costumbres se mencionan? ` +
+                `Da fechas lo m\u00e1s precisas posible y contexto cultural.`,
+                `verse_${bookId}_${chapter}_${verse}`
+            );
+        }
+    }
+
+    expandSection(sectionName) {
+        this.sidebar.querySelectorAll('.ctx-section-toggle').forEach(toggle => {
+            const isTarget = toggle.dataset.section === sectionName;
+            toggle.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+            toggle.nextElementSibling?.classList.toggle('open', isTarget);
+        });
+    }
+
+    // ==========================================
+    // MAP RENDERING
+    // ==========================================
+    renderMap(bookId, bookData) {
+        const container = document.getElementById('ctxMapContent');
+        if (!container) return;
+
+        const region = bookData.mapRegion;
+        const maps = typeof BIBLE_TIMELINE !== 'undefined' ? BIBLE_TIMELINE.maps : {};
+
+        // Find the best map for this book
+        let mapData = maps[region];
+        if (!mapData) {
+            // Try to find any map that includes this book
+            for (const key of Object.keys(maps)) {
+                if (maps[key].books?.includes(bookId)) {
+                    mapData = maps[key];
+                    break;
+                }
+            }
+        }
+
+        if (!mapData) {
+            container.innerHTML = `<div class="ctx-no-data"><div class="ctx-no-data-icon">\uD83D\uDDFA</div>No hay mapa disponible para este libro</div>`;
+            return;
+        }
+
+        container.innerHTML = `
+            <div class="ctx-map-container">
+                <img class="ctx-map-img" src="${mapData.url}" alt="${mapData.title}" loading="lazy">
+                <button class="ctx-map-fullscreen" title="Ampliar">\u26F6</button>
+                <div class="ctx-map-title">${mapData.title}</div>
+                <div class="ctx-map-credit">Fuente: Wikimedia Commons \u2022 Dominio p\u00fablico / CC BY-SA</div>
+            </div>
+        `;
+
+        // Map zoom on click
+        const img = container.querySelector('.ctx-map-img');
+        if (img) {
+            img.addEventListener('click', (e) => {
+                if (img.classList.contains('zoomed')) {
+                    img.classList.remove('zoomed');
+                } else {
+                    const rect = img.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    img.style.setProperty('--zoom-x', x + '%');
+                    img.style.setProperty('--zoom-y', y + '%');
+                    img.classList.add('zoomed');
+                }
+            });
+        }
+
+        // Fullscreen button opens lightbox
+        container.querySelector('.ctx-map-fullscreen')?.addEventListener('click', () => {
+            this.openLightbox(mapData.url, mapData.title);
+        });
+    }
+
+    // ==========================================
+    // IMAGE GALLERY
+    // ==========================================
+    renderImages(bookId, chapter) {
+        const container = document.getElementById('ctxImagesContent');
+        if (!container) return;
+
+        const allImages = typeof BIBLE_IMAGES !== 'undefined' ? BIBLE_IMAGES : {};
+        let images = allImages[bookId] || [];
+
+        // Filter by chapter if images have chapter data
+        const chapterImages = images.filter(img =>
+            !img.chapters || img.chapters.includes(chapter)
+        );
+
+        // Use chapter-specific images if available, otherwise show all book images
+        const displayImages = chapterImages.length > 0 ? chapterImages : images;
+
+        // Add generic if none found
+        if (displayImages.length === 0) {
+            const bookData = BIBLE_TIMELINE?.books?.[bookId];
+            const isNT = bookData?.era === 'ad';
+            const generic = allImages._generic?.[isNT ? 'nt' : 'at'];
+            if (generic) displayImages.push(generic);
+        }
+
+        if (displayImages.length === 0) {
+            container.innerHTML = `<div class="ctx-no-data"><div class="ctx-no-data-icon">\uD83D\uDDBC</div>No hay im\u00e1genes disponibles</div>`;
+            return;
+        }
+
+        let html = '<div class="ctx-gallery">';
+        displayImages.forEach((img, i) => {
+            html += `<div class="ctx-gallery-item" data-img-idx="${i}">
+                <img src="${img.url}" alt="${img.title}" loading="lazy">
+                <div class="ctx-gallery-caption">${img.title}
+                    <div class="ctx-gallery-artist">${img.artist || ''}</div>
+                </div>
+            </div>`;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+
+        // Click to open lightbox
+        container.querySelectorAll('.ctx-gallery-item').forEach(el => {
+            el.addEventListener('click', () => {
+                const idx = parseInt(el.dataset.imgIdx);
+                const img = displayImages[idx];
+                if (img) this.openLightbox(img.url, `${img.title} \u2014 ${img.artist || ''}`);
+            });
+        });
+    }
+
+    openLightbox(url, caption) {
+        if (!this.lightbox) return;
+        this.lightbox.querySelector('img').src = url;
+        this.lightbox.querySelector('.ctx-lightbox-caption').textContent = caption || '';
+        this.lightbox.classList.add('active');
     }
 
     startThinkingMessages(cacheKey) {

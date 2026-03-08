@@ -967,6 +967,10 @@ class BibliaApp {
             if (window.bibliaCalendar) window.bibliaCalendar.toggle();
         });
 
+        document.getElementById('toggleRecursos').addEventListener('click', () => {
+            if (window.bibliaRecursos) window.bibliaRecursos.toggle();
+        });
+
         // Restore concordance state
         if (localStorage.getItem('biblia_concordance') === 'true') {
             this.concordanceEnabled = true;

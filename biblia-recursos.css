@@ -1,0 +1,265 @@
+/* ============================================
+   BIBLIA RECURSOS - Panel de Recursos Bíblicos
+   ============================================ */
+
+/* Panel overlay */
+.rec-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-primary);
+    z-index: 200;
+    overflow-y: auto;
+    animation: recFadeIn 0.3s ease;
+}
+.rec-panel.active { display: block; }
+
+@keyframes recFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.rec-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    box-shadow: 0 2px 8px var(--shadow-sm);
+}
+
+.rec-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rec-back {
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.rec-back:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.rec-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+.rec-close {
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.rec-close:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: rotate(90deg);
+}
+
+/* Body */
+.rec-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+}
+
+.rec-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-bottom: 24px;
+}
+
+/* ============ CATEGORIES GRID ============ */
+.rec-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.rec-cat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+}
+.rec-cat-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 6px 24px var(--shadow-sm);
+    transform: translateY(-4px);
+}
+
+.rec-cat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6em;
+    margin: 0 auto 12px;
+    color: white;
+}
+
+.rec-cat-title {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--text-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.rec-cat-desc {
+    font-size: 0.76em;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* ============ RESOURCE LIST ============ */
+.rec-cat-header-desc {
+    color: var(--text-secondary);
+    font-size: 0.88em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.rec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rec-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.rec-item:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 3px 12px var(--shadow-sm);
+    transform: translateX(4px);
+}
+
+.rec-item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.rec-item-name {
+    font-size: 0.92em;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-bottom: 3px;
+}
+
+.rec-item-desc {
+    font-size: 0.78em;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.rec-item-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.rec-item-arrow {
+    font-size: 1em;
+    color: var(--text-tertiary);
+    transition: color 0.2s;
+}
+.rec-item:hover .rec-item-arrow { color: var(--accent-primary); }
+
+/* Type badges */
+.rec-type-badge {
+    font-size: 0.65em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.rec-type-web {
+    background: rgba(52,152,219,0.1);
+    color: #3498db;
+}
+.rec-type-download {
+    background: rgba(39,174,96,0.1);
+    color: #27ae60;
+}
+.rec-type-pdf {
+    background: rgba(231,76,60,0.1);
+    color: #e74c3c;
+}
+.rec-type-video {
+    background: rgba(155,89,182,0.1);
+    color: #9b59b6;
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+    .rec-body { padding: 16px 12px 80px; }
+    .rec-cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .rec-cat-card { padding: 14px 10px; }
+    .rec-cat-icon { width: 44px; height: 44px; font-size: 1.3em; border-radius: 11px; margin-bottom: 8px; }
+    .rec-cat-title { font-size: 0.75em; }
+    .rec-cat-desc { font-size: 0.68em; }
+    .rec-item { padding: 10px 12px; }
+    .rec-item-name { font-size: 0.85em; }
+    .rec-item-desc { font-size: 0.72em; }
+}
+
+@media (max-width: 480px) {
+    .rec-cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

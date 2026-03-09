@@ -739,6 +739,46 @@ class BibliaCalendar {
             .join('\n');
     }
 
+    updateEventFromBot(eventId, updates) {
+        const idx = this.events.findIndex(e => e.id === eventId);
+        if (idx === -1) return null;
+        Object.assign(this.events[idx], updates, { updatedAt: new Date().toISOString() });
+        this.saveEvents();
+        this.toast('Evento actualizado');
+        return this.events[idx];
+    }
+
+    deleteEventFromBot(eventId) {
+        const ev = this.events.find(e => e.id === eventId);
+        if (!ev) return false;
+        this.events = this.events.filter(e => e.id !== eventId && e.parentId !== eventId);
+        this.saveEvents();
+        this.toast('Evento eliminado');
+        return true;
+    }
+
+    searchEvents(query) {
+        const q = query.toLowerCase();
+        return this.events.filter(ev =>
+            (ev.title && ev.title.toLowerCase().includes(q)) ||
+            (ev.description && ev.description.toLowerCase().includes(q)) ||
+            (ev.notes && ev.notes.toLowerCase().includes(q))
+        );
+    }
+
+    getEventsInRange(startDate, endDate) {
+        return this.events
+            .filter(ev => ev.date >= startDate && ev.date <= endDate)
+            .sort((a, b) => a.date.localeCompare(b.date) || (a.time || '').localeCompare(b.time || ''));
+    }
+
+    getAllEventsForBot() {
+        const today = this.formatDate(new Date());
+        const upcoming = this.events.filter(ev => ev.date >= today).sort((a, b) => a.date.localeCompare(b.date));
+        const past = this.events.filter(ev => ev.date < today).sort((a, b) => b.date.localeCompare(a.date));
+        return { upcoming, past, total: this.events.length };
+    }
+
     // ==========================================
     // HELPERS
     // ==========================================

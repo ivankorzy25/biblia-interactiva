@@ -453,7 +453,7 @@ class BibliaAuth {
         if (btn) { btn.disabled = true; btn.innerHTML = '<div class="auth-spinner"></div> Verificando tu clave...'; }
 
         try {
-            const res = await fetch('https://ollama.com/api/tags', {
+            const res = await fetch('/api/tags', {
                 headers: { 'Authorization': `Bearer ${key}` }
             });
 

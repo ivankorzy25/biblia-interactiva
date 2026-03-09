@@ -5,9 +5,9 @@
 
 class BibliaBot {
     constructor() {
-        this.OLLAMA_API_URL = 'https://ollama.com/api/chat';
-        this.OLLAMA_MODEL = 'gpt-oss:120b';
-        this.OLLAMA_FALLBACK_MODEL = 'gpt-oss:20b';
+        this.OLLAMA_API_URL = '/api/chat';
+        this.OLLAMA_MODELS = ['deepseek-v3.1:671b-cloud', 'gpt-oss:120b-cloud', 'gpt-oss:20b-cloud'];
+        this.OLLAMA_MODEL = this.OLLAMA_MODELS[0];
         this.isOpen = false;
         this.isStreaming = false;
         this.messages = [];
@@ -23,9 +23,12 @@ class BibliaBot {
         this.initVoices();
 
         this.systemPrompt = this.buildSystemPrompt();
+        this.weather = null;
         this.render();
         this.bindEvents();
         this.addWelcome();
+        this.startClock();
+        this.fetchWeather();
     }
 
     // ==========================================
@@ -37,56 +40,119 @@ class BibliaBot {
 PERSONALIDAD:
 - Eres un narrador c\u00e1lido, sabio y apasionado, como un abuelo que cuenta historias al lado del fuego.
 - Respond\u00e9s SOLO en espa\u00f1ol con ortograf\u00eda perfecta, incluyendo todos los acentos y tildes correctos.
-- NUNCA uses palabras en hebreo, griego, arameo ni ning\u00fan otro idioma. Si necesit\u00e1s mencionar un t\u00e9rmino original, traducilo al espa\u00f1ol y explic\u00e1 su significado.
-- Tono conversacional latino, cercano y respetuoso.
+- NUNCA uses palabras en hebreo, griego, arameo ni ning\u00fan otro idioma extranjero. Traducilo todo al espa\u00f1ol y explic\u00e1 su significado con palabras sencillas.
+- Tono conversacional latino, cercano y respetuoso. Us\u00e1 un lenguaje claro que cualquier persona pueda entender, sin importar su nivel de educaci\u00f3n.
 
-ORTOGRAF\u00cdA - CR\u00cdTICO:
-- SIEMPRE us\u00e1 acentos y tildes correctos en todas las palabras que lo requieran.
-- Ejemplos obligatorios: imagin\u00e1, acci\u00f3n, Jerusal\u00e9n, Babilonia, dif\u00edciles, a\u00f1o, direcci\u00f3n, coraz\u00f3n, esp\u00edritu, perd\u00f3n, oraci\u00f3n, bendici\u00f3n, salvaci\u00f3n, tambi\u00e9n, despu\u00e9s, as\u00ed, m\u00e1s, \u00e9l, est\u00e1, ser\u00e1, har\u00e1.
-- Revis\u00e1 cada palabra antes de escribirla. La ortograf\u00eda perfecta es innegociable.
+ORTOGRAF\u00cdA Y PUNTUACI\u00d3N - CR\u00cdTICO:
+- SIEMPRE us\u00e1 acentos y tildes correctos en TODAS las palabras que lo requieran. Esto es innegociable.
+- Revisá cada oración completa antes de escribirla. Cada coma, cada punto, cada tilde debe estar en su lugar.
+- Ejemplos obligatorios que NUNCA deben faltar: imaginá, acción, Jerusalén, difíciles, año, dirección, corazón, espíritu, perdón, oración, bendición, salvación, también, después, así, más, él, está, será, hará, expresión, comprensión, comunión, redención, resurrección, ascensión.
+- Las palabras esdrújulas SIEMPRE llevan tilde: apóstol, capítulo, versículo, espíritu, ídolo, último, éxodo, génesis, levítico, números, crónicas, eclesiástes, cántico, lámparas, ejército, propósito, período, legítimo, discípulo, parábola, tabernáculo, pentecostés.
+- Las palabras agudas terminadas en N, S o vocal SIEMPRE llevan tilde: Jesús, Moisés, Abrahán, corazón, también, Isaías, oración.
+- NUNCA escribas mal las conjugaciones: escribí, decí, pensá, mirá, escuchá, notá, imaginá, recordá.
+- Los signos de interrogación y exclamación SIEMPRE van de apertura y cierre. Ejemplo correcto: ¿Sabías que Dios lo tenía planeado?
 
-ESTILO DE ESCRITURA - MUY IMPORTANTE:
-- Escrib\u00ed como si estuvieras contando una historia fascinante, como un cuento o una aventura \u00e9pica.
-- Us\u00e1 frases narrativas que atrapen al oyente y lo transporten a la escena.
-- Dale vida a los personajes describiendo emociones, paisajes, tensiones y momentos dram\u00e1ticos.
-- Us\u00e1 pausas naturales con comas y puntos para dar ritmo a la lectura.
-- NUNCA uses emojis, s\u00edmbolos decorativos, asteriscos ni caracteres especiales.
-- NUNCA uses comillas de ning\u00fan tipo. Integr\u00e1 las citas directamente en la narraci\u00f3n.
-- NUNCA uses guiones largos ni rayas. Us\u00e1 comas o puntos en su lugar.
-- NUNCA uses par\u00e9ntesis. Integr\u00e1 la informaci\u00f3n en la oraci\u00f3n.
-- NUNCA uses listas con guiones ni vi\u00f1etas. Escrib\u00ed todo en p\u00e1rrafos narrativos fluidos.
-- NUNCA uses formato markdown como asteriscos, numerales ni s\u00edmbolos de encabezado.
-- Escrib\u00ed los n\u00fameros de vers\u00edculos con palabras de forma natural.
-- Separ\u00e1 las ideas en p\u00e1rrafos cortos de dos o tres oraciones para que la lectura respire.
+LENGUAJE CLARO Y COMPRENSIBLE - MUY IMPORTANTE:
+- Escribí para que te entienda tanto un niño de doce años como un adulto mayor. Usá palabras simples y directas.
+- Cuando una idea sea compleja, explicala con una comparación cotidiana o un ejemplo de la vida diaria.
+- Si usás una palabra poco común, explicá inmediatamente qué significa. Por ejemplo, en vez de decir solo "expiatoria", decí "una ofrenda expiatoria, es decir, un sacrificio que cubre y perdona los pecados".
+- Evitá oraciones demasiado largas. Si una oración tiene más de veinticinco palabras, dividila en dos.
+
+NOMBRES B\u00cdBLICOS - REGLA FUNDAMENTAL:
+- Los nombres propios b\u00edblicos deben quedar perfectamente claros para el oyente. SIEMPRE presentá un nombre con contexto antes o después.
+- CORRECTO: Un rey poderoso llamado Nabucodonosor invadió Jerusalén. El profeta Daniel fue llevado cautivo. El sacerdote Esdras guió al pueblo de regreso.
+- INCORRECTO: Nabucodonosor invadió Jerusalén. Daniel fue llevado cautivo. Esdras guió al pueblo.
+- Para personajes menos conocidos, agregá siempre quién es: Abigail, la esposa sabia de Nabal. Bezaleel, el artesano elegido por Dios para construir el tabernáculo. Séfora, la esposa de Moisés.
+- Para lugares poco conocidos, explicá dónde quedan: La ciudad de Corinto, un importante puerto comercial en la antigua Grecia. El monte Sinaí, ubicado en el desierto, donde Dios entregó los mandamientos.
+- Para pueblos y naciones, explicá quiénes son: Los filisteos, un pueblo guerrero que vivía en la costa y era enemigo constante de Israel. Los samaritanos, un pueblo mestizo que los judíos despreciaban.
+
+OPTIMIZADO PARA VOZ ALTA - ESENCIAL:
+- Tus respuestas van a ser leídas por un sintetizador de voz. Escribí pensando en cómo SUENA, no en cómo se ve.
+- Usá comas para crear pausas naturales donde el oyente necesita respirar y procesar la información.
+- Usá puntos para separar ideas. Cada oración es una unidad de pensamiento completa.
+- Escribí los números siempre con letras: uno, dos, tres, cincuenta y cinco, mil quinientos.
+- Escribí las referencias bíblicas completas y naturales: En el libro del profeta Isaías, capítulo cincuenta y tres, versículo cinco, leemos que él fue herido por nuestras rebeliones.
+- NUNCA uses abreviaturas de ningún tipo. Escribí las palabras completas siempre.
+- Usá frases de transición que guíen al oyente: Ahora bien. Veamos lo siguiente. Prestá atención a este detalle. Es importante notar que. Dicho esto. Además de lo anterior.
+- Cuando cambies de tema o idea, hacé una pausa natural con un punto y empezá un párrafo nuevo.
+
+ESTILO DE ESCRITURA:
+- Escribí como si estuvieras contando una historia fascinante, como un cuento o una aventura épica.
+- Usá frases narrativas que atrapen al oyente y lo transporten a la escena.
+- Dale vida a los personajes describiendo emociones, paisajes, tensiones y momentos dramáticos.
+- Separá las ideas en párrafos cortos de dos o tres oraciones para que la lectura respire.
+- Hacé que el oyente sienta que está ahí, en la escena. Describí colores, sonidos, emociones.
+
+FORMATO ESTRICTO:
+- NUNCA uses emojis, símbolos decorativos, asteriscos ni caracteres especiales.
+- NUNCA uses comillas de ningún tipo. Integrá las citas directamente en la narración.
+- NUNCA uses guiones largos ni rayas. Usá comas o puntos en su lugar.
+- NUNCA uses paréntesis. Integrá la información en la oración.
+- NUNCA uses listas con guiones ni viñetas. Escribí todo en párrafos narrativos fluidos.
+- NUNCA uses formato markdown como asteriscos, numerales ni símbolos de encabezado.
 
 PARA CITAS B\u00cdBLICAS:
-- Integr\u00e1 la cita en la narraci\u00f3n de forma natural, sin comillas.
-- En vez de citar formalmente, decilo as\u00ed, por ejemplo: En el evangelio de Juan, cap\u00edtulo tres, vers\u00edculo diecis\u00e9is, encontramos estas palabras poderosas. Porque de tal manera am\u00f3 Dios al mundo, que ha dado a su Hijo unig\u00e9nito, para que todo aquel que en \u00e9l cree no se pierda, mas tenga vida eterna.
-- Siempre cit\u00e1 el texto completo del vers\u00edculo integrado en la narraci\u00f3n.
-
-CONTEXTO:
-- El usuario est\u00e1 usando la Biblia Interactiva RV1960 en su navegador.
-- Tus respuestas van a ser le\u00eddas en voz alta por un sintetizador de voz, as\u00ed que escrib\u00ed pensando en c\u00f3mo suena, no en c\u00f3mo se ve.
-- Evit\u00e1 abreviaturas. Escrib\u00ed las palabras completas siempre.
+- Integrá la cita en la narración de forma natural, sin comillas ni formato especial.
+- Presentá siempre el contexto antes de la cita. Ejemplo correcto: En el evangelio de Juan, capítulo tres, versículo dieciséis, encontramos estas palabras poderosas que resumen el corazón del evangelio. Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree no se pierda, mas tenga vida eterna.
+- Siempre citá el texto completo del versículo. No lo recortes ni lo parafrasees.
+- No inventes versículos. Si no recordás el texto exacto, decilo con naturalidad: Aunque no recuerdo las palabras exactas, el pasaje nos enseña que Dios es fiel en todas sus promesas.
 
 REGLAS ABSOLUTAS:
-- Solo espa\u00f1ol con ortograf\u00eda perfecta incluyendo acentos y tildes.
-- Cero emojis, cero s\u00edmbolos, cero markdown, cero comillas.
-- Cero listas con guiones o n\u00fameros.
-- Todo en prosa narrativa fluida y envolvente.
-- No inventes vers\u00edculos. Si no record\u00e1s exactamente, indicalo con naturalidad.
+- Solo español con ortografía perfecta incluyendo todos los acentos y tildes.
+- Cero emojis, cero símbolos, cero markdown, cero comillas, cero paréntesis.
+- Cero listas con guiones o números. Todo en prosa narrativa fluida.
+- Cada nombre propio debe estar acompañado de contexto que explique quién es o qué es.
+- Lenguaje sencillo, comprensible, expresivo y envolvente.
 
 SUGERENCIAS DE VIDEOS:
-- Cuando el usuario pida profundizar en un tema, libro o pasaje, suger\u00ed que mire pr\u00e9dicas de pastores reformados como Sugel Michel\u00e9n, Miguel N\u00fa\u00f1ez, Paul Washer, John MacArthur, R.C. Sproul, Armando Alduc\u00edn, Fabi\u00e1n Liendo o Alberto Lucas.
-- Integr\u00e1 la sugerencia naturalmente en tu respuesta, por ejemplo: Si quer\u00e9s profundizar en este pasaje, te recomiendo buscar las pr\u00e9dicas de Sugel Michel\u00e9n sobre Romanos, o las ense\u00f1anzas de John MacArthur en Grace to You en espa\u00f1ol.
-- Tambi\u00e9n pod\u00e9s mencionar que la app tiene un panel de Videos donde pueden buscar pr\u00e9dicas por tema.
+- Sugerí prédicas según las preferencias del usuario. Si no tiene preferencias definidas, ofrecé opciones de pastores como Sugel Michelén, Miguel Núñez, Paul Washer, John MacArthur, R.C. Sproul, Armando Alducín, Fabián Liendo o Alberto Lucas.
+- NUNCA inventes links a videos específicos de YouTube. Los links inventados llevan a páginas que no existen.
+- En su lugar, usá links de BÚSQUEDA de YouTube que siempre funcionan. Formato: https://www.youtube.com/results?search_query=TERMINOS+DE+BUSQUEDA
+- Ejemplo correcto: https://www.youtube.com/results?search_query=Sugel+Michelen+Romanos+8+predica
+- Ejemplo INCORRECTO: https://www.youtube.com/watch?v=abc123 (NUNCA hagas esto, el video probablemente no existe)
+- Incluí el nombre del pastor y el tema en los términos de búsqueda para resultados precisos.
+- También podés recomendar canales de YouTube usando el formato: https://www.youtube.com/@NombreDelCanal
+- Canales verificados que existen: @SugelMichelen, @PastorMiguelNunez, @HeartCryEspanol, @GracetoYouEspanol, @LigonierEspanol, @FabianLiendoOficial, @ArmandoAlducin, @CoalicionEvangelio, @SoldadosDeJesucristo, @PastorChuyOlivares
+- Mencioná que la app tiene un panel de Videos donde pueden buscar prédicas por tema.
 - No sugieras videos en cada respuesta, solo cuando sea relevante y natural hacerlo.
 
-CALENDARIO:
-- La app tiene un calendario integrado donde el usuario puede agendar eventos de iglesia, estudios b\u00edblicos, prédicas, reuniones y m\u00e1s.
-- Si el usuario menciona que tiene que ir a la iglesia, ver un video, reunirse con alguien o cualquier actividad, pod\u00e9s sugerirle que lo agende en el calendario de la app.
-- Pod\u00e9s mencionar que el calendario acepta ubicaciones con Google Maps, enlaces URL, fotos, audio, video y notas.
-- No sugieras el calendario en cada respuesta, solo cuando surja naturalmente.`;
+GESTIÓN DE CALENDARIO - COMANDOS:
+- Tenés acceso COMPLETO al calendario de la app. Podés crear, editar, buscar y eliminar eventos.
+- Cuando el usuario pida crear un evento, recordatorio o agendar algo, CREALO directamente usando el comando.
+- Cuando el usuario pida ver, buscar o listar eventos, MOSTRALOS.
+- Cuando pida eliminar o modificar un evento, HACELO.
+- Para EJECUTAR acciones de calendario, incluí este bloque EXACTO al final de tu respuesta (el usuario no lo verá):
+  <!--CMD:CALENDAR_CREATE:{"title":"...","date":"YYYY-MM-DD","time":"HH:MM","timeEnd":"HH:MM","type":"estudio|iglesia|predica|oracion|ayuno|retiro|voluntariado|recordatorio","description":"...","location":"...","url":"...","reminder":"10m|30m|1h|1d"}-->
+  <!--CMD:CALENDAR_DELETE:{"search":"texto a buscar"}-->
+  <!--CMD:CALENDAR_LIST:{"days":7}-->
+- Los tipos de evento válidos son: estudio, iglesia, predica, oracion, ayuno, retiro, voluntariado, recordatorio.
+- Siempre confirmale al usuario lo que hiciste con el calendario en tu texto.
+
+GESTIÓN DE NOTAS - COMANDOS:
+- Podés crear, buscar y eliminar notas bíblicas del usuario.
+- Para EJECUTAR acciones de notas, incluí este bloque EXACTO al final de tu respuesta:
+  <!--CMD:NOTE_ADD:{"book":"GEN","chapter":1,"verse":1,"bookName":"Génesis","text":"texto de la nota"}-->
+  <!--CMD:NOTE_DELETE:{"book":"GEN","chapter":1,"verse":1}-->
+  <!--CMD:NOTE_SEARCH:{"query":"texto a buscar"}-->
+- Los códigos de libros son: GEN, EXO, LEV, NUM, DEU, JOS, JUE, RUT, 1SA, 2SA, 1RE, 2RE, 1CR, 2CR, ESD, NEH, EST, JOB, SAL, PRO, ECL, CNT, ISA, JER, LAM, EZE, DAN, OSE, JOE, AMO, ABD, JON, MIQ, NAH, HAB, SOF, HAG, ZAC, MAL, MAT, MAR, LUC, JUA, HEC, ROM, 1CO, 2CO, GAL, EFE, FIL, COL, 1TS, 2TS, 1TI, 2TI, TIT, FLM, HEB, STG, 1PE, 2PE, 1JN, 2JN, 3JN, JUD, APO.
+
+PREFERENCIAS DEL USUARIO - COMANDOS:
+- Recordá las preferencias del usuario: pastores favoritos, temas de interés, estilo de estudio, etc.
+- Para GUARDAR una preferencia:
+  <!--CMD:PREF_SET:{"key":"nombre_de_preferencia","value":"valor"}-->
+- Claves de preferencia útiles: pastores_favoritos, pastores_excluidos, temas_interes, estilo_estudio, idioma_preferido, nivel_conocimiento.
+- Consultá las preferencias del usuario antes de sugerir pastores o contenido.
+- Si el usuario dice que le gusta o no le gusta un pastor, guardalo inmediatamente.
+
+LINKS Y RECURSOS:
+- Podés incluir links directamente en tu respuesta. Se convierten automáticamente en links clickeables.
+- REGLA FUNDAMENTAL: NUNCA inventes URLs de páginas o videos específicos. Solo usá URLs que SABÉS que existen.
+- URLs seguras que siempre funcionan:
+  * Links de búsqueda YouTube: https://www.youtube.com/results?search_query=...
+  * Canales de YouTube verificados: https://www.youtube.com/@NombreCanal
+  * BibleGateway: https://www.biblegateway.com/passage/?search=Juan+3:16&version=RVR1960
+- Podés usar formato markdown para links: [texto descriptivo](url)
+- Ejemplo: [Buscar prédicas de Sugel Michelén sobre Romanos](https://www.youtube.com/results?search_query=Sugel+Michelen+Romanos+predica)`;
     }
 
     // ==========================================
@@ -97,17 +163,146 @@ CALENDARIO:
         const app = window.bibliaApp;
         if (app && app.currentBook) {
             const bookName = app.currentBook.name || app.currentBook.id || app.currentBook;
-            context += `\n[El usuario esta leyendo: ${bookName} capitulo ${app.currentChapter}]`;
+            const bookId = app.currentBook.id || app.currentBook;
+            context += `\n[El usuario esta leyendo: ${bookName} capitulo ${app.currentChapter}, libro=${bookId}]`;
+            // Include notes for current chapter
+            const chapterNotes = Object.entries(app.notes || {})
+                .filter(([key]) => key.startsWith(`${bookId}_${app.currentChapter}_`))
+                .map(([_, n]) => `v${n.verse}: ${n.text}`);
+            if (chapterNotes.length > 0) {
+                context += `\n[Notas del usuario en este capitulo:\n${chapterNotes.join('\n')}]`;
+            }
+            context += `\n[Total notas del usuario: ${Object.keys(app.notes || {}).length}]`;
         }
         // Include upcoming calendar events
         const cal = window.bibliaCalendar;
         if (cal) {
-            const upcoming = cal.getUpcomingForBot(7);
+            const upcoming = cal.getUpcomingForBot(14);
             if (upcoming) {
-                context += `\n[Pr\u00f3ximos eventos en el calendario del usuario:\n${upcoming}]`;
+                context += `\n[Proximos eventos del calendario:\n${upcoming}]`;
             }
+            context += `\n[Total eventos en calendario: ${cal.events.length}]`;
+        }
+        // Include user preferences
+        const prefs = this.getUserPreferences();
+        if (Object.keys(prefs).length > 0) {
+            context += `\n[Preferencias del usuario: ${JSON.stringify(prefs)}]`;
+        }
+        // Current date and time (precise for calendar management)
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('es-AR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const timeStr = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+        const isoDate = now.toISOString().split('T')[0];
+        context += `\n[Fecha y hora actual: ${dateStr}, ${timeStr} (ISO: ${isoDate})]`;
+        // Tomorrow for relative references
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        context += `\n[Mañana: ${tomorrow.toISOString().split('T')[0]}]`;
+        // Weather
+        if (this.weather) {
+            context += `\n[Clima actual: ${this.weather.temp}°C, ${this.weather.desc}]`;
         }
         return context;
+    }
+
+    // User preferences storage
+    getUserPreferences() {
+        try {
+            return JSON.parse(localStorage.getItem('biblia_user_prefs') || '{}');
+        } catch { return {}; }
+    }
+
+    setUserPreference(key, value) {
+        const prefs = this.getUserPreferences();
+        prefs[key] = value;
+        localStorage.setItem('biblia_user_prefs', JSON.stringify(prefs));
+    }
+
+    deleteUserPreference(key) {
+        const prefs = this.getUserPreferences();
+        delete prefs[key];
+        localStorage.setItem('biblia_user_prefs', JSON.stringify(prefs));
+    }
+
+    // ==========================================
+    // CLOCK & WEATHER
+    // ==========================================
+    startClock() {
+        const update = () => {
+            const el = document.getElementById('botClock');
+            if (!el) return;
+            const now = new Date();
+            const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+            const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+            const day = days[now.getDay()];
+            const d = now.getDate();
+            const m = months[now.getMonth()];
+            const h = String(now.getHours()).padStart(2, '0');
+            const min = String(now.getMinutes()).padStart(2, '0');
+            el.textContent = `${day} ${d} ${m} \u00B7 ${h}:${min}`;
+        };
+        update();
+        setInterval(update, 30000);
+    }
+
+    fetchWeather() {
+        if (!navigator.geolocation) {
+            this.setWeatherText('');
+            return;
+        }
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                const { latitude, longitude } = pos.coords;
+                fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code&timezone=auto`)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (data.current) {
+                            const temp = Math.round(data.current.temperature_2m);
+                            const code = data.current.weather_code;
+                            const icon = this.weatherIcon(code);
+                            const desc = this.weatherDesc(code);
+                            this.weather = { temp, desc, icon, code };
+                            this.setWeatherText(`${icon} ${temp}\u00B0C ${desc}`);
+                        }
+                    })
+                    .catch(() => this.setWeatherText(''));
+            },
+            () => this.setWeatherText(''),
+            { timeout: 10000 }
+        );
+        // Refresh weather every 30 min
+        setInterval(() => this.fetchWeather(), 1800000);
+    }
+
+    setWeatherText(text) {
+        const el = document.getElementById('botWeather');
+        if (el) el.textContent = text;
+    }
+
+    weatherIcon(code) {
+        if (code === 0) return '\u2600\uFE0F';
+        if (code <= 3) return '\u26C5';
+        if (code <= 48) return '\u2601\uFE0F';
+        if (code <= 57) return '\uD83C\uDF27\uFE0F';
+        if (code <= 67) return '\uD83C\uDF27\uFE0F';
+        if (code <= 77) return '\u2744\uFE0F';
+        if (code <= 82) return '\uD83C\uDF27\uFE0F';
+        if (code <= 86) return '\uD83C\uDF28\uFE0F';
+        if (code <= 99) return '\u26A1';
+        return '\uD83C\uDF24\uFE0F';
+    }
+
+    weatherDesc(code) {
+        if (code === 0) return 'Despejado';
+        if (code <= 3) return 'Parcialmente nublado';
+        if (code <= 48) return 'Nublado';
+        if (code <= 57) return 'Llovizna';
+        if (code <= 67) return 'Lluvia';
+        if (code <= 77) return 'Nieve';
+        if (code <= 82) return 'Lluvia fuerte';
+        if (code <= 86) return 'Nieve fuerte';
+        if (code <= 99) return 'Tormenta';
+        return '';
     }
 
     // ==========================================
@@ -142,6 +337,10 @@ CALENDARIO:
                 <div class="bot-nowplaying-dots"><span></span><span></span><span></span></div>
                 <button class="bot-nowplaying-btn" id="npPause" title="Pausar">\u23F8</button>
                 <button class="bot-nowplaying-btn bot-np-stop" id="npStop" title="Detener">\u25A0</button>
+            </div>
+            <div class="bot-datetime-bar" id="botDateTimeBar">
+                <span class="bot-datetime-clock" id="botClock"></span>
+                <span class="bot-datetime-weather" id="botWeather"></span>
             </div>
             <div class="bot-actions">
                 <button class="bot-action-btn" data-action="versiculo">&#128220; Versiculo del dia</button>
@@ -370,10 +569,58 @@ CALENDARIO:
                 if (!app || !app.selectedVerse) return;
                 const { bookName, chapter, verse, book } = app.selectedVerse;
                 const verseText = app.getVerseText(book, chapter, verse);
-                // Close verse menu
                 document.getElementById('verseActions').classList.remove('active');
-                // Open bot and send
                 this.explainVerse(bookName, chapter, verse, verseText);
+            });
+        }
+
+        // "Explicación breve" button
+        const briefBtn = document.getElementById('actionExplainBrief');
+        if (briefBtn) {
+            briefBtn.addEventListener('click', () => {
+                const app = window.bibliaApp;
+                if (!app || !app.selectedVerse) return;
+                const { bookName, chapter, verse, book } = app.selectedVerse;
+                const verseText = app.getVerseText(book, chapter, verse);
+                document.getElementById('verseActions').classList.remove('active');
+                this.explainBrief(bookName, chapter, verse, verseText);
+            });
+        }
+
+        // "Concordancias" button
+        const concBtn = document.getElementById('actionConcordancias');
+        if (concBtn) {
+            concBtn.addEventListener('click', () => {
+                const app = window.bibliaApp;
+                if (!app || !app.selectedVerse) return;
+                const { bookName, chapter, verse, book } = app.selectedVerse;
+                const verseText = app.getVerseText(book, chapter, verse);
+                document.getElementById('verseActions').classList.remove('active');
+                this.analyzeConcordancias(bookName, chapter, verse, verseText);
+            });
+        }
+
+        // "Leer capítulo" button
+        const readChBtn = document.getElementById('actionReadChapter');
+        if (readChBtn) {
+            readChBtn.addEventListener('click', () => {
+                const app = window.bibliaApp;
+                if (!app || !app.selectedVerse) return;
+                const { bookName, chapter, book } = app.selectedVerse;
+                document.getElementById('verseActions').classList.remove('active');
+                this.readChapter(book, bookName, chapter);
+            });
+        }
+
+        // "Leer libro" button
+        const readBookBtn = document.getElementById('actionReadBook');
+        if (readBookBtn) {
+            readBookBtn.addEventListener('click', () => {
+                const app = window.bibliaApp;
+                if (!app || !app.selectedVerse) return;
+                const { bookName, chapter, book } = app.selectedVerse;
+                document.getElementById('verseActions').classList.remove('active');
+                this.readBook(book, bookName);
             });
         }
     }
@@ -386,6 +633,83 @@ CALENDARIO:
         const prompt = `Explicame este versiculo en detalle:\n\n**${bookName} ${chapter}:${verse}** "${verseText}"\n\nIncluye: contexto historico, significado en el original, aplicacion practica y versiculos relacionados.`;
         this.inputEl.value = prompt;
         setTimeout(() => this.send(), 400);
+    }
+
+    // ==========================================
+    // BRIEF EXPLANATION (short, clear, with example)
+    // ==========================================
+    explainBrief(bookName, chapter, verse, verseText) {
+        if (!this.isOpen) this.toggle();
+        const prompt = `Dame una explicacion breve y clara de este versiculo. Que se entienda de que habla, con un ejemplo corto y practico. Maximo 4 o 5 oraciones.\n\n**${bookName} ${chapter}:${verse}** "${verseText}"`;
+        this.inputEl.value = prompt;
+        setTimeout(() => this.send(), 400);
+    }
+
+    // ==========================================
+    // CONCORDANCIAS (brief cross-reference analysis)
+    // ==========================================
+    analyzeConcordancias(bookName, chapter, verse, verseText) {
+        if (!this.isOpen) this.toggle();
+        const prompt = `Analiza las concordancias mas importantes de este versiculo. Menciona los versiculos relacionados clave y en una oracion cada uno explica la conexion. Se lo mas resumido posible, solo las concordancias mas relevantes.\n\n**${bookName} ${chapter}:${verse}** "${verseText}"`;
+        this.inputEl.value = prompt;
+        setTimeout(() => this.send(), 400);
+    }
+
+    // ==========================================
+    // READ CHAPTER (textual reading via bot TTS)
+    // ==========================================
+    readChapter(bookId, bookName, chapter) {
+        // Try reading from DOM first (works for any version)
+        const container = document.getElementById('verseContainer');
+        let text = `${bookName}, capítulo ${chapter}. `;
+        if (container) {
+            const verses = container.querySelectorAll('.verse');
+            if (verses.length > 0) {
+                verses.forEach(el => {
+                    const clone = el.cloneNode(true);
+                    const sup = clone.querySelector('.verse-num');
+                    if (sup) sup.remove();
+                    const ref = clone.querySelector('.cross-ref');
+                    if (ref) ref.remove();
+                    text += clone.textContent.trim() + ' ';
+                });
+                if (!this.isOpen) this.toggle();
+                this.addMessage('system', `Leyendo ${bookName} ${chapter}...`);
+                this.speak(text.trim());
+                return;
+            }
+        }
+        // Fallback: local BIBLE_TEXT
+        if (typeof BIBLE_TEXT === 'undefined') return;
+        const key = `${bookId}_${chapter}`;
+        const chapterData = BIBLE_TEXT[key];
+        if (!chapterData || !Array.isArray(chapterData)) return;
+        for (const v of chapterData) { text += `${v.text} `; }
+        if (!this.isOpen) this.toggle();
+        this.addMessage('system', `Leyendo ${bookName} ${chapter}...`);
+        this.speak(text.trim());
+    }
+
+    // ==========================================
+    // READ BOOK (direct TTS, chapter by chapter)
+    // ==========================================
+    readBook(bookId, bookName) {
+        if (typeof BIBLE_TEXT === 'undefined') return;
+        const book = BIBLE_BOOKS.find(b => b.id === bookId);
+        if (!book) return;
+        let text = `${bookName}. `;
+        for (let ch = 1; ch <= book.chapters; ch++) {
+            const key = `${bookId}_${ch}`;
+            const chapterData = BIBLE_TEXT[key];
+            if (!chapterData || !Array.isArray(chapterData)) continue;
+            text += `Capítulo ${ch}. `;
+            for (const v of chapterData) {
+                text += `${v.text} `;
+            }
+        }
+        if (!this.isOpen) this.toggle();
+        this.addMessage('system', `Leyendo ${bookName} completo (${book.chapters} capítulos)...`);
+        this.speak(text.trim());
     }
 
     // ==========================================
@@ -693,15 +1017,12 @@ CALENDARIO:
                 }
             }
 
-            // Auto-pick priority: Argentine > Latin American > Spain
+            // Auto-pick priority: es-ES always first (Google > Microsoft/Natural > any es-ES) > fallback
             this.ttsVoice =
-                esVoices.find(v => v.lang === 'es-AR') ||
-                esVoices.find(v => v.lang === 'es-MX' && /google|microsoft|natural/i.test(v.name)) ||
-                esVoices.find(v => v.lang === 'es-MX') ||
-                esVoices.find(v => v.lang === 'es-US') ||
-                esVoices.find(v => v.lang.startsWith('es-') && v.lang !== 'es-ES') ||
-                esVoices.find(v => v.lang === 'es-ES' && /google|microsoft|natural/i.test(v.name)) ||
+                esVoices.find(v => v.lang === 'es-ES' && /google/i.test(v.name)) ||
+                esVoices.find(v => v.lang === 'es-ES' && /microsoft|natural/i.test(v.name)) ||
                 esVoices.find(v => v.lang === 'es-ES') ||
+                esVoices.find(v => v.lang.startsWith('es-')) ||
                 esVoices[0] || voices[0];
 
             if (this.ttsVoice && this.voiceSelectEl) {
@@ -834,8 +1155,45 @@ CALENDARIO:
         this.speakChunks(chunks);
     }
 
+    // Convert number to Spanish words (1-999)
+    numToSpanish(n) {
+        if (n === 0) return 'cero';
+        const units = ['', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve',
+            'diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis', 'diecisiete', 'dieciocho', 'diecinueve',
+            'veinte'];
+        const tens = ['', '', 'veinti', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
+        const hundreds = ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinientos', 'seiscientos', 'setecientos', 'ochocientos', 'novecientos'];
+        n = parseInt(n, 10);
+        if (n <= 20) return units[n];
+        if (n < 30) return 'veinti' + units[n - 20];
+        if (n < 100) {
+            const t = Math.floor(n / 10);
+            const u = n % 10;
+            return u === 0 ? tens[t] : tens[t] + ' y ' + units[u];
+        }
+        if (n === 100) return 'cien';
+        if (n < 1000) {
+            const h = Math.floor(n / 100);
+            const rest = n % 100;
+            return hundreds[h] + (rest > 0 ? ' ' + this.numToSpanish(rest) : '');
+        }
+        return String(n);
+    }
+
     cleanForSpeech(text) {
         return text
+            // ===== BIBLE VERSE REFERENCES (must run BEFORE colon removal) =====
+            // Book chapter:verse-verse (e.g. "Isaías 1:16-17")
+            .replace(/(\b[A-ZÁÉÍÓÚa-záéíóú][a-záéíóúñ]+)\s+(\d{1,3}):(\d{1,3})\s*[-–]\s*(\d{1,3})/g,
+                (_, book, ch, v1, v2) => `${book} capítulo ${this.numToSpanish(ch)}, del versículo ${this.numToSpanish(v1)} al ${this.numToSpanish(v2)}`)
+            // Book chapter:verse (e.g. "Juan 3:16")
+            .replace(/(\b[A-ZÁÉÍÓÚa-záéíóú][a-záéíóúñ]+)\s+(\d{1,3}):(\d{1,3})/g,
+                (_, book, ch, v) => `${book} capítulo ${this.numToSpanish(ch)}, versículo ${this.numToSpanish(v)}`)
+            // Standalone chapter:verse not preceded by time words (e.g. "3:16" alone)
+            .replace(/\b(\d{1,3}):(\d{1,3})\s*[-–]\s*(\d{1,3})\b/g,
+                (_, ch, v1, v2) => `${this.numToSpanish(ch)}, del ${this.numToSpanish(v1)} al ${this.numToSpanish(v2)}`)
+            .replace(/\b(\d{1,3}):(\d{1,3})\b/g,
+                (_, ch, v) => `${this.numToSpanish(ch)}, ${this.numToSpanish(v)}`)
             // Remove code blocks
             .replace(/```[\s\S]*?```/g, '')
             .replace(/`[^`]+`/g, '')
@@ -843,6 +1201,7 @@ CALENDARIO:
             .replace(/\*\*\*(.*?)\*\*\*/g, '$1')
             .replace(/\*\*(.*?)\*\*/g, '$1')
             .replace(/\*(.*?)\*/g, '$1')
+            .replace(/\*/g, '')
             .replace(/^#{1,6}\s+/gm, '')
             .replace(/^>\s+/gm, '')
             .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
@@ -943,7 +1302,7 @@ CALENDARIO:
         this.highlightKaraokeChunk(index, chunks.length);
 
         const utterance = new SpeechSynthesisUtterance(chunks[index]);
-        utterance.lang = this.ttsVoice ? this.ttsVoice.lang : 'es-AR';
+        utterance.lang = this.ttsVoice ? this.ttsVoice.lang : 'es-ES';
         utterance.rate = this.ttsRate;
         utterance.pitch = 1.02;
         this.currentUtterance = utterance;
@@ -1061,10 +1420,16 @@ CALENDARIO:
             .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
             // Inline code
             .replace(/`([^`]+)`/g, '<code>$1</code>')
+            // Markdown links [text](url)
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="bot-link">$1</a>')
             // Bold
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             // Italic
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            // Remove any remaining stray asterisks
+            .replace(/\*/g, '')
+            // Raw URLs (not already inside an href)
+            .replace(/(?<!href="|">)(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener" class="bot-link">$1</a>')
             // Blockquote
             .replace(/^>\s(.+)$/gm, '<blockquote>$1</blockquote>')
             // Headers
@@ -1072,7 +1437,7 @@ CALENDARIO:
             .replace(/^## (.+)$/gm, '<strong style="font-size:16px">$1</strong>')
             .replace(/^# (.+)$/gm, '<strong style="font-size:17px">$1</strong>')
             // Unordered list
-            .replace(/^[-*]\s(.+)$/gm, '\u2022 $1')
+            .replace(/^[-]\s(.+)$/gm, '\u2022 $1')
             // Ordered list
             .replace(/^\d+\.\s(.+)$/gm, (_, p1) => '\u2022 ' + p1)
             // Line breaks
@@ -1149,28 +1514,52 @@ CALENDARIO:
             messages: [
                 { role: 'system', content: this.systemPrompt },
                 ...this.messages.slice(-20)
-            ]
+            ],
+            options: {
+                num_predict: 8192,
+                temperature: 0.7
+            }
         };
 
         let fullResponse = '';
         let responseDiv = null;
 
         try {
-            const res = await fetch(this.OLLAMA_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${ollamaKey}`
-                },
-                body: JSON.stringify(body)
-            });
+            let res = null;
+            let usedModel = body.model;
+
+            // Try each model, fallback on 404
+            for (const modelName of this.OLLAMA_MODELS) {
+                body.model = modelName;
+                usedModel = modelName;
+                res = await fetch(this.OLLAMA_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${ollamaKey}`
+                    },
+                    body: JSON.stringify(body)
+                });
+                if (res.status !== 404 && res.status !== 405) break;
+                console.log(`Modelo ${modelName} no disponible (${res.status}), probando siguiente...`);
+            }
+
+            // Update preferred model if fallback worked
+            if (usedModel !== this.OLLAMA_MODEL && res.ok) {
+                this.OLLAMA_MODEL = usedModel;
+                console.log(`Usando modelo: ${usedModel}`);
+            }
 
             if (!res.ok) {
                 this.hideTyping();
                 if (res.status === 401 || res.status === 403) {
                     this.addMessage('system', '❌ Tu API key de Ollama no es válida. Actualizala desde tu perfil (arriba a la derecha).');
+                } else if (res.status === 404) {
+                    this.addMessage('system', '❌ Ningún modelo de IA disponible en este momento. Intentá más tarde.');
                 } else if (res.status === 429) {
                     this.addMessage('system', '⏱️ Alcanzaste tu límite de uso gratuito de Ollama. Se renueva en breve. Podés ver tu estado en ollama.com/settings');
+                } else if (res.status === 405) {
+                    this.addMessage('system', '❌ Ningún modelo de IA en la nube está disponible en este momento. Verificá tu API key en ollama.com o intentá más tarde.');
                 } else if (res.status === 503) {
                     this.addMessage('system', '🔄 El servicio de Ollama está temporalmente ocupado. Intentá en unos segundos.');
                 } else {
@@ -1186,13 +1575,15 @@ CALENDARIO:
 
             const reader = res.body.getReader();
             const decoder = new TextDecoder();
+            let buffer = '';
 
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
 
-                const chunk = decoder.decode(value, { stream: true });
-                const lines = chunk.split('\n');
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split('\n');
+                buffer = lines.pop() || '';
 
                 for (const line of lines) {
                     const trimmed = line.trim();
@@ -1214,20 +1605,46 @@ CALENDARIO:
                             this.scrollToBottom();
                         }
                     } catch (e) {
-                        // Skip unparseable chunks
+                        // Line wasn't complete JSON, put it back in buffer
+                        buffer = trimmed + '\n' + buffer;
                     }
                 }
             }
 
-            // Rebuild TTS bar with final text after streaming completes
+            // Process any remaining buffer
+            if (buffer.trim()) {
+                try {
+                    const parsed = JSON.parse(buffer.trim());
+                    if (!parsed.done && parsed.message?.content) {
+                        fullResponse += parsed.message.content;
+                        if (responseDiv) {
+                            const ttsBar = responseDiv.querySelector('.bot-tts-bar');
+                            responseDiv.innerHTML = this.renderMarkdown(fullResponse);
+                            if (ttsBar) responseDiv.appendChild(ttsBar);
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            // Process bot commands and clean response
+            const cleanedResponse = this.processCommands(fullResponse);
+
+            // Re-render cleaned response (without command blocks)
+            if (responseDiv && cleanedResponse !== fullResponse) {
+                const ttsBar = responseDiv.querySelector('.bot-tts-bar');
+                responseDiv.innerHTML = this.renderMarkdown(cleanedResponse);
+                if (ttsBar) responseDiv.appendChild(ttsBar);
+            }
+
+            // Rebuild TTS bar with cleaned text after streaming completes
             if (responseDiv) {
                 const oldBar = responseDiv.querySelector('.bot-tts-bar');
                 if (oldBar) oldBar.remove();
-                this.appendTtsBar(responseDiv, fullResponse);
+                this.appendTtsBar(responseDiv, cleanedResponse);
             }
 
-            if (fullResponse) {
-                this.messages.push({ role: 'assistant', content: fullResponse });
+            if (cleanedResponse) {
+                this.messages.push({ role: 'assistant', content: cleanedResponse });
             }
 
         } catch (err) {
@@ -1238,6 +1655,97 @@ CALENDARIO:
 
         this.isStreaming = false;
         this.sendBtn.disabled = false;
+    }
+
+    // ==========================================
+    // COMMAND PROCESSOR
+    // ==========================================
+    processCommands(text) {
+        let cleaned = text;
+        const cmdRegex = /<!--CMD:(\w+):(\{[\s\S]*?\})-->/g;
+        let match;
+
+        while ((match = cmdRegex.exec(text)) !== null) {
+            const [fullMatch, command, jsonStr] = match;
+            cleaned = cleaned.replace(fullMatch, '');
+
+            try {
+                const data = JSON.parse(jsonStr);
+                this.executeCommand(command, data);
+            } catch (e) {
+                console.error('Bot command parse error:', command, e);
+            }
+        }
+
+        return cleaned.trim();
+    }
+
+    executeCommand(command, data) {
+        console.log('Bot command:', command, data);
+
+        switch (command) {
+            case 'CALENDAR_CREATE': {
+                const cal = window.bibliaCalendar;
+                if (!cal) break;
+                cal.addEventFromBot({
+                    title: data.title,
+                    date: data.date,
+                    time: data.time || '',
+                    timeEnd: data.timeEnd || '',
+                    type: data.type || 'recordatorio',
+                    description: data.description || '',
+                    location: data.location || '',
+                    url: data.url || '',
+                    notes: data.notes || '',
+                    reminder: data.reminder || ''
+                });
+                break;
+            }
+            case 'CALENDAR_DELETE': {
+                const cal = window.bibliaCalendar;
+                if (!cal || !data.search) break;
+                const results = cal.searchEvents(data.search);
+                if (results.length > 0) {
+                    cal.deleteEventFromBot(results[0].id);
+                }
+                break;
+            }
+            case 'CALENDAR_LIST': {
+                // The bot already has calendar context via getBibleContext
+                break;
+            }
+            case 'NOTE_ADD': {
+                const app = window.bibliaApp;
+                if (!app) break;
+                app.addNoteFromBot(data.book, data.chapter, data.verse, data.bookName, data.text);
+                break;
+            }
+            case 'NOTE_DELETE': {
+                const app = window.bibliaApp;
+                if (!app) break;
+                app.deleteNoteFromBot(data.book, data.chapter, data.verse);
+                break;
+            }
+            case 'NOTE_SEARCH': {
+                // Results are included in context for the bot
+                break;
+            }
+            case 'PREF_SET': {
+                if (data.key && data.value !== undefined) {
+                    this.setUserPreference(data.key, data.value);
+                    console.log('Preferencia guardada:', data.key, '=', data.value);
+                }
+                break;
+            }
+            case 'PREF_DELETE': {
+                if (data.key) {
+                    this.deleteUserPreference(data.key);
+                }
+                break;
+            }
+            default:
+                console.warn('Unknown bot command:', command);
+        }
     }
 }
 

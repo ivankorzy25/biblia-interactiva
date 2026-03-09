@@ -6,14 +6,40 @@
 class BibliaAmbient {
     constructor() {
         this.audio = new Audio();
-        this.audio.loop = true;
+        this.audio.loop = false;
         this.audio.volume = parseFloat(localStorage.getItem('biblia_ambient_vol') || '0.25');
         this.isPlaying = false;
         this.currentMood = null;
         this.currentTrackIdx = 0;
+        this.shuffleAll = localStorage.getItem('biblia_ambient_shuffle') !== 'false';
         this.tracks = this.buildPlaylist();
+        this._shuffleQueue = [];   // cola barajada de todos los tracks
+        this._shufflePos   = 0;
+        this._buildShuffleQueue();
         this.render();
         this.bindEvents();
+    }
+
+    // Construye una cola barajada de todos los tracks de todos los moods
+    _buildShuffleQueue() {
+        const all = [];
+        for (const [mood, cat] of Object.entries(this.tracks)) {
+            cat.tracks.forEach((t, i) => all.push({ mood, idx: i, ...t }));
+        }
+        // Fisher-Yates shuffle
+        for (let i = all.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [all[i], all[j]] = [all[j], all[i]];
+        }
+        this._shuffleQueue = all;
+        this._shufflePos   = 0;
+    }
+
+    _randomIdxExcluding(len, exclude) {
+        if (len <= 1) return 0;
+        let r;
+        do { r = Math.floor(Math.random() * len); } while (r === exclude);
+        return r;
     }
 
     buildPlaylist() {
@@ -87,11 +113,21 @@ class BibliaAmbient {
             <div class="ambient-panel" id="ambientPanel">
                 <div class="ambient-header">M\u00fasica Ambiente</div>
                 <div class="ambient-moods" id="ambientMoods"></div>
-                <div class="ambient-now" id="ambientNow"></div>
+                <div class="ambient-now-section" id="ambientNowSection">
+                    <div class="ambient-now-text" id="ambientNow"></div>
+                    <div class="ambient-controls">
+                        <button class="ambient-ctrl-btn" id="ambientPlayPause" title="Pausar">&#9208;</button>
+                        <button class="ambient-ctrl-btn" id="ambientNext" title="Siguiente">&#9197;</button>
+                        <button class="ambient-ctrl-btn" id="ambientShuffle" title="Aleatorio entre todos los temas">&#128256;</button>
+                        <button class="ambient-ctrl-btn" id="ambientStop" title="Detener">&#9209;</button>
+                        <button class="ambient-ctrl-btn ambient-mute-btn" id="ambientMute" title="Silenciar">&#128266;</button>
+                    </div>
+                </div>
                 <div class="ambient-vol-row">
                     <span class="ambient-vol-icon">&#128264;</span>
                     <input type="range" class="ambient-vol" id="ambientVol" min="0" max="0.5" step="0.01" value="${this.audio.volume}">
                     <span class="ambient-vol-icon">&#128266;</span>
+                    <span class="ambient-vol-pct" id="ambientVolPct">${Math.round(this.audio.volume / 0.5 * 100)}%</span>
                 </div>
             </div>
         `;
@@ -101,7 +137,15 @@ class BibliaAmbient {
         this.panel = this.container.querySelector('#ambientPanel');
         this.moodsEl = this.container.querySelector('#ambientMoods');
         this.nowEl = this.container.querySelector('#ambientNow');
+        this.nowSection = this.container.querySelector('#ambientNowSection');
         this.volSlider = this.container.querySelector('#ambientVol');
+        this.volPctEl = this.container.querySelector('#ambientVolPct');
+        this.playPauseBtn  = this.container.querySelector('#ambientPlayPause');
+        this.nextBtn       = this.container.querySelector('#ambientNext');
+        this.shuffleBtn    = this.container.querySelector('#ambientShuffle');
+        this.stopBtnEl     = this.container.querySelector('#ambientStop');
+        this.muteBtn       = this.container.querySelector('#ambientMute');
+        this._updateShuffleBtn();
 
         // Render mood buttons
         this.moodsEl.innerHTML = Object.entries(this.tracks).map(([key, cat]) =>
@@ -110,11 +154,13 @@ class BibliaAmbient {
     }
 
     bindEvents() {
-        let panelOpen = false;
+        this._panelOpen = false;
+        this._muted = false;
+        this._savedMuteVol = 0;
+
         this.toggleBtn.addEventListener('click', () => {
-            panelOpen = !panelOpen;
-            this.panel.classList.toggle('open', panelOpen);
-            this.toggleBtn.classList.toggle('active', this.isPlaying);
+            this._panelOpen = !this._panelOpen;
+            this.panel.classList.toggle('open', this._panelOpen);
         });
 
         this.moodsEl.addEventListener('click', (e) => {
@@ -128,41 +174,132 @@ class BibliaAmbient {
             }
         });
 
+        // Play/Pause
+        this.playPauseBtn.addEventListener('click', () => {
+            if (!this.isPlaying) return;
+            if (this.audio.paused) {
+                this.audio.play().catch(() => {});
+                this.playPauseBtn.innerHTML = '\u23CF';
+                this.playPauseBtn.title = 'Pausar';
+                this.toggleBtn.classList.add('active');
+            } else {
+                this.audio.pause();
+                this.playPauseBtn.innerHTML = '\u25B6';
+                this.playPauseBtn.title = 'Reproducir';
+                this.toggleBtn.classList.remove('active');
+            }
+        });
+
+        // Next track
+        this.nextBtn.addEventListener('click', () => {
+            if (this.isPlaying || this.currentMood) this.nextTrack();
+        });
+
+        // Shuffle toggle
+        this.shuffleBtn.addEventListener('click', () => {
+            this.shuffleAll = !this.shuffleAll;
+            localStorage.setItem('biblia_ambient_shuffle', this.shuffleAll);
+            if (this.shuffleAll) this._buildShuffleQueue();
+            this._updateShuffleBtn();
+        });
+
+        // Stop
+        this.stopBtnEl.addEventListener('click', () => {
+            this.stop();
+        });
+
+        // Mute/unmute
+        this.muteBtn.addEventListener('click', () => {
+            if (this._muted) {
+                this.audio.volume = this._savedMuteVol;
+                this.volSlider.value = this._savedMuteVol;
+                this.muteBtn.innerHTML = '\u{1F50A}';
+                this.muteBtn.title = 'Silenciar';
+                this._muted = false;
+            } else {
+                this._savedMuteVol = this.audio.volume;
+                this.audio.volume = 0;
+                this.volSlider.value = 0;
+                this.muteBtn.innerHTML = '\u{1F507}';
+                this.muteBtn.title = 'Activar sonido';
+                this._muted = true;
+            }
+            this.updateVolPct();
+        });
+
+        // Volume slider
         this.volSlider.addEventListener('input', () => {
             this.audio.volume = parseFloat(this.volSlider.value);
             localStorage.setItem('biblia_ambient_vol', this.audio.volume.toString());
+            this._muted = this.audio.volume === 0;
+            this.muteBtn.innerHTML = this._muted ? '\u{1F507}' : '\u{1F50A}';
+            this.updateVolPct();
         });
 
         this.audio.addEventListener('error', () => {
-            // Try next track on error
+            this.nextTrack();
+        });
+
+        // Auto-advance to next track when current ends
+        this.audio.addEventListener('ended', () => {
             this.nextTrack();
         });
     }
 
-    playMood(mood, trackIdx = 0) {
+    updateVolPct() {
+        if (this.volPctEl) {
+            this.volPctEl.textContent = Math.round(this.audio.volume / 0.5 * 100) + '%';
+        }
+    }
+
+    playMood(mood, trackIdx) {
         this.currentMood = mood;
-        this.currentTrackIdx = trackIdx;
         const cat = this.tracks[mood];
         if (!cat || !cat.tracks.length) return;
 
-        const track = cat.tracks[trackIdx % cat.tracks.length];
+        // If no explicit index given, start at random position
+        if (trackIdx === undefined) {
+            trackIdx = Math.floor(Math.random() * cat.tracks.length);
+        }
+        this.currentTrackIdx = trackIdx % cat.tracks.length;
+
+        const track = cat.tracks[this.currentTrackIdx];
         this.audio.src = track.url;
         this.audio.play().catch(() => {});
         this.isPlaying = true;
         this.toggleBtn.classList.add('active');
         this.nowEl.textContent = track.name;
+        this.nowSection.classList.add('visible');
+        this.playPauseBtn.innerHTML = '\u23CF';
+        this.playPauseBtn.title = 'Pausar';
 
-        // Highlight active mood button
         this.moodsEl.querySelectorAll('.ambient-mood-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.mood === mood);
         });
     }
 
     nextTrack() {
-        if (!this.currentMood) return;
-        const cat = this.tracks[this.currentMood];
-        this.currentTrackIdx = (this.currentTrackIdx + 1) % cat.tracks.length;
-        this.playMood(this.currentMood, this.currentTrackIdx);
+        if (this.shuffleAll) {
+            // Pick next from global shuffled queue
+            this._shufflePos = (this._shufflePos + 1) % this._shuffleQueue.length;
+            if (this._shufflePos === 0) this._buildShuffleQueue(); // re-shuffle when queue loops
+            const t = this._shuffleQueue[this._shufflePos];
+            this.playMood(t.mood, t.idx);
+        } else {
+            // Random within same mood (skip current)
+            if (!this.currentMood) return;
+            const cat = this.tracks[this.currentMood];
+            this.currentTrackIdx = this._randomIdxExcluding(cat.tracks.length, this.currentTrackIdx);
+            this.playMood(this.currentMood, this.currentTrackIdx);
+        }
+    }
+
+    _updateShuffleBtn() {
+        if (!this.shuffleBtn) return;
+        this.shuffleBtn.style.opacity = this.shuffleAll ? '1' : '0.4';
+        this.shuffleBtn.title = this.shuffleAll
+            ? 'Aleatorio global (activo) — click para desactivar'
+            : 'Aleatorio dentro del mood — click para modo global';
     }
 
     stop() {
@@ -172,6 +309,7 @@ class BibliaAmbient {
         this.currentMood = null;
         this.toggleBtn.classList.remove('active');
         this.nowEl.textContent = '';
+        this.nowSection.classList.remove('visible');
         this.moodsEl.querySelectorAll('.ambient-mood-btn').forEach(btn => btn.classList.remove('active'));
     }
 

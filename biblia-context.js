@@ -6,8 +6,8 @@
 
 class BibliaContext {
     constructor() {
-        this.API_URL = '/v1/chat/completions';
-        this.TOKEN = 'a981079aa9900cdacdd68a89da4370db0faf6e729584fdd520cac2e643f24701';
+        this.API_URL = '/api/chat';
+        this.MODELS = ['qwen3.5:122b-cloud', 'qwen3.5:27b-cloud', 'qwen3-next:80b-cloud'];
         this.timelineRange = { min: -4000, max: 100 };
         this.currentBookData = null;
         this.currentBookId = null;
@@ -129,14 +129,14 @@ class BibliaContext {
                         <div class="ctx-section-content" id="ctxMapContent"></div>
                     </div>
                 </div>
-                <!-- Images Section -->
-                <div class="ctx-sidebar-section" id="ctxSectionImages">
-                    <button class="ctx-section-toggle" aria-expanded="false" data-section="images">
-                        <span><span class="ctx-section-icon">\uD83D\uDDBC</span> Im\u00e1genes Relacionadas</span>
+                <!-- Infographics Section -->
+                <div class="ctx-sidebar-section" id="ctxSectionInfog">
+                    <button class="ctx-section-toggle" aria-expanded="false" data-section="infog">
+                        <span><span class="ctx-section-icon">\uD83D\uDCCA</span> Infograf\u00edas</span>
                         <span class="ctx-section-arrow">\u25BC</span>
                     </button>
-                    <div class="ctx-section-body" id="ctxImagesBody">
-                        <div class="ctx-section-content" id="ctxImagesContent"></div>
+                    <div class="ctx-section-body" id="ctxInfogBody">
+                        <div class="ctx-section-content" id="ctxInfogContent"></div>
                     </div>
                 </div>
             </div>
@@ -240,8 +240,10 @@ class BibliaContext {
             toggle.addEventListener('click', () => {
                 const expanded = toggle.getAttribute('aria-expanded') === 'true';
                 toggle.setAttribute('aria-expanded', !expanded);
-                const body = toggle.nextElementSibling;
-                body.classList.toggle('open', !expanded);
+                // Find the section body — it's a sibling of the toggle or of its parent row
+                const section = toggle.closest('.ctx-sidebar-section');
+                const body = section?.querySelector('.ctx-section-body');
+                if (body) body.classList.toggle('open', !expanded);
             });
         });
 
@@ -254,7 +256,7 @@ class BibliaContext {
             this.openVerseContext('mapa');
             document.getElementById('verseActions')?.classList.remove('active');
         });
-        document.getElementById('actionImagenes')?.addEventListener('click', () => {
+        document.getElementById('actionInfografia')?.addEventListener('click', () => {
             this.openVerseContext('imagenes');
             document.getElementById('verseActions')?.classList.remove('active');
         });
@@ -533,8 +535,11 @@ class BibliaContext {
     // INLINE CHAPTER ILLUSTRATIONS
     // ==========================================
     injectChapterIllustrations(bookId, chapter) {
+        // Illustrations disabled - clean reading experience
         const container = document.getElementById('verseContainer');
         if (!container) return;
+        container.querySelectorAll('.ctx-inline-illustration').forEach(el => el.remove());
+        return;
 
         // Remove previous illustrations
         container.querySelectorAll('.ctx-inline-illustration').forEach(el => el.remove());
@@ -744,15 +749,18 @@ class BibliaContext {
         const aiToggle = this.sidebar.querySelector('[data-section="ai"]');
         if (aiToggle) {
             aiToggle.setAttribute('aria-expanded', 'true');
-            aiToggle.nextElementSibling?.classList.add('open');
+            const aiSection = aiToggle.closest('.ctx-sidebar-section');
+            aiSection?.querySelector('.ctx-section-body')?.classList.add('open');
         }
 
         // Check cache
         if (this.cache[cacheKey]) {
             aiContent.innerHTML = this.cache[cacheKey];
+            this.showNarrateBtn(true);
             return;
         }
 
+        this.showNarrateBtn(false);
         // Show thinking indicator
         aiContent.innerHTML = `<div class="ctx-loading">
             <div class="ctx-thinking-brain">
@@ -770,21 +778,20 @@ class BibliaContext {
         this.isLoading = true;
         this.abortController = new AbortController();
 
-        try {
-            const res = await fetch(this.API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.TOKEN}`
-                },
-                signal: this.abortController.signal,
-                body: JSON.stringify({
-                    model: 'openclaw',
-                    stream: true,
-                    messages: [
-                        {
-                            role: 'system',
-                            content: `Eres un historiador b\u00edblico experto. Respondes en espa\u00f1ol con informaci\u00f3n precisa y acad\u00e9mica.
+        const ollamaKey = localStorage.getItem('biblia_ollama_key');
+        if (!ollamaKey) {
+            aiContent.innerHTML = `<div class="ctx-error">\u26A0 Configur\u00e1 tu API key de Ollama para usar el Contexto IA.</div>`;
+            this.isLoading = false;
+            return;
+        }
+
+        const body = {
+            model: this.MODELS[0],
+            stream: true,
+            messages: [
+                {
+                    role: 'system',
+                    content: `Eres un historiador b\u00edblico experto. Respondes en espa\u00f1ol con informaci\u00f3n precisa y acad\u00e9mica.
 USA ESTE FORMATO para TODAS las respuestas:
 - Usa **texto** para negritas en t\u00edtulos y conceptos clave
 - Usa l\u00edneas separadas con encabezados claros
@@ -793,13 +800,29 @@ USA ESTE FORMATO para TODAS las respuestas:
 - S\u00e9 conciso pero completo (m\u00e1x 400 palabras)
 - Al final agrega una secci\u00f3n "Dato curioso" con algo sorprendente
 - Perspectiva evang\u00e9lica reformada`
-                        },
-                        { role: 'user', content: prompt }
-                    ]
-                })
-            });
+                },
+                { role: 'user', content: prompt }
+            ],
+            options: { num_predict: 4096, temperature: 0.7 }
+        };
 
-            // If a newer generation started, stop processing this one
+        try {
+            // Try each model with fallback
+            let res = null;
+            for (const modelName of this.MODELS) {
+                body.model = modelName;
+                res = await fetch(this.API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${ollamaKey}`
+                    },
+                    signal: this.abortController.signal,
+                    body: JSON.stringify(body)
+                });
+                if (res.status !== 404) break;
+            }
+
             if (myGenId !== this.generationId) return;
 
             if (!res.ok) {
@@ -818,39 +841,53 @@ USA ESTE FORMATO para TODAS las respuestas:
             const reader = res.body.getReader();
             const decoder = new TextDecoder();
             let fullText = '';
+            let buffer = '';
 
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
 
-                // If a newer generation started, abort this stream
                 if (myGenId !== this.generationId) {
                     reader.cancel();
                     return;
                 }
 
-                const chunk = decoder.decode(value, { stream: true });
-                const lines = chunk.split('\n').filter(l => l.startsWith('data: '));
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split('\n');
+                buffer = lines.pop() || '';
 
                 for (const line of lines) {
-                    const data = line.slice(6).trim();
-                    if (data === '[DONE]') continue;
-
+                    const trimmed = line.trim();
+                    if (!trimmed) continue;
                     try {
-                        const json = JSON.parse(data);
-                        const delta = json.choices?.[0]?.delta?.content;
+                        const json = JSON.parse(trimmed);
+                        if (json.done) continue;
+                        const delta = json.message?.content;
                         if (delta) {
                             fullText += delta;
                             responseEl.innerHTML = this.formatResponse(fullText);
                             this.sidebar.scrollTop = this.sidebar.scrollHeight;
                         }
-                    } catch (e) { /* skip parse errors */ }
+                    } catch (e) {
+                        buffer = trimmed + '\n' + buffer;
+                    }
                 }
             }
 
-            // Only cache if this is still the active generation
+            // Process remaining buffer
+            if (buffer.trim()) {
+                try {
+                    const json = JSON.parse(buffer.trim());
+                    if (!json.done && json.message?.content) {
+                        fullText += json.message.content;
+                        responseEl.innerHTML = this.formatResponse(fullText);
+                    }
+                } catch (e) {}
+            }
+
             if (myGenId === this.generationId) {
                 this.cache[cacheKey] = aiContent.innerHTML;
+                this.showNarrateBtn(true);
             }
 
         } catch (err) {
@@ -865,6 +902,51 @@ USA ESTE FORMATO para TODAS las respuestas:
         if (myGenId === this.generationId) {
             this.isLoading = false;
             this.abortController = null;
+        }
+    }
+
+    // ==========================================
+    // NARRATE CONTEXT (TTS)
+    // ==========================================
+    showNarrateBtn(visible) {
+        const aiContent = document.getElementById('ctxAiContent');
+        if (!aiContent) return;
+
+        // Remove existing narrate button
+        aiContent.querySelector('.ctx-narrate-btn')?.remove();
+
+        if (visible) {
+            const btn = document.createElement('button');
+            btn.className = 'ctx-narrate-btn';
+            btn.title = 'Narrar contexto en voz alta';
+            btn.innerHTML = '\uD83D\uDD0A Narrar contexto';
+            btn.addEventListener('click', () => this.narrateContext());
+            aiContent.insertBefore(btn, aiContent.firstChild);
+        }
+    }
+
+    narrateContext() {
+        const aiContent = document.getElementById('ctxAiContent');
+        if (!aiContent) return;
+
+        // Get text excluding the button itself
+        const clone = aiContent.cloneNode(true);
+        clone.querySelector('.ctx-narrate-btn')?.remove();
+        const text = clone.innerText || clone.textContent || '';
+        if (!text.trim()) return;
+
+        const bot = window.bibliaBot;
+        if (bot && typeof bot.speak === 'function') {
+            bot.speak(text.trim());
+        } else {
+            // Fallback: basic speechSynthesis
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utt = new SpeechSynthesisUtterance(text.trim());
+                utt.lang = 'es-ES';
+                utt.rate = 1;
+                window.speechSynthesis.speak(utt);
+            }
         }
     }
 
@@ -913,7 +995,9 @@ USA ESTE FORMATO para TODAS las respuestas:
         this.sidebar.querySelectorAll('.ctx-section-toggle').forEach(toggle => {
             const isTarget = toggle.dataset.section === sectionName;
             toggle.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
-            toggle.nextElementSibling?.classList.toggle('open', isTarget);
+            const section = toggle.closest('.ctx-sidebar-section');
+            const body = section?.querySelector('.ctx-section-body');
+            if (body) body.classList.toggle('open', isTarget);
         });
     }
 
@@ -1030,6 +1114,77 @@ USA ESTE FORMATO para TODAS las respuestas:
     // IMAGE GALLERY
     // ==========================================
     renderImages(bookId, chapter) {
+        // Render infographics instead of illustrations
+        this.renderInfographics(bookId, chapter);
+        return;
+    }
+
+    renderInfographics(bookId, chapter) {
+        const container = document.getElementById('ctxInfogContent');
+        if (!container) return;
+
+        // Map app book IDs to BIBLE_INFOGRAPHICS keys
+        const INFOG_KEY_MAP = {
+            genesis:'GEN', exodo:'EXO', levitico:'LEV', numeros:'NUM', deuteronomio:'DEU',
+            josue:'JOS', jueces:'JUE', rut:'RUT', '1samuel':'1SA', '2samuel':'2SA',
+            '1reyes':'1RE', '2reyes':'2RE', '1cronicas':'1CR', '2cronicas':'2CR',
+            esdras:'ESD', nehemias:'NEH', ester:'EST', job:'JOB', salmos:'SAL',
+            proverbios:'PRO', eclesiastes:'ECL', cantares:'CNT',
+            isaias:'ISA', jeremias:'JER', lamentaciones:'LAM', ezequiel:'EZE', daniel:'DAN',
+            oseas:'OSE', joel:'JOE', amos:'AMO', abdias:'ABD', jonas:'JON',
+            miqueas:'MIQ', nahum:'NAH', habacuc:'HAB', sofonias:'SOF', hageo:'HAG',
+            zacarias:'ZAC', malaquias:'MAL',
+            mateo:'MAT', marcos:'MAR', lucas:'LUC', juan:'JUA', hechos:'HEC',
+            romanos:'ROM', '1corintios':'1CO', '2corintios':'2CO', galatas:'GAL',
+            efesios:'EFE', filipenses:'FIL', colosenses:'COL',
+            '1tesalonicenses':'1TS', '2tesalonicenses':'2TS',
+            '1timoteo':'1TI', '2timoteo':'2TI', tito:'TIT', filemon:'FLM',
+            hebreos:'HEB', santiago:'STG', '1pedro':'1PE', '2pedro':'2PE',
+            '1juan':'1JN', '2juan':'2JN', '3juan':'3JN', judas:'JUD', apocalipsis:'APO'
+        };
+        const infogKey = INFOG_KEY_MAP[bookId] || bookId.toUpperCase();
+
+        const allInfog = typeof BIBLE_INFOGRAPHICS !== 'undefined' ? BIBLE_INFOGRAPHICS : {};
+        const bookInfog = allInfog[infogKey] || [];
+
+        if (bookInfog.length === 0) {
+            container.innerHTML = '<div class="ctx-empty">No hay infografías disponibles para este libro todavía.</div>';
+            return;
+        }
+
+        container.innerHTML = `
+            <div class="ctx-infog-grid">
+                ${bookInfog.map((inf, i) => `
+                    <div class="ctx-infog-card" data-infog-idx="${i}">
+                        <img src="${inf.local || inf.url}" alt="${inf.title}" loading="lazy"
+                            ${inf.local && inf.url ? `data-fallback="${inf.url}"` : ''}>
+                        <div class="ctx-infog-title">${inf.title}</div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+        // Click to open lightbox
+        container.querySelectorAll('.ctx-infog-card').forEach(el => {
+            const idx = parseInt(el.dataset.infogIdx);
+            const inf = bookInfog[idx];
+            if (inf) {
+                el.addEventListener('click', () => {
+                    this.openLightbox(inf.local || inf.url, inf.title);
+                });
+            }
+            const img = el.querySelector('img');
+            if (img) {
+                img.onerror = function() {
+                    if (this.dataset.fallback && this.src !== this.dataset.fallback) {
+                        this.src = this.dataset.fallback;
+                    }
+                };
+            }
+        });
+    }
+
+    renderImagesLegacy(bookId, chapter) {
         const container = document.getElementById('ctxImagesContent');
         if (!container) return;
 

@@ -1,0 +1,13 @@
+infographics-raw/
+infographics/
+img/
+audio/
+*.cjs
+*.log
+*.zip
+nginx.conf
+Dockerfile
+CLAUDE_CODE_PROMPT_BIBLIA_AUTH.md
+ollama-proxy-worker.js
+sweet-media-wikimedia-mapping.json
+.wrangler/

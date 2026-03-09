@@ -92,17 +92,59 @@
     border-color: transparent;
 }
 
-/* Now playing */
-.ambient-now {
-    padding: 0 16px;
-    font-size: 11px;
+/* Now playing section with controls */
+.ambient-now-section {
+    display: none;
+    padding: 10px 16px;
+    border-top: 1px solid rgba(167, 139, 250, 0.15);
+    border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+}
+.ambient-now-section.visible { display: block; }
+.ambient-now-text {
+    font-size: 12px;
     color: #a78bfa;
-    min-height: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
-.ambient-now:empty { display: none; }
+.ambient-now-text:empty { display: none; }
+.ambient-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.ambient-ctrl-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    background: rgba(102, 126, 234, 0.1);
+    color: #c4b5fd;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.ambient-ctrl-btn:hover {
+    background: rgba(102, 126, 234, 0.25);
+    border-color: #667eea;
+    color: white;
+    transform: scale(1.08);
+}
+.ambient-ctrl-btn:active { transform: scale(0.95); }
+.ambient-mute-btn {
+    margin-left: auto;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    border: none;
+    background: transparent;
+}
 
 /* Volume */
 .ambient-vol-row {
@@ -110,6 +152,13 @@
     align-items: center;
     gap: 8px;
     padding: 10px 16px 14px;
+}
+.ambient-vol-pct {
+    font-size: 11px;
+    color: #a78bfa;
+    min-width: 32px;
+    text-align: right;
+    font-weight: 500;
 }
 .ambient-vol-icon {
     font-size: 14px;
@@ -149,11 +198,18 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }
 [data-theme="light"] .ambient-mood-btn { color: #4b5563; }
-[data-theme="light"] .ambient-now { color: #667eea; }
+[data-theme="light"] .ambient-now-text { color: #667eea; }
+[data-theme="light"] .ambient-now-section { border-color: rgba(102, 126, 234, 0.15); }
+[data-theme="light"] .ambient-ctrl-btn { color: #4b5563; background: rgba(102, 126, 234, 0.08); border-color: rgba(102, 126, 234, 0.2); }
+[data-theme="light"] .ambient-ctrl-btn:hover { background: rgba(102, 126, 234, 0.15); color: #667eea; }
+[data-theme="light"] .ambient-vol-pct { color: #667eea; }
 
 /* Mobile */
+@media (max-width: 768px) {
+    .ambient-player { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); left: 16px; }
+}
 @media (max-width: 480px) {
-    .ambient-player { bottom: 16px; left: 16px; }
+    .ambient-player { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); left: 12px; }
     .ambient-toggle { width: 42px; height: 42px; font-size: 18px; }
-    .ambient-panel { width: 250px; }
+    .ambient-panel { width: min(250px, calc(100vw - 32px)); }
 }

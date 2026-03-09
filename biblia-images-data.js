@@ -2,7 +2,7 @@
 // BIBLIA IMAGES DATA - Auto-generated
 // 504 illustrations + 28 maps = 532 total
 // Sources: Doré (139), Schnorr (155), Tissot (169), Hole (8), Classic (33)
-// Generated: 2026-03-08T20:47:41.558Z
+// Generated: 2026-03-08T22:28:39.461Z
 // =============================================================
 
 // Legacy format used by biblia-context.js
@@ -553,7 +553,7 @@ const BIBLE_IMAGES = {
       "verseHint": 29
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_001.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Tissot_The_Creation.jpg/960px-Tissot_The_Creation.jpg",
       "title": "La Creacion",
       "artist": "James Tissot, c. 1896",
@@ -563,7 +563,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_002.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Tissot_Adam_Is_Tempted_by_Eve.jpg/960px-Tissot_Adam_Is_Tempted_by_Eve.jpg",
       "title": "Eva tienta a Adan",
       "artist": "James Tissot, c. 1896",
@@ -573,7 +573,7 @@ const BIBLE_IMAGES = {
       "verseHint": 6
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_003.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Tissot_Adam_and_Eve_Driven_from_Paradise.jpg/960px-Tissot_Adam_and_Eve_Driven_from_Paradise.jpg",
       "title": "Adan y Eva expulsados del Paraiso",
       "artist": "James Tissot, c. 1896",
@@ -583,7 +583,7 @@ const BIBLE_IMAGES = {
       "verseHint": 24
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_004.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Cain_leadeth_abel_to_death_tissot.jpg/960px-Cain_leadeth_abel_to_death_tissot.jpg",
       "title": "Cain conduce a Abel a la muerte",
       "artist": "James Tissot, c. 1896",
@@ -593,7 +593,7 @@ const BIBLE_IMAGES = {
       "verseHint": 8
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_005.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tissot_Building_the_Ark.jpg/960px-Tissot_Building_the_Ark.jpg",
       "title": "La construccion del Arca",
       "artist": "James Tissot, c. 1896",
@@ -603,7 +603,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_006.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Tissot_The_Animals_Enter_the_Ark.jpg/960px-Tissot_The_Animals_Enter_the_Ark.jpg",
       "title": "Los animales entran en el Arca",
       "artist": "James Tissot, c. 1896",
@@ -613,7 +613,7 @@ const BIBLE_IMAGES = {
       "verseHint": 9
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_007.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Tissot_The_Deluge.jpg/960px-Tissot_The_Deluge.jpg",
       "title": "El Diluvio",
       "artist": "James Tissot, c. 1896",
@@ -623,7 +623,7 @@ const BIBLE_IMAGES = {
       "verseHint": 23
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_008.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Tissot_The_Dove_Returns_to_Noah.jpg/960px-Tissot_The_Dove_Returns_to_Noah.jpg",
       "title": "La paloma regresa a Noe",
       "artist": "James Tissot, c. 1896",
@@ -633,7 +633,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_009.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tissot_Noah%27s_Sacrifice.jpg/960px-Tissot_Noah%27s_Sacrifice.jpg",
       "title": "El sacrificio de Noe",
       "artist": "James Tissot, c. 1896",
@@ -643,7 +643,7 @@ const BIBLE_IMAGES = {
       "verseHint": 20
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_010.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Tissot_Noah%27s_Drunkenness.jpg/960px-Tissot_Noah%27s_Drunkenness.jpg",
       "title": "La embriaguez de Noe",
       "artist": "James Tissot, c. 1896",
@@ -653,7 +653,7 @@ const BIBLE_IMAGES = {
       "verseHint": 21
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_011.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Tissot_Shem%2C_Ham_and_Japheth.jpg/960px-Tissot_Shem%2C_Ham_and_Japheth.jpg",
       "title": "Sem, Cam y Jafet",
       "artist": "James Tissot, c. 1896",
@@ -663,7 +663,7 @@ const BIBLE_IMAGES = {
       "verseHint": 18
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_012.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Tissot_Building_the_Tower_of_Babel.jpg/960px-Tissot_Building_the_Tower_of_Babel.jpg",
       "title": "La construccion de la Torre de Babel",
       "artist": "James Tissot, c. 1896",
@@ -673,7 +673,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_013.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Tissot_The_Caravan_of_Abraham.jpg/960px-Tissot_The_Caravan_of_Abraham.jpg",
       "title": "La caravana de Abraham",
       "artist": "James Tissot, c. 1896",
@@ -683,7 +683,7 @@ const BIBLE_IMAGES = {
       "verseHint": 5
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_014.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Tissot_The_Egyptians_Admire_Sarai%27s_Beauty.jpg/960px-Tissot_The_Egyptians_Admire_Sarai%27s_Beauty.jpg",
       "title": "Los egipcios admiran la belleza de Sarai",
       "artist": "James Tissot, c. 1896",
@@ -693,7 +693,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_015.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tissot_God%27s_Promises_to_Abram.jpg/960px-Tissot_God%27s_Promises_to_Abram.jpg",
       "title": "Las promesas de Dios a Abram",
       "artist": "James Tissot, c. 1896",
@@ -703,7 +703,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_016.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tissot_Abram_Guarding_His_Sacrifice.jpg/960px-Tissot_Abram_Guarding_His_Sacrifice.jpg",
       "title": "Abram guarda su sacrificio de las aves",
       "artist": "James Tissot, c. 1896",
@@ -713,7 +713,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_017.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Tissot_Sarai_Sends_Hagar_Away.jpg/960px-Tissot_Sarai_Sends_Hagar_Away.jpg",
       "title": "Sarai despide a Agar",
       "artist": "James Tissot, c. 1896",
@@ -723,7 +723,7 @@ const BIBLE_IMAGES = {
       "verseHint": 6
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_018.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tissot_Abraham_Sees_Sodom_in_Flames.jpg/960px-Tissot_Abraham_Sees_Sodom_in_Flames.jpg",
       "title": "Abraham ve Sodoma en llamas",
       "artist": "James Tissot, c. 1896",
@@ -733,7 +733,7 @@ const BIBLE_IMAGES = {
       "verseHint": 28
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_019.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Tissot_Ishmael.jpg/960px-Tissot_Ishmael.jpg",
       "title": "Ismael tira con arco",
       "artist": "James Tissot, c. 1896",
@@ -743,7 +743,7 @@ const BIBLE_IMAGES = {
       "verseHint": 20
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_020.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Tissot_Isaac_Bears_the_Wood_for_His_Sacrifice.jpg/960px-Tissot_Isaac_Bears_the_Wood_for_His_Sacrifice.jpg",
       "title": "Isaac carga la lena para el sacrificio",
       "artist": "James Tissot, c. 1896",
@@ -753,7 +753,7 @@ const BIBLE_IMAGES = {
       "verseHint": 6
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_021.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Tissot_Abraham%27s_Servant_Meets_Rebecca.jpg/960px-Tissot_Abraham%27s_Servant_Meets_Rebecca.jpg",
       "title": "El siervo de Abraham encuentra a Rebeca",
       "artist": "James Tissot, c. 1896",
@@ -763,7 +763,7 @@ const BIBLE_IMAGES = {
       "verseHint": 17
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_022.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Tissot_The_Mess_of_Pottage.jpg/960px-Tissot_The_Mess_of_Pottage.jpg",
       "title": "El plato de lentejas",
       "artist": "James Tissot, c. 1896",
@@ -773,7 +773,7 @@ const BIBLE_IMAGES = {
       "verseHint": 34
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_023.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tissot_Jacob_Deceives_Isaac.jpg/960px-Tissot_Jacob_Deceives_Isaac.jpg",
       "title": "Jacob engana a Isaac",
       "artist": "James Tissot, c. 1896",
@@ -783,7 +783,7 @@ const BIBLE_IMAGES = {
       "verseHint": 21
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_024.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Tissot_Jacob_and_Rachel_at_the_Well.jpg/960px-Tissot_Jacob_and_Rachel_at_the_Well.jpg",
       "title": "Jacob y Raquel en el pozo",
       "artist": "James Tissot, c. 1896",
@@ -793,7 +793,7 @@ const BIBLE_IMAGES = {
       "verseHint": 10
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_025.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tissot_Rachel_and_Leah.jpg/960px-Tissot_Rachel_and_Leah.jpg",
       "title": "Raquel y Lea",
       "artist": "James Tissot, c. 1896",
@@ -803,7 +803,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_026.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Tissot_Jacob_Sees_Esau_Coming_to_Meet_Him.jpg/960px-Tissot_Jacob_Sees_Esau_Coming_to_Meet_Him.jpg",
       "title": "Jacob ve venir a Esau",
       "artist": "James Tissot, c. 1896",
@@ -813,7 +813,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_027.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Tissot_The_Meeting_of_Esau_and_Jacob.jpg/960px-Tissot_The_Meeting_of_Esau_and_Jacob.jpg",
       "title": "El encuentro de Esau y Jacob",
       "artist": "James Tissot, c. 1896",
@@ -823,7 +823,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_028.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Dinah_tissot.jpg/960px-Dinah_tissot.jpg",
       "title": "El rapto de Dina",
       "artist": "James Tissot, c. 1896",
@@ -833,7 +833,7 @@ const BIBLE_IMAGES = {
       "verseHint": 2
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_029.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Tissot_Joseph_Reveals_His_Dream_to_His_Brethren.jpg/960px-Tissot_Joseph_Reveals_His_Dream_to_His_Brethren.jpg",
       "title": "Jose cuenta sus suenos a sus hermanos",
       "artist": "James Tissot, c. 1896",
@@ -843,7 +843,7 @@ const BIBLE_IMAGES = {
       "verseHint": 9
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_030.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Tissot_Joseph_Sold_into_Egypt.jpg/960px-Tissot_Joseph_Sold_into_Egypt.jpg",
       "title": "Jose vendido a Egipto",
       "artist": "James Tissot, c. 1896",
@@ -853,7 +853,7 @@ const BIBLE_IMAGES = {
       "verseHint": 28
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_031.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Tissot_Jacob_Mourns_His_Son_Joseph.jpg/960px-Tissot_Jacob_Mourns_His_Son_Joseph.jpg",
       "title": "Jacob llora por su hijo Jose",
       "artist": "James Tissot, c. 1896",
@@ -863,7 +863,7 @@ const BIBLE_IMAGES = {
       "verseHint": 35
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_032.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Judah_and_Tamar_by_J.Tissot.jpg/960px-Judah_and_Tamar_by_J.Tissot.jpg",
       "title": "Juda y Tamar",
       "artist": "James Tissot, c. 1896",
@@ -873,7 +873,7 @@ const BIBLE_IMAGES = {
       "verseHint": 18
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_033.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Tissot_Joseph_Interprets_the_Dreams_While_in_Prison.jpg/960px-Tissot_Joseph_Interprets_the_Dreams_While_in_Prison.jpg",
       "title": "Jose interpreta los suenos en la prision",
       "artist": "James Tissot, c. 1896",
@@ -883,7 +883,7 @@ const BIBLE_IMAGES = {
       "verseHint": 12
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_034.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tissot_Joseph_Interprets_Pharaoh%27s_Dream.jpg/960px-Tissot_Joseph_Interprets_Pharaoh%27s_Dream.jpg",
       "title": "Jose interpreta el sueno del Faraon",
       "artist": "James Tissot, c. 1896",
@@ -893,7 +893,7 @@ const BIBLE_IMAGES = {
       "verseHint": 25
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_035.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Tissot_The_Glory_of_Joseph.jpg/960px-Tissot_The_Glory_of_Joseph.jpg",
       "title": "La gloria de Jose",
       "artist": "James Tissot, c. 1896",
@@ -903,7 +903,7 @@ const BIBLE_IMAGES = {
       "verseHint": 43
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_036.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Tissot_The_Cup_Found.jpg/960px-Tissot_The_Cup_Found.jpg",
       "title": "La copa encontrada",
       "artist": "James Tissot, c. 1896",
@@ -913,7 +913,7 @@ const BIBLE_IMAGES = {
       "verseHint": 12
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_037.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Tissot_Joseph_Makes_Himself_Known_to_His_Brethren.jpg/960px-Tissot_Joseph_Makes_Himself_Known_to_His_Brethren.jpg",
       "title": "Jose se da a conocer a sus hermanos",
       "artist": "James Tissot, c. 1896",
@@ -923,7 +923,7 @@ const BIBLE_IMAGES = {
       "verseHint": 3
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_038.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Tissot_Joseph_Converses_With_Judah%2C_His_Brother.jpg/960px-Tissot_Joseph_Converses_With_Judah%2C_His_Brother.jpg",
       "title": "Jose conversa con Juda, su hermano",
       "artist": "James Tissot, c. 1896",
@@ -933,7 +933,7 @@ const BIBLE_IMAGES = {
       "verseHint": 18
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_039.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Tissot_Joseph_and_His_Brethren_Welcomed_by_Pharaoh.jpg/960px-Tissot_Joseph_and_His_Brethren_Welcomed_by_Pharaoh.jpg",
       "title": "Los hermanos de Jose recibidos por el Faraon",
       "artist": "James Tissot, c. 1896",
@@ -943,7 +943,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_040.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Tissot_Joseph_Dwells_in_Egypt.jpg/960px-Tissot_Joseph_Dwells_in_Egypt.jpg",
       "title": "Jose habita en Egipto",
       "artist": "James Tissot, c. 1896",
@@ -1212,7 +1212,7 @@ const BIBLE_IMAGES = {
       "verseHint": 27
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_041.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tissot_Pharaoh_Notes_the_Importance_of_the_Jewish_People.jpg/960px-Tissot_Pharaoh_Notes_the_Importance_of_the_Jewish_People.jpg",
       "title": "El Faraon advierte la importancia del pueblo hebreo",
       "artist": "James Tissot, c. 1896",
@@ -1222,7 +1222,7 @@ const BIBLE_IMAGES = {
       "verseHint": 9
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_042.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Tissot_Pharaoh_and_the_Midwives.jpg/960px-Tissot_Pharaoh_and_the_Midwives.jpg",
       "title": "El Faraon y las parteras",
       "artist": "James Tissot, c. 1896",
@@ -1232,7 +1232,7 @@ const BIBLE_IMAGES = {
       "verseHint": 18
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_043.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Tissot_Moses_Laid_Amid_the_Flags.jpg/960px-Tissot_Moses_Laid_Amid_the_Flags.jpg",
       "title": "Moises entre los juncos",
       "artist": "James Tissot, c. 1896",
@@ -1242,7 +1242,7 @@ const BIBLE_IMAGES = {
       "verseHint": 3
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_044.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Tissot_Pharaoh%27s_Daughter_Has_Moses_Brought_to_Her.jpg/960px-Tissot_Pharaoh%27s_Daughter_Has_Moses_Brought_to_Her.jpg",
       "title": "La hija del Faraon manda traer a Moises",
       "artist": "James Tissot, c. 1896",
@@ -1252,7 +1252,7 @@ const BIBLE_IMAGES = {
       "verseHint": 5
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_045.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Tissot_Pharaoh%27s_Daughter_Receives_the_Mother_of_Moses.jpg/960px-Tissot_Pharaoh%27s_Daughter_Receives_the_Mother_of_Moses.jpg",
       "title": "La hija del Faraon recibe a la madre de Moises",
       "artist": "James Tissot, c. 1896",
@@ -1262,7 +1262,7 @@ const BIBLE_IMAGES = {
       "verseHint": 8
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_046.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Tissot_Moses_Slays_an_Egyptian.jpg/960px-Tissot_Moses_Slays_an_Egyptian.jpg",
       "title": "Moises mata a un egipcio",
       "artist": "James Tissot, c. 1896",
@@ -1272,7 +1272,7 @@ const BIBLE_IMAGES = {
       "verseHint": 12
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_047.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Tissot_Moses_and_Aaron_Speak_to_the_People.jpg/960px-Tissot_Moses_and_Aaron_Speak_to_the_People.jpg",
       "title": "Moises y Aaron hablan al pueblo",
       "artist": "James Tissot, c. 1896",
@@ -1282,7 +1282,7 @@ const BIBLE_IMAGES = {
       "verseHint": 30
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_048.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Moses_Speaks_to_Pharaoh%2C_by_James_Tissot.jpg/960px-Moses_Speaks_to_Pharaoh%2C_by_James_Tissot.jpg",
       "title": "Moises habla al Faraon",
       "artist": "James Tissot, c. 1896",
@@ -1292,7 +1292,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_049.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Tissot_The_Rod_of_Aaron_Devours_the_Other_Rods.jpg/960px-Tissot_The_Rod_of_Aaron_Devours_the_Other_Rods.jpg",
       "title": "La vara de Aaron devora las otras varas",
       "artist": "James Tissot, c. 1896",
@@ -1302,7 +1302,7 @@ const BIBLE_IMAGES = {
       "verseHint": 12
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_050.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tissot_Water_Is_Changed_into_Blood.jpg/960px-Tissot_Water_Is_Changed_into_Blood.jpg",
       "title": "El agua se convierte en sangre",
       "artist": "James Tissot, c. 1896",
@@ -1312,7 +1312,7 @@ const BIBLE_IMAGES = {
       "verseHint": 20
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_051.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Tissot_The_Plague_of_Flies.jpg/960px-Tissot_The_Plague_of_Flies.jpg",
       "title": "La plaga de moscas",
       "artist": "James Tissot, c. 1896",
@@ -1322,7 +1322,7 @@ const BIBLE_IMAGES = {
       "verseHint": 24
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_052.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Tissot_The_Plague_of_Locusts.jpg/960px-Tissot_The_Plague_of_Locusts.jpg",
       "title": "La plaga de langostas",
       "artist": "James Tissot, c. 1896",
@@ -1332,7 +1332,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_053.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Tissot_Passover.jpg/960px-Tissot_Passover.jpg",
       "title": "La Pascua",
       "artist": "James Tissot, c. 1896",
@@ -1342,7 +1342,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_054.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Tissot_Signs_on_the_Door.jpg/960px-Tissot_Signs_on_the_Door.jpg",
       "title": "Las senales en la puerta",
       "artist": "James Tissot, c. 1896",
@@ -1352,7 +1352,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_055.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Tissot_Pharaoh_and_His_Dead_Son.jpg/960px-Tissot_Pharaoh_and_His_Dead_Son.jpg",
       "title": "El Faraon y su hijo muerto",
       "artist": "James Tissot, c. 1896",
@@ -1362,7 +1362,7 @@ const BIBLE_IMAGES = {
       "verseHint": 30
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_056.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Tissot_The_Exodus.jpg/960px-Tissot_The_Exodus.jpg",
       "title": "El Exodo",
       "artist": "James Tissot, c. 1896",
@@ -1372,7 +1372,7 @@ const BIBLE_IMAGES = {
       "verseHint": 37
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_057.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tissot_Pharaoh_Pursues_the_Israelites.jpg/960px-Tissot_Pharaoh_Pursues_the_Israelites.jpg",
       "title": "El Faraon persigue a los israelitas",
       "artist": "James Tissot, c. 1896",
@@ -1382,7 +1382,7 @@ const BIBLE_IMAGES = {
       "verseHint": 9
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_058.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Tissot_The_Egyptians_Are_Destroyed.jpg/960px-Tissot_The_Egyptians_Are_Destroyed.jpg",
       "title": "Los egipcios son destruidos",
       "artist": "James Tissot, c. 1896",
@@ -1392,7 +1392,7 @@ const BIBLE_IMAGES = {
       "verseHint": 28
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_059.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/The_Songs_of_Joy%2C_by_James_Tissot.jpg/960px-The_Songs_of_Joy%2C_by_James_Tissot.jpg",
       "title": "Los cantos de alegria",
       "artist": "James Tissot, c. 1896",
@@ -1402,7 +1402,7 @@ const BIBLE_IMAGES = {
       "verseHint": 20
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_060.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Tissot_The_Gathering_of_the_Manna.jpg/960px-Tissot_The_Gathering_of_the_Manna.jpg",
       "title": "La recoleccion del mana",
       "artist": "James Tissot, c. 1896",
@@ -1412,7 +1412,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_061.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Tissot_Moses_Smites_the_Rock_in_the_Desert.jpg/960px-Tissot_Moses_Smites_the_Rock_in_the_Desert.jpg",
       "title": "Moises golpea la roca en el desierto",
       "artist": "James Tissot, c. 1896",
@@ -1422,7 +1422,7 @@ const BIBLE_IMAGES = {
       "verseHint": 6
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_062.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Tissot_Moses_on_the_Mountain_During_the_Battle.jpg/960px-Tissot_Moses_on_the_Mountain_During_the_Battle.jpg",
       "title": "Moises en la montana durante la batalla",
       "artist": "James Tissot, c. 1896",
@@ -1432,7 +1432,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_063.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Tissot_Jethro_and_Moses.jpg/960px-Tissot_Jethro_and_Moses.jpg",
       "title": "Jetro y Moises",
       "artist": "James Tissot, c. 1896",
@@ -1442,7 +1442,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_064.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Tissot_The_Golden_Calf.jpg/960px-Tissot_The_Golden_Calf.jpg",
       "title": "El becerro de oro",
       "artist": "James Tissot, c. 1896",
@@ -1452,7 +1452,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_065.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Tissot_Moses_Destroys_the_Tables_of_the_Ten_Commandments.jpg/960px-Tissot_Moses_Destroys_the_Tables_of_the_Ten_Commandments.jpg",
       "title": "Moises rompe las tablas de los mandamientos",
       "artist": "James Tissot, c. 1896",
@@ -1462,7 +1462,7 @@ const BIBLE_IMAGES = {
       "verseHint": 19
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_066.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Tissot_Moses_and_Joshua_in_the_Tabernacle.jpg/960px-Tissot_Moses_and_Joshua_in_the_Tabernacle.jpg",
       "title": "Moises y Josue en el Tabernaculo",
       "artist": "James Tissot, c. 1896",
@@ -1472,7 +1472,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_067.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Tissot_Bezalel.jpg/960px-Tissot_Bezalel.jpg",
       "title": "Bezalel, el artesano",
       "artist": "James Tissot, c. 1896",
@@ -1482,7 +1482,7 @@ const BIBLE_IMAGES = {
       "verseHint": 30
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_068.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Tissot_Tailor.jpg/960px-Tissot_Tailor.jpg",
       "title": "El sastre del Tabernaculo",
       "artist": "James Tissot, c. 1896",
@@ -1504,7 +1504,7 @@ const BIBLE_IMAGES = {
       "verseHint": 21
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_069.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Tissot_The_Fire_of_Atonement.jpg/960px-Tissot_The_Fire_of_Atonement.jpg",
       "title": "El fuego de la expiacion",
       "artist": "James Tissot, c. 1896",
@@ -1586,7 +1586,7 @@ const BIBLE_IMAGES = {
       "verseHint": 18
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_070.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Tissot_The_Grapes_of_Canaan.jpg/960px-Tissot_The_Grapes_of_Canaan.jpg",
       "title": "Las uvas de Canaan",
       "artist": "James Tissot, c. 1896",
@@ -1596,7 +1596,7 @@ const BIBLE_IMAGES = {
       "verseHint": 23
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_071.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Tissot_Miriam_Shut_Out_from_the_Camp.jpg/960px-Tissot_Miriam_Shut_Out_from_the_Camp.jpg",
       "title": "Miriam excluida del campamento",
       "artist": "James Tissot, c. 1896",
@@ -1606,7 +1606,7 @@ const BIBLE_IMAGES = {
       "verseHint": 15
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_072.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tissot_Sabbath_Breaker_Stoned.jpg/960px-Tissot_Sabbath_Breaker_Stoned.jpg",
       "title": "El violador del sabado apedreado",
       "artist": "James Tissot, c. 1896",
@@ -1616,7 +1616,7 @@ const BIBLE_IMAGES = {
       "verseHint": 36
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_073.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Tissot_The_Brazen_Serpent.jpg/960px-Tissot_The_Brazen_Serpent.jpg",
       "title": "La serpiente de bronce",
       "artist": "James Tissot, c. 1896",
@@ -1626,7 +1626,7 @@ const BIBLE_IMAGES = {
       "verseHint": 9
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_074.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tissot_Balaam_and_the_Ass.jpg/960px-Tissot_Balaam_and_the_Ass.jpg",
       "title": "Balaam y la burra",
       "artist": "James Tissot, c. 1896",
@@ -1636,7 +1636,7 @@ const BIBLE_IMAGES = {
       "verseHint": 28
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_075.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tissot_The_Conquest_of_the_Amorites.jpg/960px-Tissot_The_Conquest_of_the_Amorites.jpg",
       "title": "La conquista de los amorreos",
       "artist": "James Tissot, c. 1896",
@@ -1646,7 +1646,7 @@ const BIBLE_IMAGES = {
       "verseHint": 24
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_076.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Tissot_The_Death_of_Aaron.jpg/960px-Tissot_The_Death_of_Aaron.jpg",
       "title": "La muerte de Aaron",
       "artist": "James Tissot, c. 1896",
@@ -1688,7 +1688,7 @@ const BIBLE_IMAGES = {
       "verseHint": 5
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_077.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Tissot_Moses_Sees_the_Promised_Land_from_Afar.jpg/960px-Tissot_Moses_Sees_the_Promised_Land_from_Afar.jpg",
       "title": "Moises ve la Tierra Prometida desde lejos",
       "artist": "James Tissot, c. 1896",
@@ -1698,7 +1698,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_078.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Tissot_Moses_Blesses_Joshua_Before_the_High_Priest.jpg/960px-Tissot_Moses_Blesses_Joshua_Before_the_High_Priest.jpg",
       "title": "Moises bendice a Josue ante el sumo sacerdote",
       "artist": "James Tissot, c. 1896",
@@ -1708,7 +1708,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_079.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Tissot_Moses_Forbids_the_People_to_Follow_Him.jpg/960px-Tissot_Moses_Forbids_the_People_to_Follow_Him.jpg",
       "title": "Moises prohibe al pueblo seguirle",
       "artist": "James Tissot, c. 1896",
@@ -1880,7 +1880,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_080.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Tissot_The_Harlot_of_Jericho_and_the_Two_Spies.jpg/960px-Tissot_The_Harlot_of_Jericho_and_the_Two_Spies.jpg",
       "title": "Rahab de Jerico y los dos espias",
       "artist": "James Tissot, c. 1896",
@@ -1890,7 +1890,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_081.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Tissot_The_Seven_Trumpets_of_Jericho.jpg/960px-Tissot_The_Seven_Trumpets_of_Jericho.jpg",
       "title": "Las siete trompetas de Jerico",
       "artist": "James Tissot, c. 1896",
@@ -1900,7 +1900,7 @@ const BIBLE_IMAGES = {
       "verseHint": 20
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_082.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Tissot_The_Flight_of_the_Spies.jpg/960px-Tissot_The_Flight_of_the_Spies.jpg",
       "title": "La huida de los espias",
       "artist": "James Tissot, c. 1896",
@@ -2182,7 +2182,7 @@ const BIBLE_IMAGES = {
       "verseHint": 21
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_083.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Tissot_Deborah_Beneath_the_Palm_Tree.jpg/960px-Tissot_Deborah_Beneath_the_Palm_Tree.jpg",
       "title": "Debora bajo la palmera",
       "artist": "James Tissot, c. 1896",
@@ -2192,7 +2192,7 @@ const BIBLE_IMAGES = {
       "verseHint": 5
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_084.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Tissot_Jael_Smote_Sisera%2C_and_Slew_Him.jpg/960px-Tissot_Jael_Smote_Sisera%2C_and_Slew_Him.jpg",
       "title": "Jael mato a Sisara",
       "artist": "James Tissot, c. 1896",
@@ -2202,7 +2202,7 @@ const BIBLE_IMAGES = {
       "verseHint": 21
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_085.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Tissot_Jael_Shows_to_Barak%2C_Sisera_Lying_Dead.jpg/960px-Tissot_Jael_Shows_to_Barak%2C_Sisera_Lying_Dead.jpg",
       "title": "Jael muestra a Barac el cadaver de Sisara",
       "artist": "James Tissot, c. 1896",
@@ -2212,7 +2212,7 @@ const BIBLE_IMAGES = {
       "verseHint": 22
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_086.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Tissot_Jephthah%27s_Daughter.jpg/960px-Tissot_Jephthah%27s_Daughter.jpg",
       "title": "La hija de Jefte",
       "artist": "James Tissot, c. 1896",
@@ -2222,7 +2222,7 @@ const BIBLE_IMAGES = {
       "verseHint": 34
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_087.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Tissot_Samson_Slays_a_Thousand_Men.jpg/960px-Tissot_Samson_Slays_a_Thousand_Men.jpg",
       "title": "Sanson mata a mil hombres",
       "artist": "James Tissot, c. 1896",
@@ -2232,7 +2232,7 @@ const BIBLE_IMAGES = {
       "verseHint": 15
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_088.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/The_Levite_Before_The_Corpse_Of_His_Wife_by_James_Tissot.jpg/960px-The_Levite_Before_The_Corpse_Of_His_Wife_by_James_Tissot.jpg",
       "title": "El levita ante el cadaver de su mujer",
       "artist": "James Tissot, c. 1896",
@@ -2295,7 +2295,7 @@ const BIBLE_IMAGES = {
       "verseHint": 5
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_089.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tissot_Gleaners.jpg/960px-Tissot_Gleaners.jpg",
       "title": "Las espigadoras",
       "artist": "James Tissot, c. 1896",
@@ -2549,7 +2549,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_090.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Saul_meets_Samuel.jpg/960px-Saul_meets_Samuel.jpg",
       "title": "Saul se encuentra con Samuel",
       "artist": "James Tissot, c. 1896",
@@ -2559,7 +2559,7 @@ const BIBLE_IMAGES = {
       "verseHint": 18
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_091.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/David_returns_to_Achish.jpg/960px-David_returns_to_Achish.jpg",
       "title": "David regresa a Aquis",
       "artist": "James Tissot, c. 1896",
@@ -2721,7 +2721,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_092.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tissot_David_Danced_Before_the_Lord_with_All_His_Might.jpg/960px-Tissot_David_Danced_Before_the_Lord_with_All_His_Might.jpg",
       "title": "David danza con todas sus fuerzas",
       "artist": "James Tissot, c. 1896",
@@ -2731,7 +2731,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_093.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Tissot_Nathan_Rebukes_David.jpg/960px-Tissot_Nathan_Rebukes_David.jpg",
       "title": "Natan reprende a David",
       "artist": "James Tissot, c. 1896",
@@ -2741,7 +2741,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_094.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Tissot_Michal_Watching_David_from_a_Window.jpg/960px-Tissot_Michal_Watching_David_from_a_Window.jpg",
       "title": "Mical observa a David desde la ventana",
       "artist": "James Tissot, c. 1896",
@@ -2751,7 +2751,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_095.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Desolation_of_Tamar_by_J.Tissot.jpg/960px-Desolation_of_Tamar_by_J.Tissot.jpg",
       "title": "La desolacion de Tamar",
       "artist": "James Tissot, c. 1896",
@@ -2761,7 +2761,7 @@ const BIBLE_IMAGES = {
       "verseHint": 19
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_096.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Death_of_Amnon_by_J.Tissot.jpg/960px-Death_of_Amnon_by_J.Tissot.jpg",
       "title": "La muerte de Amnon",
       "artist": "James Tissot, c. 1896",
@@ -2771,7 +2771,7 @@ const BIBLE_IMAGES = {
       "verseHint": 29
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_097.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/David_Mourns_His_Son_Amnon_by_J.Tissot.jpg/960px-David_Mourns_His_Son_Amnon_by_J.Tissot.jpg",
       "title": "David llora a su hijo Amnon",
       "artist": "James Tissot, c. 1896",
@@ -2973,7 +2973,7 @@ const BIBLE_IMAGES = {
       "verseHint": 34
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_098.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Tissot_Solomon_Dedicates_the_Temple_at_Jerusalem.jpg/960px-Tissot_Solomon_Dedicates_the_Temple_at_Jerusalem.jpg",
       "title": "Salomon dedica el Templo en Jerusalen",
       "artist": "James Tissot, c. 1896",
@@ -2983,7 +2983,7 @@ const BIBLE_IMAGES = {
       "verseHint": 22
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_099.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tissot_Baalites.jpg/960px-Tissot_Baalites.jpg",
       "title": "Los sacerdotes de Baal",
       "artist": "James Tissot, c. 1896",
@@ -3308,7 +3308,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_103.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Tissot_Daniel_in_the_Lion%27s_Den.jpg/960px-Tissot_Daniel_in_the_Lion%27s_Den.jpg",
       "title": "Daniel en el foso de los leones",
       "artist": "James Tissot, c. 1896",
@@ -3413,7 +3413,7 @@ const BIBLE_IMAGES = {
       "verseHint": 38
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_116.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Brooklyn_Museum_-_He_Sent_them_out_Two_by_Two_%28Il_les_envoya_deux_%C3%A0_deux%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_He_Sent_them_out_Two_by_Two_%28Il_les_envoya_deux_%C3%A0_deux%29_-_James_Tissot_-_overall.jpg",
       "title": "Los envio de dos en dos",
       "artist": "James Tissot, c. 1896",
@@ -3423,7 +3423,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_126.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Brooklyn_Museum_-_The_Widow%27s_Mite_%28Le_denier_de_la_veuve%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Widow%27s_Mite_%28Le_denier_de_la_veuve%29_-_James_Tissot.jpg",
       "title": "La ofrenda de la viuda",
       "artist": "James Tissot, c. 1896",
@@ -3433,7 +3433,7 @@ const BIBLE_IMAGES = {
       "verseHint": 42
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_128.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Brooklyn_Museum_-_Suffer_the_Little_Children_to_Come_unto_Me_%28Laisser_venir_%C3%A0_moi_les_petits_enfants%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Suffer_the_Little_Children_to_Come_unto_Me_%28Laisser_venir_%C3%A0_moi_les_petits_enfants%29_-_James_Tissot.jpg",
       "title": "Dejad que los ninos vengan a mi",
       "artist": "James Tissot, c. 1896",
@@ -3443,7 +3443,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_143.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Brooklyn_Museum_-_The_Woman_with_an_Issue_of_Blood_%28L%27h%C3%A9moro%C3%AFsse%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Woman_with_an_Issue_of_Blood_%28L%27h%C3%A9moro%C3%AFsse%29_-_James_Tissot.jpg",
       "title": "La mujer con flujo de sangre",
       "artist": "James Tissot, c. 1896",
@@ -3453,7 +3453,7 @@ const BIBLE_IMAGES = {
       "verseHint": 27
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_146.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Brooklyn_Museum_-_Jesus_Stilling_the_Tempest_%28J%C3%A9sus_calmant_la_temp%C3%AAte%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Jesus_Stilling_the_Tempest_%28J%C3%A9sus_calmant_la_temp%C3%AAte%29_-_James_Tissot_-_overall.jpg",
       "title": "Jesus calma la tempestad",
       "artist": "James Tissot, c. 1896",
@@ -3463,7 +3463,7 @@ const BIBLE_IMAGES = {
       "verseHint": 39
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_148.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Brooklyn_Museum_-_Jesus_Commands_the_Apostles_to_Rest_%28J%C3%A9sus_engage_les_ap%C3%B4tres_%C3%A0_se_reposer%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Commands_the_Apostles_to_Rest_%28J%C3%A9sus_engage_les_ap%C3%B4tres_%C3%A0_se_reposer%29_-_James_Tissot.jpg",
       "title": "Jesus manda descansar a los apostoles",
       "artist": "James Tissot, c. 1896",
@@ -3473,7 +3473,7 @@ const BIBLE_IMAGES = {
       "verseHint": 31
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_149.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brooklyn_Museum_-_Meal_of_Our_Lord_and_the_Apostles_%28Repas_de_Notre-Seigneur_et_des_ap%C3%B4tres%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Meal_of_Our_Lord_and_the_Apostles_%28Repas_de_Notre-Seigneur_et_des_ap%C3%B4tres%29_-_James_Tissot.jpg",
       "title": "La comida con los apostoles",
       "artist": "James Tissot, c. 1896",
@@ -3483,7 +3483,7 @@ const BIBLE_IMAGES = {
       "verseHint": 22
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_151.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Brooklyn_Museum_-_The_Disciples_Admire_the_Buildings_of_the_Temple_%28Les_disciples_admirent_les_constructions_du_Temple%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Disciples_Admire_the_Buildings_of_the_Temple_%28Les_disciples_admirent_les_constructions_du_Temple%29_-_James_Tissot.jpg",
       "title": "Los discipulos admiran el Templo",
       "artist": "James Tissot, c. 1896",
@@ -3493,7 +3493,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_152.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Brooklyn_Museum_-_Jesus_Forbids_the_Carrying_of_Loads_in_the_Forecourt_of_the_Temple_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Forbids_the_Carrying_of_Loads_in_the_Forecourt_of_the_Temple_-_James_Tissot.jpg",
       "title": "Jesus prohibe llevar cargas en el atrio del Templo",
       "artist": "James Tissot, c. 1896",
@@ -3501,6 +3501,16 @@ const BIBLE_IMAGES = {
         11
       ],
       "verseHint": 16
+    },
+    {
+      "local": "img/art/hole/hole_009.jpg",
+      "url": null,
+      "title": "Jesús calma la tempestad",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        4
+      ],
+      "verseHint": 39
     }
   ],
   "lucas": [
@@ -3675,7 +3685,7 @@ const BIBLE_IMAGES = {
       "verseHint": 15
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_104.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Brooklyn_Museum_-_Saint_Joseph_Seeks_a_Lodging_in_Bethlehem_%28Saint_Joseph_cherche_un_g%C3%AEte_%C3%A0_Bethl%C3%A9em%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Saint_Joseph_Seeks_a_Lodging_in_Bethlehem_%28Saint_Joseph_cherche_un_g%C3%AEte_%C3%A0_Bethl%C3%A9em%29_-_James_Tissot_-_overall.jpg",
       "title": "Jose busca posada en Belen",
       "artist": "James Tissot, c. 1896",
@@ -3685,7 +3695,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_105.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Brooklyn_Museum_-_The_Birth_of_Our_Lord_Jesus_Christ_%28La_nativit%C3%A9_de_Notre-Seigneur_J%C3%A9sus-Christ%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Birth_of_Our_Lord_Jesus_Christ_%28La_nativit%C3%A9_de_Notre-Seigneur_J%C3%A9sus-Christ%29_-_James_Tissot_-_overall.jpg",
       "title": "El nacimiento de Jesus",
       "artist": "James Tissot, c. 1896",
@@ -3695,7 +3705,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_106.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Brooklyn_Museum_-_The_Adoration_of_the_Shepherds_%28L%27adoration_des_bergers%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Adoration_of_the_Shepherds_%28L%27adoration_des_bergers%29_-_James_Tissot_-_overall.jpg",
       "title": "La adoracion de los pastores",
       "artist": "James Tissot, c. 1896",
@@ -3705,7 +3715,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_109.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Brooklyn_Museum_-_The_Youth_of_Jesus_%28Jeunesse_de_J%C3%A9sus%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Youth_of_Jesus_%28Jeunesse_de_J%C3%A9sus%29_-_James_Tissot_-_overall.jpg",
       "title": "La juventud de Jesus",
       "artist": "James Tissot, c. 1896",
@@ -3715,7 +3725,7 @@ const BIBLE_IMAGES = {
       "verseHint": 40
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_110.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Brooklyn_Museum_-_Jesus_Among_the_Doctors_%28J%C3%A9sus_parmi_les_docteurs%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Jesus_Among_the_Doctors_%28J%C3%A9sus_parmi_les_docteurs%29_-_James_Tissot_-_overall.jpg",
       "title": "Jesus entre los doctores",
       "artist": "James Tissot, c. 1896",
@@ -3725,7 +3735,7 @@ const BIBLE_IMAGES = {
       "verseHint": 46
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_111.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Brooklyn_Museum_-_Jesus_Found_in_the_Temple_%28Jesus_retrouv%C3%A9_dans_le_temple%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Jesus_Found_in_the_Temple_%28Jesus_retrouv%C3%A9_dans_le_temple%29_-_James_Tissot_-_overall.jpg",
       "title": "Jesus hallado en el Templo",
       "artist": "James Tissot, c. 1896",
@@ -3735,7 +3745,7 @@ const BIBLE_IMAGES = {
       "verseHint": 46
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_112.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Brooklyn_Museum_-_On_Return_from_Jerusalem%2C_It_is_Noticed_that_Jesus_is_Lost_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_On_Return_from_Jerusalem%2C_It_is_Noticed_that_Jesus_is_Lost_-_James_Tissot.jpg",
       "title": "Al regresar de Jerusalen notan que Jesus se ha perdido",
       "artist": "James Tissot, c. 1896",
@@ -3745,7 +3755,7 @@ const BIBLE_IMAGES = {
       "verseHint": 44
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_113.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Brooklyn_Museum_-_The_Childhood_of_Saint_John_the_Baptist_%28L%27enfance_de_saint_Jean-Baptiste%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Childhood_of_Saint_John_the_Baptist_%28L%27enfance_de_saint_Jean-Baptiste%29_-_James_Tissot_-_overall.jpg",
       "title": "La infancia de Juan el Bautista",
       "artist": "James Tissot, c. 1896",
@@ -3755,7 +3765,7 @@ const BIBLE_IMAGES = {
       "verseHint": 80
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_123.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Brooklyn_Museum_-_Mary_Magdalene_at_the_Feet_of_Jesus_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Mary_Magdalene_at_the_Feet_of_Jesus_-_James_Tissot.jpg",
       "title": "Maria Magdalena a los pies de Jesus",
       "artist": "James Tissot, c. 1896",
@@ -3765,7 +3775,7 @@ const BIBLE_IMAGES = {
       "verseHint": 38
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_124.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Brooklyn_Museum_-_Jesus_Mary_Magdalene_and_Martha_at_Bethany_%28J%C3%A9sus_%C3%A0_Bethanie_Marie_Madeleine_et_Marthe%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Mary_Magdalene_and_Martha_at_Bethany_%28J%C3%A9sus_%C3%A0_Bethanie_Marie_Madeleine_et_Marthe%29_-_James_Tissot.jpg",
       "title": "Jesus, Maria Magdalena y Marta en Betania",
       "artist": "James Tissot, c. 1896",
@@ -3775,7 +3785,7 @@ const BIBLE_IMAGES = {
       "verseHint": 39
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_125.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Brooklyn_Museum_-_Zacchaeus_in_the_Sycamore_Awaiting_the_Passage_of_Jesus_%28Zach%C3%A9e_sur_le_sycomore_attendant_le_passage_de_J%C3%A9sus%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Zacchaeus_in_the_Sycamore_Awaiting_the_Passage_of_Jesus_%28Zach%C3%A9e_sur_le_sycomore_attendant_le_passage_de_J%C3%A9sus%29_-_James_Tissot.jpg",
       "title": "Zaqueo en el sicomoro",
       "artist": "James Tissot, c. 1896",
@@ -3785,7 +3795,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_130.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Brooklyn_Museum_-_Jesus_Traveling_%28J%C3%A9sus_en_voyage%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Traveling_%28J%C3%A9sus_en_voyage%29_-_James_Tissot.jpg",
       "title": "Jesus en camino",
       "artist": "James Tissot, c. 1896",
@@ -3795,7 +3805,7 @@ const BIBLE_IMAGES = {
       "verseHint": 51
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_131.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Brooklyn_Museum_-_He_Went_Through_the_Villages_on_the_Way_to_Jerusalem_%28Il_allait_par_les_villages_en_route_pour_J%C3%A9rusalem%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_He_Went_Through_the_Villages_on_the_Way_to_Jerusalem_%28Il_allait_par_les_villages_en_route_pour_J%C3%A9rusalem%29_-_James_Tissot_-_overall.jpg",
       "title": "Recorria las aldeas camino a Jerusalen",
       "artist": "James Tissot, c. 1896",
@@ -3805,7 +3815,7 @@ const BIBLE_IMAGES = {
       "verseHint": 22
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_132.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Brooklyn_Museum_-_The_Vine_Dresser_and_the_Fig_Tree_%28Le_vigneron_et_le_figuier%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Vine_Dresser_and_the_Fig_Tree_%28Le_vigneron_et_le_figuier%29_-_James_Tissot.jpg",
       "title": "El vinador y la higuera",
       "artist": "James Tissot, c. 1896",
@@ -3815,7 +3825,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_136.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Brooklyn_Museum_-_The_Bad_Rich_Man_in_Hell_%28Le_mauvais_riche_dans_l%27Enfer%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Bad_Rich_Man_in_Hell_%28Le_mauvais_riche_dans_l%27Enfer%29_-_James_Tissot_-_overall.jpg",
       "title": "El rico avariento",
       "artist": "James Tissot, c. 1896",
@@ -3825,7 +3835,7 @@ const BIBLE_IMAGES = {
       "verseHint": 23
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_144.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Brooklyn_Museum_-_The_Woman_with_an_Infirmity_of_Eighteen_Years_%28La_femme_malade_depuis_dix-huit_ans%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Woman_with_an_Infirmity_of_Eighteen_Years_%28La_femme_malade_depuis_dix-huit_ans%29_-_James_Tissot.jpg",
       "title": "La mujer enferma desde hace dieciocho anos",
       "artist": "James Tissot, c. 1896",
@@ -3835,7 +3845,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_163.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Brooklyn_Museum_-_The_Daughters_of_Jerusalem_%28Les_filles_de_J%C3%A9rusalem%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Daughters_of_Jerusalem_%28Les_filles_de_J%C3%A9rusalem%29_-_James_Tissot.jpg",
       "title": "Las hijas de Jerusalen",
       "artist": "James Tissot, c. 1896",
@@ -3845,7 +3855,7 @@ const BIBLE_IMAGES = {
       "verseHint": 28
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_166.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Brooklyn_Museum_-_He_Vanished_from_Their_Sight_%28Il_disparut_%C3%A0_leurs_yeux%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_He_Vanished_from_Their_Sight_%28Il_disparut_%C3%A0_leurs_yeux%29_-_James_Tissot.jpg",
       "title": "Desaparecio de su vista",
       "artist": "James Tissot, c. 1896",
@@ -3853,6 +3863,16 @@ const BIBLE_IMAGES = {
         24
       ],
       "verseHint": 31
+    },
+    {
+      "local": "img/art/hole/hole_001.jpg",
+      "url": null,
+      "title": "José y María llegan a Belén",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        2
+      ],
+      "verseHint": 4
     }
   ],
   "hechos": [
@@ -4109,7 +4129,7 @@ const BIBLE_IMAGES = {
       "verseHint": 9
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_100.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Tissot_The_Chaldees_Destroy_the_Brazen_Sea.jpg/960px-Tissot_The_Chaldees_Destroy_the_Brazen_Sea.jpg",
       "title": "Los caldeos destruyen el mar de bronce",
       "artist": "James Tissot, c. 1896",
@@ -4119,7 +4139,7 @@ const BIBLE_IMAGES = {
       "verseHint": 13
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_101.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Tissot_The_Flight_of_the_Prisoners.jpg/960px-Tissot_The_Flight_of_the_Prisoners.jpg",
       "title": "La huida de los prisioneros",
       "artist": "James Tissot, c. 1896",
@@ -4129,7 +4149,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_102.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Tissot_The_Dead_Bodies_Carried_Away.jpg/960px-Tissot_The_Dead_Bodies_Carried_Away.jpg",
       "title": "Los cadaveres son llevados",
       "artist": "James Tissot, c. 1896",
@@ -4137,6 +4157,16 @@ const BIBLE_IMAGES = {
         25
       ],
       "verseHint": 21
+    },
+    {
+      "local": "img/art/hole/hole_026.jpg",
+      "url": null,
+      "title": "Conías ante Nabucodonosor",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        24
+      ],
+      "verseHint": 12
     }
   ],
   "2cronicas": [
@@ -4515,7 +4545,7 @@ const BIBLE_IMAGES = {
       "verseHint": 59
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_107.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Brooklyn_Museum_-_The_Adoration_of_the_Magi_%28L%27adoration_des_mages%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Adoration_of_the_Magi_%28L%27adoration_des_mages%29_-_James_Tissot_-_overall.jpg",
       "title": "La adoracion de los magos",
       "artist": "James Tissot, c. 1896",
@@ -4525,7 +4555,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_108.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Brooklyn_Museum_-_The_Flight_into_Egypt_%28La_fuite_en_%C3%89gypte%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Flight_into_Egypt_%28La_fuite_en_%C3%89gypte%29_-_James_Tissot_-_overall.jpg",
       "title": "La huida a Egipto",
       "artist": "James Tissot, c. 1896",
@@ -4535,7 +4565,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_114.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Brooklyn_Museum_-_The_Calling_of_Saint_Peter_and_Saint_Andrew_%28Vocation_de_Saint_Pierre_et_Saint_Andr%C3%A9%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Calling_of_Saint_Peter_and_Saint_Andrew_%28Vocation_de_Saint_Pierre_et_Saint_Andr%C3%A9%29_-_James_Tissot_-_overall.jpg",
       "title": "El llamado de Pedro y Andres",
       "artist": "James Tissot, c. 1896",
@@ -4545,7 +4575,7 @@ const BIBLE_IMAGES = {
       "verseHint": 18
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_115.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Brooklyn_Museum_-_The_Calling_of_Saint_Matthew_%28Vocation_de_Saint_Mathieu%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Calling_of_Saint_Matthew_%28Vocation_de_Saint_Mathieu%29_-_James_Tissot_-_overall.jpg",
       "title": "El llamado de Mateo",
       "artist": "James Tissot, c. 1896",
@@ -4555,7 +4585,7 @@ const BIBLE_IMAGES = {
       "verseHint": 9
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_117.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Brooklyn_Museum_-_The_Sower_%28Le_semeur%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Sower_%28Le_semeur%29_-_James_Tissot_-_overall.jpg",
       "title": "El sembrador",
       "artist": "James Tissot, c. 1896",
@@ -4565,7 +4595,7 @@ const BIBLE_IMAGES = {
       "verseHint": 3
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_118.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Brooklyn_Museum_-_The_Enemy_Who_Sows_%28L%27Ennemi_qui_s%C3%A8me%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Enemy_Who_Sows_%28L%27Ennemi_qui_s%C3%A8me%29_-_James_Tissot.jpg",
       "title": "El enemigo que siembra cizana",
       "artist": "James Tissot, c. 1896",
@@ -4575,7 +4605,7 @@ const BIBLE_IMAGES = {
       "verseHint": 25
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_127.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Brooklyn_Museum_-_The_Tribute_Money_%28Le_denier_de_C%C3%A9sar%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Tribute_Money_%28Le_denier_de_C%C3%A9sar%29_-_James_Tissot.jpg",
       "title": "El tributo al Cesar",
       "artist": "James Tissot, c. 1896",
@@ -4585,7 +4615,7 @@ const BIBLE_IMAGES = {
       "verseHint": 19
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_129.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Brooklyn_Museum_-_The_Disciples_Eat_Wheat_on_the_Sabbath_%28Les_disciples_mangent_du_bl%C3%A9_au_sabbat%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Disciples_Eat_Wheat_on_the_Sabbath_%28Les_disciples_mangent_du_bl%C3%A9_au_sabbat%29_-_James_Tissot_-_overall.jpg",
       "title": "Los discipulos comen trigo en sabado",
       "artist": "James Tissot, c. 1896",
@@ -4595,7 +4625,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_133.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Brooklyn_Museum_-_The_First_Shall_Be_Last_%28Le_premier_sera_le_dernier%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_First_Shall_Be_Last_%28Le_premier_sera_le_dernier%29_-_James_Tissot_-_overall.jpg",
       "title": "Los primeros seran los ultimos",
       "artist": "James Tissot, c. 1896",
@@ -4605,7 +4635,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_134.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Brooklyn_Museum_-_The_Two_Women_at_the_Mill_%28Les_deux_femmes_au_moulin%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Two_Women_at_the_Mill_%28Les_deux_femmes_au_moulin%29_-_James_Tissot_-_overall.jpg",
       "title": "Las dos mujeres en el molino",
       "artist": "James Tissot, c. 1896",
@@ -4615,7 +4645,7 @@ const BIBLE_IMAGES = {
       "verseHint": 41
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_135.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Brooklyn_Museum_-_The_Wise_Virgins_%28Les_vierges_sages%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Wise_Virgins_%28Les_vierges_sages%29_-_James_Tissot.jpg",
       "title": "Las virgenes prudentes",
       "artist": "James Tissot, c. 1896",
@@ -4625,7 +4655,7 @@ const BIBLE_IMAGES = {
       "verseHint": 4
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_137.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Brooklyn_Museum_-_The_Blind_in_the_Ditch_%28Les_aveugles_dans_le_foss%C3%A9%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Blind_in_the_Ditch_%28Les_aveugles_dans_le_foss%C3%A9%29_-_James_Tissot.jpg",
       "title": "Los ciegos en el hoyo",
       "artist": "James Tissot, c. 1896",
@@ -4635,7 +4665,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_138.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Brooklyn_Museum_-_The_Corner_Stone_%28Le_pierre_angulaire%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Corner_Stone_%28Le_pierre_angulaire%29_-_James_Tissot.jpg",
       "title": "La piedra angular",
       "artist": "James Tissot, c. 1896",
@@ -4645,7 +4675,7 @@ const BIBLE_IMAGES = {
       "verseHint": 42
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_139.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Brooklyn_Museum_-_He_Who_Winnows_His_Wheat_%28Celui_qui_vane_le_bl%C3%A9%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_He_Who_Winnows_His_Wheat_%28Celui_qui_vane_le_bl%C3%A9%29_-_James_Tissot.jpg",
       "title": "El que avienta su trigo",
       "artist": "James Tissot, c. 1896",
@@ -4655,7 +4685,7 @@ const BIBLE_IMAGES = {
       "verseHint": 12
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_140.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Brooklyn_Museum_-_The_Swine_Driven_into_the_Sea_%28Les_porcs_pr%C3%A9cipit%C3%A9s_dans_la_mer%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Swine_Driven_into_the_Sea_%28Les_porcs_pr%C3%A9cipit%C3%A9s_dans_la_mer%29_-_James_Tissot.jpg",
       "title": "Los cerdos se precipitan al mar",
       "artist": "James Tissot, c. 1896",
@@ -4665,7 +4695,7 @@ const BIBLE_IMAGES = {
       "verseHint": 32
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_141.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Brooklyn_Museum_-_The_Two_Blind_Men_at_Jericho_%28Les_deux_aveugles_%C3%A0_Jericho%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Two_Blind_Men_at_Jericho_%28Les_deux_aveugles_%C3%A0_Jericho%29_-_James_Tissot.jpg",
       "title": "Los dos ciegos de Jerico",
       "artist": "James Tissot, c. 1896",
@@ -4675,7 +4705,7 @@ const BIBLE_IMAGES = {
       "verseHint": 30
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_142.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Brooklyn_Museum_-_The_Canaanite%27s_Daughter_%28La_Chanan%C3%A9enne%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Canaanite%27s_Daughter_%28La_Chanan%C3%A9enne%29_-_James_Tissot.jpg",
       "title": "La hija de la cananea",
       "artist": "James Tissot, c. 1896",
@@ -4685,7 +4715,7 @@ const BIBLE_IMAGES = {
       "verseHint": 22
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_145.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Brooklyn_Museum_-_Healing_of_the_Lepers_at_Capernaum_%28Gu%C3%A9rison_des_l%C3%A9preux_%C3%A0_Capernaum%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Healing_of_the_Lepers_at_Capernaum_%28Gu%C3%A9rison_des_l%C3%A9preux_%C3%A0_Capernaum%29_-_James_Tissot_-_overall.jpg",
       "title": "Curacion de los leprosos en Capernaum",
       "artist": "James Tissot, c. 1896",
@@ -4695,7 +4725,7 @@ const BIBLE_IMAGES = {
       "verseHint": 3
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_147.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Brooklyn_Museum_-_Jesus_Discourses_with_His_Disciples_%28J%C3%A9sus_s%27entretient_avec_ses_disciples%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Discourses_with_His_Disciples_%28J%C3%A9sus_s%27entretient_avec_ses_disciples%29_-_James_Tissot.jpg",
       "title": "Jesus conversa con sus discipulos",
       "artist": "James Tissot, c. 1896",
@@ -4705,7 +4735,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_150.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Brooklyn_Museum_-_Jesus_Goes_in_the_Evening_to_Bethany_%28J%C3%A9sus_va_le_soir_%C3%A0_B%C3%A9thanie%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Goes_in_the_Evening_to_Bethany_%28J%C3%A9sus_va_le_soir_%C3%A0_B%C3%A9thanie%29_-_James_Tissot.jpg",
       "title": "Jesus va por la tarde a Betania",
       "artist": "James Tissot, c. 1896",
@@ -4715,7 +4745,7 @@ const BIBLE_IMAGES = {
       "verseHint": 17
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_153.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Brooklyn_Museum_-_Woe_unto_You%2C_Scribes_and_Pharisees_%28Malheur_%C3%A0_vous%2C_scribes_et_pharisiens%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Woe_unto_You%2C_Scribes_and_Pharisees_%28Malheur_%C3%A0_vous%2C_scribes_et_pharisiens%29_-_James_Tissot.jpg",
       "title": "Ay de vosotros, escribas y fariseos",
       "artist": "James Tissot, c. 1896",
@@ -4725,7 +4755,7 @@ const BIBLE_IMAGES = {
       "verseHint": 13
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_156.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brooklyn_Museum_-_Judas_Goes_to_Find_the_Jews_%28Judas_va_trouver_les_Juifs%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Judas_Goes_to_Find_the_Jews_%28Judas_va_trouver_les_Juifs%29_-_James_Tissot.jpg",
       "title": "Judas va a buscar a los sacerdotes",
       "artist": "James Tissot, c. 1896",
@@ -4735,7 +4765,7 @@ const BIBLE_IMAGES = {
       "verseHint": 14
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_157.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Brooklyn_Museum_-_The_Kiss_of_Judas_%28Le_baiser_de_Judas%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Kiss_of_Judas_%28Le_baiser_de_Judas%29_-_James_Tissot.jpg",
       "title": "El beso de Judas",
       "artist": "James Tissot, c. 1896",
@@ -4745,7 +4775,7 @@ const BIBLE_IMAGES = {
       "verseHint": 49
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_158.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Brooklyn_Museum_-_Judas_Returns_the_Money_%28Judas_rend_l%27argent%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Judas_Returns_the_Money_%28Judas_rend_l%27argent%29_-_James_Tissot.jpg",
       "title": "Judas devuelve el dinero",
       "artist": "James Tissot, c. 1896",
@@ -4755,7 +4785,7 @@ const BIBLE_IMAGES = {
       "verseHint": 3
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_159.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Brooklyn_Museum_-_Jesus_Before_Pilate_First_Interview_%28J%C3%A9sus_devant_Pilate._Premier_entretien%29._-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Before_Pilate_First_Interview_%28J%C3%A9sus_devant_Pilate._Premier_entretien%29._-_James_Tissot.jpg",
       "title": "Jesus ante Pilato, primer interrogatorio",
       "artist": "James Tissot, c. 1896",
@@ -4765,7 +4795,7 @@ const BIBLE_IMAGES = {
       "verseHint": 11
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_160.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Brooklyn_Museum_-_Barabbas_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Barabbas_-_James_Tissot.jpg",
       "title": "Barrabas",
       "artist": "James Tissot, c. 1896",
@@ -4775,7 +4805,7 @@ const BIBLE_IMAGES = {
       "verseHint": 16
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_161.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Brooklyn_Museum_-_Pilate_Washes_His_Hands_%28Pilate_se_lave_les_mains%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Pilate_Washes_His_Hands_%28Pilate_se_lave_les_mains%29_-_James_Tissot.jpg",
       "title": "Pilato se lava las manos",
       "artist": "James Tissot, c. 1896",
@@ -4785,7 +4815,7 @@ const BIBLE_IMAGES = {
       "verseHint": 24
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_162.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Brooklyn_Museum_-_Simon_the_Cyrenian_Compelled_to_Carry_the_Cross_with_Jesus_%28Simon_de_Cyr%C3%A8ne_contraint_de_porter_la_Croix_avec_J%C3%A9sus%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Simon_the_Cyrenian_Compelled_to_Carry_the_Cross_with_Jesus_%28Simon_de_Cyr%C3%A8ne_contraint_de_porter_la_Croix_avec_J%C3%A9sus%29_-_James_Tissot.jpg",
       "title": "Simon de Cirene obligado a llevar la cruz",
       "artist": "James Tissot, c. 1896",
@@ -4795,7 +4825,7 @@ const BIBLE_IMAGES = {
       "verseHint": 32
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_164.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Brooklyn_Museum_-_Joseph_of_Arimathaea_Seeks_Pilate_to_Beg_Permission_to_Remove_the_Body_of_Jesus_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Joseph_of_Arimathaea_Seeks_Pilate_to_Beg_Permission_to_Remove_the_Body_of_Jesus_-_James_Tissot.jpg",
       "title": "Jose de Arimatea pide permiso a Pilato",
       "artist": "James Tissot, c. 1896",
@@ -4805,7 +4835,7 @@ const BIBLE_IMAGES = {
       "verseHint": 58
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_165.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Brooklyn_Museum_-_Conspiracy_of_the_Jews_%28Conspiration_des_juifs%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Conspiracy_of_the_Jews_%28Conspiration_des_juifs%29_-_James_Tissot.jpg",
       "title": "La conspiracion de los sacerdotes",
       "artist": "James Tissot, c. 1896",
@@ -4815,7 +4845,7 @@ const BIBLE_IMAGES = {
       "verseHint": 3
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_168.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Brooklyn_Museum_-_The_Daughter_of_Herodias_Dancing_%28H%C3%A9rodiade_dansant%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Daughter_of_Herodias_Dancing_%28H%C3%A9rodiade_dansant%29_-_James_Tissot_-_overall.jpg",
       "title": "La hija de Herodias danza",
       "artist": "James Tissot, c. 1896",
@@ -4833,6 +4863,46 @@ const BIBLE_IMAGES = {
         21
       ],
       "verseHint": 2
+    },
+    {
+      "local": "img/art/hole/hole_014.jpg",
+      "url": null,
+      "title": "El Sermón del Monte",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        5
+      ],
+      "verseHint": 1
+    },
+    {
+      "local": "img/art/hole/hole_010.jpg",
+      "url": null,
+      "title": "Alimentación de la multitud",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        14
+      ],
+      "verseHint": 19
+    },
+    {
+      "local": "img/art/hole/hole_020.jpg",
+      "url": null,
+      "title": "Entrada triunfal en Jerusalén",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        21
+      ],
+      "verseHint": 8
+    },
+    {
+      "local": "img/art/hole/hole_023.jpg",
+      "url": null,
+      "title": "Jesús ante Pilato",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        27
+      ],
+      "verseHint": 11
     }
   ],
   "juan": [
@@ -4957,7 +5027,7 @@ const BIBLE_IMAGES = {
       "verseHint": 6
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_119.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Brooklyn_Museum_-_The_Betrothed_of_Cana_%28Les_fianc%C3%A9s_de_Cana%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Betrothed_of_Cana_%28Les_fianc%C3%A9s_de_Cana%29_-_James_Tissot_-_overall.jpg",
       "title": "Los novios de Cana",
       "artist": "James Tissot, c. 1896",
@@ -4967,7 +5037,7 @@ const BIBLE_IMAGES = {
       "verseHint": 1
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_120.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Brooklyn_Museum_-_The_Woman_of_Samaria_at_the_Well_%28La_Samaritaine_%C3%A0_la_fontaine%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Woman_of_Samaria_at_the_Well_%28La_Samaritaine_%C3%A0_la_fontaine%29_-_James_Tissot_-_overall.jpg",
       "title": "La mujer samaritana en el pozo",
       "artist": "James Tissot, c. 1896",
@@ -4977,7 +5047,7 @@ const BIBLE_IMAGES = {
       "verseHint": 7
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_121.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Brooklyn_Museum_-_Interview_between_Jesus_and_Nicodemus_%28Entretien_de_J%C3%A9sus_et_de_Nicod%C3%A8me%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Interview_between_Jesus_and_Nicodemus_%28Entretien_de_J%C3%A9sus_et_de_Nicod%C3%A8me%29_-_James_Tissot.jpg",
       "title": "Jesus conversa con Nicodemo",
       "artist": "James Tissot, c. 1896",
@@ -4987,7 +5057,7 @@ const BIBLE_IMAGES = {
       "verseHint": 2
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_122.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Brooklyn_Museum_-_Nathaniel_Under_the_Fig_Tree_%28Nathana%C3%ABl_sous_le_figuier%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Nathaniel_Under_the_Fig_Tree_%28Nathana%C3%ABl_sous_le_figuier%29_-_James_Tissot_-_overall.jpg",
       "title": "Natanael bajo la higuera",
       "artist": "James Tissot, c. 1896",
@@ -4997,7 +5067,7 @@ const BIBLE_IMAGES = {
       "verseHint": 48
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_154.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Brooklyn_Museum_-_With_Passover_Approaching%2C_Jesus_Goes_Up_to_Jerusalem_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_With_Passover_Approaching%2C_Jesus_Goes_Up_to_Jerusalem_-_James_Tissot_-_overall.jpg",
       "title": "Al acercarse la Pascua, Jesus sube a Jerusalen",
       "artist": "James Tissot, c. 1896",
@@ -5007,7 +5077,7 @@ const BIBLE_IMAGES = {
       "verseHint": 13
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_155.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Brooklyn_Museum_-_The_Washing_of_the_Feet_%28Le_lavement_des_pieds%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Washing_of_the_Feet_%28Le_lavement_des_pieds%29_-_James_Tissot.jpg",
       "title": "El lavamiento de los pies",
       "artist": "James Tissot, c. 1896",
@@ -5017,7 +5087,7 @@ const BIBLE_IMAGES = {
       "verseHint": 5
     },
     {
-      "local": null,
+      "local": "img/art/tissot/tissot_167.jpg",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Brooklyn_Museum_-_Feed_My_Lambs_%28Pais_mes_brebis%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Feed_My_Lambs_%28Pais_mes_brebis%29_-_James_Tissot.jpg",
       "title": "Apacienta mis ovejas",
       "artist": "James Tissot, c. 1896",
@@ -5025,6 +5095,16 @@ const BIBLE_IMAGES = {
         21
       ],
       "verseHint": 17
+    },
+    {
+      "local": "img/art/hole/hole_017.jpg",
+      "url": null,
+      "title": "Jesús expulsa a los cambistas",
+      "artist": "William Brassey Hole, c. 1906",
+      "chapters": [
+        2
+      ],
+      "verseHint": 15
     }
   ],
   "1tesalonicenses": [
@@ -5069,341 +5149,341 @@ const BIBLE_IMAGES = {
 const BIBLE_MAPS_BY_BOOK = {
   "genesis": [
     {
-      "local": null,
+      "local": "img/maps/biblica_01.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png/1280px-Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png",
       "title": "Tierra Santa - Relieve"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_02.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Biblica_Open_Bible_Map_02_03_The_World_of_the_Patriarchs.png/1280px-Biblica_Open_Bible_Map_02_03_The_World_of_the_Patriarchs.png",
       "title": "El Mundo de los Patriarcas"
     }
   ],
   "josue": [
     {
-      "local": null,
+      "local": "img/maps/biblica_01.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png/1280px-Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png",
       "title": "Tierra Santa - Relieve"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_04.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png/1280px-Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png",
       "title": "El Éxodo y la Conquista de Canaán"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_05.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Biblica_Open_Bible_Map_05_The_Twelve_Tribes_of_Israel.png/1280px-Biblica_Open_Bible_Map_05_The_Twelve_Tribes_of_Israel.png",
       "title": "Las Doce Tribus de Israel"
     }
   ],
   "jueces": [
     {
-      "local": null,
+      "local": "img/maps/biblica_01.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png/1280px-Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png",
       "title": "Tierra Santa - Relieve"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_05.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Biblica_Open_Bible_Map_05_The_Twelve_Tribes_of_Israel.png/1280px-Biblica_Open_Bible_Map_05_The_Twelve_Tribes_of_Israel.png",
       "title": "Las Doce Tribus de Israel"
     }
   ],
   "1samuel": [
     {
-      "local": null,
+      "local": "img/maps/biblica_01.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png/1280px-Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png",
       "title": "Tierra Santa - Relieve"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_06.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png/1280px-Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png",
       "title": "Reinos de Saúl, David y Salomón"
     }
   ],
   "2samuel": [
     {
-      "local": null,
+      "local": "img/maps/biblica_01.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png/1280px-Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png",
       "title": "Tierra Santa - Relieve"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_06.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png/1280px-Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png",
       "title": "Reinos de Saúl, David y Salomón"
     }
   ],
   "exodo": [
     {
-      "local": null,
+      "local": "img/maps/biblica_04.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png/1280px-Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png",
       "title": "El Éxodo y la Conquista de Canaán"
     }
   ],
   "numeros": [
     {
-      "local": null,
+      "local": "img/maps/biblica_04.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png/1280px-Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png",
       "title": "El Éxodo y la Conquista de Canaán"
     }
   ],
   "deuteronomio": [
     {
-      "local": null,
+      "local": "img/maps/biblica_04.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png/1280px-Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png",
       "title": "El Éxodo y la Conquista de Canaán"
     }
   ],
   "1reyes": [
     {
-      "local": null,
+      "local": "img/maps/biblica_06.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png/1280px-Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png",
       "title": "Reinos de Saúl, David y Salomón"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_07.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
       "title": "Reinos de Israel y Judá"
     }
   ],
   "1cronicas": [
     {
-      "local": null,
+      "local": "img/maps/biblica_06.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png/1280px-Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png",
       "title": "Reinos de Saúl, David y Salomón"
     }
   ],
   "2reyes": [
     {
-      "local": null,
+      "local": "img/maps/biblica_07.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
       "title": "Reinos de Israel y Judá"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_09.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png/1280px-Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png",
       "title": "Imperio Asirio c. 700 a.C."
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_10.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png/1280px-Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png",
       "title": "Imperio Babilónico c. 600 a.C."
     }
   ],
   "2cronicas": [
     {
-      "local": null,
+      "local": "img/maps/biblica_07.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
       "title": "Reinos de Israel y Judá"
     }
   ],
   "isaias": [
     {
-      "local": null,
+      "local": "img/maps/biblica_07.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
       "title": "Reinos de Israel y Judá"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_09.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png/1280px-Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png",
       "title": "Imperio Asirio c. 700 a.C."
     }
   ],
   "jeremias": [
     {
-      "local": null,
+      "local": "img/maps/biblica_07.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
       "title": "Reinos de Israel y Judá"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_10.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png/1280px-Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png",
       "title": "Imperio Babilónico c. 600 a.C."
     }
   ],
   "oseas": [
     {
-      "local": null,
+      "local": "img/maps/biblica_07.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
       "title": "Reinos de Israel y Judá"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     }
   ],
   "amos": [
     {
-      "local": null,
+      "local": "img/maps/biblica_07.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
       "title": "Reinos de Israel y Judá"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     }
   ],
   "ezequiel": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_10.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png/1280px-Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png",
       "title": "Imperio Babilónico c. 600 a.C."
     }
   ],
   "joel": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     }
   ],
   "abdias": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     }
   ],
   "jonas": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     }
   ],
   "miqueas": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     }
   ],
   "nahum": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_09.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png/1280px-Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png",
       "title": "Imperio Asirio c. 700 a.C."
     }
   ],
   "habacuc": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_10.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png/1280px-Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png",
       "title": "Imperio Babilónico c. 600 a.C."
     }
   ],
   "sofonias": [
     {
-      "local": null,
+      "local": "img/maps/biblica_08.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
       "title": "Los Profetas de Judá e Israel"
     }
   ],
   "daniel": [
     {
-      "local": null,
+      "local": "img/maps/biblica_10.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png/1280px-Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png",
       "title": "Imperio Babilónico c. 600 a.C."
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_11.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
       "title": "Imperio Persa c. 450 a.C."
     }
   ],
   "lamentaciones": [
     {
-      "local": null,
+      "local": "img/maps/biblica_10.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png/1280px-Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png",
       "title": "Imperio Babilónico c. 600 a.C."
     }
   ],
   "esdras": [
     {
-      "local": null,
+      "local": "img/maps/biblica_11.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
       "title": "Imperio Persa c. 450 a.C."
     }
   ],
   "nehemias": [
     {
-      "local": null,
+      "local": "img/maps/biblica_11.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
       "title": "Imperio Persa c. 450 a.C."
     }
   ],
   "ester": [
     {
-      "local": null,
+      "local": "img/maps/biblica_11.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
       "title": "Imperio Persa c. 450 a.C."
     }
   ],
   "hageo": [
     {
-      "local": null,
+      "local": "img/maps/biblica_11.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
       "title": "Imperio Persa c. 450 a.C."
     }
   ],
   "zacarias": [
     {
-      "local": null,
+      "local": "img/maps/biblica_11.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
       "title": "Imperio Persa c. 450 a.C."
     }
   ],
   "malaquias": [
     {
-      "local": null,
+      "local": "img/maps/biblica_11.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
       "title": "Imperio Persa c. 450 a.C."
     }
   ],
   "hechos": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_16.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png/1280px-Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png",
       "title": "Viajes Misioneros de Pablo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_18.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png/1280px-Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png",
       "title": "El Imperio Romano y la Iglesia Primitiva"
     },
     {
-      "local": null,
+      "local": "img/maps/paul_1st.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Paul_the_Apostle%2C_first_missionary_journey.svg/1280px-Paul_the_Apostle%2C_first_missionary_journey.svg.png",
       "title": "Primer Viaje Misionero de Pablo"
     },
@@ -5418,34 +5498,34 @@ const BIBLE_MAPS_BY_BOOK = {
       "title": "Tercer Viaje Misionero de Pablo"
     },
     {
-      "local": null,
+      "local": "img/maps/paul_4th.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Paul_the_Apostle%2C_fourth_missionary_journey_%28Rome%29.svg/1280px-Paul_the_Apostle%2C_fourth_missionary_journey_%28Rome%29.svg.png",
       "title": "Viaje de Pablo a Roma"
     }
   ],
   "romanos": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_16.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png/1280px-Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png",
       "title": "Viajes Misioneros de Pablo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_18.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png/1280px-Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png",
       "title": "El Imperio Romano y la Iglesia Primitiva"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c44.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Biblica_Open_Bible_Map_COLOR_44_Romans.png/1280px-Biblica_Open_Bible_Map_COLOR_44_Romans.png",
       "title": "Mapa: Epístola a los Romanos"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     },
@@ -5457,22 +5537,22 @@ const BIBLE_MAPS_BY_BOOK = {
   ],
   "1corintios": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_16.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png/1280px-Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png",
       "title": "Viajes Misioneros de Pablo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c45.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Biblica_Open_Bible_Map_COLOR_45_Corinthians.png/1280px-Biblica_Open_Bible_Map_COLOR_45_Corinthians.png",
       "title": "Mapa: Epístolas a los Corintios"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     },
@@ -5484,22 +5564,22 @@ const BIBLE_MAPS_BY_BOOK = {
   ],
   "2corintios": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_16.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png/1280px-Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png",
       "title": "Viajes Misioneros de Pablo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c45.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Biblica_Open_Bible_Map_COLOR_45_Corinthians.png/1280px-Biblica_Open_Bible_Map_COLOR_45_Corinthians.png",
       "title": "Mapa: Epístolas a los Corintios"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     },
@@ -5511,34 +5591,34 @@ const BIBLE_MAPS_BY_BOOK = {
   ],
   "galatas": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_16.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png/1280px-Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png",
       "title": "Viajes Misioneros de Pablo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c46.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Biblica_Open_Bible_Map_COLOR_46_Galatians.png/1280px-Biblica_Open_Bible_Map_COLOR_46_Galatians.png",
       "title": "Mapa: Epístola a los Gálatas"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "efesios": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     },
@@ -5550,17 +5630,17 @@ const BIBLE_MAPS_BY_BOOK = {
   ],
   "filipenses": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c47.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Biblica_Open_Bible_Map_COLOR_47_Philippians.png/1280px-Biblica_Open_Bible_Map_COLOR_47_Philippians.png",
       "title": "Mapa: Epístola a los Filipenses"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     },
@@ -5572,34 +5652,34 @@ const BIBLE_MAPS_BY_BOOK = {
   ],
   "colosenses": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c48.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Biblica_Open_Bible_Map_COLOR_48_Colossians.png/1280px-Biblica_Open_Bible_Map_COLOR_48_Colossians.png",
       "title": "Mapa: Epístola a los Colosenses"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "1tesalonicenses": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c49.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Biblica_Open_Bible_Map_COLOR_49_Thessalonians.png/1280px-Biblica_Open_Bible_Map_COLOR_49_Thessalonians.png",
       "title": "Mapa: Epístolas a los Tesalonicenses"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     },
@@ -5611,17 +5691,17 @@ const BIBLE_MAPS_BY_BOOK = {
   ],
   "2tesalonicenses": [
     {
-      "local": null,
+      "local": "img/maps/biblica_15.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
       "title": "Expansión del Cristianismo Primitivo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c49.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Biblica_Open_Bible_Map_COLOR_49_Thessalonians.png/1280px-Biblica_Open_Bible_Map_COLOR_49_Thessalonians.png",
       "title": "Mapa: Epístolas a los Tesalonicenses"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     },
@@ -5633,126 +5713,126 @@ const BIBLE_MAPS_BY_BOOK = {
   ],
   "2timoteo": [
     {
-      "local": null,
+      "local": "img/maps/biblica_18.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png/1280px-Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png",
       "title": "El Imperio Romano y la Iglesia Primitiva"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c50.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Biblica_Open_Bible_Map_COLOR_50_Timothy.png/1280px-Biblica_Open_Bible_Map_COLOR_50_Timothy.png",
       "title": "Mapa: Epístolas a Timoteo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "filemon": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c48.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Biblica_Open_Bible_Map_COLOR_48_Colossians.png/1280px-Biblica_Open_Bible_Map_COLOR_48_Colossians.png",
       "title": "Mapa: Epístola a los Colosenses"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "1timoteo": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c50.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Biblica_Open_Bible_Map_COLOR_50_Timothy.png/1280px-Biblica_Open_Bible_Map_COLOR_50_Timothy.png",
       "title": "Mapa: Epístolas a Timoteo"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "tito": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c51.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_COLOR_51_Titus.png/1280px-Biblica_Open_Bible_Map_COLOR_51_Titus.png",
       "title": "Mapa: Epístola a Tito"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "1pedro": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c52.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Biblica_Open_Bible_Map_COLOR_52_Peter.png/1280px-Biblica_Open_Bible_Map_COLOR_52_Peter.png",
       "title": "Mapa: Epístolas de Pedro"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "2pedro": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c52.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Biblica_Open_Bible_Map_COLOR_52_Peter.png/1280px-Biblica_Open_Bible_Map_COLOR_52_Peter.png",
       "title": "Mapa: Epístolas de Pedro"
     },
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "apocalipsis": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c53.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Biblica_Open_Bible_Map_COLOR_53_Revelation.png/1280px-Biblica_Open_Bible_Map_COLOR_53_Revelation.png",
       "title": "Mapa: Apocalipsis - Siete Iglesias"
     }
   ],
   "hebreos": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "santiago": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "1juan": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "2juan": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "3juan": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
   ],
   "judas": [
     {
-      "local": null,
+      "local": "img/maps/biblica_c43.png",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
       "title": "Vista General de las Epístolas"
     }
@@ -10042,7 +10122,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_001",
-    "src": null,
+    "src": "img/art/tissot/tissot_001.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Tissot_The_Creation.jpg/960px-Tissot_The_Creation.jpg",
     "book": "genesis",
     "chapters": [
@@ -10055,7 +10135,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_002",
-    "src": null,
+    "src": "img/art/tissot/tissot_002.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Tissot_Adam_Is_Tempted_by_Eve.jpg/960px-Tissot_Adam_Is_Tempted_by_Eve.jpg",
     "book": "genesis",
     "chapters": [
@@ -10068,7 +10148,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_003",
-    "src": null,
+    "src": "img/art/tissot/tissot_003.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Tissot_Adam_and_Eve_Driven_from_Paradise.jpg/960px-Tissot_Adam_and_Eve_Driven_from_Paradise.jpg",
     "book": "genesis",
     "chapters": [
@@ -10081,7 +10161,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_004",
-    "src": null,
+    "src": "img/art/tissot/tissot_004.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Cain_leadeth_abel_to_death_tissot.jpg/960px-Cain_leadeth_abel_to_death_tissot.jpg",
     "book": "genesis",
     "chapters": [
@@ -10094,7 +10174,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_005",
-    "src": null,
+    "src": "img/art/tissot/tissot_005.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tissot_Building_the_Ark.jpg/960px-Tissot_Building_the_Ark.jpg",
     "book": "genesis",
     "chapters": [
@@ -10107,7 +10187,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_006",
-    "src": null,
+    "src": "img/art/tissot/tissot_006.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Tissot_The_Animals_Enter_the_Ark.jpg/960px-Tissot_The_Animals_Enter_the_Ark.jpg",
     "book": "genesis",
     "chapters": [
@@ -10120,7 +10200,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_007",
-    "src": null,
+    "src": "img/art/tissot/tissot_007.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Tissot_The_Deluge.jpg/960px-Tissot_The_Deluge.jpg",
     "book": "genesis",
     "chapters": [
@@ -10133,7 +10213,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_008",
-    "src": null,
+    "src": "img/art/tissot/tissot_008.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Tissot_The_Dove_Returns_to_Noah.jpg/960px-Tissot_The_Dove_Returns_to_Noah.jpg",
     "book": "genesis",
     "chapters": [
@@ -10146,7 +10226,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_009",
-    "src": null,
+    "src": "img/art/tissot/tissot_009.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tissot_Noah%27s_Sacrifice.jpg/960px-Tissot_Noah%27s_Sacrifice.jpg",
     "book": "genesis",
     "chapters": [
@@ -10159,7 +10239,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_010",
-    "src": null,
+    "src": "img/art/tissot/tissot_010.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Tissot_Noah%27s_Drunkenness.jpg/960px-Tissot_Noah%27s_Drunkenness.jpg",
     "book": "genesis",
     "chapters": [
@@ -10172,7 +10252,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_011",
-    "src": null,
+    "src": "img/art/tissot/tissot_011.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Tissot_Shem%2C_Ham_and_Japheth.jpg/960px-Tissot_Shem%2C_Ham_and_Japheth.jpg",
     "book": "genesis",
     "chapters": [
@@ -10185,7 +10265,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_012",
-    "src": null,
+    "src": "img/art/tissot/tissot_012.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Tissot_Building_the_Tower_of_Babel.jpg/960px-Tissot_Building_the_Tower_of_Babel.jpg",
     "book": "genesis",
     "chapters": [
@@ -10198,7 +10278,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_013",
-    "src": null,
+    "src": "img/art/tissot/tissot_013.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Tissot_The_Caravan_of_Abraham.jpg/960px-Tissot_The_Caravan_of_Abraham.jpg",
     "book": "genesis",
     "chapters": [
@@ -10211,7 +10291,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_014",
-    "src": null,
+    "src": "img/art/tissot/tissot_014.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Tissot_The_Egyptians_Admire_Sarai%27s_Beauty.jpg/960px-Tissot_The_Egyptians_Admire_Sarai%27s_Beauty.jpg",
     "book": "genesis",
     "chapters": [
@@ -10224,7 +10304,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_015",
-    "src": null,
+    "src": "img/art/tissot/tissot_015.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tissot_God%27s_Promises_to_Abram.jpg/960px-Tissot_God%27s_Promises_to_Abram.jpg",
     "book": "genesis",
     "chapters": [
@@ -10237,7 +10317,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_016",
-    "src": null,
+    "src": "img/art/tissot/tissot_016.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tissot_Abram_Guarding_His_Sacrifice.jpg/960px-Tissot_Abram_Guarding_His_Sacrifice.jpg",
     "book": "genesis",
     "chapters": [
@@ -10250,7 +10330,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_017",
-    "src": null,
+    "src": "img/art/tissot/tissot_017.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Tissot_Sarai_Sends_Hagar_Away.jpg/960px-Tissot_Sarai_Sends_Hagar_Away.jpg",
     "book": "genesis",
     "chapters": [
@@ -10263,7 +10343,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_018",
-    "src": null,
+    "src": "img/art/tissot/tissot_018.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tissot_Abraham_Sees_Sodom_in_Flames.jpg/960px-Tissot_Abraham_Sees_Sodom_in_Flames.jpg",
     "book": "genesis",
     "chapters": [
@@ -10276,7 +10356,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_019",
-    "src": null,
+    "src": "img/art/tissot/tissot_019.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Tissot_Ishmael.jpg/960px-Tissot_Ishmael.jpg",
     "book": "genesis",
     "chapters": [
@@ -10289,7 +10369,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_020",
-    "src": null,
+    "src": "img/art/tissot/tissot_020.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Tissot_Isaac_Bears_the_Wood_for_His_Sacrifice.jpg/960px-Tissot_Isaac_Bears_the_Wood_for_His_Sacrifice.jpg",
     "book": "genesis",
     "chapters": [
@@ -10302,7 +10382,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_021",
-    "src": null,
+    "src": "img/art/tissot/tissot_021.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Tissot_Abraham%27s_Servant_Meets_Rebecca.jpg/960px-Tissot_Abraham%27s_Servant_Meets_Rebecca.jpg",
     "book": "genesis",
     "chapters": [
@@ -10315,7 +10395,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_022",
-    "src": null,
+    "src": "img/art/tissot/tissot_022.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Tissot_The_Mess_of_Pottage.jpg/960px-Tissot_The_Mess_of_Pottage.jpg",
     "book": "genesis",
     "chapters": [
@@ -10328,7 +10408,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_023",
-    "src": null,
+    "src": "img/art/tissot/tissot_023.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tissot_Jacob_Deceives_Isaac.jpg/960px-Tissot_Jacob_Deceives_Isaac.jpg",
     "book": "genesis",
     "chapters": [
@@ -10341,7 +10421,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_024",
-    "src": null,
+    "src": "img/art/tissot/tissot_024.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Tissot_Jacob_and_Rachel_at_the_Well.jpg/960px-Tissot_Jacob_and_Rachel_at_the_Well.jpg",
     "book": "genesis",
     "chapters": [
@@ -10354,7 +10434,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_025",
-    "src": null,
+    "src": "img/art/tissot/tissot_025.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tissot_Rachel_and_Leah.jpg/960px-Tissot_Rachel_and_Leah.jpg",
     "book": "genesis",
     "chapters": [
@@ -10367,7 +10447,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_026",
-    "src": null,
+    "src": "img/art/tissot/tissot_026.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Tissot_Jacob_Sees_Esau_Coming_to_Meet_Him.jpg/960px-Tissot_Jacob_Sees_Esau_Coming_to_Meet_Him.jpg",
     "book": "genesis",
     "chapters": [
@@ -10380,7 +10460,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_027",
-    "src": null,
+    "src": "img/art/tissot/tissot_027.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Tissot_The_Meeting_of_Esau_and_Jacob.jpg/960px-Tissot_The_Meeting_of_Esau_and_Jacob.jpg",
     "book": "genesis",
     "chapters": [
@@ -10393,7 +10473,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_028",
-    "src": null,
+    "src": "img/art/tissot/tissot_028.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Dinah_tissot.jpg/960px-Dinah_tissot.jpg",
     "book": "genesis",
     "chapters": [
@@ -10406,7 +10486,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_029",
-    "src": null,
+    "src": "img/art/tissot/tissot_029.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Tissot_Joseph_Reveals_His_Dream_to_His_Brethren.jpg/960px-Tissot_Joseph_Reveals_His_Dream_to_His_Brethren.jpg",
     "book": "genesis",
     "chapters": [
@@ -10419,7 +10499,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_030",
-    "src": null,
+    "src": "img/art/tissot/tissot_030.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Tissot_Joseph_Sold_into_Egypt.jpg/960px-Tissot_Joseph_Sold_into_Egypt.jpg",
     "book": "genesis",
     "chapters": [
@@ -10432,7 +10512,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_031",
-    "src": null,
+    "src": "img/art/tissot/tissot_031.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Tissot_Jacob_Mourns_His_Son_Joseph.jpg/960px-Tissot_Jacob_Mourns_His_Son_Joseph.jpg",
     "book": "genesis",
     "chapters": [
@@ -10445,7 +10525,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_032",
-    "src": null,
+    "src": "img/art/tissot/tissot_032.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Judah_and_Tamar_by_J.Tissot.jpg/960px-Judah_and_Tamar_by_J.Tissot.jpg",
     "book": "genesis",
     "chapters": [
@@ -10458,7 +10538,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_033",
-    "src": null,
+    "src": "img/art/tissot/tissot_033.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Tissot_Joseph_Interprets_the_Dreams_While_in_Prison.jpg/960px-Tissot_Joseph_Interprets_the_Dreams_While_in_Prison.jpg",
     "book": "genesis",
     "chapters": [
@@ -10471,7 +10551,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_034",
-    "src": null,
+    "src": "img/art/tissot/tissot_034.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tissot_Joseph_Interprets_Pharaoh%27s_Dream.jpg/960px-Tissot_Joseph_Interprets_Pharaoh%27s_Dream.jpg",
     "book": "genesis",
     "chapters": [
@@ -10484,7 +10564,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_035",
-    "src": null,
+    "src": "img/art/tissot/tissot_035.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Tissot_The_Glory_of_Joseph.jpg/960px-Tissot_The_Glory_of_Joseph.jpg",
     "book": "genesis",
     "chapters": [
@@ -10497,7 +10577,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_036",
-    "src": null,
+    "src": "img/art/tissot/tissot_036.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Tissot_The_Cup_Found.jpg/960px-Tissot_The_Cup_Found.jpg",
     "book": "genesis",
     "chapters": [
@@ -10510,7 +10590,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_037",
-    "src": null,
+    "src": "img/art/tissot/tissot_037.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Tissot_Joseph_Makes_Himself_Known_to_His_Brethren.jpg/960px-Tissot_Joseph_Makes_Himself_Known_to_His_Brethren.jpg",
     "book": "genesis",
     "chapters": [
@@ -10523,7 +10603,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_038",
-    "src": null,
+    "src": "img/art/tissot/tissot_038.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Tissot_Joseph_Converses_With_Judah%2C_His_Brother.jpg/960px-Tissot_Joseph_Converses_With_Judah%2C_His_Brother.jpg",
     "book": "genesis",
     "chapters": [
@@ -10536,7 +10616,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_039",
-    "src": null,
+    "src": "img/art/tissot/tissot_039.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Tissot_Joseph_and_His_Brethren_Welcomed_by_Pharaoh.jpg/960px-Tissot_Joseph_and_His_Brethren_Welcomed_by_Pharaoh.jpg",
     "book": "genesis",
     "chapters": [
@@ -10549,7 +10629,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_040",
-    "src": null,
+    "src": "img/art/tissot/tissot_040.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Tissot_Joseph_Dwells_in_Egypt.jpg/960px-Tissot_Joseph_Dwells_in_Egypt.jpg",
     "book": "genesis",
     "chapters": [
@@ -10562,7 +10642,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_041",
-    "src": null,
+    "src": "img/art/tissot/tissot_041.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tissot_Pharaoh_Notes_the_Importance_of_the_Jewish_People.jpg/960px-Tissot_Pharaoh_Notes_the_Importance_of_the_Jewish_People.jpg",
     "book": "exodo",
     "chapters": [
@@ -10575,7 +10655,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_042",
-    "src": null,
+    "src": "img/art/tissot/tissot_042.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Tissot_Pharaoh_and_the_Midwives.jpg/960px-Tissot_Pharaoh_and_the_Midwives.jpg",
     "book": "exodo",
     "chapters": [
@@ -10588,7 +10668,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_043",
-    "src": null,
+    "src": "img/art/tissot/tissot_043.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Tissot_Moses_Laid_Amid_the_Flags.jpg/960px-Tissot_Moses_Laid_Amid_the_Flags.jpg",
     "book": "exodo",
     "chapters": [
@@ -10601,7 +10681,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_044",
-    "src": null,
+    "src": "img/art/tissot/tissot_044.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Tissot_Pharaoh%27s_Daughter_Has_Moses_Brought_to_Her.jpg/960px-Tissot_Pharaoh%27s_Daughter_Has_Moses_Brought_to_Her.jpg",
     "book": "exodo",
     "chapters": [
@@ -10614,7 +10694,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_045",
-    "src": null,
+    "src": "img/art/tissot/tissot_045.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Tissot_Pharaoh%27s_Daughter_Receives_the_Mother_of_Moses.jpg/960px-Tissot_Pharaoh%27s_Daughter_Receives_the_Mother_of_Moses.jpg",
     "book": "exodo",
     "chapters": [
@@ -10627,7 +10707,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_046",
-    "src": null,
+    "src": "img/art/tissot/tissot_046.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Tissot_Moses_Slays_an_Egyptian.jpg/960px-Tissot_Moses_Slays_an_Egyptian.jpg",
     "book": "exodo",
     "chapters": [
@@ -10640,7 +10720,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_047",
-    "src": null,
+    "src": "img/art/tissot/tissot_047.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Tissot_Moses_and_Aaron_Speak_to_the_People.jpg/960px-Tissot_Moses_and_Aaron_Speak_to_the_People.jpg",
     "book": "exodo",
     "chapters": [
@@ -10653,7 +10733,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_048",
-    "src": null,
+    "src": "img/art/tissot/tissot_048.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Moses_Speaks_to_Pharaoh%2C_by_James_Tissot.jpg/960px-Moses_Speaks_to_Pharaoh%2C_by_James_Tissot.jpg",
     "book": "exodo",
     "chapters": [
@@ -10666,7 +10746,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_049",
-    "src": null,
+    "src": "img/art/tissot/tissot_049.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Tissot_The_Rod_of_Aaron_Devours_the_Other_Rods.jpg/960px-Tissot_The_Rod_of_Aaron_Devours_the_Other_Rods.jpg",
     "book": "exodo",
     "chapters": [
@@ -10679,7 +10759,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_050",
-    "src": null,
+    "src": "img/art/tissot/tissot_050.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tissot_Water_Is_Changed_into_Blood.jpg/960px-Tissot_Water_Is_Changed_into_Blood.jpg",
     "book": "exodo",
     "chapters": [
@@ -10692,7 +10772,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_051",
-    "src": null,
+    "src": "img/art/tissot/tissot_051.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Tissot_The_Plague_of_Flies.jpg/960px-Tissot_The_Plague_of_Flies.jpg",
     "book": "exodo",
     "chapters": [
@@ -10705,7 +10785,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_052",
-    "src": null,
+    "src": "img/art/tissot/tissot_052.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Tissot_The_Plague_of_Locusts.jpg/960px-Tissot_The_Plague_of_Locusts.jpg",
     "book": "exodo",
     "chapters": [
@@ -10718,7 +10798,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_053",
-    "src": null,
+    "src": "img/art/tissot/tissot_053.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Tissot_Passover.jpg/960px-Tissot_Passover.jpg",
     "book": "exodo",
     "chapters": [
@@ -10731,7 +10811,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_054",
-    "src": null,
+    "src": "img/art/tissot/tissot_054.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Tissot_Signs_on_the_Door.jpg/960px-Tissot_Signs_on_the_Door.jpg",
     "book": "exodo",
     "chapters": [
@@ -10744,7 +10824,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_055",
-    "src": null,
+    "src": "img/art/tissot/tissot_055.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Tissot_Pharaoh_and_His_Dead_Son.jpg/960px-Tissot_Pharaoh_and_His_Dead_Son.jpg",
     "book": "exodo",
     "chapters": [
@@ -10757,7 +10837,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_056",
-    "src": null,
+    "src": "img/art/tissot/tissot_056.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Tissot_The_Exodus.jpg/960px-Tissot_The_Exodus.jpg",
     "book": "exodo",
     "chapters": [
@@ -10770,7 +10850,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_057",
-    "src": null,
+    "src": "img/art/tissot/tissot_057.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tissot_Pharaoh_Pursues_the_Israelites.jpg/960px-Tissot_Pharaoh_Pursues_the_Israelites.jpg",
     "book": "exodo",
     "chapters": [
@@ -10783,7 +10863,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_058",
-    "src": null,
+    "src": "img/art/tissot/tissot_058.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Tissot_The_Egyptians_Are_Destroyed.jpg/960px-Tissot_The_Egyptians_Are_Destroyed.jpg",
     "book": "exodo",
     "chapters": [
@@ -10796,7 +10876,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_059",
-    "src": null,
+    "src": "img/art/tissot/tissot_059.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/The_Songs_of_Joy%2C_by_James_Tissot.jpg/960px-The_Songs_of_Joy%2C_by_James_Tissot.jpg",
     "book": "exodo",
     "chapters": [
@@ -10809,7 +10889,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_060",
-    "src": null,
+    "src": "img/art/tissot/tissot_060.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Tissot_The_Gathering_of_the_Manna.jpg/960px-Tissot_The_Gathering_of_the_Manna.jpg",
     "book": "exodo",
     "chapters": [
@@ -10822,7 +10902,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_061",
-    "src": null,
+    "src": "img/art/tissot/tissot_061.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Tissot_Moses_Smites_the_Rock_in_the_Desert.jpg/960px-Tissot_Moses_Smites_the_Rock_in_the_Desert.jpg",
     "book": "exodo",
     "chapters": [
@@ -10835,7 +10915,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_062",
-    "src": null,
+    "src": "img/art/tissot/tissot_062.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Tissot_Moses_on_the_Mountain_During_the_Battle.jpg/960px-Tissot_Moses_on_the_Mountain_During_the_Battle.jpg",
     "book": "exodo",
     "chapters": [
@@ -10848,7 +10928,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_063",
-    "src": null,
+    "src": "img/art/tissot/tissot_063.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Tissot_Jethro_and_Moses.jpg/960px-Tissot_Jethro_and_Moses.jpg",
     "book": "exodo",
     "chapters": [
@@ -10861,7 +10941,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_064",
-    "src": null,
+    "src": "img/art/tissot/tissot_064.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Tissot_The_Golden_Calf.jpg/960px-Tissot_The_Golden_Calf.jpg",
     "book": "exodo",
     "chapters": [
@@ -10874,7 +10954,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_065",
-    "src": null,
+    "src": "img/art/tissot/tissot_065.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Tissot_Moses_Destroys_the_Tables_of_the_Ten_Commandments.jpg/960px-Tissot_Moses_Destroys_the_Tables_of_the_Ten_Commandments.jpg",
     "book": "exodo",
     "chapters": [
@@ -10887,7 +10967,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_066",
-    "src": null,
+    "src": "img/art/tissot/tissot_066.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Tissot_Moses_and_Joshua_in_the_Tabernacle.jpg/960px-Tissot_Moses_and_Joshua_in_the_Tabernacle.jpg",
     "book": "exodo",
     "chapters": [
@@ -10900,7 +10980,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_067",
-    "src": null,
+    "src": "img/art/tissot/tissot_067.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Tissot_Bezalel.jpg/960px-Tissot_Bezalel.jpg",
     "book": "exodo",
     "chapters": [
@@ -10913,7 +10993,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_068",
-    "src": null,
+    "src": "img/art/tissot/tissot_068.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Tissot_Tailor.jpg/960px-Tissot_Tailor.jpg",
     "book": "exodo",
     "chapters": [
@@ -10926,7 +11006,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_069",
-    "src": null,
+    "src": "img/art/tissot/tissot_069.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Tissot_The_Fire_of_Atonement.jpg/960px-Tissot_The_Fire_of_Atonement.jpg",
     "book": "levitico",
     "chapters": [
@@ -10939,7 +11019,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_070",
-    "src": null,
+    "src": "img/art/tissot/tissot_070.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Tissot_The_Grapes_of_Canaan.jpg/960px-Tissot_The_Grapes_of_Canaan.jpg",
     "book": "numeros",
     "chapters": [
@@ -10952,7 +11032,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_071",
-    "src": null,
+    "src": "img/art/tissot/tissot_071.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Tissot_Miriam_Shut_Out_from_the_Camp.jpg/960px-Tissot_Miriam_Shut_Out_from_the_Camp.jpg",
     "book": "numeros",
     "chapters": [
@@ -10965,7 +11045,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_072",
-    "src": null,
+    "src": "img/art/tissot/tissot_072.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tissot_Sabbath_Breaker_Stoned.jpg/960px-Tissot_Sabbath_Breaker_Stoned.jpg",
     "book": "numeros",
     "chapters": [
@@ -10978,7 +11058,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_073",
-    "src": null,
+    "src": "img/art/tissot/tissot_073.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Tissot_The_Brazen_Serpent.jpg/960px-Tissot_The_Brazen_Serpent.jpg",
     "book": "numeros",
     "chapters": [
@@ -10991,7 +11071,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_074",
-    "src": null,
+    "src": "img/art/tissot/tissot_074.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tissot_Balaam_and_the_Ass.jpg/960px-Tissot_Balaam_and_the_Ass.jpg",
     "book": "numeros",
     "chapters": [
@@ -11004,7 +11084,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_075",
-    "src": null,
+    "src": "img/art/tissot/tissot_075.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tissot_The_Conquest_of_the_Amorites.jpg/960px-Tissot_The_Conquest_of_the_Amorites.jpg",
     "book": "numeros",
     "chapters": [
@@ -11017,7 +11097,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_076",
-    "src": null,
+    "src": "img/art/tissot/tissot_076.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Tissot_The_Death_of_Aaron.jpg/960px-Tissot_The_Death_of_Aaron.jpg",
     "book": "numeros",
     "chapters": [
@@ -11030,7 +11110,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_077",
-    "src": null,
+    "src": "img/art/tissot/tissot_077.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Tissot_Moses_Sees_the_Promised_Land_from_Afar.jpg/960px-Tissot_Moses_Sees_the_Promised_Land_from_Afar.jpg",
     "book": "deuteronomio",
     "chapters": [
@@ -11043,7 +11123,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_078",
-    "src": null,
+    "src": "img/art/tissot/tissot_078.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Tissot_Moses_Blesses_Joshua_Before_the_High_Priest.jpg/960px-Tissot_Moses_Blesses_Joshua_Before_the_High_Priest.jpg",
     "book": "deuteronomio",
     "chapters": [
@@ -11056,7 +11136,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_079",
-    "src": null,
+    "src": "img/art/tissot/tissot_079.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Tissot_Moses_Forbids_the_People_to_Follow_Him.jpg/960px-Tissot_Moses_Forbids_the_People_to_Follow_Him.jpg",
     "book": "deuteronomio",
     "chapters": [
@@ -11069,7 +11149,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_080",
-    "src": null,
+    "src": "img/art/tissot/tissot_080.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Tissot_The_Harlot_of_Jericho_and_the_Two_Spies.jpg/960px-Tissot_The_Harlot_of_Jericho_and_the_Two_Spies.jpg",
     "book": "josue",
     "chapters": [
@@ -11082,7 +11162,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_081",
-    "src": null,
+    "src": "img/art/tissot/tissot_081.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Tissot_The_Seven_Trumpets_of_Jericho.jpg/960px-Tissot_The_Seven_Trumpets_of_Jericho.jpg",
     "book": "josue",
     "chapters": [
@@ -11095,7 +11175,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_082",
-    "src": null,
+    "src": "img/art/tissot/tissot_082.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Tissot_The_Flight_of_the_Spies.jpg/960px-Tissot_The_Flight_of_the_Spies.jpg",
     "book": "josue",
     "chapters": [
@@ -11108,7 +11188,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_083",
-    "src": null,
+    "src": "img/art/tissot/tissot_083.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Tissot_Deborah_Beneath_the_Palm_Tree.jpg/960px-Tissot_Deborah_Beneath_the_Palm_Tree.jpg",
     "book": "jueces",
     "chapters": [
@@ -11121,7 +11201,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_084",
-    "src": null,
+    "src": "img/art/tissot/tissot_084.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Tissot_Jael_Smote_Sisera%2C_and_Slew_Him.jpg/960px-Tissot_Jael_Smote_Sisera%2C_and_Slew_Him.jpg",
     "book": "jueces",
     "chapters": [
@@ -11134,7 +11214,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_085",
-    "src": null,
+    "src": "img/art/tissot/tissot_085.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Tissot_Jael_Shows_to_Barak%2C_Sisera_Lying_Dead.jpg/960px-Tissot_Jael_Shows_to_Barak%2C_Sisera_Lying_Dead.jpg",
     "book": "jueces",
     "chapters": [
@@ -11147,7 +11227,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_086",
-    "src": null,
+    "src": "img/art/tissot/tissot_086.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Tissot_Jephthah%27s_Daughter.jpg/960px-Tissot_Jephthah%27s_Daughter.jpg",
     "book": "jueces",
     "chapters": [
@@ -11160,7 +11240,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_087",
-    "src": null,
+    "src": "img/art/tissot/tissot_087.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Tissot_Samson_Slays_a_Thousand_Men.jpg/960px-Tissot_Samson_Slays_a_Thousand_Men.jpg",
     "book": "jueces",
     "chapters": [
@@ -11173,7 +11253,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_088",
-    "src": null,
+    "src": "img/art/tissot/tissot_088.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/The_Levite_Before_The_Corpse_Of_His_Wife_by_James_Tissot.jpg/960px-The_Levite_Before_The_Corpse_Of_His_Wife_by_James_Tissot.jpg",
     "book": "jueces",
     "chapters": [
@@ -11186,7 +11266,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_089",
-    "src": null,
+    "src": "img/art/tissot/tissot_089.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tissot_Gleaners.jpg/960px-Tissot_Gleaners.jpg",
     "book": "rut",
     "chapters": [
@@ -11199,7 +11279,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_090",
-    "src": null,
+    "src": "img/art/tissot/tissot_090.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Saul_meets_Samuel.jpg/960px-Saul_meets_Samuel.jpg",
     "book": "1samuel",
     "chapters": [
@@ -11212,7 +11292,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_091",
-    "src": null,
+    "src": "img/art/tissot/tissot_091.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/David_returns_to_Achish.jpg/960px-David_returns_to_Achish.jpg",
     "book": "1samuel",
     "chapters": [
@@ -11225,7 +11305,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_092",
-    "src": null,
+    "src": "img/art/tissot/tissot_092.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tissot_David_Danced_Before_the_Lord_with_All_His_Might.jpg/960px-Tissot_David_Danced_Before_the_Lord_with_All_His_Might.jpg",
     "book": "2samuel",
     "chapters": [
@@ -11238,7 +11318,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_093",
-    "src": null,
+    "src": "img/art/tissot/tissot_093.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Tissot_Nathan_Rebukes_David.jpg/960px-Tissot_Nathan_Rebukes_David.jpg",
     "book": "2samuel",
     "chapters": [
@@ -11251,7 +11331,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_094",
-    "src": null,
+    "src": "img/art/tissot/tissot_094.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Tissot_Michal_Watching_David_from_a_Window.jpg/960px-Tissot_Michal_Watching_David_from_a_Window.jpg",
     "book": "2samuel",
     "chapters": [
@@ -11264,7 +11344,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_095",
-    "src": null,
+    "src": "img/art/tissot/tissot_095.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Desolation_of_Tamar_by_J.Tissot.jpg/960px-Desolation_of_Tamar_by_J.Tissot.jpg",
     "book": "2samuel",
     "chapters": [
@@ -11277,7 +11357,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_096",
-    "src": null,
+    "src": "img/art/tissot/tissot_096.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Death_of_Amnon_by_J.Tissot.jpg/960px-Death_of_Amnon_by_J.Tissot.jpg",
     "book": "2samuel",
     "chapters": [
@@ -11290,7 +11370,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_097",
-    "src": null,
+    "src": "img/art/tissot/tissot_097.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/David_Mourns_His_Son_Amnon_by_J.Tissot.jpg/960px-David_Mourns_His_Son_Amnon_by_J.Tissot.jpg",
     "book": "2samuel",
     "chapters": [
@@ -11303,7 +11383,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_098",
-    "src": null,
+    "src": "img/art/tissot/tissot_098.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Tissot_Solomon_Dedicates_the_Temple_at_Jerusalem.jpg/960px-Tissot_Solomon_Dedicates_the_Temple_at_Jerusalem.jpg",
     "book": "1reyes",
     "chapters": [
@@ -11316,7 +11396,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_099",
-    "src": null,
+    "src": "img/art/tissot/tissot_099.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tissot_Baalites.jpg/960px-Tissot_Baalites.jpg",
     "book": "1reyes",
     "chapters": [
@@ -11329,7 +11409,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_100",
-    "src": null,
+    "src": "img/art/tissot/tissot_100.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Tissot_The_Chaldees_Destroy_the_Brazen_Sea.jpg/960px-Tissot_The_Chaldees_Destroy_the_Brazen_Sea.jpg",
     "book": "2reyes",
     "chapters": [
@@ -11342,7 +11422,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_101",
-    "src": null,
+    "src": "img/art/tissot/tissot_101.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Tissot_The_Flight_of_the_Prisoners.jpg/960px-Tissot_The_Flight_of_the_Prisoners.jpg",
     "book": "2reyes",
     "chapters": [
@@ -11355,7 +11435,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_102",
-    "src": null,
+    "src": "img/art/tissot/tissot_102.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Tissot_The_Dead_Bodies_Carried_Away.jpg/960px-Tissot_The_Dead_Bodies_Carried_Away.jpg",
     "book": "2reyes",
     "chapters": [
@@ -11368,7 +11448,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_103",
-    "src": null,
+    "src": "img/art/tissot/tissot_103.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Tissot_Daniel_in_the_Lion%27s_Den.jpg/960px-Tissot_Daniel_in_the_Lion%27s_Den.jpg",
     "book": "daniel",
     "chapters": [
@@ -11381,7 +11461,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_104",
-    "src": null,
+    "src": "img/art/tissot/tissot_104.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Brooklyn_Museum_-_Saint_Joseph_Seeks_a_Lodging_in_Bethlehem_%28Saint_Joseph_cherche_un_g%C3%AEte_%C3%A0_Bethl%C3%A9em%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Saint_Joseph_Seeks_a_Lodging_in_Bethlehem_%28Saint_Joseph_cherche_un_g%C3%AEte_%C3%A0_Bethl%C3%A9em%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11394,7 +11474,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_105",
-    "src": null,
+    "src": "img/art/tissot/tissot_105.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Brooklyn_Museum_-_The_Birth_of_Our_Lord_Jesus_Christ_%28La_nativit%C3%A9_de_Notre-Seigneur_J%C3%A9sus-Christ%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Birth_of_Our_Lord_Jesus_Christ_%28La_nativit%C3%A9_de_Notre-Seigneur_J%C3%A9sus-Christ%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11407,7 +11487,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_106",
-    "src": null,
+    "src": "img/art/tissot/tissot_106.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Brooklyn_Museum_-_The_Adoration_of_the_Shepherds_%28L%27adoration_des_bergers%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Adoration_of_the_Shepherds_%28L%27adoration_des_bergers%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11420,7 +11500,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_107",
-    "src": null,
+    "src": "img/art/tissot/tissot_107.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Brooklyn_Museum_-_The_Adoration_of_the_Magi_%28L%27adoration_des_mages%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Adoration_of_the_Magi_%28L%27adoration_des_mages%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11433,7 +11513,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_108",
-    "src": null,
+    "src": "img/art/tissot/tissot_108.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Brooklyn_Museum_-_The_Flight_into_Egypt_%28La_fuite_en_%C3%89gypte%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Flight_into_Egypt_%28La_fuite_en_%C3%89gypte%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11446,7 +11526,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_109",
-    "src": null,
+    "src": "img/art/tissot/tissot_109.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Brooklyn_Museum_-_The_Youth_of_Jesus_%28Jeunesse_de_J%C3%A9sus%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Youth_of_Jesus_%28Jeunesse_de_J%C3%A9sus%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11459,7 +11539,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_110",
-    "src": null,
+    "src": "img/art/tissot/tissot_110.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Brooklyn_Museum_-_Jesus_Among_the_Doctors_%28J%C3%A9sus_parmi_les_docteurs%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Jesus_Among_the_Doctors_%28J%C3%A9sus_parmi_les_docteurs%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11472,7 +11552,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_111",
-    "src": null,
+    "src": "img/art/tissot/tissot_111.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Brooklyn_Museum_-_Jesus_Found_in_the_Temple_%28Jesus_retrouv%C3%A9_dans_le_temple%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Jesus_Found_in_the_Temple_%28Jesus_retrouv%C3%A9_dans_le_temple%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11485,7 +11565,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_112",
-    "src": null,
+    "src": "img/art/tissot/tissot_112.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Brooklyn_Museum_-_On_Return_from_Jerusalem%2C_It_is_Noticed_that_Jesus_is_Lost_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_On_Return_from_Jerusalem%2C_It_is_Noticed_that_Jesus_is_Lost_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -11498,7 +11578,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_113",
-    "src": null,
+    "src": "img/art/tissot/tissot_113.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Brooklyn_Museum_-_The_Childhood_of_Saint_John_the_Baptist_%28L%27enfance_de_saint_Jean-Baptiste%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Childhood_of_Saint_John_the_Baptist_%28L%27enfance_de_saint_Jean-Baptiste%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11511,7 +11591,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_114",
-    "src": null,
+    "src": "img/art/tissot/tissot_114.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Brooklyn_Museum_-_The_Calling_of_Saint_Peter_and_Saint_Andrew_%28Vocation_de_Saint_Pierre_et_Saint_Andr%C3%A9%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Calling_of_Saint_Peter_and_Saint_Andrew_%28Vocation_de_Saint_Pierre_et_Saint_Andr%C3%A9%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11524,7 +11604,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_115",
-    "src": null,
+    "src": "img/art/tissot/tissot_115.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Brooklyn_Museum_-_The_Calling_of_Saint_Matthew_%28Vocation_de_Saint_Mathieu%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Calling_of_Saint_Matthew_%28Vocation_de_Saint_Mathieu%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11537,7 +11617,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_116",
-    "src": null,
+    "src": "img/art/tissot/tissot_116.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Brooklyn_Museum_-_He_Sent_them_out_Two_by_Two_%28Il_les_envoya_deux_%C3%A0_deux%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_He_Sent_them_out_Two_by_Two_%28Il_les_envoya_deux_%C3%A0_deux%29_-_James_Tissot_-_overall.jpg",
     "book": "marcos",
     "chapters": [
@@ -11550,7 +11630,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_117",
-    "src": null,
+    "src": "img/art/tissot/tissot_117.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Brooklyn_Museum_-_The_Sower_%28Le_semeur%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Sower_%28Le_semeur%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11563,7 +11643,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_118",
-    "src": null,
+    "src": "img/art/tissot/tissot_118.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Brooklyn_Museum_-_The_Enemy_Who_Sows_%28L%27Ennemi_qui_s%C3%A8me%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Enemy_Who_Sows_%28L%27Ennemi_qui_s%C3%A8me%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11576,7 +11656,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_119",
-    "src": null,
+    "src": "img/art/tissot/tissot_119.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Brooklyn_Museum_-_The_Betrothed_of_Cana_%28Les_fianc%C3%A9s_de_Cana%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Betrothed_of_Cana_%28Les_fianc%C3%A9s_de_Cana%29_-_James_Tissot_-_overall.jpg",
     "book": "juan",
     "chapters": [
@@ -11589,7 +11669,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_120",
-    "src": null,
+    "src": "img/art/tissot/tissot_120.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Brooklyn_Museum_-_The_Woman_of_Samaria_at_the_Well_%28La_Samaritaine_%C3%A0_la_fontaine%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Woman_of_Samaria_at_the_Well_%28La_Samaritaine_%C3%A0_la_fontaine%29_-_James_Tissot_-_overall.jpg",
     "book": "juan",
     "chapters": [
@@ -11602,7 +11682,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_121",
-    "src": null,
+    "src": "img/art/tissot/tissot_121.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Brooklyn_Museum_-_Interview_between_Jesus_and_Nicodemus_%28Entretien_de_J%C3%A9sus_et_de_Nicod%C3%A8me%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Interview_between_Jesus_and_Nicodemus_%28Entretien_de_J%C3%A9sus_et_de_Nicod%C3%A8me%29_-_James_Tissot.jpg",
     "book": "juan",
     "chapters": [
@@ -11615,7 +11695,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_122",
-    "src": null,
+    "src": "img/art/tissot/tissot_122.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Brooklyn_Museum_-_Nathaniel_Under_the_Fig_Tree_%28Nathana%C3%ABl_sous_le_figuier%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Nathaniel_Under_the_Fig_Tree_%28Nathana%C3%ABl_sous_le_figuier%29_-_James_Tissot_-_overall.jpg",
     "book": "juan",
     "chapters": [
@@ -11628,7 +11708,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_123",
-    "src": null,
+    "src": "img/art/tissot/tissot_123.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Brooklyn_Museum_-_Mary_Magdalene_at_the_Feet_of_Jesus_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Mary_Magdalene_at_the_Feet_of_Jesus_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -11641,7 +11721,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_124",
-    "src": null,
+    "src": "img/art/tissot/tissot_124.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Brooklyn_Museum_-_Jesus_Mary_Magdalene_and_Martha_at_Bethany_%28J%C3%A9sus_%C3%A0_Bethanie_Marie_Madeleine_et_Marthe%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Mary_Magdalene_and_Martha_at_Bethany_%28J%C3%A9sus_%C3%A0_Bethanie_Marie_Madeleine_et_Marthe%29_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -11654,7 +11734,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_125",
-    "src": null,
+    "src": "img/art/tissot/tissot_125.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Brooklyn_Museum_-_Zacchaeus_in_the_Sycamore_Awaiting_the_Passage_of_Jesus_%28Zach%C3%A9e_sur_le_sycomore_attendant_le_passage_de_J%C3%A9sus%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Zacchaeus_in_the_Sycamore_Awaiting_the_Passage_of_Jesus_%28Zach%C3%A9e_sur_le_sycomore_attendant_le_passage_de_J%C3%A9sus%29_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -11667,7 +11747,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_126",
-    "src": null,
+    "src": "img/art/tissot/tissot_126.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Brooklyn_Museum_-_The_Widow%27s_Mite_%28Le_denier_de_la_veuve%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Widow%27s_Mite_%28Le_denier_de_la_veuve%29_-_James_Tissot.jpg",
     "book": "marcos",
     "chapters": [
@@ -11680,7 +11760,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_127",
-    "src": null,
+    "src": "img/art/tissot/tissot_127.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Brooklyn_Museum_-_The_Tribute_Money_%28Le_denier_de_C%C3%A9sar%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Tribute_Money_%28Le_denier_de_C%C3%A9sar%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11693,7 +11773,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_128",
-    "src": null,
+    "src": "img/art/tissot/tissot_128.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Brooklyn_Museum_-_Suffer_the_Little_Children_to_Come_unto_Me_%28Laisser_venir_%C3%A0_moi_les_petits_enfants%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Suffer_the_Little_Children_to_Come_unto_Me_%28Laisser_venir_%C3%A0_moi_les_petits_enfants%29_-_James_Tissot.jpg",
     "book": "marcos",
     "chapters": [
@@ -11706,7 +11786,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_129",
-    "src": null,
+    "src": "img/art/tissot/tissot_129.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Brooklyn_Museum_-_The_Disciples_Eat_Wheat_on_the_Sabbath_%28Les_disciples_mangent_du_bl%C3%A9_au_sabbat%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Disciples_Eat_Wheat_on_the_Sabbath_%28Les_disciples_mangent_du_bl%C3%A9_au_sabbat%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11719,7 +11799,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_130",
-    "src": null,
+    "src": "img/art/tissot/tissot_130.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Brooklyn_Museum_-_Jesus_Traveling_%28J%C3%A9sus_en_voyage%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Traveling_%28J%C3%A9sus_en_voyage%29_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -11732,7 +11812,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_131",
-    "src": null,
+    "src": "img/art/tissot/tissot_131.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Brooklyn_Museum_-_He_Went_Through_the_Villages_on_the_Way_to_Jerusalem_%28Il_allait_par_les_villages_en_route_pour_J%C3%A9rusalem%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_He_Went_Through_the_Villages_on_the_Way_to_Jerusalem_%28Il_allait_par_les_villages_en_route_pour_J%C3%A9rusalem%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11745,7 +11825,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_132",
-    "src": null,
+    "src": "img/art/tissot/tissot_132.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Brooklyn_Museum_-_The_Vine_Dresser_and_the_Fig_Tree_%28Le_vigneron_et_le_figuier%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Vine_Dresser_and_the_Fig_Tree_%28Le_vigneron_et_le_figuier%29_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -11758,7 +11838,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_133",
-    "src": null,
+    "src": "img/art/tissot/tissot_133.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Brooklyn_Museum_-_The_First_Shall_Be_Last_%28Le_premier_sera_le_dernier%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_First_Shall_Be_Last_%28Le_premier_sera_le_dernier%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11771,7 +11851,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_134",
-    "src": null,
+    "src": "img/art/tissot/tissot_134.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Brooklyn_Museum_-_The_Two_Women_at_the_Mill_%28Les_deux_femmes_au_moulin%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Two_Women_at_the_Mill_%28Les_deux_femmes_au_moulin%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11784,7 +11864,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_135",
-    "src": null,
+    "src": "img/art/tissot/tissot_135.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Brooklyn_Museum_-_The_Wise_Virgins_%28Les_vierges_sages%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Wise_Virgins_%28Les_vierges_sages%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11797,7 +11877,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_136",
-    "src": null,
+    "src": "img/art/tissot/tissot_136.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Brooklyn_Museum_-_The_Bad_Rich_Man_in_Hell_%28Le_mauvais_riche_dans_l%27Enfer%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Bad_Rich_Man_in_Hell_%28Le_mauvais_riche_dans_l%27Enfer%29_-_James_Tissot_-_overall.jpg",
     "book": "lucas",
     "chapters": [
@@ -11810,7 +11890,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_137",
-    "src": null,
+    "src": "img/art/tissot/tissot_137.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Brooklyn_Museum_-_The_Blind_in_the_Ditch_%28Les_aveugles_dans_le_foss%C3%A9%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Blind_in_the_Ditch_%28Les_aveugles_dans_le_foss%C3%A9%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11823,7 +11903,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_138",
-    "src": null,
+    "src": "img/art/tissot/tissot_138.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Brooklyn_Museum_-_The_Corner_Stone_%28Le_pierre_angulaire%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Corner_Stone_%28Le_pierre_angulaire%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11836,7 +11916,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_139",
-    "src": null,
+    "src": "img/art/tissot/tissot_139.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Brooklyn_Museum_-_He_Who_Winnows_His_Wheat_%28Celui_qui_vane_le_bl%C3%A9%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_He_Who_Winnows_His_Wheat_%28Celui_qui_vane_le_bl%C3%A9%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11849,7 +11929,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_140",
-    "src": null,
+    "src": "img/art/tissot/tissot_140.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Brooklyn_Museum_-_The_Swine_Driven_into_the_Sea_%28Les_porcs_pr%C3%A9cipit%C3%A9s_dans_la_mer%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Swine_Driven_into_the_Sea_%28Les_porcs_pr%C3%A9cipit%C3%A9s_dans_la_mer%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11862,7 +11942,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_141",
-    "src": null,
+    "src": "img/art/tissot/tissot_141.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Brooklyn_Museum_-_The_Two_Blind_Men_at_Jericho_%28Les_deux_aveugles_%C3%A0_Jericho%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Two_Blind_Men_at_Jericho_%28Les_deux_aveugles_%C3%A0_Jericho%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11875,7 +11955,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_142",
-    "src": null,
+    "src": "img/art/tissot/tissot_142.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Brooklyn_Museum_-_The_Canaanite%27s_Daughter_%28La_Chanan%C3%A9enne%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Canaanite%27s_Daughter_%28La_Chanan%C3%A9enne%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11888,7 +11968,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_143",
-    "src": null,
+    "src": "img/art/tissot/tissot_143.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Brooklyn_Museum_-_The_Woman_with_an_Issue_of_Blood_%28L%27h%C3%A9moro%C3%AFsse%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Woman_with_an_Issue_of_Blood_%28L%27h%C3%A9moro%C3%AFsse%29_-_James_Tissot.jpg",
     "book": "marcos",
     "chapters": [
@@ -11901,7 +11981,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_144",
-    "src": null,
+    "src": "img/art/tissot/tissot_144.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Brooklyn_Museum_-_The_Woman_with_an_Infirmity_of_Eighteen_Years_%28La_femme_malade_depuis_dix-huit_ans%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Woman_with_an_Infirmity_of_Eighteen_Years_%28La_femme_malade_depuis_dix-huit_ans%29_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -11914,7 +11994,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_145",
-    "src": null,
+    "src": "img/art/tissot/tissot_145.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Brooklyn_Museum_-_Healing_of_the_Lepers_at_Capernaum_%28Gu%C3%A9rison_des_l%C3%A9preux_%C3%A0_Capernaum%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Healing_of_the_Lepers_at_Capernaum_%28Gu%C3%A9rison_des_l%C3%A9preux_%C3%A0_Capernaum%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -11927,7 +12007,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_146",
-    "src": null,
+    "src": "img/art/tissot/tissot_146.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Brooklyn_Museum_-_Jesus_Stilling_the_Tempest_%28J%C3%A9sus_calmant_la_temp%C3%AAte%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_Jesus_Stilling_the_Tempest_%28J%C3%A9sus_calmant_la_temp%C3%AAte%29_-_James_Tissot_-_overall.jpg",
     "book": "marcos",
     "chapters": [
@@ -11940,7 +12020,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_147",
-    "src": null,
+    "src": "img/art/tissot/tissot_147.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Brooklyn_Museum_-_Jesus_Discourses_with_His_Disciples_%28J%C3%A9sus_s%27entretient_avec_ses_disciples%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Discourses_with_His_Disciples_%28J%C3%A9sus_s%27entretient_avec_ses_disciples%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11953,7 +12033,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_148",
-    "src": null,
+    "src": "img/art/tissot/tissot_148.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Brooklyn_Museum_-_Jesus_Commands_the_Apostles_to_Rest_%28J%C3%A9sus_engage_les_ap%C3%B4tres_%C3%A0_se_reposer%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Commands_the_Apostles_to_Rest_%28J%C3%A9sus_engage_les_ap%C3%B4tres_%C3%A0_se_reposer%29_-_James_Tissot.jpg",
     "book": "marcos",
     "chapters": [
@@ -11966,7 +12046,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_149",
-    "src": null,
+    "src": "img/art/tissot/tissot_149.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brooklyn_Museum_-_Meal_of_Our_Lord_and_the_Apostles_%28Repas_de_Notre-Seigneur_et_des_ap%C3%B4tres%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Meal_of_Our_Lord_and_the_Apostles_%28Repas_de_Notre-Seigneur_et_des_ap%C3%B4tres%29_-_James_Tissot.jpg",
     "book": "marcos",
     "chapters": [
@@ -11979,7 +12059,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_150",
-    "src": null,
+    "src": "img/art/tissot/tissot_150.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Brooklyn_Museum_-_Jesus_Goes_in_the_Evening_to_Bethany_%28J%C3%A9sus_va_le_soir_%C3%A0_B%C3%A9thanie%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Goes_in_the_Evening_to_Bethany_%28J%C3%A9sus_va_le_soir_%C3%A0_B%C3%A9thanie%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -11992,7 +12072,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_151",
-    "src": null,
+    "src": "img/art/tissot/tissot_151.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Brooklyn_Museum_-_The_Disciples_Admire_the_Buildings_of_the_Temple_%28Les_disciples_admirent_les_constructions_du_Temple%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Disciples_Admire_the_Buildings_of_the_Temple_%28Les_disciples_admirent_les_constructions_du_Temple%29_-_James_Tissot.jpg",
     "book": "marcos",
     "chapters": [
@@ -12005,7 +12085,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_152",
-    "src": null,
+    "src": "img/art/tissot/tissot_152.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Brooklyn_Museum_-_Jesus_Forbids_the_Carrying_of_Loads_in_the_Forecourt_of_the_Temple_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Forbids_the_Carrying_of_Loads_in_the_Forecourt_of_the_Temple_-_James_Tissot.jpg",
     "book": "marcos",
     "chapters": [
@@ -12018,7 +12098,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_153",
-    "src": null,
+    "src": "img/art/tissot/tissot_153.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Brooklyn_Museum_-_Woe_unto_You%2C_Scribes_and_Pharisees_%28Malheur_%C3%A0_vous%2C_scribes_et_pharisiens%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Woe_unto_You%2C_Scribes_and_Pharisees_%28Malheur_%C3%A0_vous%2C_scribes_et_pharisiens%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12031,7 +12111,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_154",
-    "src": null,
+    "src": "img/art/tissot/tissot_154.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Brooklyn_Museum_-_With_Passover_Approaching%2C_Jesus_Goes_Up_to_Jerusalem_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_With_Passover_Approaching%2C_Jesus_Goes_Up_to_Jerusalem_-_James_Tissot_-_overall.jpg",
     "book": "juan",
     "chapters": [
@@ -12044,7 +12124,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_155",
-    "src": null,
+    "src": "img/art/tissot/tissot_155.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Brooklyn_Museum_-_The_Washing_of_the_Feet_%28Le_lavement_des_pieds%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Washing_of_the_Feet_%28Le_lavement_des_pieds%29_-_James_Tissot.jpg",
     "book": "juan",
     "chapters": [
@@ -12057,7 +12137,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_156",
-    "src": null,
+    "src": "img/art/tissot/tissot_156.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brooklyn_Museum_-_Judas_Goes_to_Find_the_Jews_%28Judas_va_trouver_les_Juifs%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Judas_Goes_to_Find_the_Jews_%28Judas_va_trouver_les_Juifs%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12070,7 +12150,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_157",
-    "src": null,
+    "src": "img/art/tissot/tissot_157.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Brooklyn_Museum_-_The_Kiss_of_Judas_%28Le_baiser_de_Judas%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Kiss_of_Judas_%28Le_baiser_de_Judas%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12083,7 +12163,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_158",
-    "src": null,
+    "src": "img/art/tissot/tissot_158.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Brooklyn_Museum_-_Judas_Returns_the_Money_%28Judas_rend_l%27argent%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Judas_Returns_the_Money_%28Judas_rend_l%27argent%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12096,7 +12176,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_159",
-    "src": null,
+    "src": "img/art/tissot/tissot_159.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Brooklyn_Museum_-_Jesus_Before_Pilate_First_Interview_%28J%C3%A9sus_devant_Pilate._Premier_entretien%29._-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Jesus_Before_Pilate_First_Interview_%28J%C3%A9sus_devant_Pilate._Premier_entretien%29._-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12109,7 +12189,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_160",
-    "src": null,
+    "src": "img/art/tissot/tissot_160.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Brooklyn_Museum_-_Barabbas_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Barabbas_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12122,7 +12202,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_161",
-    "src": null,
+    "src": "img/art/tissot/tissot_161.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Brooklyn_Museum_-_Pilate_Washes_His_Hands_%28Pilate_se_lave_les_mains%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Pilate_Washes_His_Hands_%28Pilate_se_lave_les_mains%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12135,7 +12215,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_162",
-    "src": null,
+    "src": "img/art/tissot/tissot_162.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Brooklyn_Museum_-_Simon_the_Cyrenian_Compelled_to_Carry_the_Cross_with_Jesus_%28Simon_de_Cyr%C3%A8ne_contraint_de_porter_la_Croix_avec_J%C3%A9sus%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Simon_the_Cyrenian_Compelled_to_Carry_the_Cross_with_Jesus_%28Simon_de_Cyr%C3%A8ne_contraint_de_porter_la_Croix_avec_J%C3%A9sus%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12148,7 +12228,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_163",
-    "src": null,
+    "src": "img/art/tissot/tissot_163.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Brooklyn_Museum_-_The_Daughters_of_Jerusalem_%28Les_filles_de_J%C3%A9rusalem%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_The_Daughters_of_Jerusalem_%28Les_filles_de_J%C3%A9rusalem%29_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -12161,7 +12241,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_164",
-    "src": null,
+    "src": "img/art/tissot/tissot_164.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Brooklyn_Museum_-_Joseph_of_Arimathaea_Seeks_Pilate_to_Beg_Permission_to_Remove_the_Body_of_Jesus_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Joseph_of_Arimathaea_Seeks_Pilate_to_Beg_Permission_to_Remove_the_Body_of_Jesus_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12174,7 +12254,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_165",
-    "src": null,
+    "src": "img/art/tissot/tissot_165.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Brooklyn_Museum_-_Conspiracy_of_the_Jews_%28Conspiration_des_juifs%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Conspiracy_of_the_Jews_%28Conspiration_des_juifs%29_-_James_Tissot.jpg",
     "book": "mateo",
     "chapters": [
@@ -12187,7 +12267,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_166",
-    "src": null,
+    "src": "img/art/tissot/tissot_166.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Brooklyn_Museum_-_He_Vanished_from_Their_Sight_%28Il_disparut_%C3%A0_leurs_yeux%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_He_Vanished_from_Their_Sight_%28Il_disparut_%C3%A0_leurs_yeux%29_-_James_Tissot.jpg",
     "book": "lucas",
     "chapters": [
@@ -12200,7 +12280,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_167",
-    "src": null,
+    "src": "img/art/tissot/tissot_167.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Brooklyn_Museum_-_Feed_My_Lambs_%28Pais_mes_brebis%29_-_James_Tissot.jpg/960px-Brooklyn_Museum_-_Feed_My_Lambs_%28Pais_mes_brebis%29_-_James_Tissot.jpg",
     "book": "juan",
     "chapters": [
@@ -12213,7 +12293,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "tissot_168",
-    "src": null,
+    "src": "img/art/tissot/tissot_168.jpg",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Brooklyn_Museum_-_The_Daughter_of_Herodias_Dancing_%28H%C3%A9rodiade_dansant%29_-_James_Tissot_-_overall.jpg/960px-Brooklyn_Museum_-_The_Daughter_of_Herodias_Dancing_%28H%C3%A9rodiade_dansant%29_-_James_Tissot_-_overall.jpg",
     "book": "mateo",
     "chapters": [
@@ -12239,7 +12319,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_001",
-    "src": null,
+    "src": "img/art/hole/hole_001.jpg",
     "remoteSrc": null,
     "book": "lucas",
     "chapters": [
@@ -12252,7 +12332,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_014",
-    "src": null,
+    "src": "img/art/hole/hole_014.jpg",
     "remoteSrc": null,
     "book": "mateo",
     "chapters": [
@@ -12265,7 +12345,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_009",
-    "src": null,
+    "src": "img/art/hole/hole_009.jpg",
     "remoteSrc": null,
     "book": "marcos",
     "chapters": [
@@ -12278,7 +12358,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_010",
-    "src": null,
+    "src": "img/art/hole/hole_010.jpg",
     "remoteSrc": null,
     "book": "mateo",
     "chapters": [
@@ -12291,7 +12371,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_020",
-    "src": null,
+    "src": "img/art/hole/hole_020.jpg",
     "remoteSrc": null,
     "book": "mateo",
     "chapters": [
@@ -12304,7 +12384,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_017",
-    "src": null,
+    "src": "img/art/hole/hole_017.jpg",
     "remoteSrc": null,
     "book": "juan",
     "chapters": [
@@ -12317,7 +12397,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_023",
-    "src": null,
+    "src": "img/art/hole/hole_023.jpg",
     "remoteSrc": null,
     "book": "mateo",
     "chapters": [
@@ -12330,7 +12410,7 @@ const BIBLIA_IMAGES = [
   },
   {
     "id": "hole_026",
-    "src": null,
+    "src": "img/art/hole/hole_026.jpg",
     "remoteSrc": null,
     "book": "2reyes",
     "chapters": [
@@ -12346,7 +12426,7 @@ const BIBLIA_IMAGES = [
 const BIBLIA_MAPS = [
   {
     "id": "biblica_01",
-    "src": null,
+    "src": "img/maps/biblica_01.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png/1280px-Biblica_Open_Bible_Map_01_The_Holy_Land_relief.png",
     "title": "Tierra Santa - Relieve",
     "books": [
@@ -12360,7 +12440,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_02",
-    "src": null,
+    "src": "img/maps/biblica_02.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Biblica_Open_Bible_Map_02_03_The_World_of_the_Patriarchs.png/1280px-Biblica_Open_Bible_Map_02_03_The_World_of_the_Patriarchs.png",
     "title": "El Mundo de los Patriarcas",
     "books": [
@@ -12370,7 +12450,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_04",
-    "src": null,
+    "src": "img/maps/biblica_04.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png/1280px-Biblica_Open_Bible_Map_04_The_Exodus_and_Conquest_of_Canaan.png",
     "title": "El Éxodo y la Conquista de Canaán",
     "books": [
@@ -12383,7 +12463,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_05",
-    "src": null,
+    "src": "img/maps/biblica_05.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Biblica_Open_Bible_Map_05_The_Twelve_Tribes_of_Israel.png/1280px-Biblica_Open_Bible_Map_05_The_Twelve_Tribes_of_Israel.png",
     "title": "Las Doce Tribus de Israel",
     "books": [
@@ -12394,7 +12474,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_06",
-    "src": null,
+    "src": "img/maps/biblica_06.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png/1280px-Biblica_Open_Bible_Map_06_The_Kingdoms_of_Saul_David_and_Solomon.png",
     "title": "Reinos de Saúl, David y Salomón",
     "books": [
@@ -12407,7 +12487,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_07",
-    "src": null,
+    "src": "img/maps/biblica_07.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png/1280px-Biblica_Open_Bible_Map_07_The_Kingdoms_of_Israel_and_Judah.png",
     "title": "Reinos de Israel y Judá",
     "books": [
@@ -12423,7 +12503,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_08",
-    "src": null,
+    "src": "img/maps/biblica_08.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png/1280px-Biblica_Open_Bible_Map_08_The_Prophets_of_Judah_and_Israel.png",
     "title": "Los Profetas de Judá e Israel",
     "books": [
@@ -12444,7 +12524,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_09",
-    "src": null,
+    "src": "img/maps/biblica_09.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png/1280px-Biblica_Open_Bible_Map_09_The_Assyrian_Empire_c700BC.png",
     "title": "Imperio Asirio c. 700 a.C.",
     "books": [
@@ -12456,7 +12536,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_10",
-    "src": null,
+    "src": "img/maps/biblica_10.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png/1280px-Biblica_Open_Bible_Map_10_The_Babylonian_Empire_c600BC.png",
     "title": "Imperio Babilónico c. 600 a.C.",
     "books": [
@@ -12471,7 +12551,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_11",
-    "src": null,
+    "src": "img/maps/biblica_11.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png/1280px-Biblica_Open_Bible_Map_11_Persian_Empire_c450BC.png",
     "title": "Imperio Persa c. 450 a.C.",
     "books": [
@@ -12487,7 +12567,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_15",
-    "src": null,
+    "src": "img/maps/biblica_15.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png/1280px-Biblica_Open_Bible_Map_15_The_Early_Spread_of_Christianity.png",
     "title": "Expansión del Cristianismo Primitivo",
     "books": [
@@ -12506,7 +12586,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_16",
-    "src": null,
+    "src": "img/maps/biblica_16.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png/1280px-Biblica_Open_Bible_Map_16_17_Paul_missionary_journeys_map.png",
     "title": "Viajes Misioneros de Pablo",
     "books": [
@@ -12520,7 +12600,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_18",
-    "src": null,
+    "src": "img/maps/biblica_18.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png/1280px-Biblica_Open_Bible_Map_18_The_Roman_Empire_and_the_Early_Church.png",
     "title": "El Imperio Romano y la Iglesia Primitiva",
     "books": [
@@ -12532,7 +12612,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c44",
-    "src": null,
+    "src": "img/maps/biblica_c44.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Biblica_Open_Bible_Map_COLOR_44_Romans.png/1280px-Biblica_Open_Bible_Map_COLOR_44_Romans.png",
     "title": "Mapa: Epístola a los Romanos",
     "books": [
@@ -12542,7 +12622,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c45",
-    "src": null,
+    "src": "img/maps/biblica_c45.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Biblica_Open_Bible_Map_COLOR_45_Corinthians.png/1280px-Biblica_Open_Bible_Map_COLOR_45_Corinthians.png",
     "title": "Mapa: Epístolas a los Corintios",
     "books": [
@@ -12553,7 +12633,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c46",
-    "src": null,
+    "src": "img/maps/biblica_c46.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Biblica_Open_Bible_Map_COLOR_46_Galatians.png/1280px-Biblica_Open_Bible_Map_COLOR_46_Galatians.png",
     "title": "Mapa: Epístola a los Gálatas",
     "books": [
@@ -12563,7 +12643,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c47",
-    "src": null,
+    "src": "img/maps/biblica_c47.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Biblica_Open_Bible_Map_COLOR_47_Philippians.png/1280px-Biblica_Open_Bible_Map_COLOR_47_Philippians.png",
     "title": "Mapa: Epístola a los Filipenses",
     "books": [
@@ -12573,7 +12653,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c48",
-    "src": null,
+    "src": "img/maps/biblica_c48.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Biblica_Open_Bible_Map_COLOR_48_Colossians.png/1280px-Biblica_Open_Bible_Map_COLOR_48_Colossians.png",
     "title": "Mapa: Epístola a los Colosenses",
     "books": [
@@ -12584,7 +12664,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c49",
-    "src": null,
+    "src": "img/maps/biblica_c49.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Biblica_Open_Bible_Map_COLOR_49_Thessalonians.png/1280px-Biblica_Open_Bible_Map_COLOR_49_Thessalonians.png",
     "title": "Mapa: Epístolas a los Tesalonicenses",
     "books": [
@@ -12595,7 +12675,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c50",
-    "src": null,
+    "src": "img/maps/biblica_c50.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Biblica_Open_Bible_Map_COLOR_50_Timothy.png/1280px-Biblica_Open_Bible_Map_COLOR_50_Timothy.png",
     "title": "Mapa: Epístolas a Timoteo",
     "books": [
@@ -12606,7 +12686,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c51",
-    "src": null,
+    "src": "img/maps/biblica_c51.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Biblica_Open_Bible_Map_COLOR_51_Titus.png/1280px-Biblica_Open_Bible_Map_COLOR_51_Titus.png",
     "title": "Mapa: Epístola a Tito",
     "books": [
@@ -12616,7 +12696,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c52",
-    "src": null,
+    "src": "img/maps/biblica_c52.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Biblica_Open_Bible_Map_COLOR_52_Peter.png/1280px-Biblica_Open_Bible_Map_COLOR_52_Peter.png",
     "title": "Mapa: Epístolas de Pedro",
     "books": [
@@ -12627,7 +12707,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c53",
-    "src": null,
+    "src": "img/maps/biblica_c53.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Biblica_Open_Bible_Map_COLOR_53_Revelation.png/1280px-Biblica_Open_Bible_Map_COLOR_53_Revelation.png",
     "title": "Mapa: Apocalipsis - Siete Iglesias",
     "books": [
@@ -12637,7 +12717,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "biblica_c43",
-    "src": null,
+    "src": "img/maps/biblica_c43.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png/1280px-Biblica_Open_Bible_Map_COLOR_43_Epistles_Overview.png",
     "title": "Vista General de las Epístolas",
     "books": [
@@ -12667,7 +12747,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "paul_1st",
-    "src": null,
+    "src": "img/maps/paul_1st.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Paul_the_Apostle%2C_first_missionary_journey.svg/1280px-Paul_the_Apostle%2C_first_missionary_journey.svg.png",
     "title": "Primer Viaje Misionero de Pablo",
     "books": [
@@ -12704,7 +12784,7 @@ const BIBLIA_MAPS = [
   },
   {
     "id": "paul_4th",
-    "src": null,
+    "src": "img/maps/paul_4th.png",
     "remoteSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Paul_the_Apostle%2C_fourth_missionary_journey_%28Rome%29.svg/1280px-Paul_the_Apostle%2C_fourth_missionary_journey_%28Rome%29.svg.png",
     "title": "Viaje de Pablo a Roma",
     "books": [

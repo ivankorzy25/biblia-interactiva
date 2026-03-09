@@ -111,6 +111,9 @@
 @keyframes authSpin { to { transform: rotate(360deg); } }
 
 /* === USER BUTTON (Header) === */
+#authContainer {
+    position: relative;
+}
 .user-btn {
     display: flex;
     align-items: center;

@@ -254,6 +254,11 @@ class BibliaApp {
         // Render verses
         this.renderVerses(chapterData, bookId, chapterNum);
 
+        // Render YouVersion video links
+        if (typeof renderYouVersionSection === 'function') {
+            renderYouVersionSection(bookId, chapterNum);
+        }
+
         // Mark as read
         this.readChapters[`${bookId}_${chapterNum}`] = true;
         this.saveData('biblia_read_chapters', this.readChapters);
@@ -423,6 +428,13 @@ class BibliaApp {
             ? '<span class="icon">&#9829;</span> Quitar favorito'
             : '<span class="icon">&#9825;</span> Favorito';
 
+        // Inject video buttons inline in menu
+        window._yvCurrentBookId = bookId;
+        window._yvCurrentChapter = chapter;
+        if (typeof yvUpdateMenuVideos === 'function') {
+            yvUpdateMenuVideos(bookId, chapter);
+        }
+
         // Update highlight dots
         const currentHighlight = this.highlights[verseKey];
         document.querySelectorAll('.highlight-dot').forEach(dot => {
@@ -430,10 +442,28 @@ class BibliaApp {
         });
 
         // Position menu
-        const rect = verseEl.getBoundingClientRect();
-        menu.style.left = Math.min(event.clientX, window.innerWidth - 220) + 'px';
-        menu.style.top = Math.min(rect.bottom + 5, window.innerHeight - 280) + 'px';
         menu.classList.add('active');
+
+        // On mobile (<=768px), use bottom-sheet (CSS handles it)
+        if (window.innerWidth <= 768) {
+            menu.style.left = '';
+            menu.style.top = '';
+        } else {
+            // Desktop: centered horizontally, always fully visible
+            const menuRect = menu.getBoundingClientRect();
+            const menuH = menuRect.height;
+            const menuW = menuRect.width;
+            const rect = verseEl.getBoundingClientRect();
+            let left = event.clientX;
+            left = Math.max(menuW / 2 + 8, Math.min(left, window.innerWidth - menuW / 2 - 8));
+            let top = rect.bottom + 6;
+            if (top + menuH > window.innerHeight - 10) {
+                top = Math.max(10, rect.top - menuH - 6);
+            }
+            if (top < 10) top = 10;
+            menu.style.left = left + 'px';
+            menu.style.top = top + 'px';
+        }
     }
 
     toggleFavorite() {
@@ -453,15 +483,20 @@ class BibliaApp {
         this.saveData('biblia_favorites', this.favorites);
     }
 
+    getVersionLabel() {
+        const v = window.bibliaVersiones;
+        return v ? (v.versions.find(x => x.id === v.currentVersion)?.abbr || 'RV60') : 'RV60';
+    }
+
     copyVerse() {
         const { bookName, chapter, verse } = this.selectedVerse;
         const text = this.getVerseText(this.selectedVerse.book, chapter, verse);
-        const formatted = `"${text}" — ${bookName} ${chapter}:${verse} (RV1960)`;
+        const vLabel = this.getVersionLabel();
+        const formatted = `"${text}" — ${bookName} ${chapter}:${verse} (${vLabel})`;
 
         navigator.clipboard.writeText(formatted).then(() => {
             this.toast('Versículo copiado');
         }).catch(() => {
-            // Fallback
             const ta = document.createElement('textarea');
             ta.value = formatted;
             document.body.appendChild(ta);
@@ -475,7 +510,8 @@ class BibliaApp {
     shareVerse() {
         const { bookName, chapter, verse } = this.selectedVerse;
         const text = this.getVerseText(this.selectedVerse.book, chapter, verse);
-        const formatted = `"${text}"\n— ${bookName} ${chapter}:${verse} (RV1960)`;
+        const vLabel = this.getVersionLabel();
+        const formatted = `"${text}"\n— ${bookName} ${chapter}:${verse} (${vLabel})`;
 
         if (navigator.share) {
             navigator.share({
@@ -510,6 +546,27 @@ class BibliaApp {
     }
 
     getVerseText(bookId, chapter, verse) {
+        // If on a remote version, try reading from the DOM first
+        const versiones = window.bibliaVersiones;
+        if (versiones && versiones.isRemote()) {
+            const el = document.querySelector(`.verse[data-book="${bookId}"][data-chapter="${chapter}"][data-verse="${verse}"]`);
+            if (el) {
+                // Get text content without the verse number
+                const clone = el.cloneNode(true);
+                const sup = clone.querySelector('.verse-num');
+                if (sup) sup.remove();
+                const ref = clone.querySelector('.cross-ref');
+                if (ref) ref.remove();
+                return clone.textContent.trim();
+            }
+            // Fallback: try cache
+            const cached = versiones.cache[`${versiones.currentVersion}_${bookId}_${chapter}`];
+            if (cached) {
+                const v = cached.find(x => x.verse === verse);
+                if (v) return v.text;
+            }
+        }
+        // Default: local BIBLE_TEXT
         if (typeof BIBLE_TEXT === 'undefined') return '';
         const key = `${bookId}_${chapter}`;
         const chapterData = BIBLE_TEXT[key];
@@ -540,9 +597,15 @@ class BibliaApp {
         document.getElementById('noteDelete').style.display = this.notes[key] ? '' : 'none';
 
         // Position editor
-        const rect = this.selectedVerse.el.getBoundingClientRect();
-        editor.style.left = Math.min(rect.left, window.innerWidth - 340) + 'px';
-        editor.style.top = Math.min(rect.bottom + 10, window.innerHeight - 250) + 'px';
+        if (window.innerWidth <= 768) {
+            // Mobile: bottom sheet (CSS handles it)
+            editor.style.left = '';
+            editor.style.top = '';
+        } else {
+            const rect = this.selectedVerse.el.getBoundingClientRect();
+            editor.style.left = Math.min(rect.left, window.innerWidth - 340) + 'px';
+            editor.style.top = Math.min(rect.bottom + 10, window.innerHeight - 250) + 'px';
+        }
         editor.classList.add('active');
         textarea.focus();
     }
@@ -573,6 +636,39 @@ class BibliaApp {
         this.saveData('biblia_notes', this.notes);
         this.closeNoteEditor();
         this.toast('Nota eliminada');
+    }
+
+    // ==========================================
+    // BOT INTEGRATION - Notes API
+    // ==========================================
+    addNoteFromBot(book, chapter, verse, bookName, text) {
+        const key = `${book}_${chapter}_${verse}`;
+        this.notes[key] = { book, chapter, verse, bookName, text, date: Date.now() };
+        this.saveData('biblia_notes', this.notes);
+        this.toast(`Nota guardada en ${bookName} ${chapter}:${verse}`);
+        return true;
+    }
+
+    deleteNoteFromBot(book, chapter, verse) {
+        const key = `${book}_${chapter}_${verse}`;
+        if (!this.notes[key]) return false;
+        delete this.notes[key];
+        this.saveData('biblia_notes', this.notes);
+        this.toast('Nota eliminada');
+        return true;
+    }
+
+    searchNotes(query) {
+        const q = query.toLowerCase();
+        return Object.entries(this.notes)
+            .filter(([_, n]) => n.text.toLowerCase().includes(q) || n.bookName.toLowerCase().includes(q))
+            .map(([key, n]) => ({ key, ...n }));
+    }
+
+    getAllNotesForBot() {
+        return Object.entries(this.notes)
+            .sort((a, b) => (b[1].date || 0) - (a[1].date || 0))
+            .map(([key, n]) => ({ key, ...n }));
     }
 
     closeNoteEditor() {

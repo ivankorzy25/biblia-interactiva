@@ -1,0 +1,343 @@
+/* ============================================
+   BIBLIA VERSIONES - Selector, Paralelo & Comparador
+   ============================================ */
+
+/* Version selector button in header */
+.version-selector-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+.version-selector-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(102,126,234,0.4);
+}
+
+/* Parallel mode toggle button */
+.parallel-toggle-btn {
+    background: none;
+    border: 1px solid rgba(102,126,234,0.3);
+    color: var(--text-secondary, #a5a0c0);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.parallel-toggle-btn:hover,
+.parallel-toggle-btn.active {
+    background: rgba(102,126,234,0.15);
+    color: #818cf8;
+    border-color: #667eea;
+}
+
+/* Version dropdown */
+.version-dropdown {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    background: var(--bg-secondary, #1e1b2e);
+    border: 1px solid var(--border-color, #3b3654);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    z-index: 10000;
+    padding: 6px;
+    min-width: 280px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+.version-dropdown.open { display: block; }
+
+.version-dropdown-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-tertiary, #7a7590);
+    padding: 8px 12px 4px;
+    font-weight: 600;
+}
+
+.version-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.version-option:hover { background: var(--bg-hover, rgba(102,126,234,0.12)); }
+.version-option.active { background: rgba(102,126,234,0.2); }
+
+.version-option-abbr {
+    font-weight: 700;
+    font-size: 13px;
+    color: #818cf8;
+    min-width: 42px;
+}
+.version-option-name {
+    font-size: 12.5px;
+    color: var(--text-primary, #e2e0f0);
+    flex: 1;
+}
+.version-badge-offline {
+    font-size: 9px;
+    background: #10b981;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   PARALLEL MODE - Side by Side (YouVersion style)
+   ========================================== */
+.parallel-container {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-primary, #13111c);
+    border-left: 2px solid rgba(102,126,234,0.3);
+    min-height: 100vh;
+}
+.parallel-container.open {
+    display: flex;
+}
+
+/* Parallel wrapper: holds main + parallel side by side */
+.parallel-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+.parallel-wrapper > .parallel-main-col {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+}
+.parallel-wrapper > .parallel-container {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+}
+
+.parallel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--bg-secondary, #1e1b2e);
+    border-bottom: 1px solid var(--border-light, #2d2a40);
+    min-height: 46px;
+}
+.parallel-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.parallel-version-select {
+    background: var(--bg-primary, #13111c);
+    color: var(--text-primary, #e2e0f0);
+    border: 1px solid var(--border-color, #3b3654);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.parallel-chapter-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary, #a5a0c0);
+}
+.parallel-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary, #a5a0c0);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+.parallel-close-btn:hover { color: #f87171; }
+
+.parallel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    line-height: 1.8;
+    font-size: var(--font-size, 18px);
+}
+.parallel-body .verse {
+    display: inline;
+}
+.parallel-body .verse-num {
+    font-size: 0.65em;
+    vertical-align: super;
+    color: #667eea;
+    font-weight: 700;
+    margin-right: 2px;
+}
+.parallel-body .section-title {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1em;
+    margin: 20px 0 10px;
+    color: var(--text-primary, #e2e0f0);
+}
+.parallel-body .parallel-loading {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.5;
+}
+
+/* ==========================================
+   COMPARE PANEL (verse-level, bottom sheet)
+   ========================================== */
+.compare-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 70vh;
+    background: var(--bg-secondary, #1e1b2e);
+    border-top: 2px solid #667eea;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+    z-index: 10001;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.compare-panel.open { transform: translateY(0); }
+
+.compare-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light, #2d2a40);
+}
+.compare-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: #818cf8;
+}
+.compare-close {
+    background: none;
+    border: none;
+    color: var(--text-primary, #e2e0f0);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0 4px;
+}
+.compare-verse-ref {
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary, #a5a0c0);
+}
+.compare-select-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 16px 10px;
+    justify-content: center;
+}
+.compare-check {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-primary, #e2e0f0);
+    cursor: pointer;
+    background: rgba(102,126,234,0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+.compare-check:hover { background: rgba(102,126,234,0.18); }
+.compare-check input { accent-color: #667eea; }
+.compare-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px 16px;
+}
+.compare-loading {
+    text-align: center;
+    padding: 24px;
+    opacity: 0.5;
+    font-size: 13px;
+}
+.compare-card {
+    background: var(--bg-hover, rgba(102,126,234,0.06));
+    border: 1px solid var(--border-light, #2d2a40);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+}
+.compare-card-header {
+    font-weight: 700;
+    font-size: 13px;
+    color: #818cf8;
+    margin-bottom: 6px;
+}
+.compare-card-name {
+    font-weight: 400;
+    font-size: 11px;
+    opacity: 0.6;
+    margin-left: 4px;
+}
+.compare-card-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary, #e2e0f0);
+}
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+    .version-dropdown {
+        left: 8px;
+        right: 8px;
+        min-width: auto;
+        max-height: 60vh;
+    }
+    .compare-panel { max-height: 85vh; }
+
+    .parallel-wrapper {
+        flex-direction: column;
+    }
+    .parallel-wrapper > .parallel-main-col {
+        max-height: 45vh;
+        font-size: 0.92em;
+    }
+    .parallel-wrapper > .parallel-container {
+        max-height: 45vh;
+        border-left: none;
+        border-top: 2px solid rgba(102,126,234,0.3);
+        font-size: 0.92em;
+    }
+}
+@media (max-width: 480px) {
+    .compare-panel {
+        max-height: 90vh;
+        border-radius: 12px 12px 0 0;
+    }
+}

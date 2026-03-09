@@ -282,6 +282,11 @@
     color: var(--accent-primary);
 }
 
+/* ============ TABLET ============ */
+@media (max-width: 1024px) {
+    .videos-channels-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ============ MOBILE ============ */
 @media (max-width: 768px) {
     .videos-body { padding: 16px 12px 80px; }
@@ -293,11 +298,13 @@
     }
     .videos-search-btn {
         width: 100%;
+        min-height: 44px;
     }
     .videos-context-links {
         flex-direction: column;
     }
     .context-link {
         width: 100%;
+        min-height: 44px;
     }
 }

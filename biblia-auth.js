@@ -62,10 +62,23 @@ class BibliaAuth {
         }
 
         this.auth = firebase.auth();
+        this.db = firebase.firestore();
         this.provider = new firebase.auth.GoogleAuthProvider();
         this.provider.setCustomParameters({ prompt: 'select_account' });
 
-        this.auth.onAuthStateChanged(user => {
+        // Detect Android WebView (popup auth doesn't work there)
+        this._isAndroidWebView = /BibliaInteractiva/.test(navigator.userAgent);
+
+        // Handle redirect result (for Android WebView which uses signInWithRedirect)
+        if (this._isAndroidWebView) {
+            this.auth.getRedirectResult().catch(err => {
+                if (err.code !== 'auth/no-auth-event') {
+                    console.error('Redirect result error:', err);
+                }
+            });
+        }
+
+        this.auth.onAuthStateChanged(async (user) => {
             this.user = user;
             this.isReady = true;
 
@@ -73,6 +86,8 @@ class BibliaAuth {
                 this.hideLoginOverlay();
                 this.renderUserButton();
                 this.ollamaKey = localStorage.getItem('biblia_ollama_key') || null;
+                // Sync API key from Firestore if not in localStorage
+                await this.syncOllamaKeyFromCloud();
             } else {
                 this.removeUserButton();
                 this.showLoginOverlay();
@@ -103,6 +118,16 @@ class BibliaAuth {
                     </svg>
                     Continuar con Google
                 </button>
+
+                <div class="auth-divider"><span>o</span></div>
+
+                <div class="auth-email-form" id="authEmailForm">
+                    <input type="email" class="auth-email-input" id="authEmailInput" placeholder="Email" autocomplete="email">
+                    <input type="password" class="auth-email-input" id="authPasswordInput" placeholder="Contrase&ntilde;a (m&iacute;n. 6 caracteres)" autocomplete="current-password">
+                    <button class="auth-email-btn" id="authEmailBtn">Iniciar sesi&oacute;n</button>
+                    <button class="auth-email-toggle" id="authEmailToggle">No ten&eacute;s cuenta? <strong>Registrate</strong></button>
+                </div>
+
                 <div class="auth-error" id="authError"></div>
                 <div class="auth-note">Tu cuenta es gratuita. Solo se usa para guardar tu progreso.</div>
             </div>
@@ -112,6 +137,22 @@ class BibliaAuth {
         requestAnimationFrame(() => overlay.classList.add('visible'));
 
         document.getElementById('authGoogleBtn').addEventListener('click', () => this.signInWithGoogle());
+
+        // Email/Password login
+        this._emailIsRegister = false;
+        document.getElementById('authEmailBtn')?.addEventListener('click', () => this.signInWithEmail());
+        document.getElementById('authEmailToggle')?.addEventListener('click', () => {
+            this._emailIsRegister = !this._emailIsRegister;
+            const btn = document.getElementById('authEmailBtn');
+            const toggle = document.getElementById('authEmailToggle');
+            if (btn) btn.textContent = this._emailIsRegister ? 'Crear cuenta' : 'Iniciar sesi\u00f3n';
+            if (toggle) toggle.innerHTML = this._emailIsRegister
+                ? 'Ya ten\u00e9s cuenta? <strong>Inici\u00e1 sesi\u00f3n</strong>'
+                : 'No ten\u00e9s cuenta? <strong>Registrate</strong>';
+        });
+        document.getElementById('authPasswordInput')?.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') this.signInWithEmail();
+        });
     }
 
     hideLoginOverlay() {
@@ -131,6 +172,11 @@ class BibliaAuth {
         if (errEl) errEl.classList.remove('visible');
 
         try {
+            // Android WebView: use redirect (popup doesn't work in WebView)
+            if (this._isAndroidWebView) {
+                await this.auth.signInWithRedirect(this.provider);
+                return;
+            }
             await this.auth.signInWithPopup(this.provider);
         } catch (err) {
             console.error('Auth popup error:', err);
@@ -157,6 +203,49 @@ class BibliaAuth {
                 </svg>
                 Continuar con Google
             `;
+        }
+    }
+
+    async signInWithEmail() {
+        const emailEl = document.getElementById('authEmailInput');
+        const passEl = document.getElementById('authPasswordInput');
+        const btn = document.getElementById('authEmailBtn');
+        const errEl = document.getElementById('authError');
+        const email = emailEl?.value?.trim();
+        const pass = passEl?.value;
+
+        if (!email || !pass) {
+            this.showAuthError('Complet\u00e1 email y contrase\u00f1a.');
+            return;
+        }
+        if (pass.length < 6) {
+            this.showAuthError('La contrase\u00f1a debe tener al menos 6 caracteres.');
+            return;
+        }
+
+        if (errEl) errEl.classList.remove('visible');
+        const origText = btn?.textContent;
+        if (btn) { btn.disabled = true; btn.innerHTML = '<div class="auth-spinner"></div> Conectando...'; }
+
+        try {
+            if (this._emailIsRegister) {
+                await this.auth.createUserWithEmailAndPassword(email, pass);
+            } else {
+                await this.auth.signInWithEmailAndPassword(email, pass);
+            }
+        } catch (err) {
+            console.error('Email auth error:', err);
+            const msgs = {
+                'auth/user-not-found': 'No existe una cuenta con ese email. Registrate primero.',
+                'auth/wrong-password': 'Contrase\u00f1a incorrecta.',
+                'auth/invalid-credential': 'Email o contrase\u00f1a incorrectos.',
+                'auth/email-already-in-use': 'Ya existe una cuenta con ese email. Inici\u00e1 sesi\u00f3n.',
+                'auth/invalid-email': 'El email no es v\u00e1lido.',
+                'auth/weak-password': 'La contrase\u00f1a es muy d\u00e9bil (m\u00edn. 6 caracteres).',
+                'auth/too-many-requests': 'Demasiados intentos. Esper\u00e1 un momento.',
+            };
+            this.showAuthError(msgs[err.code] || 'Error: ' + (err.message || 'Intent\u00e1 de nuevo'));
+            if (btn) { btn.disabled = false; btn.textContent = origText; }
         }
     }
 
@@ -481,6 +570,44 @@ class BibliaAuth {
     saveOllamaKey(key) {
         this.ollamaKey = key;
         localStorage.setItem('biblia_ollama_key', key);
+        this.saveOllamaKeyToCloud(key);
+    }
+
+    async saveOllamaKeyToCloud(key) {
+        if (!this.db || !this.user) return;
+        try {
+            await this.db.collection('users').doc(this.user.uid).set(
+                { ollamaKey: key, updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
+                { merge: true }
+            );
+            console.log('BibliaAuth: API key synced to cloud');
+        } catch (err) {
+            console.warn('BibliaAuth: Could not save key to cloud:', err.message);
+        }
+    }
+
+    async syncOllamaKeyFromCloud() {
+        if (!this.db || !this.user) return;
+        try {
+            const doc = await this.db.collection('users').doc(this.user.uid).get();
+            if (doc.exists && doc.data().ollamaKey) {
+                const cloudKey = doc.data().ollamaKey;
+                if (!this.ollamaKey) {
+                    // No local key — use cloud key
+                    this.ollamaKey = cloudKey;
+                    localStorage.setItem('biblia_ollama_key', cloudKey);
+                    console.log('BibliaAuth: API key loaded from cloud');
+                } else if (this.ollamaKey !== cloudKey) {
+                    // Local key exists but differs — push local to cloud (local wins)
+                    await this.saveOllamaKeyToCloud(this.ollamaKey);
+                }
+            } else if (this.ollamaKey) {
+                // Cloud empty, local exists — push to cloud
+                await this.saveOllamaKeyToCloud(this.ollamaKey);
+            }
+        } catch (err) {
+            console.warn('BibliaAuth: Could not sync key from cloud:', err.message);
+        }
     }
 
     closeWizard() {
@@ -513,7 +640,7 @@ class BibliaAuth {
                     <button class="key-panel-btn" id="kpChangeKey">&#128260; ${this.ollamaKey ? 'Cambiar' : 'Configurar'} mi API Key</button>
                     <button class="key-panel-btn" onclick="window.open('https://ollama.com/settings','_blank')">&#128202; Ver mi uso en Ollama</button>
                 </div>
-                <div class="key-panel-note">Tu API key se guarda solo en este dispositivo/navegador.</div>
+                <div class="key-panel-note">Tu API key se sincroniza con tu cuenta de Google en todos tus dispositivos.</div>
             </div>
         `;
         document.body.appendChild(overlay);

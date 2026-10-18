@@ -1,0 +1,308 @@
+/* ============================================
+   BIBLIA COMENTARIO - Matthew Henry Commentary
+   Panel styles with cmt- prefix
+   ============================================ */
+
+:root {
+    --cmt-accent: #8b5cf6;
+    --cmt-accent-light: #a78bfa;
+    --cmt-bg: #f8f7ff;
+    --cmt-section-bg: #ffffff;
+    --cmt-border: #e5e3f1;
+    --cmt-text: #374151;
+    --cmt-text-muted: #6b7280;
+    --cmt-highlight-bg: #ede9fe;
+}
+
+[data-theme="dark"] {
+    --cmt-accent: #a78bfa;
+    --cmt-accent-light: #c4b5fd;
+    --cmt-bg: #1e1b2e;
+    --cmt-section-bg: #252238;
+    --cmt-border: #3b3556;
+    --cmt-text: #e5e7eb;
+    --cmt-text-muted: #9ca3af;
+    --cmt-highlight-bg: #312e4a;
+}
+
+/* ---- Main Panel ---- */
+.cmt-panel {
+    display: none;
+    margin: 16px 0;
+    border-radius: 12px;
+    background: var(--cmt-bg);
+    border: 1px solid var(--cmt-border);
+    overflow: hidden;
+}
+
+.cmt-panel.open {
+    display: block;
+}
+
+/* ---- Header ---- */
+.cmt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--cmt-accent);
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cmt-header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.cmt-header-icon {
+    font-size: 1.2rem;
+}
+
+.cmt-header-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cmt-header-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    opacity: 0.8;
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.cmt-header-btn:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.15);
+}
+
+/* ---- Body ---- */
+.cmt-body {
+    padding: 12px 16px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* ---- Loading ---- */
+.cmt-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px 16px;
+    color: var(--cmt-text-muted);
+    font-size: 0.9rem;
+}
+
+.cmt-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--cmt-border);
+    border-top-color: var(--cmt-accent);
+    border-radius: 50%;
+    animation: cmt-spin 0.8s linear infinite;
+}
+
+@keyframes cmt-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ---- Empty ---- */
+.cmt-empty {
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--cmt-text-muted);
+    font-size: 0.9rem;
+}
+
+.cmt-empty-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+/* ---- Intro ---- */
+.cmt-intro {
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    background: var(--cmt-highlight-bg);
+    border-radius: 8px;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--cmt-text);
+    border-left: 3px solid var(--cmt-accent);
+}
+
+/* ---- Section ---- */
+.cmt-section {
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: var(--cmt-section-bg);
+    border: 1px solid var(--cmt-border);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.cmt-section.cmt-highlighted {
+    box-shadow: 0 0 0 2px var(--cmt-accent), 0 4px 12px rgba(139,92,246,0.2);
+}
+
+.cmt-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.cmt-section-header:hover {
+    background: var(--cmt-highlight-bg);
+}
+
+.cmt-section-verses {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--cmt-accent);
+    background: var(--cmt-highlight-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.cmt-section-title {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--cmt-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cmt-section-arrow {
+    font-size: 0.7rem;
+    color: var(--cmt-text-muted);
+    transition: transform 0.2s;
+    margin-left: 8px;
+}
+
+.cmt-section.expanded .cmt-section-arrow {
+    transform: rotate(180deg);
+}
+
+.cmt-section-body {
+    display: none;
+    padding: 0 14px 14px;
+}
+
+.cmt-section.expanded .cmt-section-body {
+    display: block;
+}
+
+.cmt-section-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--cmt-text);
+    white-space: pre-line;
+}
+
+/* ---- Section Read Button ---- */
+.cmt-read-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    padding: 6px 14px;
+    background: var(--cmt-highlight-bg);
+    color: var(--cmt-accent);
+    border: 1px solid var(--cmt-border);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.cmt-read-btn:hover {
+    background: var(--cmt-accent);
+    color: white;
+    border-color: var(--cmt-accent);
+}
+
+/* ---- Attribution ---- */
+.cmt-attribution {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.75rem;
+    color: var(--cmt-text-muted);
+    border-top: 1px solid var(--cmt-border);
+    margin-top: 8px;
+}
+
+/* ---- Mobile Collapse Toggle ---- */
+.cmt-collapse-toggle {
+    display: none;
+    width: 100%;
+    padding: 10px 16px;
+    background: var(--cmt-bg);
+    border: none;
+    border-top: 1px solid var(--cmt-border);
+    color: var(--cmt-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .cmt-panel {
+        margin: 8px 0;
+        border-radius: 8px;
+    }
+
+    .cmt-body {
+        padding: 8px 12px;
+        max-height: 400px;
+    }
+
+    .cmt-header {
+        padding: 10px 12px;
+    }
+
+    .cmt-section-header {
+        padding: 8px 10px;
+    }
+
+    .cmt-section-body {
+        padding: 0 10px 10px;
+    }
+
+    .cmt-section-text {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cmt-body {
+        max-height: 350px;
+    }
+
+    .cmt-intro {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+    }
+}

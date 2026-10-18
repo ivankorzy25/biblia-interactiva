@@ -97,8 +97,16 @@ PARA CITAS B\u00cdBLICAS:
 - Siempre citá el texto completo del versículo. No lo recortes ni lo parafrasees.
 - No inventes versículos. Si no recordás el texto exacto, decilo con naturalidad: Aunque no recuerdo las palabras exactas, el pasaje nos enseña que Dios es fiel en todas sus promesas.
 
+BREVEDAD - MUY IMPORTANTE:
+- Sé CONCISO. Respondé en el menor número de oraciones posible sin perder claridad.
+- No repitas ideas. No des explicaciones de más. No agregues contexto que no te pidieron.
+- Si el usuario hace una pregunta simple, respondé en dos o tres oraciones como máximo.
+- Solo dá respuestas largas y detalladas cuando el usuario lo pida explícitamente con palabras como explicame en detalle, contame todo, dame un resumen completo.
+- Cuando leas un capítulo o libro, no agregues explicaciones, solo leé el texto bíblico.
+
 REGLAS ABSOLUTAS:
-- Solo español con ortografía perfecta incluyendo todos los acentos y tildes.
+- SIEMPRE respondé en español. NUNCA respondas en inglés ni en otro idioma, sin importar en qué idioma te escriban.
+- Ortografía perfecta incluyendo todos los acentos y tildes.
 - Cero emojis, cero símbolos, cero markdown, cero comillas, cero paréntesis.
 - Cero listas con guiones o números. Todo en prosa narrativa fluida.
 - Cada nombre propio debe estar acompañado de contexto que explique quién es o qué es.
@@ -355,7 +363,8 @@ LINKS Y RECURSOS:
             <div class="bot-tts-settings" id="botTtsSettings">
                 <div class="bot-tts-settings-row">
                     <label class="bot-tts-label">Voz:</label>
-                    <select class="bot-tts-voice-select" id="botVoiceSelect"></select>
+                    <select class="bot-tts-voice-select" id="botVoiceSelect"><option value="">Cargando voces...</option></select>
+                    <button class="bot-tts-preview-btn" id="botVoicePreview" title="Probar voz">&#9654;</button>
                 </div>
                 <div class="bot-tts-settings-row">
                     <label class="bot-tts-label">Velocidad:</label>
@@ -419,6 +428,7 @@ LINKS Y RECURSOS:
         this.settingsToggle = this.panel.querySelector('#botSettingsToggle');
         this.ttsSettingsEl = this.panel.querySelector('#botTtsSettings');
         this.voiceSelectEl = this.panel.querySelector('#botVoiceSelect');
+        this.voicePreviewBtn = this.panel.querySelector('#botVoicePreview');
         this.speedGlobalEl = this.panel.querySelector('#botSpeedGlobal');
         this.speedLabelEl = this.panel.querySelector('#botSpeedLabel');
         this.nowPlayingEl = this.panel.querySelector('#botNowPlaying');
@@ -487,6 +497,39 @@ LINKS Y RECURSOS:
             if (e.key === 'Escape' && this.isOpen) this.toggle();
         });
 
+        // Android: unlock speechSynthesis en el primer tap del usuario
+        const unlockTts = () => {
+            const u = new SpeechSynthesisUtterance('');
+            u.volume = 0;
+            this.synth.speak(u);
+            document.removeEventListener('touchstart', unlockTts, true);
+            document.removeEventListener('click', unlockTts, true);
+        };
+        document.addEventListener('touchstart', unlockTts, true);
+        document.addEventListener('click', unlockTts, true);
+
+        // Android: pausar/cancelar TTS cuando la app va a background
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && this.synth.speaking) {
+                this.synth.pause();
+            } else if (!document.hidden && this.synth.paused) {
+                this.synth.resume();
+            }
+        });
+
+        // Android: blur input cuando el teclado se cierra para evitar re-focus
+        if (window.visualViewport) {
+            let prevHeight = window.visualViewport.height;
+            window.visualViewport.addEventListener('resize', () => {
+                const h = window.visualViewport.height;
+                // Si el viewport creció → el teclado se cerró → blur
+                if (h > prevHeight + 100 && this.isOpen) {
+                    document.activeElement?.blur();
+                }
+                prevHeight = h;
+            });
+        }
+
         // Maximize
         this.maximizeBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -512,15 +555,47 @@ LINKS Y RECURSOS:
             localStorage.setItem('biblia_tts_rate', this.ttsRate.toString());
         });
 
-        // Voice select
+        // Voice selector
         this.voiceSelectEl.addEventListener('change', () => {
-            const voices = this.synth.getVoices();
-            const selected = voices.find(v => v.voiceURI === this.voiceSelectEl.value);
-            if (selected) {
-                this.ttsVoice = selected;
-                localStorage.setItem('biblia_tts_voice', selected.voiceURI);
+            const name = this.voiceSelectEl.value;
+            localStorage.setItem('biblia_tts_voice', name);
+            if (name && !name.startsWith('cloud:') && window.AndroidTTS) {
+                window.AndroidTTS.setVoice(name);
             }
         });
+        this.voicePreviewBtn.addEventListener('click', () => {
+            const name = this.voiceSelectEl.value;
+            const previewText = 'Biblia Interactiva. Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito.';
+            const isCloud = name && name.startsWith('cloud:') && navigator.onLine;
+            const isServer = name && name.startsWith('server:') && navigator.onLine;
+            if (isCloud || isServer) {
+                this.voicePreviewBtn.textContent = '...';
+                const voiceName = name.replace(/^(cloud|server):/, '');
+                const ratePercent = Math.round((this.ttsRate - 1) * 100);
+                const rateStr = (ratePercent >= 0 ? '+' : '') + ratePercent + '%';
+                const url = isServer ? 'https://tts.generadores.ar/tts' : '/api/tts';
+                fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: previewText, voice: voiceName, rate: rateStr }),
+                }).then(r => r.blob()).then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const a = new Audio(url);
+                    a.onended = () => URL.revokeObjectURL(url);
+                    a.play();
+                    this.voicePreviewBtn.innerHTML = '\u25B6';
+                }).catch(() => { this.voicePreviewBtn.innerHTML = '\u25B6'; });
+            } else if (window.AndroidTTS && window.AndroidTTS.isAvailable()) {
+                if (name) window.AndroidTTS.setVoice(name);
+                window.AndroidTTS.speak(previewText, this.ttsRate);
+            } else if (this.synth) {
+                const u = new SpeechSynthesisUtterance(previewText);
+                u.rate = this.ttsRate;
+                if (this.ttsVoice) { u.voice = this.ttsVoice; u.lang = this.ttsVoice.lang; }
+                this.synth.speak(u);
+            }
+        });
+        this.populateVoiceSelector();
 
         // Now Playing bar (fixed in header)
         this.npPauseBtn.addEventListener('click', () => {
@@ -721,7 +796,26 @@ LINKS Y RECURSOS:
         this.toggleBtn.classList.toggle('active', this.isOpen);
         this.toggleBtn.innerHTML = this.isOpen ? '\u2715' : '\u{1F4D6}';
         if (this.isOpen) {
-            setTimeout(() => this.inputEl.focus(), 350);
+            // En móvil/tablet no hacer focus automático para evitar que el teclado tape el chat
+            if (window.innerWidth > 768 && !('ontouchstart' in window)) {
+                setTimeout(() => this.inputEl.focus(), 350);
+            }
+            // Resetear estilos inline al abrir en móvil (bottom sheet)
+            if (window.innerWidth <= 480) {
+                this.panel.style.height = '';
+                this.panel.style.top = '';
+                this.panel.style.left = '';
+                this.panel.style.right = '';
+                this.panel.style.bottom = '';
+                this.panel.style.width = '';
+            }
+        } else {
+            this.panel.style.height = '';
+            this.panel.style.top = '';
+            this.panel.style.left = '';
+            this.panel.style.right = '';
+            this.panel.style.bottom = '';
+            this.panel.style.width = '';
         }
         if (!this.isOpen && this.isMaximized) {
             this.toggleMaximize();
@@ -761,6 +855,8 @@ LINKS Y RECURSOS:
             // Don't drag from buttons
             if (e.target.closest('button')) return;
             if (this.isMaximized) return;
+            // No drag en móviles pequeños (bottom sheet)
+            if (window.innerWidth <= 480) return;
             isDragging = true;
             this.panel.classList.add('dragging');
 
@@ -822,6 +918,7 @@ LINKS Y RECURSOS:
 
         const onMouseDown = (e) => {
             if (this.isMaximized) return;
+            if (window.innerWidth <= 480) return;
             isResizing = true;
             this.panel.classList.add('resizing');
             const rect = this.panel.getBoundingClientRect();
@@ -967,71 +1064,161 @@ LINKS Y RECURSOS:
     // TEXT TO SPEECH
     // ==========================================
     initVoices() {
-        const savedVoiceURI = localStorage.getItem('biblia_tts_voice');
 
         const pickVoice = () => {
             const voices = this.synth.getVoices();
             if (!voices.length) return;
             this.voicesReady = true;
 
-            // Filter Spanish voices for the selector
             const esVoices = voices.filter(v => v.lang.startsWith('es'));
-            const otherVoices = voices.filter(v => !v.lang.startsWith('es'));
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-            // Populate voice select
-            if (this.voiceSelectEl) {
-                this.voiceSelectEl.innerHTML = '';
-                if (esVoices.length) {
-                    const grpEs = document.createElement('optgroup');
-                    grpEs.label = 'Espanol';
-                    esVoices.forEach(v => {
-                        const opt = document.createElement('option');
-                        opt.value = v.voiceURI;
-                        const region = v.lang.replace('es-', '');
-                        const tag = region === 'AR' ? 'Argentina' : region === 'MX' ? 'Mexico' : region === 'US' ? 'Latino US' : region === 'ES' ? 'Espana' : region === 'CO' ? 'Colombia' : region === 'CL' ? 'Chile' : region;
-                        opt.textContent = `${v.name} (${tag})`;
-                        grpEs.appendChild(opt);
-                    });
-                    this.voiceSelectEl.appendChild(grpEs);
-                }
-                if (otherVoices.length) {
-                    const grpOther = document.createElement('optgroup');
-                    grpOther.label = 'Otros idiomas';
-                    otherVoices.slice(0, 15).forEach(v => {
-                        const opt = document.createElement('option');
-                        opt.value = v.voiceURI;
-                        opt.textContent = `${v.name} (${v.lang})`;
-                        grpOther.appendChild(opt);
-                    });
-                    this.voiceSelectEl.appendChild(grpOther);
-                }
+            if (isMobile) {
+                // Mobile: prefer Samsung/device voices in es-MX (user configures in Android settings)
+                this.ttsVoice =
+                    esVoices.find(v => /samsung/i.test(v.name) && v.lang === 'es-MX') ||
+                    esVoices.find(v => /samsung/i.test(v.name) && v.lang.startsWith('es')) ||
+                    esVoices.find(v => v.lang === 'es-MX') ||
+                    esVoices.find(v => v.lang.startsWith('es-')) ||
+                    esVoices[0] || voices[0];
+            } else {
+                // Desktop: prefer Google voices (Chrome PC has high-quality cloud voices)
+                this.ttsVoice =
+                    esVoices.find(v => /google/i.test(v.name) && v.lang === 'es-ES') ||
+                    esVoices.find(v => /google/i.test(v.name) && v.lang.startsWith('es')) ||
+                    esVoices.find(v => v.lang === 'es-ES') ||
+                    esVoices.find(v => v.lang.startsWith('es-')) ||
+                    esVoices[0] || voices[0];
             }
 
-            // Restore saved voice or auto-pick
-            if (savedVoiceURI) {
-                const saved = voices.find(v => v.voiceURI === savedVoiceURI);
-                if (saved) {
-                    this.ttsVoice = saved;
-                    if (this.voiceSelectEl) this.voiceSelectEl.value = saved.voiceURI;
-                    return;
-                }
-            }
-
-            // Auto-pick priority: es-ES always first (Google > Microsoft/Natural > any es-ES) > fallback
-            this.ttsVoice =
-                esVoices.find(v => v.lang === 'es-ES' && /google/i.test(v.name)) ||
-                esVoices.find(v => v.lang === 'es-ES' && /microsoft|natural/i.test(v.name)) ||
-                esVoices.find(v => v.lang === 'es-ES') ||
-                esVoices.find(v => v.lang.startsWith('es-')) ||
-                esVoices[0] || voices[0];
-
-            if (this.ttsVoice && this.voiceSelectEl) {
-                this.voiceSelectEl.value = this.ttsVoice.voiceURI;
+            if (this.ttsVoice) {
+                console.log('TTS voice:', this.ttsVoice.name, this.ttsVoice.lang);
             }
         };
+
         pickVoice();
         if (this.synth.onvoiceschanged !== undefined) {
             this.synth.onvoiceschanged = pickVoice;
+        }
+        // Android a veces tarda en cargar voces — reintentar hasta 3s después
+        if (!this.synth.getVoices().length) {
+            let tries = 0;
+            const retryVoices = setInterval(() => {
+                if (this.synth.getVoices().length || ++tries > 10) {
+                    clearInterval(retryVoices);
+                    pickVoice();
+                }
+            }, 300);
+        }
+    }
+
+    populateVoiceSelector() {
+        const sel = this.voiceSelectEl;
+        if (!sel) return;
+
+        // Android native: use AndroidTTS.getVoices()
+        if (window.AndroidTTS) {
+            const tryPopulate = () => {
+                if (!window.AndroidTTS.isAvailable()) return false;
+                let voices;
+                try { voices = JSON.parse(window.AndroidTTS.getVoices()); } catch(e) { return false; }
+                if (!voices || !voices.length) return false;
+
+                const saved = localStorage.getItem('biblia_tts_voice') || '';
+                sel.innerHTML = '';
+
+                // Only show verified masculine voices (tested on S25 Ultra)
+                const masculineVoiceIds = ['es-es-x-eef-local', 'es-es-x-eed-local', 'es-us-x-esd-local', 'es-us-x-esf-local'];
+                const masculineLabels = {'es-es-x-eef-local':'España 1','es-es-x-eed-local':'España 2','es-us-x-esd-local':'Latino 1','es-us-x-esf-local':'Latino 2'};
+
+                // Verified patterns for full classification
+                const masculinePatterns = ['-esd-', '-esf-', '-eed-', '-eef-'];
+                const femininePatterns = ['-sfb-', '-esc-', '-eea-', '-eec-', '-eee-'];
+
+                // Only show the 4 verified masculine voices
+                for (const id of masculineVoiceIds) {
+                    if (voices.some(v => v.name === id)) {
+                        const opt = document.createElement('option');
+                        opt.value = id;
+                        opt.textContent = masculineLabels[id] || id;
+                        if (id === saved) opt.selected = true;
+                        sel.appendChild(opt);
+                    }
+                }
+
+                // Add cloud voices (Edge TTS neural - more expressive)
+                const cloudVoices = [
+                    { id: 'cloud:es-MX-JorgeNeural', label: 'Jorge MX - narrador (cloud)' },
+                    { id: 'cloud:es-AR-TomasNeural', label: 'Tomas AR - narrador (cloud)' },
+                    { id: 'cloud:es-ES-AlvaroNeural', label: 'Alvaro ES - narrador (cloud)' },
+                ];
+                const cloudGroup = document.createElement('optgroup');
+                cloudGroup.label = 'Cloud (requiere internet)';
+                for (const cv of cloudVoices) {
+                    const opt = document.createElement('option');
+                    opt.value = cv.id;
+                    opt.textContent = cv.label;
+                    if (cv.id === saved) opt.selected = true;
+                    cloudGroup.appendChild(opt);
+                }
+                sel.appendChild(cloudGroup);
+
+                // Add server streaming voices (Edge TTS via LAN Docker)
+                const serverVoices = [
+                    { id: 'server:es-MX-JorgeNeural', label: 'Jorge MX - streaming (server)' },
+                    { id: 'server:es-AR-TomasNeural', label: 'Tomas AR - streaming (server)' },
+                    { id: 'server:es-ES-AlvaroNeural', label: 'Alvaro ES - streaming (server)' },
+                ];
+                const serverGroup = document.createElement('optgroup');
+                serverGroup.label = 'Server LAN (streaming)';
+                for (const sv of serverVoices) {
+                    const opt = document.createElement('option');
+                    opt.value = sv.id;
+                    opt.textContent = sv.label;
+                    if (sv.id === saved) opt.selected = true;
+                    serverGroup.appendChild(opt);
+                }
+                sel.appendChild(serverGroup);
+
+                // Apply saved voice or default to España 1 (eef)
+                if (saved && (saved.startsWith('cloud:') || saved.startsWith('server:'))) {
+                    sel.value = saved;
+                } else if (saved && voices.some(v => v.name === saved)) {
+                    window.AndroidTTS.setVoice(saved);
+                } else if (sel.options.length) {
+                    sel.value = sel.options[0].value;
+                    window.AndroidTTS.setVoice(sel.options[0].value);
+                    localStorage.setItem('biblia_tts_voice', sel.options[0].value);
+                }
+                return true;
+            };
+
+            if (!tryPopulate()) {
+                let attempts = 0;
+                const retry = setInterval(() => {
+                    if (tryPopulate() || ++attempts > 20) clearInterval(retry);
+                }, 500);
+            }
+            return;
+        }
+
+        // Browser fallback: show speechSynthesis voices
+        const populateBrowser = () => {
+            const voices = this.synth.getVoices().filter(v => v.lang.startsWith('es'));
+            if (!voices.length) return;
+            sel.innerHTML = '';
+            for (const v of voices) {
+                const opt = document.createElement('option');
+                opt.value = v.name;
+                opt.textContent = v.name + ' (' + v.lang + ')';
+                if (this.ttsVoice && v.name === this.ttsVoice.name) opt.selected = true;
+                sel.appendChild(opt);
+            }
+        };
+        populateBrowser();
+        if (this.synth.onvoiceschanged !== undefined) {
+            const orig = this.synth.onvoiceschanged;
+            this.synth.onvoiceschanged = () => { if (orig) orig(); populateBrowser(); };
         }
     }
 
@@ -1073,7 +1260,14 @@ LINKS Y RECURSOS:
     }
 
     stopSpeech() {
+        this._ttsStopped = true;
         this.synth.cancel();
+        if (window.AndroidTTS) try { AndroidTTS.stop(); } catch(e) {}
+        if (this._currentAudio) {
+            this._currentAudio.pause();
+            this._currentAudio.src = '';
+            this._currentAudio = null;
+        }
         this.currentUtterance = null;
         this.resetTtsBar();
         this.hideNowPlaying();
@@ -1110,22 +1304,65 @@ LINKS Y RECURSOS:
         this.karaokePanel.classList.remove('open');
     }
 
-    highlightKaraokeChunk(index, total) {
-        // Remove previous highlights
+    highlightKaraokeChunk(chunkIndex, totalChunks) {
+        // Map audio chunk index to karaoke sentence range
+        const mapping = this._chunkToSentences;
+        if (!mapping || !mapping[chunkIndex]) {
+            // Fallback: highlight by chunk index directly
+            this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
+                const idx = parseInt(el.dataset.idx);
+                el.classList.toggle('past', idx < chunkIndex);
+                el.classList.toggle('active', idx === chunkIndex);
+                el.classList.toggle('future', idx > chunkIndex);
+            });
+            const active = this.karaokeBody.querySelector('.karaoke-chunk.active');
+            if (active) active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            this.karaokeProgressEl.style.width = ((chunkIndex + 1) / totalChunks * 100) + '%';
+            return;
+        }
+
+        const [sentStart, sentEnd] = mapping[chunkIndex];
+        const totalSentences = this._karaokeSentences ? this._karaokeSentences.length : totalChunks;
+
+        // Clear previous sentence animation timer
+        if (this._karaokeTimer) { clearTimeout(this._karaokeTimer); this._karaokeTimer = null; }
+
+        // Mark all sentences before this chunk as past
         this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
             const idx = parseInt(el.dataset.idx);
-            el.classList.toggle('past', idx < index);
-            el.classList.toggle('active', idx === index);
-            el.classList.remove('future');
-            if (idx > index) el.classList.add('future');
+            el.classList.remove('active', 'past', 'future');
+            if (idx < sentStart) el.classList.add('past');
+            else if (idx >= sentEnd) el.classList.add('future');
         });
-        // Scroll active into view
-        const active = this.karaokeBody.querySelector('.karaoke-chunk.active');
-        if (active) {
-            active.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        // Update progress bar
-        this.karaokeProgressEl.style.width = ((index + 1) / total * 100) + '%';
+
+        const sentCount = sentEnd - sentStart;
+        if (sentCount <= 0) return;
+
+        const highlightSentence = (idx) => {
+            this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
+                const i = parseInt(el.dataset.idx);
+                el.classList.remove('active');
+                if (i < idx) { el.classList.remove('future'); el.classList.add('past'); }
+                el.classList.toggle('active', i === idx);
+            });
+            const active = this.karaokeBody.querySelector('.karaoke-chunk.active');
+            if (active) active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            this.karaokeProgressEl.style.width = ((idx + 1) / totalSentences * 100) + '%';
+        };
+
+        // Recursive setTimeout: each sentence gets timing based on ITS OWN length
+        const advanceSentence = (idx) => {
+            if (this._ttsStopped || idx >= sentEnd) return;
+            highlightSentence(idx);
+            if (idx + 1 < sentEnd) {
+                // Timing per char: native Android TTS ~55ms, cloud Edge TTS ~95ms
+                const msPerChar = (window.AndroidTTS && window.AndroidTTS.isAvailable()) ? 55 : 95;
+                const sentLen = this._karaokeSentences[idx] ? this._karaokeSentences[idx].length : 50;
+                const delay = Math.max(sentLen * (msPerChar / this.ttsRate), 1200);
+                this._karaokeTimer = setTimeout(() => advanceSentence(idx + 1), delay);
+            }
+        };
+        advanceSentence(sentStart);
     }
 
     showNowPlaying() {
@@ -1138,15 +1375,37 @@ LINKS Y RECURSOS:
         this.nowPlayingEl.classList.remove('active');
     }
 
+    // Split text into display sentences for karaoke (short, readable)
+    splitForKaraoke(text) {
+        const parts = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+        return parts.map(s => s.trim()).filter(s => s.length > 1);
+    }
+
     speak(text) {
         const clean = this.cleanForSpeech(text);
         if (!clean.trim()) return;
 
+        this._ttsStopped = false;
+        this._useCloudTts = true;
         const chunks = this.splitTextForSpeech(clean);
-        this.showNowPlaying();
-        this.openKaraoke(chunks);
 
-        // Auto-play ambient music and fade for speech
+        // Build karaoke sentences (short) and map them to audio chunks (big)
+        this._karaokeSentences = this.splitForKaraoke(clean);
+        this._chunkToSentences = []; // maps chunk index → [start, end) sentence indices
+        let sentIdx = 0;
+        for (let ci = 0; ci < chunks.length; ci++) {
+            const start = sentIdx;
+            let charsUsed = 0;
+            while (sentIdx < this._karaokeSentences.length && charsUsed < chunks[ci].length) {
+                charsUsed += this._karaokeSentences[sentIdx].length + 1;
+                sentIdx++;
+            }
+            this._chunkToSentences.push([start, sentIdx]);
+        }
+
+        this.showNowPlaying();
+        this.openKaraoke(this._karaokeSentences);
+
         if (window.bibliaAmbient) {
             window.bibliaAmbient.autoPlay(text);
             window.bibliaAmbient.fadeForSpeech();
@@ -1253,15 +1512,22 @@ LINKS Y RECURSOS:
     }
 
     splitTextForSpeech(text) {
+        // Decode HTML entities that might slip through from DOM
+        const decoded = text.replace(/&[a-z]+;/gi, m => {
+            const el = document.createElement('span');
+            el.innerHTML = m;
+            return el.textContent || m;
+        });
         // Split at sentence boundaries first
-        const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+        const sentences = decoded.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [decoded];
         const chunks = [];
         let current = '';
+        const MAX_LEN = 500;  // Bigger chunks = fewer pauses
+        const SOFT_LEN = 350;
         for (const s of sentences) {
             const trimmed = s.trim();
             if (!trimmed) continue;
-            // If adding this sentence keeps us under limit, group them
-            if ((current + ' ' + trimmed).length < 150 && current) {
+            if ((current + ' ' + trimmed).length < SOFT_LEN && current) {
                 current += ' ' + trimmed;
             } else if (current) {
                 chunks.push(current.trim());
@@ -1269,27 +1535,42 @@ LINKS Y RECURSOS:
             } else {
                 current = trimmed;
             }
-            // If current chunk is long, break at comma
-            if (current.length > 180) {
-                const commaIdx = current.lastIndexOf(',', 150);
-                if (commaIdx > 50) {
+            if (current.length > MAX_LEN) {
+                const commaIdx = current.lastIndexOf(',', SOFT_LEN);
+                if (commaIdx > 80) {
                     chunks.push(current.substring(0, commaIdx + 1).trim());
                     current = current.substring(commaIdx + 1).trim();
                 }
             }
         }
         if (current.trim()) chunks.push(current.trim());
-        // Filter empty chunks
         return chunks.filter(c => c.length > 2);
     }
 
-    speakChunks(chunks, index = 0) {
+    // Cloud TTS via Edge TTS (Microsoft neural voices) — consistent across all devices
+    _fetchTtsBlob(text) {
+        const ratePercent = Math.round((this.ttsRate - 1) * 100);
+        const rateStr = (ratePercent >= 0 ? '+' : '') + ratePercent + '%';
+        const saved = localStorage.getItem('biblia_tts_voice') || '';
+        const cloudVoice = saved.startsWith('cloud:') ? saved.replace('cloud:', '') : 'es-MX-JorgeNeural';
+        return fetch('/api/tts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text, voice: cloudVoice, rate: rateStr }),
+        }).then(r => { if (!r.ok) throw new Error('TTS ' + r.status); return r.blob(); });
+    }
+
+    speakChunksCloud(chunks, index = 0, retries = 0) {
+        if (this._ttsStopped) return;
         if (index >= chunks.length) {
+            this._stopTtsTimers();
             this.currentUtterance = null;
+            this._currentAudio = null;
+            this._cloudAudioEl = null;
+            this._prefetchedBlob = null;
             this.resetTtsBar();
             this.hideNowPlaying();
             if (window.bibliaAmbient) window.bibliaAmbient.restoreAfterSpeech();
-            // Mark all as past, keep karaoke open briefly
             this.karaokeProgressEl.style.width = '100%';
             this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
                 el.classList.remove('active', 'future');
@@ -1298,7 +1579,253 @@ LINKS Y RECURSOS:
             return;
         }
 
-        // Highlight current chunk in karaoke
+        // Reuse a single Audio element to avoid Android autoplay blocks
+        if (!this._cloudAudioEl) {
+            this._cloudAudioEl = new Audio();
+        }
+        const audio = this._cloudAudioEl;
+        this._currentAudio = audio;
+
+        // Use prefetched blob if available, otherwise fetch now
+        const blobPromise = (this._prefetchedBlob && this._prefetchedIndex === index)
+            ? Promise.resolve(this._prefetchedBlob)
+            : this._fetchTtsBlob(chunks[index]);
+
+        this._prefetchedBlob = null;
+        this._prefetchedIndex = -1;
+
+        blobPromise
+        .then(blob => {
+            if (this._ttsStopped) return;
+            if (this._cloudAudioUrl) URL.revokeObjectURL(this._cloudAudioUrl);
+            this._cloudAudioUrl = URL.createObjectURL(blob);
+
+            // Pre-fetch next chunk while this one plays
+            if (index + 1 < chunks.length) {
+                this._fetchTtsBlob(chunks[index + 1]).then(nextBlob => {
+                    this._prefetchedBlob = nextBlob;
+                    this._prefetchedIndex = index + 1;
+                }).catch(() => {});
+            }
+
+            // Karaoke: use audio.timeupdate for real-time sync with actual playback
+            this._startKaraokeSync(audio, index, chunks.length);
+
+            audio.onended = () => {
+                this._stopKaraokeSync();
+                if (!this._ttsStopped) this.speakChunksCloud(chunks, index + 1);
+            };
+            audio.onerror = () => {
+                this._stopKaraokeSync();
+                if (retries < 3) {
+                    setTimeout(() => this.speakChunksCloud(chunks, index, retries + 1), 600);
+                } else {
+                    this.speakChunksCloud(chunks, index + 1);
+                }
+            };
+
+            audio.src = this._cloudAudioUrl;
+            audio.play().catch(() => {
+                if (retries < 3) {
+                    setTimeout(() => this.speakChunksCloud(chunks, index, retries + 1), 600);
+                } else {
+                    this.speakChunksCloud(chunks, index + 1);
+                }
+            });
+        })
+        .catch(() => {
+            if (retries < 3) {
+                setTimeout(() => this.speakChunksCloud(chunks, index, retries + 1), 800);
+            } else {
+                this.speakChunksCloud(chunks, index + 1);
+            }
+        });
+    }
+
+    // Karaoke sync using audio.currentTime — perfectly tracks actual playback
+    _startKaraokeSync(audio, chunkIndex, totalChunks) {
+        this._stopKaraokeSync();
+        const mapping = this._chunkToSentences;
+        if (!mapping || !mapping[chunkIndex]) {
+            this.highlightKaraokeChunk(chunkIndex, totalChunks);
+            return;
+        }
+        const [sentStart, sentEnd] = mapping[chunkIndex];
+        const sentCount = sentEnd - sentStart;
+        if (sentCount <= 0) return;
+        const totalSentences = this._karaokeSentences ? this._karaokeSentences.length : totalChunks;
+
+        // Calculate char offsets for each sentence to proportion time
+        const sentLens = [];
+        let totalChars = 0;
+        for (let i = sentStart; i < sentEnd; i++) {
+            const len = this._karaokeSentences[i] ? this._karaokeSentences[i].length : 1;
+            sentLens.push(len);
+            totalChars += len;
+        }
+
+        // Mark initial state
+        this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
+            const idx = parseInt(el.dataset.idx);
+            el.classList.remove('active', 'past', 'future');
+            if (idx < sentStart) el.classList.add('past');
+            else if (idx >= sentEnd) el.classList.add('future');
+        });
+
+        let lastSentIdx = -1;
+
+        const onTimeUpdate = () => {
+            if (this._ttsStopped) return;
+            const duration = audio.duration;
+            if (!duration || !isFinite(duration)) return;
+            const progress = audio.currentTime / duration;
+
+            // Find which sentence we're in based on proportional char position
+            let charProgress = progress * totalChars;
+            let accChars = 0;
+            let currentSent = 0;
+            for (let i = 0; i < sentCount; i++) {
+                accChars += sentLens[i];
+                if (charProgress < accChars) { currentSent = i; break; }
+                currentSent = i;
+            }
+
+            const globalIdx = sentStart + currentSent;
+            if (globalIdx !== lastSentIdx) {
+                lastSentIdx = globalIdx;
+                this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
+                    const idx = parseInt(el.dataset.idx);
+                    el.classList.remove('active', 'past', 'future');
+                    if (idx < globalIdx) el.classList.add('past');
+                    else if (idx === globalIdx) el.classList.add('active');
+                    else el.classList.add('future');
+                });
+                const active = this.karaokeBody.querySelector('.karaoke-chunk.active');
+                if (active) active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            this.karaokeProgressEl.style.width = ((globalIdx + 1) / totalSentences * 100) + '%';
+        };
+
+        audio.addEventListener('timeupdate', onTimeUpdate);
+        this._karaokeTimeUpdateHandler = onTimeUpdate;
+        this._karaokeTimeUpdateAudio = audio;
+    }
+
+    // Server TTS via LAN Docker (Edge TTS streaming, low latency)
+    _fetchTtsBlobServer(text) {
+        const ratePercent = Math.round((this.ttsRate - 1) * 100);
+        const rateStr = (ratePercent >= 0 ? '+' : '') + ratePercent + '%';
+        const saved = localStorage.getItem('biblia_tts_voice') || '';
+        const voice = saved.startsWith('server:') ? saved.replace('server:', '') : 'es-MX-JorgeNeural';
+        return fetch('https://tts.generadores.ar/tts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text, voice, rate: rateStr }),
+        }).then(r => { if (!r.ok) throw new Error('TTS ' + r.status); return r.blob(); });
+    }
+
+    speakChunksServer(chunks, index = 0, retries = 0) {
+        if (this._ttsStopped) return;
+        if (index >= chunks.length) {
+            this._stopTtsTimers();
+            this.currentUtterance = null;
+            this._currentAudio = null;
+            this._cloudAudioEl = null;
+            this._prefetchedBlobServer = null;
+            this.resetTtsBar();
+            this.hideNowPlaying();
+            if (window.bibliaAmbient) window.bibliaAmbient.restoreAfterSpeech();
+            this.karaokeProgressEl.style.width = '100%';
+            this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
+                el.classList.remove('active', 'future');
+                el.classList.add('past');
+            });
+            return;
+        }
+
+        if (!this._cloudAudioEl) this._cloudAudioEl = new Audio();
+        const audio = this._cloudAudioEl;
+        this._currentAudio = audio;
+
+        const blobPromise = (this._prefetchedBlobServer && this._prefetchedIndexServer === index)
+            ? Promise.resolve(this._prefetchedBlobServer)
+            : this._fetchTtsBlobServer(chunks[index]);
+
+        this._prefetchedBlobServer = null;
+        this._prefetchedIndexServer = -1;
+
+        blobPromise
+        .then(blob => {
+            if (this._ttsStopped) return;
+            if (this._cloudAudioUrl) URL.revokeObjectURL(this._cloudAudioUrl);
+            this._cloudAudioUrl = URL.createObjectURL(blob);
+
+            // Pre-fetch next chunk
+            if (index + 1 < chunks.length) {
+                this._fetchTtsBlobServer(chunks[index + 1]).then(nextBlob => {
+                    this._prefetchedBlobServer = nextBlob;
+                    this._prefetchedIndexServer = index + 1;
+                }).catch(() => {});
+            }
+
+            this._startKaraokeSync(audio, index, chunks.length);
+
+            audio.onended = () => {
+                this._stopKaraokeSync();
+                if (!this._ttsStopped) this.speakChunksServer(chunks, index + 1);
+            };
+            audio.onerror = () => {
+                this._stopKaraokeSync();
+                if (retries < 3) {
+                    setTimeout(() => this.speakChunksServer(chunks, index, retries + 1), 600);
+                } else {
+                    this.speakChunksServer(chunks, index + 1);
+                }
+            };
+
+            audio.src = this._cloudAudioUrl;
+            audio.play().catch(() => {
+                if (retries < 3) {
+                    setTimeout(() => this.speakChunksServer(chunks, index, retries + 1), 600);
+                } else {
+                    this.speakChunksServer(chunks, index + 1);
+                }
+            });
+        })
+        .catch(() => {
+            if (retries < 3) {
+                setTimeout(() => this.speakChunksServer(chunks, index, retries + 1), 800);
+            } else {
+                this.speakChunksServer(chunks, index + 1);
+            }
+        });
+    }
+
+    _stopKaraokeSync() {
+        if (this._karaokeTimeUpdateHandler && this._karaokeTimeUpdateAudio) {
+            this._karaokeTimeUpdateAudio.removeEventListener('timeupdate', this._karaokeTimeUpdateHandler);
+            this._karaokeTimeUpdateHandler = null;
+            this._karaokeTimeUpdateAudio = null;
+        }
+    }
+
+    // Browser-native TTS fallback (speechSynthesis)
+    speakChunksBrowser(chunks, index = 0) {
+        if (this._ttsStopped) return;
+        if (index >= chunks.length) {
+            this._stopTtsTimers();
+            this.currentUtterance = null;
+            this.resetTtsBar();
+            this.hideNowPlaying();
+            if (window.bibliaAmbient) window.bibliaAmbient.restoreAfterSpeech();
+            this.karaokeProgressEl.style.width = '100%';
+            this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
+                el.classList.remove('active', 'future');
+                el.classList.add('past');
+            });
+            return;
+        }
+
         this.highlightKaraokeChunk(index, chunks.length);
 
         const utterance = new SpeechSynthesisUtterance(chunks[index]);
@@ -1311,16 +1838,121 @@ LINKS Y RECURSOS:
             utterance.voice = this.ttsVoice;
         }
 
+        // Android Chrome keepAlive
+        if (!this._ttsKeepAlive) {
+            this._ttsKeepAlive = setInterval(() => {
+                if (this.synth.speaking && !this.synth.paused) {
+                    this.synth.pause();
+                    this.synth.resume();
+                }
+            }, 10000);
+        }
+
+        if (this._ttsEndTimer) clearTimeout(this._ttsEndTimer);
+
         utterance.onend = () => {
-            this.speakChunks(chunks, index + 1);
+            if (this._ttsEndTimer) clearTimeout(this._ttsEndTimer);
+            this._ttsEndTimer = null;
+            this.speakChunksBrowser(chunks, index + 1);
         };
-        utterance.onerror = () => {
+
+        const estimatedMs = Math.max(chunks[index].length * 75 / this.ttsRate, 1500);
+        this._ttsEndTimer = setTimeout(() => {
+            if (this.currentUtterance === utterance) {
+                this.speakChunksBrowser(chunks, index + 1);
+            }
+        }, estimatedMs + 4000);
+
+        utterance.onerror = (e) => {
+            if (this._ttsEndTimer) clearTimeout(this._ttsEndTimer);
+            if (e.error === 'interrupted' || e.error === 'canceled') return;
+            this._stopTtsTimers();
             this.currentUtterance = null;
             this.resetTtsBar();
             this.closeKaraoke();
         };
 
         this.synth.speak(utterance);
+    }
+
+    // Native Android TTS — uses device's built-in TTS engine (no network needed)
+    speakChunksNative(chunks, index = 0) {
+        if (this._ttsStopped) return;
+        // Apply saved voice on first chunk
+        if (index === 0) {
+            const savedVoice = localStorage.getItem('biblia_tts_voice');
+            if (savedVoice) window.AndroidTTS.setVoice(savedVoice);
+        }
+        if (index >= chunks.length) {
+            this._stopTtsTimers();
+            this.currentUtterance = null;
+            this.resetTtsBar();
+            this.hideNowPlaying();
+            if (window.bibliaAmbient) window.bibliaAmbient.restoreAfterSpeech();
+            this.karaokeProgressEl.style.width = '100%';
+            this.karaokeBody.querySelectorAll('.karaoke-chunk').forEach(el => {
+                el.classList.remove('active', 'future');
+                el.classList.add('past');
+            });
+            return;
+        }
+
+        this.highlightKaraokeChunk(index, chunks.length);
+
+        const uttId = window.AndroidTTS.speak(chunks[index], this.ttsRate);
+        if (!uttId) {
+            // Native TTS not ready, skip to next
+            this.speakChunksNative(chunks, index + 1);
+            return;
+        }
+
+        window._nativeTtsCallbacks[uttId] = () => {
+            if (!this._ttsStopped) this.speakChunksNative(chunks, index + 1);
+        };
+    }
+
+    // Main entry: cloud voice (if selected + online) > Android native > browser > cloud fallback
+    speakChunks(chunks, index = 0) {
+        if (this._ttsStopped) return;
+        // If user selected a cloud/server voice and is online, use Edge TTS
+        const savedVoice = localStorage.getItem('biblia_tts_voice') || '';
+        if (savedVoice.startsWith('server:') && navigator.onLine) {
+            return this.speakChunksServer(chunks, index);
+        }
+        if (savedVoice.startsWith('cloud:') && navigator.onLine) {
+            return this.speakChunksCloud(chunks, index);
+        }
+        // Android native app: use device TTS engine
+        if (window.AndroidTTS) {
+            if (window.AndroidTTS.isAvailable()) {
+                return this.speakChunksNative(chunks, index);
+            }
+            // TTS engine still initializing — wait up to 3s
+            if (window._forceNativeTts && !this._ttsWaitCount) {
+                this._ttsWaitCount = 0;
+            }
+            if (window._forceNativeTts && (this._ttsWaitCount || 0) < 15) {
+                this._ttsWaitCount = (this._ttsWaitCount || 0) + 1;
+                console.log('[BibliaApp] Waiting for native TTS... attempt ' + this._ttsWaitCount);
+                setTimeout(() => this.speakChunks(chunks, index), 200);
+                return;
+            }
+            this._ttsWaitCount = 0;
+        }
+        // Browser speechSynthesis (Chrome PC = Google voices, NOT used in Android app)
+        if (!window._forceNativeTts && this.voicesReady && this.ttsVoice) {
+            return this.speakChunksBrowser(chunks, index);
+        }
+        // Last resort: cloud TTS
+        if (navigator.onLine) {
+            return this.speakChunksCloud(chunks, index);
+        }
+    }
+
+    _stopTtsTimers() {
+        if (this._ttsKeepAlive) { clearInterval(this._ttsKeepAlive); this._ttsKeepAlive = null; }
+        if (this._ttsEndTimer) { clearTimeout(this._ttsEndTimer); this._ttsEndTimer = null; }
+        if (this._karaokeTimer) { clearTimeout(this._karaokeTimer); this._karaokeTimer = null; }
     }
 
     // ==========================================

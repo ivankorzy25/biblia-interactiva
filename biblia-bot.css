@@ -39,6 +39,8 @@
     right: 24px;
     width: 420px;
     height: 600px;
+    max-height: calc(100vh - 120px);
+    max-height: calc(100dvh - 120px);
     min-width: 300px;
     min-height: 350px;
     background: var(--bot-bg, #ffffff);
@@ -59,7 +61,7 @@
     pointer-events: auto;
 }
 .bot-panel.maximized {
-    top: 8px !important;
+    top: max(8px, env(safe-area-inset-top, 8px)) !important;
     left: 8px !important;
     right: 8px !important;
     bottom: 8px !important;
@@ -239,6 +241,17 @@
     max-width: 220px;
 }
 .bot-tts-voice-select:focus { border-color: #667eea; }
+.bot-tts-preview-btn {
+    background: none;
+    border: 1px solid var(--bot-border, #d1d5db);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--bot-text, #4b5563);
+    flex-shrink: 0;
+}
+.bot-tts-preview-btn:hover { background: var(--bot-border, #e5e7eb); }
 .bot-tts-speed-global {
     width: 100px;
     height: 4px;
@@ -573,6 +586,7 @@
 }
 
 /* Mobile karaoke */
+/* Tablet / medium phones */
 @media (max-width: 768px) {
     .bot-karaoke {
         width: min(480px, calc(100vw - 24px));
@@ -714,35 +728,85 @@
 }
 
 /* Tablet / medium phones */
+/* Tablet / medium phones */
 @media (max-width: 768px) {
     .bot-panel {
-        width: min(420px, calc(100vw - 16px));
-        height: min(600px, calc(100vh - 120px));
+        top: max(8px, env(safe-area-inset-top, 8px));
+        bottom: 8px;
         right: 8px;
-        bottom: 88px;
+        left: 8px;
+        width: auto;
+        height: auto;
+        border-radius: 16px;
     }
     .bot-toggle {
-        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        bottom: calc(72px + env(safe-area-inset-bottom, 0px));
         right: 16px;
     }
 }
 
-/* Small phones — fullscreen */
+/* Small phones — bottom sheet (no cubrir barra Chrome) */
 @media (max-width: 480px) {
     .bot-panel {
+        top: auto;
         bottom: 0;
         right: 0;
-        width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
-        border-radius: 0;
+        left: 0;
+        width: 100%;
+        height: 70vh;
+        height: 70dvh;
+        max-height: 70vh;
+        max-height: 70dvh;
+        border-radius: 16px 16px 0 0;
+    }
+    .bot-panel .bot-input-area {
+        padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+    }
+    .bot-panel .bot-header {
+        border-radius: 16px 16px 0 0;
     }
     .bot-toggle {
-        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        bottom: calc(76px + env(safe-area-inset-bottom, 0px));
         right: 16px;
-        width: 56px;
-        height: 56px;
-        font-size: 24px;
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+    .bot-toggle.active { display: none; }
+    /* Más espacio para mensajes en móvil */
+    .bot-datetime-bar { display: none; }
+    .bot-actions { padding: 6px 12px; gap: 4px; }
+    .bot-action-btn { padding: 7px 10px; font-size: 12px; }
+    .bot-header { padding: 10px 14px; gap: 8px; }
+    .bot-avatar { width: 34px; height: 34px; font-size: 18px; }
+    .bot-header-name { font-size: 14px; }
+    .bot-header-status { font-size: 11px; }
+    .bot-input-area { padding: 8px 12px; }
+    .bot-input { padding: 8px 14px; font-size: 13px; }
+    .bot-input-btn { width: 36px; height: 36px; font-size: 16px; }
+    /* Touch targets más grandes en móvil */
+    .bot-tts-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    .bot-header-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+    .bot-nowplaying-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+    /* Maximizado = fullscreen real */
+    .bot-panel.maximized {
+        top: 0 !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        border-radius: 0 !important;
     }
 }
 

@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.openclaw.biblia.chrome",
+      "sha256_cert_fingerprints": [
+        "32:C4:2B:B6:CB:BD:D6:7A:70:CF:22:3C:49:89:DC:69:A5:86:C6:B6:C3:1D:6A:CF:8E:54:22:A9:BF:DA:2C:7F"
+      ]
+    }
+  }
+]

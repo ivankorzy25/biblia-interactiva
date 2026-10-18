@@ -1,5 +1,5 @@
 // Service Worker - Biblia Interactiva RV1960
-const CACHE_NAME = 'biblia-rv1960-v3';
+const CACHE_NAME = 'biblia-rv1960-v15';
 const ASSETS = [
     './',
     './index.html',
@@ -9,7 +9,31 @@ const ASSETS = [
     './biblia-referencias.js',
     './biblia-titulos.js',
     './biblia-jesus-words.js',
-    './manifest.json'
+    './biblia-comentario.js',
+    './biblia-comentario.css',
+    './biblia-bot.js',
+    './biblia-bot.css',
+    './biblia-auth.js',
+    './biblia-auth.css',
+    './biblia-ambient.js',
+    './biblia-ambient.css',
+    './biblia-videos.js',
+    './biblia-videos.css',
+    './biblia-calendar.js',
+    './biblia-calendar.css',
+    './biblia-recursos.js',
+    './biblia-recursos.css',
+    './biblia-context.js',
+    './biblia-context.css',
+    './biblia-versiones.js',
+    './biblia-versiones.css',
+    './biblia-timeline-data.js',
+    './biblia-images-data.js',
+    './biblia-infographics-data.js',
+    './biblia-youversion.js',
+    './manifest.json',
+    './icons/icon-192.png',
+    './icons/icon-512.png'
 ];
 
 // Install - cache all assets

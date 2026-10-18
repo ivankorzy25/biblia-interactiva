@@ -1,0 +1,373 @@
+{
+  "_meta": {
+    "description": "Mapping of Bible book IDs to Wikimedia Commons categories for Sweet Publishing / Sweet Media Bible illustrations",
+    "source": "https://commons.wikimedia.org/wiki/Category:Media_contributed_by_the_Sweet_Publishing",
+    "license": "CC BY-SA 3.0",
+    "note": "Books marked with 'category: null' do NOT have a dedicated Sweet Media category on Wikimedia Commons as of 2026-03-08",
+    "api_example": "https://commons.wikimedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:{category_name}&cmtype=file&cmlimit=500&format=json",
+    "file_naming_pattern": "{Book_name} Chapter {chapter}-{illustration_number} (Bible Illustrations by Sweet Media).jpg"
+  },
+  "books": {
+    "GEN": {
+      "category": "Book of Genesis (Bible Illustrations by Sweet Media)",
+      "files": 343,
+      "subcats": 40
+    },
+    "EXO": {
+      "category": "Book of Exodus (Bible Illustrations by Sweet Media)",
+      "files": 223,
+      "subcats": 29
+    },
+    "LEV": {
+      "category": "Book of Leviticus (Bible Illustrations by Sweet Media)",
+      "files": 6,
+      "subcats": 0
+    },
+    "NUM": {
+      "category": "Book of Numbers (Bible Illustrations by Sweet Media)",
+      "files": 23,
+      "subcats": 0
+    },
+    "DEU": {
+      "category": "Book of Deuteronomy (Bible Illustrations by Sweet Media)",
+      "files": 25,
+      "subcats": 0
+    },
+    "JOS": {
+      "category": "Book of Joshua (Bible Illustrations by Sweet Media)",
+      "files": 87,
+      "subcats": 17
+    },
+    "JUE": {
+      "category": "Book of Judges (Bible Illustrations by Sweet Media)",
+      "files": 71,
+      "subcats": 0
+    },
+    "RUT": {
+      "category": "Book of Ruth (Bible Illustrations by Sweet Media)",
+      "files": 34,
+      "subcats": 0
+    },
+    "1SA": {
+      "category": "First Book of Samuel (Bible Illustrations by Sweet Media)",
+      "files": 105,
+      "subcats": 19
+    },
+    "2SA": {
+      "category": "Second Book of Samuel (Bible Illustrations by Sweet Media)",
+      "files": 52,
+      "subcats": 13
+    },
+    "1RE": {
+      "category": "First Book of Kings (Bible Illustrations by Sweet Media)",
+      "files": 96,
+      "subcats": 17
+    },
+    "2RE": {
+      "category": "Second Book of Kings (Bible Illustrations by Sweet Media)",
+      "files": 83,
+      "subcats": 13
+    },
+    "1CR": {
+      "category": "First Book of Chronicles (Bible Illustrations by Sweet Media)",
+      "files": 15,
+      "subcats": 0
+    },
+    "2CR": {
+      "category": "Second Book of Chronicles (Bible Illustrations by Sweet Media)",
+      "files": 12,
+      "subcats": 0
+    },
+    "ESD": {
+      "category": "Book of Ezra (Bible Illustrations by Sweet Media)",
+      "files": 10,
+      "subcats": 0
+    },
+    "NEH": {
+      "category": "Book of Nehemiah (Bible Illustrations by Sweet Media)",
+      "files": 11,
+      "subcats": 0
+    },
+    "EST": {
+      "category": "Book of Esther (Bible Illustrations by Sweet Media)",
+      "files": 57,
+      "subcats": 0
+    },
+    "JOB": {
+      "category": "Book of Job (Bible Illustrations by Sweet Media)",
+      "files": 26,
+      "subcats": 0
+    },
+    "SAL": {
+      "category": "Psalms (Bible Illustrations by Sweet Media)",
+      "files": 9,
+      "subcats": 0
+    },
+    "PRO": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Proverbs"
+    },
+    "ECL": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Ecclesiastes"
+    },
+    "CNT": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Song of Solomon"
+    },
+    "ISA": {
+      "category": "Book of Isaiah (Bible Illustrations by Sweet Media)",
+      "files": 4,
+      "subcats": 0
+    },
+    "JER": {
+      "category": "Book of Jeremiah (Bible Illustrations by Sweet Media)",
+      "files": 11,
+      "subcats": 0
+    },
+    "LAM": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Lamentations"
+    },
+    "EZE": {
+      "category": "Book of Ezekiel (Bible Illustrations by Sweet Media)",
+      "files": 11,
+      "subcats": 0
+    },
+    "DAN": {
+      "category": "Book of Daniel (Bible Illustrations by Sweet Media)",
+      "files": 44,
+      "subcats": 0
+    },
+    "OSE": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Hosea"
+    },
+    "JOE": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Joel"
+    },
+    "AMO": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Amos"
+    },
+    "ABD": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Obadiah"
+    },
+    "JON": {
+      "category": "Book of Jonah (Bible Illustrations by Sweet Media)",
+      "files": 12,
+      "subcats": 0
+    },
+    "MIQ": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Micah"
+    },
+    "NAH": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Nahum"
+    },
+    "HAB": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Habakkuk"
+    },
+    "SOF": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Zephaniah"
+    },
+    "HAG": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Haggai"
+    },
+    "ZAC": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Zechariah"
+    },
+    "MAL": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Malachi"
+    },
+    "MAT": {
+      "category": "Gospel of Matthew (Bible Illustrations by Sweet Media)",
+      "files": 187,
+      "subcats": 23
+    },
+    "MAR": {
+      "category": "Gospel of Mark (Bible Illustrations by Sweet Media)",
+      "files": 157,
+      "subcats": 15
+    },
+    "LUC": {
+      "category": "Gospel of Luke (Bible Illustrations by Sweet Media)",
+      "files": 267,
+      "subcats": 20
+    },
+    "JUA": {
+      "category": "Gospel of John (Bible Illustrations by Sweet Media)",
+      "files": 116,
+      "subcats": 12
+    },
+    "HEC": {
+      "category": "Acts of the Apostles (Bible Illustrations by Sweet Media)",
+      "files": 390,
+      "subcats": 28
+    },
+    "ROM": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Romans"
+    },
+    "1CO": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 1 Corinthians"
+    },
+    "2CO": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 2 Corinthians"
+    },
+    "GAL": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Galatians"
+    },
+    "EFE": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Ephesians"
+    },
+    "FIL": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Philippians"
+    },
+    "COL": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Colossians"
+    },
+    "1TS": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 1 Thessalonians"
+    },
+    "2TS": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 2 Thessalonians"
+    },
+    "1TI": {
+      "category": "First Epistle to Timothy (Bible Illustrations by Sweet Media)",
+      "files": 1,
+      "subcats": 0
+    },
+    "2TI": {
+      "category": "Second Epistle to Timothy (Bible Illustrations by Sweet Media)",
+      "files": 8,
+      "subcats": 0
+    },
+    "TIT": {
+      "category": "Epistle to Titus (Bible Illustrations by Sweet Media)",
+      "files": 1,
+      "subcats": 0
+    },
+    "FLM": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Philemon"
+    },
+    "HEB": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Hebrews"
+    },
+    "STG": {
+      "category": "Epistle of James (Bible Illustrations by Sweet Media)",
+      "files": 5,
+      "subcats": 0
+    },
+    "1PE": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 1 Peter"
+    },
+    "2PE": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 2 Peter"
+    },
+    "1JN": {
+      "category": "First Epistle of John (Bible Illustrations by Sweet Media)",
+      "files": 5,
+      "subcats": 0
+    },
+    "2JN": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 2 John"
+    },
+    "3JN": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for 3 John"
+    },
+    "JUD": {
+      "category": null,
+      "files": 0,
+      "subcats": 0,
+      "note": "No Sweet Media category found for Jude"
+    },
+    "APO": {
+      "category": "Book of Revelation (Bible Illustrations by Sweet Media)",
+      "files": 13,
+      "subcats": 0
+    }
+  }
+}

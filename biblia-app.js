@@ -1439,6 +1439,44 @@ class BibliaApp {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./sw.js').catch(() => {});
         }
+        // PWA install prompt
+        let deferredPrompt = null;
+        const banner = document.getElementById('installBanner');
+        const installBtn = document.getElementById('installBtn');
+        const dismissBtn = document.getElementById('installDismiss');
+        if (banner && installBtn) {
+            // Don't show if already installed or dismissed recently
+            const dismissed = localStorage.getItem('pwa-install-dismissed');
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                if (!isStandalone && !dismissed) {
+                    banner.style.display = 'block';
+                }
+            });
+            installBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                deferredPrompt.prompt();
+                const result = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                banner.style.display = 'none';
+                if (result.outcome === 'accepted') {
+                    localStorage.setItem('pwa-install-dismissed', '1');
+                }
+            });
+            if (dismissBtn) {
+                dismissBtn.addEventListener('click', () => {
+                    banner.style.display = 'none';
+                    localStorage.setItem('pwa-install-dismissed', '1');
+                });
+            }
+            // Hide banner if app gets installed
+            window.addEventListener('appinstalled', () => {
+                banner.style.display = 'none';
+                deferredPrompt = null;
+            });
+        }
     }
 
     // ==========================================

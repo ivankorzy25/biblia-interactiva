@@ -10,15 +10,16 @@
     <meta name="apple-mobile-web-app-title" content="Biblia RV1960">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="styles.css?v=2">
-    <link rel="stylesheet" href="biblia-bot.css?v=15">
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="biblia-bot.css?v=25">
     <link rel="stylesheet" href="biblia-ambient.css?v=1">
     <link rel="stylesheet" href="biblia-videos.css?v=1">
     <link rel="stylesheet" href="biblia-calendar.css?v=1">
     <link rel="stylesheet" href="biblia-recursos.css?v=1">
     <link rel="stylesheet" href="biblia-context.css?v=1">
     <link rel="stylesheet" href="biblia-versiones.css?v=1">
-    <link rel="stylesheet" href="biblia-auth.css?v=1">
+    <link rel="stylesheet" href="biblia-comentario.css?v=2">
+    <link rel="stylesheet" href="biblia-auth.css?v=2">
     <title>Biblia Interactiva RV1960</title>
 </head>
 <body class="font-xl">
@@ -89,6 +90,7 @@
                 <button class="toolbar-btn" id="toggleVideos" title="Prédicas y Videos">&#127909; Videos</button>
                 <button class="toolbar-btn" id="toggleCalendar" title="Calendario">&#128197; Calendario</button>
                 <button class="toolbar-btn" id="toggleRecursos" title="Recursos Bíblicos">&#128218; Recursos</button>
+                <button class="toolbar-btn" id="toggleComentario" title="Comentario Mateo Henry">&#128214; Comentario</button>
 
                 <div class="font-controls">
                     <button class="font-btn" data-size="sm" title="Peque&ntilde;o">A</button>
@@ -137,6 +139,7 @@
         <button class="verse-action-btn" id="actionExplainBrief" style="color:#667eea;font-weight:600"><span class="icon">&#128161;</span> Explicaci&oacute;n breve</button>
         <button class="verse-action-btn" id="actionExplainAI" style="color:#667eea"><span class="icon">&#129302;</span> Explicar con IA</button>
         <button class="verse-action-btn" id="actionConcordancias" style="color:#667eea"><span class="icon">&#128279;</span> Concordancias</button>
+        <button class="verse-action-btn" id="actionComentario" style="color:#8b5cf6"><span class="icon">&#128214;</span> Comentario M. Henry</button>
         <div class="verse-action-divider"></div>
         <button class="verse-action-btn" id="actionReadChapter"><span class="icon">&#128266;</span> Leer cap&iacute;tulo</button>
         <button class="verse-action-btn" id="actionReadBook"><span class="icon">&#128214;</span> Leer libro</button>
@@ -237,17 +240,31 @@
         Biblia Reina Valera 1960 &bull; Aplicaci&oacute;n interactiva de estudio b&iacute;blico &bull; <span class="app-version">v3.2.0 &bull; 9 mar 2026 03:07hs</span>
     </footer>
 
+    <!-- PWA Install Banner -->
+    <div id="installBanner" class="install-banner" style="display:none">
+        <div class="install-banner-content">
+            <div class="install-banner-icon">&#128214;</div>
+            <div class="install-banner-text">
+                <strong>Instalar Biblia Interactiva</strong>
+                <span>Acceso directo, sin conexi&oacute;n y voz de Google</span>
+            </div>
+            <button class="install-banner-btn" id="installBtn">Instalar</button>
+            <button class="install-banner-close" id="installDismiss">&#10005;</button>
+        </div>
+    </div>
+
     <!-- Firebase Auth -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <!-- Scripts -->
     <script src="biblia-data.js"></script>
     <script src="biblia-referencias.js"></script>
     <script src="biblia-titulos.js"></script>
     <script src="biblia-jesus-words.js"></script>
-    <script src="biblia-app.js?v=2"></script>
-    <script src="biblia-auth.js?v=1"></script>
+    <script src="biblia-app.js?v=3"></script>
+    <script src="biblia-auth.js?v=3"></script>
     <script src="biblia-ambient.js?v=1"></script>
     <script src="biblia-videos.js?v=1"></script>
     <script src="biblia-calendar.js?v=1"></script>
@@ -256,8 +273,9 @@
     <script src="biblia-images-data.js?v=1"></script>
     <script src="biblia-infographics-data.js?v=1"></script>
     <script src="biblia-versiones.js?v=1"></script>
+    <script src="biblia-comentario.js?v=2"></script>
     <script src="biblia-context.js?v=4"></script>
-    <script src="biblia-bot.js?v=33"></script>
+    <script src="biblia-bot.js?v=49"></script>
     <script src="biblia-youversion.js?v=1"></script>
 </body>
 </html>

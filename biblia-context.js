@@ -7,7 +7,6 @@
 class BibliaContext {
     constructor() {
         this.API_URL = '/api/chat';
-        this.MODELS = ['qwen3.5:122b-cloud', 'qwen3.5:27b-cloud', 'qwen3-next:80b-cloud'];
         this.timelineRange = { min: -4000, max: 100 };
         this.currentBookData = null;
         this.currentBookId = null;
@@ -778,15 +777,7 @@ class BibliaContext {
         this.isLoading = true;
         this.abortController = new AbortController();
 
-        const ollamaKey = localStorage.getItem('biblia_ollama_key');
-        if (!ollamaKey) {
-            aiContent.innerHTML = `<div class="ctx-error">\u26A0 Configur\u00e1 tu API key de Ollama para usar el Contexto IA.</div>`;
-            this.isLoading = false;
-            return;
-        }
-
         const body = {
-            model: this.MODELS[0],
             stream: true,
             messages: [
                 {
@@ -807,26 +798,24 @@ USA ESTE FORMATO para TODAS las respuestas:
         };
 
         try {
-            // Try each model with fallback
-            let res = null;
-            for (const modelName of this.MODELS) {
-                body.model = modelName;
-                res = await fetch(this.API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${ollamaKey}`
-                    },
-                    signal: this.abortController.signal,
-                    body: JSON.stringify(body)
-                });
-                if (res.status !== 404) break;
-            }
+            const token = window.bibliaAuth ? await window.bibliaAuth.getIdToken() : null;
+            const res = await fetch(this.API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                },
+                signal: this.abortController.signal,
+                body: JSON.stringify(body)
+            });
 
             if (myGenId !== this.generationId) return;
 
             if (!res.ok) {
-                aiContent.innerHTML = `<div class="ctx-error">\u26A0 Error al conectar con la IA. Intenta de nuevo.</div>`;
+                const msg = res.status === 401
+                    ? 'Inici\u00E1 sesi\u00F3n para usar el Contexto IA.'
+                    : ((await res.json().catch(() => ({}))).error || 'Error al conectar con la IA. Intenta de nuevo.');
+                aiContent.innerHTML = `<div class="ctx-error">\u26A0 ${msg}</div>`;
                 this.isLoading = false;
                 return;
             }

@@ -1,5 +1,5 @@
 // ============================================
-// BIBLIA AUTH - Google Login + Ollama Cloud API
+// BIBLIA AUTH - Google Login
 // ============================================
 /*
  * CONFIGURACIÓN NECESARIA:
@@ -35,8 +35,9 @@ const FIREBASE_CONFIG = {
 class BibliaAuth {
     constructor() {
         this.user = null;
-        this.ollamaKey = localStorage.getItem('biblia_ollama_key') || null;
         this.isReady = false;
+        // La IA ahora usa las claves del servidor; borrar la que haya quedado guardada
+        try { localStorage.removeItem('biblia_ollama_key'); } catch (e) {}
         this.dropdownOpen = false;
 
         try {
@@ -85,9 +86,6 @@ class BibliaAuth {
             if (user) {
                 this.hideLoginOverlay();
                 this.renderUserButton();
-                this.ollamaKey = localStorage.getItem('biblia_ollama_key') || null;
-                // Sync API key from Firestore if not in localStorage
-                await this.syncOllamaKeyFromCloud();
             } else {
                 this.removeUserButton();
                 this.showLoginOverlay();
@@ -289,8 +287,6 @@ class BibliaAuth {
                     <div class="user-dropdown-email">${this.user.email || ''}</div>
                 </div>
             </div>
-            <button class="user-dropdown-item" id="ddApiKey">&#128273; Mi API Key de Ollama</button>
-            <button class="user-dropdown-item" id="ddUsage" onclick="window.open('https://ollama.com/settings','_blank')">&#128202; Ver mi uso</button>
             <div class="user-dropdown-divider"></div>
             <button class="user-dropdown-item danger" id="ddLogout">&#128682; Cerrar sesi&oacute;n</button>
         `;
@@ -300,11 +296,6 @@ class BibliaAuth {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             this.toggleDropdown();
-        });
-
-        document.getElementById('ddApiKey').addEventListener('click', () => {
-            this.closeDropdown();
-            this.showKeyPanel();
         });
 
         document.getElementById('ddLogout').addEventListener('click', () => {
@@ -344,334 +335,16 @@ class BibliaAuth {
     }
 
     // ==========================================
-    // ONBOARDING WIZARD
+    // TOKEN DE SESIÓN (para /api/chat)
     // ==========================================
-    showKeySetupWizard() {
-        if (document.getElementById('wizardOverlay')) return;
-
-        const name = this.user ? (this.user.displayName || 'Usuario').split(' ')[0] : 'Usuario';
-
-        const overlay = document.createElement('div');
-        overlay.id = 'wizardOverlay';
-        overlay.className = 'wizard-overlay';
-        overlay.innerHTML = `
-            <div class="wizard-modal">
-                <div class="wizard-stepper">
-                    <div class="wizard-step-dot active" data-step="0"></div>
-                    <div class="wizard-step-dot" data-step="1"></div>
-                    <div class="wizard-step-dot" data-step="2"></div>
-                    <div class="wizard-step-dot" data-step="3"></div>
-                </div>
-
-                <!-- Step 0: Welcome -->
-                <div class="wizard-step-content active" data-step="0">
-                    <div class="wizard-title">&iexcl;Bienvenido/a, ${name}! &#128075;</div>
-                    <div class="wizard-text">Para usar el Asistente B&iacute;blico con IA necesit&aacute;s tu propia cuenta gratuita de Ollama. Esto significa que:</div>
-                    <ul class="wizard-features">
-                        <li><span class="check">&#10003;</span> Us&aacute;s tus propios cr&eacute;ditos gratuitos (no los de nadie m&aacute;s)</li>
-                        <li><span class="check">&#10003;</span> Tu privacidad est&aacute; protegida (las conversaciones van directo a Ollama)</li>
-                        <li><span class="check">&#10003;</span> Es 100% gratis para uso personal</li>
-                        <li><span class="check">&#10003;</span> El proceso tarda menos de 2 minutos</li>
-                    </ul>
-                    <button class="wizard-btn-primary" id="wizStep0Next">Empezar &#8594;</button>
-                </div>
-
-                <!-- Step 1: Create Ollama account -->
-                <div class="wizard-step-content" data-step="1">
-                    <div class="wizard-title">Paso 1 de 3: Crear tu cuenta en Ollama</div>
-                    <div class="wizard-highlight-box">
-                        <span class="box-icon">&#127760;</span>
-                        <span>Ollama es el servicio de IA que alimenta el Asistente B&iacute;blico. Te da acceso GRATUITO a modelos de IA muy potentes.</span>
-                    </div>
-                    <button class="wizard-btn-secondary" onclick="window.open('https://ollama.com/signin','_blank')">&#128279; Abrir Ollama.com</button>
-                    <ol class="wizard-instructions">
-                        <li><span class="step-icon">&#128433;</span> Hac&eacute; click en &ldquo;Sign in&rdquo; &rarr; &ldquo;Sign up with Google&rdquo;</li>
-                        <li><span class="step-icon">&#10003;</span> Us&aacute; la misma cuenta Google con la que entraste ac&aacute;</li>
-                        <li><span class="step-icon">&#10024;</span> &iexcl;Listo! Ya ten&eacute;s tu cuenta</li>
-                    </ol>
-                    <label class="wizard-checkbox">
-                        <input type="checkbox" id="wizCreatedAccount">
-                        Ya cre&eacute; mi cuenta en Ollama
-                    </label>
-                    <button class="wizard-btn-primary" id="wizStep1Next" disabled>Siguiente &#8594;</button>
-                </div>
-
-                <!-- Step 2: Get API Key -->
-                <div class="wizard-step-content" data-step="2">
-                    <div class="wizard-title">Paso 2 de 3: Generar tu API Key</div>
-                    <button class="wizard-btn-secondary" onclick="window.open('https://ollama.com/settings/keys','_blank')">&#128273; Ir a mis API Keys</button>
-                    <ol class="wizard-instructions">
-                        <li><span class="step-icon">&#128433;</span> Hac&eacute; click en &ldquo;Add API Key&rdquo;</li>
-                        <li>
-                            <span class="step-icon">&#128221;</span>
-                            <span>En el nombre escrib&iacute;: <strong>biblia</strong>
-                            <button class="wizard-btn-copy" id="wizCopyName">Copiar nombre</button></span>
-                        </li>
-                        <li><span class="step-icon">&#128274;</span> Hac&eacute; click en &ldquo;Create&rdquo;</li>
-                        <li>
-                            <span class="step-icon">&#128203;</span>
-                            <span>Copi&aacute; la clave generada<br>&#9888;&#65039; <em>Importante: Solo la ver&aacute;s una vez. Copiala ahora.</em></span>
-                        </li>
-                    </ol>
-                    <div class="wizard-key-input-wrapper">
-                        <input type="password" class="wizard-key-input" id="wizKeyInput" placeholder="Peg&aacute; tu API Key ac&aacute; (ej: 1015cd95b2684f5898...)">
-                        <button class="wizard-key-toggle" id="wizKeyToggle">&#128065;</button>
-                    </div>
-                    <button class="wizard-btn-primary" id="wizVerifyKey">Verificar y Guardar &#8594;</button>
-                    <div class="wizard-error" id="wizKeyError"></div>
-                    <div class="wizard-warning" id="wizKeyWarning">
-                        <span>&#9888;&#65039; No se pudo verificar la clave. &iquest;Guardamos igual?</span>
-                        <button class="wizard-btn-primary" id="wizSaveAnyway" style="font-size:14px;padding:10px">Guardar de todos modos</button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Done! -->
-                <div class="wizard-step-content" data-step="3">
-                    <div class="wizard-success-check">&#9989;</div>
-                    <div class="wizard-title">&iexcl;Ya est&aacute; configurado! &#127881;</div>
-                    <div class="wizard-text">Tu Asistente B&iacute;blico ahora usa tu cuenta personal de Ollama. Ten&eacute;s acceso gratuito a modelos de IA potentes.</div>
-                    <div class="wizard-status-box">
-                        <div class="wizard-status-row">&#128994; Sesi&oacute;n: <strong id="wizStatusName"></strong></div>
-                        <div class="wizard-status-row">&#128273; API Key: <strong id="wizStatusKey"></strong></div>
-                        <div class="wizard-status-row">&#10003; Verificada correctamente</div>
-                    </div>
-                    <div class="wizard-usage-note">
-                        Ollama te da l&iacute;mites semanales y por sesi&oacute;n gratuitos. Pod&eacute;s ver tu uso en cualquier momento desde tu perfil.
-                    </div>
-                    <button class="wizard-btn-primary" id="wizOpenBot">&#128214; Abrir el Asistente B&iacute;blico</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(overlay);
-        requestAnimationFrame(() => overlay.classList.add('visible'));
-
-        this.wizardStep = 0;
-        this.bindWizardEvents();
-    }
-
-    bindWizardEvents() {
-        // Step 0 → 1
-        document.getElementById('wizStep0Next')?.addEventListener('click', () => this.goToWizardStep(1));
-
-        // Step 1: checkbox enables next
-        const cb = document.getElementById('wizCreatedAccount');
-        const nextBtn = document.getElementById('wizStep1Next');
-        cb?.addEventListener('change', () => { if (nextBtn) nextBtn.disabled = !cb.checked; });
-        nextBtn?.addEventListener('click', () => this.goToWizardStep(2));
-
-        // Step 2: copy name
-        document.getElementById('wizCopyName')?.addEventListener('click', () => {
-            navigator.clipboard.writeText('biblia').then(() => {
-                const btn = document.getElementById('wizCopyName');
-                if (btn) { btn.textContent = '¡Copiado!'; setTimeout(() => btn.textContent = 'Copiar nombre', 1500); }
-            });
-        });
-
-        // Toggle password visibility
-        document.getElementById('wizKeyToggle')?.addEventListener('click', () => {
-            const input = document.getElementById('wizKeyInput');
-            if (!input) return;
-            const isPass = input.type === 'password';
-            input.type = isPass ? 'text' : 'password';
-            document.getElementById('wizKeyToggle').textContent = isPass ? '🙈' : '👁';
-        });
-
-        // Verify key
-        document.getElementById('wizVerifyKey')?.addEventListener('click', () => this.verifyAndSaveKey());
-
-        // Save anyway (network error)
-        document.getElementById('wizSaveAnyway')?.addEventListener('click', () => {
-            const key = document.getElementById('wizKeyInput')?.value?.trim();
-            if (key) {
-                this.saveOllamaKey(key);
-                this.goToWizardStep(3);
-            }
-        });
-
-        // Step 3: open bot
-        document.getElementById('wizOpenBot')?.addEventListener('click', () => {
-            this.closeWizard();
-            // Open bot if available
-            if (window.bibliaBot && !window.bibliaBot.isOpen) {
-                const fab = document.getElementById('botFab');
-                if (fab) fab.click();
-            }
-        });
-    }
-
-    goToWizardStep(step) {
-        this.wizardStep = step;
-
-        // Update dots
-        document.querySelectorAll('.wizard-step-dot').forEach(dot => {
-            const s = parseInt(dot.dataset.step);
-            dot.classList.toggle('active', s === step);
-            dot.classList.toggle('done', s < step);
-        });
-
-        // Show/hide steps
-        document.querySelectorAll('.wizard-step-content').forEach(el => {
-            el.classList.toggle('active', parseInt(el.dataset.step) === step);
-        });
-
-        // Step 3: fill status
-        if (step === 3) {
-            const nameEl = document.getElementById('wizStatusName');
-            const keyEl = document.getElementById('wizStatusKey');
-            if (nameEl) nameEl.textContent = this.user?.displayName || 'Usuario';
-            if (keyEl && this.ollamaKey) {
-                keyEl.textContent = '••••••••' + this.ollamaKey.slice(-6);
-            }
-        }
-    }
-
-    async verifyAndSaveKey() {
-        const input = document.getElementById('wizKeyInput');
-        const btn = document.getElementById('wizVerifyKey');
-        const errEl = document.getElementById('wizKeyError');
-        const warnEl = document.getElementById('wizKeyWarning');
-        const key = input?.value?.trim();
-
-        if (!key) {
-            if (errEl) { errEl.textContent = '❌ Ingresá tu API Key.'; errEl.classList.add('visible'); }
-            return;
-        }
-
-        if (errEl) errEl.classList.remove('visible');
-        if (warnEl) warnEl.classList.remove('visible');
-        if (btn) { btn.disabled = true; btn.innerHTML = '<div class="auth-spinner"></div> Verificando tu clave...'; }
-
+    async getIdToken() {
+        if (!this.user) return null;
         try {
-            const res = await fetch('/api/tags', {
-                headers: { 'Authorization': `Bearer ${key}` }
-            });
-
-            if (res.ok) {
-                this.saveOllamaKey(key);
-                this.goToWizardStep(3);
-            } else if (res.status === 401 || res.status === 403) {
-                if (errEl) {
-                    errEl.textContent = '❌ La clave no es válida. Verificá que la copiaste completa.';
-                    errEl.classList.add('visible');
-                }
-            } else {
-                // Unexpected status, offer save anyway
-                if (warnEl) warnEl.classList.add('visible');
-            }
-        } catch (e) {
-            // Network error — offer save anyway
-            console.warn('Key verification network error:', e);
-            if (warnEl) warnEl.classList.add('visible');
-        }
-
-        if (btn) { btn.disabled = false; btn.innerHTML = 'Verificar y Guardar →'; }
-    }
-
-    saveOllamaKey(key) {
-        this.ollamaKey = key;
-        localStorage.setItem('biblia_ollama_key', key);
-        this.saveOllamaKeyToCloud(key);
-    }
-
-    async saveOllamaKeyToCloud(key) {
-        if (!this.db || !this.user) return;
-        try {
-            await this.db.collection('users').doc(this.user.uid).set(
-                { ollamaKey: key, updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
-                { merge: true }
-            );
-            console.log('BibliaAuth: API key synced to cloud');
+            return await this.user.getIdToken();
         } catch (err) {
-            console.warn('BibliaAuth: Could not save key to cloud:', err.message);
+            console.warn('BibliaAuth: no se pudo obtener el token', err.message);
+            return null;
         }
-    }
-
-    async syncOllamaKeyFromCloud() {
-        if (!this.db || !this.user) return;
-        try {
-            const doc = await this.db.collection('users').doc(this.user.uid).get();
-            if (doc.exists && doc.data().ollamaKey) {
-                const cloudKey = doc.data().ollamaKey;
-                if (!this.ollamaKey) {
-                    // No local key — use cloud key
-                    this.ollamaKey = cloudKey;
-                    localStorage.setItem('biblia_ollama_key', cloudKey);
-                    console.log('BibliaAuth: API key loaded from cloud');
-                } else if (this.ollamaKey !== cloudKey) {
-                    // Local key exists but differs — push local to cloud (local wins)
-                    await this.saveOllamaKeyToCloud(this.ollamaKey);
-                }
-            } else if (this.ollamaKey) {
-                // Cloud empty, local exists — push to cloud
-                await this.saveOllamaKeyToCloud(this.ollamaKey);
-            }
-        } catch (err) {
-            console.warn('BibliaAuth: Could not sync key from cloud:', err.message);
-        }
-    }
-
-    closeWizard() {
-        const overlay = document.getElementById('wizardOverlay');
-        if (!overlay) return;
-        overlay.classList.remove('visible');
-        setTimeout(() => overlay.remove(), 300);
-    }
-
-    // ==========================================
-    // API KEY PANEL (from header dropdown)
-    // ==========================================
-    showKeyPanel() {
-        if (document.getElementById('keyPanelOverlay')) return;
-
-        const maskedKey = this.ollamaKey
-            ? '••••••••' + this.ollamaKey.slice(-6)
-            : 'No configurada';
-
-        const overlay = document.createElement('div');
-        overlay.id = 'keyPanelOverlay';
-        overlay.className = 'key-panel-overlay';
-        overlay.innerHTML = `
-            <div class="key-panel" style="position:relative">
-                <button class="key-panel-close" id="keyPanelClose">&#10005;</button>
-                <div class="key-panel-title">&#128273; Mi API Key de Ollama</div>
-                <div class="key-panel-current">${maskedKey}</div>
-                <div class="key-panel-actions">
-                    ${this.ollamaKey ? `<button class="key-panel-btn" id="kpCopyKey">&#128203; Copiar key completa</button>` : ''}
-                    <button class="key-panel-btn" id="kpChangeKey">&#128260; ${this.ollamaKey ? 'Cambiar' : 'Configurar'} mi API Key</button>
-                    <button class="key-panel-btn" onclick="window.open('https://ollama.com/settings','_blank')">&#128202; Ver mi uso en Ollama</button>
-                </div>
-                <div class="key-panel-note">Tu API key se sincroniza con tu cuenta de Google en todos tus dispositivos.</div>
-            </div>
-        `;
-        document.body.appendChild(overlay);
-        requestAnimationFrame(() => overlay.classList.add('visible'));
-
-        // Events
-        document.getElementById('keyPanelClose')?.addEventListener('click', () => this.closeKeyPanel());
-        overlay.addEventListener('click', (e) => { if (e.target === overlay) this.closeKeyPanel(); });
-
-        document.getElementById('kpCopyKey')?.addEventListener('click', () => {
-            if (this.ollamaKey) {
-                navigator.clipboard.writeText(this.ollamaKey).then(() => {
-                    const btn = document.getElementById('kpCopyKey');
-                    if (btn) { btn.textContent = '✅ ¡Copiada!'; setTimeout(() => btn.innerHTML = '📋 Copiar key completa', 1500); }
-                });
-            }
-        });
-
-        document.getElementById('kpChangeKey')?.addEventListener('click', () => {
-            this.closeKeyPanel();
-            this.showKeySetupWizard();
-            // Jump to step 2 directly
-            setTimeout(() => this.goToWizardStep(2), 100);
-        });
-    }
-
-    closeKeyPanel() {
-        const overlay = document.getElementById('keyPanelOverlay');
-        if (!overlay) return;
-        overlay.classList.remove('visible');
-        setTimeout(() => overlay.remove(), 200);
     }
 }
 

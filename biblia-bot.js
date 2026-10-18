@@ -5,9 +5,7 @@
 
 class BibliaBot {
     constructor() {
-        this.OLLAMA_API_URL = '/api/chat';
-        this.OLLAMA_MODELS = ['deepseek-v3.1:671b-cloud', 'gpt-oss:120b-cloud', 'gpt-oss:20b-cloud'];
-        this.OLLAMA_MODEL = this.OLLAMA_MODELS[0];
+        this.OLLAMA_API_URL = '/api/chat';  // el servidor elige modelo y clave
         this.isOpen = false;
         this.isStreaming = false;
         this.messages = [];
@@ -332,7 +330,7 @@ LINKS Y RECURSOS:
                 <div class="bot-avatar">\u{1F4D6}</div>
                 <div class="bot-header-info">
                     <div class="bot-header-name">Biblia Bot</div>
-                    <div class="bot-header-status" id="botHeaderStatus">${localStorage.getItem('biblia_ollama_key') ? 'Ollama Cloud \u00B7 IA Activa' : 'Configurar API Key'}</div>
+                    <div class="bot-header-status" id="botHeaderStatus">IA Activa</div>
                 </div>
                 <div class="bot-header-btns">
                     <button class="bot-header-btn" id="botSettingsToggle" title="Configurar voz">&#9881;</button>
@@ -2124,24 +2122,7 @@ LINKS Y RECURSOS:
         this.sendBtn.disabled = true;
         this.showTyping();
 
-        // Check for API key
-        const ollamaKey = localStorage.getItem('biblia_ollama_key');
-        if (!ollamaKey) {
-            this.hideTyping();
-            this.addMessage('system',
-                '🔑 Para usar el Asistente Bíblico necesitás configurar tu API key de Ollama.\n\n' +
-                'Hacé click en tu perfil (arriba a la derecha) para configurarla. Es gratuito y tarda menos de 2 minutos.'
-            );
-            if (window.bibliaAuth) {
-                window.bibliaAuth.showKeySetupWizard();
-            }
-            this.isStreaming = false;
-            this.sendBtn.disabled = false;
-            return;
-        }
-
         const body = {
-            model: this.OLLAMA_MODEL,
             stream: true,
             messages: [
                 { role: 'system', content: this.systemPrompt },
@@ -2157,46 +2138,27 @@ LINKS Y RECURSOS:
         let responseDiv = null;
 
         try {
-            let res = null;
-            let usedModel = body.model;
-
-            // Try each model, fallback on 404
-            for (const modelName of this.OLLAMA_MODELS) {
-                body.model = modelName;
-                usedModel = modelName;
-                res = await fetch(this.OLLAMA_API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${ollamaKey}`
-                    },
-                    body: JSON.stringify(body)
-                });
-                if (res.status !== 404 && res.status !== 405) break;
-                console.log(`Modelo ${modelName} no disponible (${res.status}), probando siguiente...`);
-            }
-
-            // Update preferred model if fallback worked
-            if (usedModel !== this.OLLAMA_MODEL && res.ok) {
-                this.OLLAMA_MODEL = usedModel;
-                console.log(`Usando modelo: ${usedModel}`);
-            }
+            const token = window.bibliaAuth ? await window.bibliaAuth.getIdToken() : null;
+            const res = await fetch(this.OLLAMA_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                },
+                body: JSON.stringify(body)
+            });
 
             if (!res.ok) {
                 this.hideTyping();
-                if (res.status === 401 || res.status === 403) {
-                    this.addMessage('system', '❌ Tu API key de Ollama no es válida. Actualizala desde tu perfil (arriba a la derecha).');
-                } else if (res.status === 404) {
-                    this.addMessage('system', '❌ Ningún modelo de IA disponible en este momento. Intentá más tarde.');
+                const err = await res.json().catch(() => ({}));
+                if (res.status === 401) {
+                    this.addMessage('system', '🔑 Iniciá sesión para usar el Asistente Bíblico.');
                 } else if (res.status === 429) {
-                    this.addMessage('system', '⏱️ Alcanzaste tu límite de uso gratuito de Ollama. Se renueva en breve. Podés ver tu estado en ollama.com/settings');
-                } else if (res.status === 405) {
-                    this.addMessage('system', '❌ Ningún modelo de IA en la nube está disponible en este momento. Verificá tu API key en ollama.com o intentá más tarde.');
+                    this.addMessage('system', `⏱️ ${err.error || 'Hiciste muchas consultas seguidas. Esperá unos minutos.'}`);
                 } else if (res.status === 503) {
-                    this.addMessage('system', '🔄 El servicio de Ollama está temporalmente ocupado. Intentá en unos segundos.');
+                    this.addMessage('system', `🔄 ${err.error || 'El asistente está ocupado. Intentá en unos minutos.'}`);
                 } else {
-                    const errText = await res.text().catch(() => '');
-                    this.addMessage('system', `Error ${res.status}: ${errText || 'Error del servidor'}`);
+                    this.addMessage('system', `❌ ${err.error || 'Error del servidor'} (${res.status})`);
                 }
                 this.isStreaming = false;
                 this.sendBtn.disabled = false;
@@ -2282,7 +2244,7 @@ LINKS Y RECURSOS:
         } catch (err) {
             this.hideTyping();
             console.error('BibliaBot error:', err);
-            this.addMessage('system', '📡 No se pudo conectar con Ollama. Verificá tu conexión a internet.');
+            this.addMessage('system', '📡 No se pudo conectar con el asistente. Verificá tu conexión a internet.');
         }
 
         this.isStreaming = false;
